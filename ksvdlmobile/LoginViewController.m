@@ -1,0 +1,90 @@
+//
+//  ViewController.m
+//  ksvdlmobile
+//
+//  Created by Praveen on 4/27/15.
+//  Copyright (c) 2015 Praveen. All rights reserved.
+//
+
+#import "LoginViewController.h"
+
+
+@interface LoginViewController ()
+
+
+@end
+@implementation LoginViewController
+//@synthesize userText=_userText;
+//@synthesize userPwd=_userPwd;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.userText.delegate=self;
+    self.userPwd.delegate=self;
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)loginBtn:(id)sender {
+    
+       NSLog(@"The username is %@",_userText.text);
+        
+       if ([_userText.text length]!=0 && [_userPwd.text length]!=0)
+       {
+           
+       
+           
+                  // NSURL *baseURL = [NSURL URLWithString:@"http://129.130.128.31/TestProjects/TestAuthAPI/"];
+                    
+                    NSString *tokenURLString = @"http://129.130.128.31/TestProjects/TestAuthAPI/oauth2/token";
+                    NSString *credentialIdentifier=@"VetViewID";
+                    
+                    //AFOAuth2Client *oauthClient = [AFOAuth2Client clientWithBaseURL:baseURL clientID:@"vdliosapp" secret:@"somedummy"];
+                    
+                    [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:tokenURLString username:@"pravs" password:@"pravs" scope:@"dummy"
+                                                             success:^(AFOAuthCredential *credential) {
+                                                                 
+                                                          
+                                                                 NSLog(@"Token:%@",credential.accessToken);
+                                                                 [AFOAuthCredential storeCredential:credential withIdentifier:credentialIdentifier];
+                                                                 
+                                                                 [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
+                                                                 
+                                                                 //At this point show the next screen
+                                                              }
+                                                             failure:^(NSError *error){
+                                                                 NSLog(@"Error:%@",error);
+                        
+                                                             }];
+       }
+        
+                                        //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                                        //    NSDictionary *params = @{@"grant_type":@"password",
+                                        //                             @"userName":@"pravs",
+                                        //                             @"password":@"pravs",
+                                        //                             @"client_id":@"vdliosapp"};
+                                        //    [manager POST:@"http://129.130.128.31/TestProjects/TestAuthAPI/oauth2/token" parameters:params
+                                        //          success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                        //              NSLog(@"JSON:%@",responseObject);
+                                        //          }
+                                        //          failure:^(AFHTTPRequestOperation *operation,NSError * error){
+                                        //             NSLog(@"Error:%@",error);
+                                        //          }];
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please enter username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+@end
