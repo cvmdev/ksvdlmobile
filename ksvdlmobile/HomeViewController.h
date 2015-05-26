@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "SVProgressHUD.h"
 
 @interface HomeViewController : UIViewController
 - (IBAction)submitTap:(id)sender;

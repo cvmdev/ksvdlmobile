@@ -45,7 +45,7 @@
                     
                     //AFOAuth2Client *oauthClient = [AFOAuth2Client clientWithBaseURL:baseURL clientID:@"vdliosapp" secret:@"somedummy"];
                     
-                    [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:tokenURLString username:@"pravs" password:@"pravs" scope:@"dummy"
+                    [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:tokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
                                                              success:^(AFOAuthCredential *credential) {
                                                                  
                                                           
@@ -57,7 +57,12 @@
                                                                  //At this point show the next screen
                                                               }
                                                              failure:^(NSError *error){
-                                                                 NSLog(@"Error:%@",error);
+                                                                 NSLog(@"Error:%@",error.userInfo);
+                                                                 NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                                                                 NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+                                                                 NSLog(@"The dictionary has :%@",serializedData);
+                                                                 if ([serializedData objectForKey:@"error_description"])
+                                                                     [LoginViewController showAlert:serializedData[@"error_description"]];
                         
                                                              }];
        }
@@ -76,8 +81,7 @@
                                         //          }];
     else
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please enter username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+        [LoginViewController showAlert:@"Please Enter Both Username and Password"];
     }
 }
 
@@ -85,6 +89,11 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
++ (void) showAlert:(NSString *)alertMessage{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:alertMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 
 @end

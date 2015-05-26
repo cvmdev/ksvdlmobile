@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F7873F0B1F09085A389D1EA"
-               BuildableName = "libPods-ksvdlmobile.a"
-               BlueprintName = "Pods-ksvdlmobile"
+               BlueprintIdentifier = "DB7024BAA5588C5B9E5A140F"
+               BuildableName = "libPods-ksvdlmobile-SVProgressHUD.a"
+               BlueprintName = "Pods-ksvdlmobile-SVProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

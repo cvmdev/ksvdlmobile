@@ -12,6 +12,7 @@
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
++ (void) showAlert:(NSString *)alertMessage;
 @property (weak, nonatomic) IBOutlet UITextField *userText;
 @property (weak, nonatomic) IBOutlet UITextField *userPwd;
 

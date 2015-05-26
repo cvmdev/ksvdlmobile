@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		50ECDF1CEE7F3CC3C451B39F /* libPods-ksvdlmobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B9D118234C0DD47CBB66C /* libPods-ksvdlmobile.a */; };
+		5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BA1B14AD9300831D7D /* AccessionTableCell.m */; };
+		5933A6BE1B14AFAE00831D7D /* AccessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */; };
 		5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5959A3031B0D18C2005821B0 /* HomeViewController.m */; };
 		59649ECB1AEF1E0A00E5F1AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECA1AEF1E0A00E5F1AD /* main.m */; };
 		59649ECE1AEF1E0A00E5F1AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECD1AEF1E0A00E5F1AD /* AppDelegate.m */; };
@@ -36,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		44D0E988BE2DFEA4D0756528 /* Pods-ksvdlmobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ksvdlmobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-ksvdlmobile/Pods-ksvdlmobile.release.xcconfig"; sourceTree = "<group>"; };
+		5933A6B91B14AD9300831D7D /* AccessionTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessionTableCell.h; sourceTree = "<group>"; };
+		5933A6BA1B14AD9300831D7D /* AccessionTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionTableCell.m; sourceTree = "<group>"; };
+		5933A6BC1B14AFAE00831D7D /* AccessionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessionTableViewController.h; sourceTree = "<group>"; };
+		5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionTableViewController.m; sourceTree = "<group>"; };
 		5959A3021B0D18C2005821B0 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		5959A3031B0D18C2005821B0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		59649EC51AEF1E0A00E5F1AD /* ksvdlmobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ksvdlmobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +179,8 @@
 				59649ED01AEF1E0A00E5F1AD /* LoginViewController.m */,
 				5959A3021B0D18C2005821B0 /* HomeViewController.h */,
 				5959A3031B0D18C2005821B0 /* HomeViewController.m */,
+				5933A6BC1B14AFAE00831D7D /* AccessionTableViewController.h */,
+				5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -182,6 +190,8 @@
 			children = (
 				59649EF21AF1190400E5F1AD /* AccessCredential.h */,
 				59649EF31AF1190400E5F1AD /* AccessCredential.m */,
+				5933A6B91B14AD9300831D7D /* AccessionTableCell.h */,
+				5933A6BA1B14AD9300831D7D /* AccessionTableCell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,10 +349,12 @@
 				59649ED11AEF1E0A00E5F1AD /* LoginViewController.m in Sources */,
 				59649ECE1AEF1E0A00E5F1AD /* AppDelegate.m in Sources */,
 				59649EFD1AF179F100E5F1AD /* LockBox.m in Sources */,
+				5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */,
 				59649EF41AF1190400E5F1AD /* AccessCredential.m in Sources */,
 				59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */,
 				5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */,
 				59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */,
+				5933A6BE1B14AFAE00831D7D /* AccessionTableViewController.m in Sources */,
 				59649F001B0B82DC00E5F1AD /* AFOAuth2Client.m in Sources */,
 				59649ECB1AEF1E0A00E5F1AD /* main.m in Sources */,
 			);
