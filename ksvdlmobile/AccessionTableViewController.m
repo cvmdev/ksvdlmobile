@@ -75,20 +75,31 @@
     
   if ([accStatus isEqualToString:@"Finalized"])
   {
-      cell.backgroundColor= [UIColor lightGrayColor];
+      cell.backgroundColor= [[UIColor alloc] initWithRed:209.0/255.0 green:211/255.0 blue:212/255.0 alpha:0.5];
+     
   }
     if ([accStatus isEqualToString:@"New"])
     {
-        cell.backgroundColor= [[UIColor alloc] initWithRed:153.0/255.0 green:1.0 blue:153/255.0 alpha:0.5];
+        cell.backgroundColor= [[UIColor alloc] initWithRed:60.0/255.0 green:184/255.0 blue:121/255.0 alpha:0.5];
         cell.finalizedDateLabel.hidden=TRUE;
-        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:102.0/255.0 blue:51.0/255.0 alpha:1.0];
+        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
     }
     if ([accStatus isEqualToString:@"Working"])
     {
-        cell.backgroundColor= [[UIColor alloc] initWithRed:219.0/255.0 green:129.0/255.0 blue:129.0/255.0 alpha:1.0];
+        cell.backgroundColor= [[UIColor alloc] initWithRed:246.0/255.0 green:152.0/255.0 blue:157.0/255.0 alpha:1.0];
         cell.finalizedDateLabel.hidden=TRUE;
+        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:158.0/255.0 green:11.0/255.0 blue:15.0/255.0 alpha:1.0];
+
     }
   
+    if ([accStatus isEqualToString:@"Review"])
+    {
+        cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
+        cell.finalizedDateLabel.hidden=TRUE;
+        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
+        
+    }
+
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
     cell.accessionLabel.text=[NSString stringWithFormat:@"Accession#:%@",[currentAccessionDict objectForKey:@"AccessionNo"]];
