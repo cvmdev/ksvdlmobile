@@ -80,9 +80,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
                 
                 [self.tableView reloadData];
+                
                 [SVProgressHUD dismiss];
+                
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
+                NSLog(@"Error: Problem while fetching accessions: %@", error);
             }];
 
         }
@@ -208,7 +210,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 
 
-#pragma Mark -- AccCellDeleage
+#pragma Mark -- AccCellDelegate
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
    
