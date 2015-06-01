@@ -12,7 +12,9 @@
 #import "AccessionTableCell.h"
 #import "SVProgressHUD.h"
 
-@interface AccessionTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>
-@property (strong,nonatomic) NSArray *accessionList;
--(void) fetchAllAccessionsForCredential:(AFOAuthCredential *) credential;
+@interface AccessionTableViewController : UITableViewController<AccCellDelegate,UITableViewDelegate,UITableViewDataSource>
+    @property (strong,nonatomic) NSMutableArray *accessionList;
+    @property NSInteger currentPage;
+    @property NSInteger totalPages;
+    -(void) fetchAccessions;
 @end

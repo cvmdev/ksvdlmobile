@@ -10,6 +10,8 @@
 		50ECDF1CEE7F3CC3C451B39F /* libPods-ksvdlmobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B9D118234C0DD47CBB66C /* libPods-ksvdlmobile.a */; };
 		5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BA1B14AD9300831D7D /* AccessionTableCell.m */; };
 		5933A6BE1B14AFAE00831D7D /* AccessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */; };
+		593EBCCE1B17B6D8002927B4 /* AccessionReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */; };
+		593EBD071B18F656002927B4 /* view-report-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 593EBD061B18F656002927B4 /* view-report-button.png */; };
 		5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5959A3031B0D18C2005821B0 /* HomeViewController.m */; };
 		59649ECB1AEF1E0A00E5F1AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECA1AEF1E0A00E5F1AD /* main.m */; };
 		59649ECE1AEF1E0A00E5F1AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECD1AEF1E0A00E5F1AD /* AppDelegate.m */; };
@@ -42,6 +44,9 @@
 		5933A6BA1B14AD9300831D7D /* AccessionTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionTableCell.m; sourceTree = "<group>"; };
 		5933A6BC1B14AFAE00831D7D /* AccessionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessionTableViewController.h; sourceTree = "<group>"; };
 		5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionTableViewController.m; sourceTree = "<group>"; };
+		593EBCCC1B17B6D8002927B4 /* AccessionReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessionReportViewController.h; sourceTree = "<group>"; };
+		593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionReportViewController.m; sourceTree = "<group>"; };
+		593EBD061B18F656002927B4 /* view-report-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-report-button.png"; sourceTree = "<group>"; };
 		5959A3021B0D18C2005821B0 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		5959A3031B0D18C2005821B0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		59649EC51AEF1E0A00E5F1AD /* ksvdlmobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ksvdlmobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +115,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		593EBD041B18F1AE002927B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				593EBD051B18F1B7002927B4 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		593EBD051B18F1B7002927B4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				593EBD061B18F656002927B4 /* view-report-button.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		59649EBC1AEF1E0A00E5F1AD = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +154,7 @@
 		59649EC71AEF1E0A00E5F1AD /* ksvdlmobile */ = {
 			isa = PBXGroup;
 			children = (
+				593EBD041B18F1AE002927B4 /* Resources */,
 				59649EF51AF125F100E5F1AD /* Helpers */,
 				59649EEF1AF1186C00E5F1AD /* Models */,
 				59649EEE1AF1184200E5F1AD /* ViewControllers */,
@@ -181,6 +203,8 @@
 				5959A3031B0D18C2005821B0 /* HomeViewController.m */,
 				5933A6BC1B14AFAE00831D7D /* AccessionTableViewController.h */,
 				5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */,
+				593EBCCC1B17B6D8002927B4 /* AccessionReportViewController.h */,
+				593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +319,7 @@
 			files = (
 				59649ED41AEF1E0A00E5F1AD /* Main.storyboard in Resources */,
 				59649ED91AEF1E0A00E5F1AD /* LaunchScreen.xib in Resources */,
+				593EBD071B18F656002927B4 /* view-report-button.png in Resources */,
 				59649ED61AEF1E0A00E5F1AD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59649ED11AEF1E0A00E5F1AD /* LoginViewController.m in Sources */,
+				593EBCCE1B17B6D8002927B4 /* AccessionReportViewController.m in Sources */,
 				59649ECE1AEF1E0A00E5F1AD /* AppDelegate.m in Sources */,
 				59649EFD1AF179F100E5F1AD /* LockBox.m in Sources */,
 				5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */,

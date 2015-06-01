@@ -15,4 +15,8 @@
     @synthesize receivedDateLabel;
 @synthesize finalizedDateLabel;
     @synthesize caseCoordinatorLabel;
+- (IBAction)viewReport:(id)sender {
+    
+    [self.accReportDelegate accessionReportFor:self.buttonIndexPath];
+}
 @end
