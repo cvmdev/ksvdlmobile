@@ -29,6 +29,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
 }
 
+#pragma mark instant methods
+
 - (AFOAuthCredential *) getCredential
 {
     AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:kCredentialIdentifier];
@@ -36,7 +38,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 
-#pragma mark instant methods
+
 -(void) fetchAccessions
 {
         AFOAuthCredential  *credential = [self getCredential];
@@ -106,8 +108,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 - (UITableViewCell *) accessionCellForIndexPath:(NSIndexPath *) indexPath{
-    
-    
     
     AccessionTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
