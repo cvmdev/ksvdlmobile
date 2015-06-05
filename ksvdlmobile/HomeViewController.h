@@ -13,4 +13,7 @@
 @interface HomeViewController : UIViewController
 - (IBAction)submitTap:(id)sender;
 
+@property (nonatomic, weak) IBOutlet UIImageView *imageview;
+@property (weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
+
 @end
