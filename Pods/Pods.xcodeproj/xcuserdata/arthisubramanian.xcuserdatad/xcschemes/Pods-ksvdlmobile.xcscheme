@@ -29,6 +29,15 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "59649EC41AEF1E0A00E5F1AD"
+            BuildableName = "ksvdlmobile.app"
+            BlueprintName = "ksvdlmobile"
+            ReferencedContainer = "container:../ksvdlmobile.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -39,15 +48,16 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "95E08205676050D25C28FEC8"
-            BuildableName = "libPods-ksvdlmobile.a"
-            BlueprintName = "Pods-ksvdlmobile"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "59649EC41AEF1E0A00E5F1AD"
+            BuildableName = "ksvdlmobile.app"
+            BlueprintName = "ksvdlmobile"
+            ReferencedContainer = "container:../ksvdlmobile.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
