@@ -26,9 +26,9 @@
 		59649EFD1AF179F100E5F1AD /* LockBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EFC1AF179F100E5F1AD /* LockBox.m */; };
 		59649F001B0B82DC00E5F1AD /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */; };
 		59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649F021B0CC48400E5F1AD /* AuthAPIClient.m */; };
-		CD31DD4A1B20D49400451866 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD491B20D49400451866 /* SWRevealViewController.m */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
-		CDE49ACC1B21E3B600A98FFA /* L3MEB.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE49ACB1B21E3B600A98FFA /* L3MEB.png */; };
+		CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */; };
+		CDE49AD11B21F7D000A98FFA /* L3MEB.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE49AD01B21F7D000A98FFA /* L3MEB.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,11 +76,11 @@
 		59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
 		59649F011B0CC48400E5F1AD /* AuthAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthAPIClient.h; sourceTree = "<group>"; };
 		59649F021B0CC48400E5F1AD /* AuthAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthAPIClient.m; sourceTree = "<group>"; };
-		CD31DD481B20D49400451866 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		CD31DD491B20D49400451866 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
-		CDE49ACB1B21E3B600A98FFA /* L3MEB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = L3MEB.png; path = ../L3MEB.png; sourceTree = "<group>"; };
+		CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		CDE49AD01B21F7D000A98FFA /* L3MEB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = L3MEB.png; sourceTree = "<group>"; };
 		DE428B8D1A6416EADEFDBF9C /* Pods-ksvdlmobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ksvdlmobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ksvdlmobile/Pods-ksvdlmobile.debug.xcconfig"; sourceTree = "<group>"; };
 		E30B9D118234C0DD47CBB66C /* libPods-ksvdlmobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ksvdlmobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -134,7 +134,7 @@
 		593EBD051B18F1B7002927B4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				CDE49ACB1B21E3B600A98FFA /* L3MEB.png */,
+				CDE49AD01B21F7D000A98FFA /* L3MEB.png */,
 				593EBD061B18F656002927B4 /* view-report-button.png */,
 			);
 			name = Images;
@@ -180,7 +180,8 @@
 		59649EC81AEF1E0A00E5F1AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD31DD471B20D49400451866 /* SlideOutMenuFiles */,
+				CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */,
+				CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */,
 				59649EC91AEF1E0A00E5F1AD /* Info.plist */,
 				59649ECA1AEF1E0A00E5F1AD /* main.m */,
 			);
@@ -245,16 +246,6 @@
 				59649F021B0CC48400E5F1AD /* AuthAPIClient.m */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		CD31DD471B20D49400451866 /* SlideOutMenuFiles */ = {
-			isa = PBXGroup;
-			children = (
-				CD31DD481B20D49400451866 /* SWRevealViewController.h */,
-				CD31DD491B20D49400451866 /* SWRevealViewController.m */,
-			);
-			name = SlideOutMenuFiles;
-			path = ../../../Desktop/SlideOutMenuFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,10 +330,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDE49ACC1B21E3B600A98FFA /* L3MEB.png in Resources */,
 				59649ED41AEF1E0A00E5F1AD /* Main.storyboard in Resources */,
 				59649ED91AEF1E0A00E5F1AD /* LaunchScreen.xib in Resources */,
 				593EBD071B18F656002927B4 /* view-report-button.png in Resources */,
+				CDE49AD11B21F7D000A98FFA /* L3MEB.png in Resources */,
 				59649ED61AEF1E0A00E5F1AD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD31DD4A1B20D49400451866 /* SWRevealViewController.m in Sources */,
 				59649ED11AEF1E0A00E5F1AD /* LoginViewController.m in Sources */,
 				CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */,
 				593EBCCE1B17B6D8002927B4 /* AccessionReportViewController.m in Sources */,
@@ -402,6 +392,7 @@
 				59649EFD1AF179F100E5F1AD /* LockBox.m in Sources */,
 				5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */,
 				59649EF41AF1190400E5F1AD /* AccessCredential.m in Sources */,
+				CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */,
 				59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */,
 				5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */,
 				59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */,
