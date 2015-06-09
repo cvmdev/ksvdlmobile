@@ -10,6 +10,7 @@
 #import "AFOAuth2Client.h"
 #import "SWRevealViewController.h"
 
+NSString * const CredentialIdentifier=@"VetViewID";
 
 @implementation HomeViewController
 
@@ -21,6 +22,9 @@
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
+    //The following two lines should be removed after testing..This is for testing various logins...
+    [AFOAuthCredential deleteCredentialWithIdentifier:CredentialIdentifier];
+    NSLog(@"Credential  Deleted");
 }
 
 - (IBAction)testfeessite:(id)sender {
@@ -37,9 +41,9 @@
 
 - (IBAction)submitTap:(id)sender {
             NSLog(@"Button tapped");
-            NSString *credentialIdentifier=@"VetViewID";
+    
             
-            AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:credentialIdentifier];
+            AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:CredentialIdentifier];
             if ((!credential) || (credential.isExpired))
             {
                 NSLog(@"User is not logged in , send to login screen");

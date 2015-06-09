@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "SVProgressHUD.h"
 
 @interface LoginViewController ()
 
@@ -39,7 +39,9 @@
        
            
                   // NSURL *baseURL = [NSURL URLWithString:@"http://129.130.128.31/TestProjects/TestAuthAPI/"];
-                    
+           
+                   [SVProgressHUD show];
+           
                     NSString *tokenURLString = @"http://129.130.128.31/TestProjects/TestAuthAPI/oauth2/token";
                     NSString *credentialIdentifier=@"VetViewID";
                     
@@ -51,12 +53,13 @@
                                                           
                                                                  NSLog(@"Token:%@",credential.accessToken);
                                                                  [AFOAuthCredential storeCredential:credential withIdentifier:credentialIdentifier];
-                                                                 
+                                                                 [SVProgressHUD dismiss];
                                                                  [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
                                                                  
                                                                  //At this point show the next screen
                                                               }
                                                              failure:^(NSError *error){
+                                                                [SVProgressHUD dismiss];
                                                                  NSLog(@"Error:%@",error.userInfo);
                                                                  NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
                                                                  NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];

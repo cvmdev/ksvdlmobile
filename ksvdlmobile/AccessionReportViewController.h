@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDFKBasicPDFViewer.h"
+#import "PDFKDocument.h"
 
-@interface AccessionReportViewController : UIViewController
+@interface AccessionReportViewController : PDFKBasicPDFViewer
  @property (nonatomic) NSString * accessionNumber;
 @end

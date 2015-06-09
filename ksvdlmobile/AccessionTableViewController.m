@@ -25,8 +25,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     self.tableView.delegate=self;
     _currentPage=1;
     self.accessionList = [NSMutableArray array];
-    [self fetchAccessions];
     
+    [SVProgressHUD showWithStatus:@"Loading"];
+    [self fetchAccessions];
+    [SVProgressHUD dismiss];
+    
+}
+-(void) viewWillDisappear:(BOOL)animated {
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark instant methods
@@ -53,7 +59,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         else
         {
             NSLog(@"ATVC:User is logged in and authentication token is current");
-            [SVProgressHUD showWithStatus:@"Loading"];
+            
            
             
             AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
@@ -83,7 +89,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 
                 [self.tableView reloadData];
                 
-                [SVProgressHUD dismiss];
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error: Problem while fetching accessions: %@", error);
@@ -206,6 +211,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         AccessionReportViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
     }
+    
 }
 
 
