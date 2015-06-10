@@ -13,8 +13,9 @@
     @synthesize statusLabel;
     @synthesize accessionLabel;
     @synthesize receivedDateLabel;
-@synthesize finalizedDateLabel;
+    @synthesize finalizedDateLabel;
     @synthesize caseCoordinatorLabel;
+    @synthesize referenceNumberLabel;
 - (IBAction)viewReport:(id)sender {
     
     [self.accReportDelegate accessionReportFor:self.buttonIndexPath];

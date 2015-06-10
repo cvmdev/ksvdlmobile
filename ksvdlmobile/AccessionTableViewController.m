@@ -31,9 +31,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [SVProgressHUD dismiss];
     
 }
-//-(void) viewWillDisappear:(BOOL)animated {
-//    [self.navigationController popToRootViewControllerAnimated:NO];
-//}
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // Navigation button was pressed. Do some stuff
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    [super viewWillDisappear:animated];
+    //[self.navigationController popToRootViewControllerAnimated:NO];
+}
 
 #pragma mark instant methods
 
@@ -168,6 +173,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized:%@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
     cell.caseCoordinatorLabel.text=[NSString stringWithFormat:@"CaseCoordinator:%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
     
+    if ([currentAccessionDict objectForKey:@"RefNumber"])
+    {
+        cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref #:%@",[currentAccessionDict objectForKey:@"RefNumber"]];
+        cell.referenceNumberLabel.hidden=false;
+    }
+    else
+        cell.referenceNumberLabel.hidden=TRUE;
     return cell;
 }
 
@@ -211,6 +223,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         AccessionReportViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
     }
+    [SVProgressHUD dismiss];
     
 }
 
@@ -218,6 +231,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 #pragma Mark -- AccCellDelegate
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
+    
+    [SVProgressHUD show];
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
    
     [self performSegueWithIdentifier:@"viewreport" sender:indexPath];

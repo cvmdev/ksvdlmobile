@@ -23,8 +23,8 @@ NSString * const CredentialIdentifier=@"VetViewID";
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     //The following two lines should be removed after testing..This is for testing various logins...
-    [AFOAuthCredential deleteCredentialWithIdentifier:CredentialIdentifier];
-    NSLog(@"Credential  Deleted");
+//    [AFOAuthCredential deleteCredentialWithIdentifier:CredentialIdentifier];
+//    NSLog(@"Credential  Deleted");
 }
 
 - (IBAction)testfeessite:(id)sender {

@@ -22,6 +22,7 @@
     @property (nonatomic,weak) IBOutlet UILabel *finalizedDateLabel;
     @property (weak, nonatomic) IBOutlet UIButton *viewreportButton;
     @property (nonatomic,weak) IBOutlet UILabel *caseCoordinatorLabel;
+    @property (nonatomic,weak) IBOutlet UILabel *referenceNumberLabel;
 - (IBAction)viewReport:(id)sender;
 //Manual Properties
 @property (strong,nonatomic) NSIndexPath *buttonIndexPath;
