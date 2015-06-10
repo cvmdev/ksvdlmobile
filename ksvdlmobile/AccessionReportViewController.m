@@ -13,13 +13,10 @@
 
 -(void) viewDidLoad {
     
-    [super viewDidLoad];
-    
     [SVProgressHUD showWithStatus:@"Loading"];
     
+    [super viewDidLoad];
     NSLog(@"Accession Number from previous controller is :%@",self.accessionNumber);
-    
-    
     
     if ([self downloadReportForAccession:self.accessionNumber])
     {
@@ -29,13 +26,8 @@
         self.enableSharing = YES;
         self.enableThumbnailSlider = YES;
         self.standalone=YES;
-        
-        NSString *tmpDirectory=NSTemporaryDirectory();
-        NSString *fileName = [NSString stringWithFormat:@"%@.pdf",self.accessionNumber];
-        NSString *filePath = [tmpDirectory
-                              stringByAppendingPathComponent:fileName];
-        
-        
+       
+        NSString *filePath = [self getTempFilePathForAccession];
         NSLog(@"PDF to be retrieved: %@",filePath);
         
         PDFKDocument *document =[PDFKDocument documentWithContentsOfFile:filePath password:nil];
@@ -62,10 +54,8 @@
     
     if (pdfData.length>0)
     {
-        NSString *tmpDirectory=NSTemporaryDirectory();
-        NSString *fileName = [NSString stringWithFormat:@"%@.pdf",accNum];
-        NSString *filePath = [tmpDirectory
-                              stringByAppendingPathComponent:fileName];
+        
+        NSString *filePath = [self getTempFilePathForAccession];
        
         NSLog(@"FilePath is :%@",filePath);
         
@@ -78,6 +68,21 @@
     return false;
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+    
+    //delete the temp file that was created
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:[self getTempFilePathForAccession] error:&error];
+}
 
+-(NSString *) getTempFilePathForAccession
+{
+    NSString *tmpDirectory=NSTemporaryDirectory();
+    NSString *fileName = [NSString stringWithFormat:@"%@.pdf",self.accessionNumber];
+    NSString *filePath = [tmpDirectory
+                          stringByAppendingPathComponent:fileName];
+    NSLog(@"Temp File deleted successfully");
+    return filePath;
+}
 
 @end

@@ -223,7 +223,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         AccessionReportViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
     }
-    [SVProgressHUD dismiss];
+   
     
 }
 
@@ -232,7 +232,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 #pragma Mark -- AccCellDelegate
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
     
-    [SVProgressHUD show];
+    
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
    
     [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
