@@ -31,9 +31,9 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [SVProgressHUD dismiss];
     
 }
--(void) viewWillDisappear:(BOOL)animated {
-    [self.navigationController popToRootViewControllerAnimated:NO];
-}
+//-(void) viewWillDisappear:(BOOL)animated {
+//    [self.navigationController popToRootViewControllerAnimated:NO];
+//}
 
 #pragma mark instant methods
 
