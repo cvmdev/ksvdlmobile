@@ -17,10 +17,13 @@ NSString * const CredentialIdentifier=@"VetViewID";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    /*  _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/images/development/lifelines/1501/Lifelines-banner-2015.jpg"]]];*/
+     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/images/development/lifelines/1501/Lifelines-banner-2015.jpg"]]];
+    
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.barButton setTarget: self.revealViewController];
+    [self.barButton setAction: @selector( rightRevealToggle: )];
     
     //The following two lines should be removed after testing..This is for testing various logins...
 //    [AFOAuthCredential deleteCredentialWithIdentifier:CredentialIdentifier];

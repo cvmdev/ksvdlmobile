@@ -258,7 +258,7 @@
                     </view>
                     <connections>
                         <segue destination="5WA-CY-uDL" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="9Ah-iX-J7X"/>
-                        <segue destination="dVW-LM-wRn" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="vdC-5W-63X"/>
+                        <segue destination="dVW-LM-wRn" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegue" id="vdC-5W-63X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQe-vD-eDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,7 +279,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B2l-od-wFd" id="c9O-L2-mpV">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Help" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X7d-FX-9kg">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Help" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X7d-FX-9kg">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -297,7 +297,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gcN-uz-ILF" id="hXE-Sr-ecL">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Log In/Log Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X0j-70-n5Z">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Log In/Log Out" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X0j-70-n5Z">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -315,7 +315,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BS7-Jc-J7A" id="TJx-2t-RTu">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Notification Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D0s-CP-8xa">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Notification Settings" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D0s-CP-8xa">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -333,7 +333,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZTH-Zp-hKU" id="jUB-hB-bST">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MRy-7V-kzz">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Feedback" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MRy-7V-kzz">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -376,55 +376,61 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9R-Sp-OdU">
-                                                <rect key="frame" x="238" y="20" width="186" height="30"/>
-                                                <color key="backgroundColor" red="0.41387153069999999" green="0.2259878012" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="238" y="20" width="109" height="30"/>
+                                                <color key="backgroundColor" red="0.22159785559466919" green="0.11646723631038226" blue="0.69353693181818188" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="2he-he-dsv"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="ACCESSION STATUS">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.60567008040000003" green="0.30361878170000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="submitTap:" destination="Giy-0N-OWv" eventType="touchUpInside" id="A0B-pe-cZW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drt-4J-KWS" userLabel="Help Videos">
-                                                <rect key="frame" x="238" y="81" width="186" height="30"/>
-                                                <color key="backgroundColor" red="0.41387153069999999" green="0.2259878012" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="238" y="81" width="109" height="30"/>
+                                                <color key="backgroundColor" red="0.22159785559466919" green="0.11646723631038226" blue="0.69353693181818188" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="2j9-qY-4x4"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="KSVDL YOUTUBE VIDEOS">
+                                                <state key="normal" title="KSVDL VIDEOS">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.60567008040000003" green="0.30361878170000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="ksvdlvideos:" destination="Giy-0N-OWv" eventType="touchUpInside" id="QaP-4R-mYS"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1d-LK-dgX" userLabel="Contact Us">
-                                                <rect key="frame" x="238" y="215" width="186" height="30"/>
-                                                <color key="backgroundColor" red="0.41387153069999999" green="0.2259878012" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="CONTACT US">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" red="0.60567008040000003" green="0.30361878170000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xw-dE-qMX" userLabel="Feedback">
-                                                <rect key="frame" x="238" y="149" width="186" height="30"/>
-                                                <color key="backgroundColor" red="0.41387153069999999" green="0.2259878012" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="FEEDBACK">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" red="0.60567008040000003" green="0.30361878170000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlF-J6-Jm3" userLabel="Test and Fees">
-                                                <rect key="frame" x="238" y="275" width="186" height="30"/>
-                                                <color key="backgroundColor" red="0.41387153069999999" green="0.2259878012" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="238" y="275" width="109" height="30"/>
+                                                <color key="backgroundColor" red="0.22159785559466919" green="0.11646723631038226" blue="0.69353693181818188" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="0PC-or-Mng"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="TEST &amp; FEES">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.60567008040000003" green="0.30361878170000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="testfeessite:" destination="Giy-0N-OWv" eventType="touchUpInside" id="pWX-ow-9OL"/>
                                                 </connections>
@@ -435,33 +441,23 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.81153330180000005" green="0.80570250389999998" blue="0.80676701930000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="drt-4J-KWS" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.24" id="2Z8-38-OJW"/>
+                                            <constraint firstItem="drt-4J-KWS" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.3" id="2Z8-38-OJW"/>
                                             <constraint firstAttribute="centerX" secondItem="Dfl-1E-WhG" secondAttribute="centerX" id="6r9-rh-FLM"/>
-                                            <constraint firstItem="QlF-J6-Jm3" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" id="AgU-oq-WEa"/>
-                                            <constraint firstItem="r9R-Sp-OdU" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.14" id="CeG-7m-K1s"/>
+                                            <constraint firstItem="QlF-J6-Jm3" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" multiplier="25%" id="AgU-oq-WEa"/>
+                                            <constraint firstItem="r9R-Sp-OdU" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.1" id="CeG-7m-K1s"/>
                                             <constraint firstAttribute="centerX" secondItem="drt-4J-KWS" secondAttribute="centerX" id="GGy-0t-Ql3"/>
                                             <constraint firstAttribute="centerX" secondItem="r9R-Sp-OdU" secondAttribute="centerX" id="GUq-GN-I2c"/>
-                                            <constraint firstAttribute="centerX" secondItem="6Xw-dE-qMX" secondAttribute="centerX" id="JSn-zQ-tpf"/>
-                                            <constraint firstItem="drt-4J-KWS" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" id="KOn-MV-3Fa"/>
-                                            <constraint firstItem="6Xw-dE-qMX" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" id="Nje-Ps-aDR"/>
-                                            <constraint firstItem="r9R-Sp-OdU" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" id="Nrt-X3-JYB"/>
-                                            <constraint firstItem="QlF-J6-Jm3" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" id="Qpv-91-HjO"/>
-                                            <constraint firstAttribute="trailing" secondItem="r9R-Sp-OdU" secondAttribute="trailing" id="QxI-On-YW5"/>
-                                            <constraint firstAttribute="centerX" secondItem="B1d-LK-dgX" secondAttribute="centerX" id="RUM-PW-3NZ"/>
-                                            <constraint firstItem="6Xw-dE-qMX" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.34" id="Rad-0G-XeI"/>
-                                            <constraint firstItem="B1d-LK-dgX" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.44" id="ST1-Au-udk"/>
-                                            <constraint firstItem="B1d-LK-dgX" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" id="Zyn-r0-W0g"/>
-                                            <constraint firstItem="drt-4J-KWS" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" id="afi-Wa-NdB"/>
-                                            <constraint firstAttribute="trailing" secondItem="drt-4J-KWS" secondAttribute="trailing" id="c6A-RL-bV0"/>
+                                            <constraint firstItem="drt-4J-KWS" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" multiplier="50%" id="KOn-MV-3Fa"/>
+                                            <constraint firstItem="r9R-Sp-OdU" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" multiplier="25%" id="Nrt-X3-JYB"/>
+                                            <constraint firstItem="QlF-J6-Jm3" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" multiplier="50%" id="Qpv-91-HjO"/>
+                                            <constraint firstAttribute="trailing" secondItem="r9R-Sp-OdU" secondAttribute="trailing" multiplier="25%" id="QxI-On-YW5"/>
+                                            <constraint firstItem="drt-4J-KWS" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leadingMargin" multiplier="25%" id="afi-Wa-NdB"/>
+                                            <constraint firstAttribute="trailing" secondItem="drt-4J-KWS" secondAttribute="trailing" multiplier="25%" id="c6A-RL-bV0"/>
                                             <constraint firstItem="Dfl-1E-WhG" firstAttribute="top" secondItem="QlF-J6-Jm3" secondAttribute="bottom" constant="20" id="ezC-rE-FoO"/>
                                             <constraint firstAttribute="centerX" secondItem="QlF-J6-Jm3" secondAttribute="centerX" id="fBD-Gy-Muy"/>
-                                            <constraint firstAttribute="trailing" secondItem="B1d-LK-dgX" secondAttribute="trailing" id="gZ2-Rc-bNf"/>
-                                            <constraint firstItem="QlF-J6-Jm3" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.54" id="geu-N5-kzS"/>
-                                            <constraint firstItem="r9R-Sp-OdU" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" id="iEK-uW-ymu"/>
-                                            <constraint firstItem="6Xw-dE-qMX" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" id="ltq-TW-FaK"/>
-                                            <constraint firstAttribute="trailing" secondItem="6Xw-dE-qMX" secondAttribute="trailing" id="qrw-OV-woT"/>
-                                            <constraint firstAttribute="trailing" secondItem="QlF-J6-Jm3" secondAttribute="trailing" id="vV8-O2-Lha"/>
-                                            <constraint firstAttribute="width" secondItem="B1d-LK-dgX" secondAttribute="width" id="wg7-yE-BJC"/>
+                                            <constraint firstItem="QlF-J6-Jm3" firstAttribute="centerY" secondItem="LSt-oR-G3D" secondAttribute="bottom" multiplier="0.5" id="geu-N5-kzS"/>
+                                            <constraint firstItem="r9R-Sp-OdU" firstAttribute="width" secondItem="LSt-oR-G3D" secondAttribute="width" multiplier="50%" id="iEK-uW-ymu"/>
+                                            <constraint firstAttribute="trailing" secondItem="QlF-J6-Jm3" secondAttribute="trailing" multiplier="25%" id="vV8-O2-Lha"/>
                                         </constraints>
                                         <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
@@ -539,6 +535,6 @@
         <image name="view-report-button.png" width="130" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LQw-T8-f9Z"/>
+        <segue reference="xEa-OO-ROn"/>
     </inferredMetricsTieBreakers>
 </document>
