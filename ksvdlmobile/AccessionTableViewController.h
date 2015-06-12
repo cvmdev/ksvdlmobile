@@ -14,6 +14,7 @@
 
 @interface AccessionTableViewController : UITableViewController<AccCellDelegate,UITableViewDelegate,UITableViewDataSource>
     @property (strong,nonatomic) NSMutableArray *accessionList;
+    @property (strong,nonatomic) NSMutableArray *filteredAccList;
     @property NSInteger currentPage;
     @property NSInteger totalPages;
     -(void) fetchAccessions;

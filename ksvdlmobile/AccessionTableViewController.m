@@ -25,7 +25,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     self.tableView.delegate=self;
     _currentPage=1;
     self.accessionList = [NSMutableArray array];
-    
+    self.filteredAccList=[NSMutableArray array];
     [SVProgressHUD showWithStatus:@"Loading"];
     [self fetchAccessions];
     [SVProgressHUD dismiss];
@@ -117,7 +117,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     return cell;
 }
 
-- (UITableViewCell *) accessionCellForIndexPath:(NSIndexPath *) indexPath{
+- (UITableViewCell *) accessionCellForIndexPath:(NSIndexPath *) indexPath FromDictionary:(NSDictionary *) dict{
     
     AccessionTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
@@ -128,7 +128,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     cell.accReportDelegate=self;
     cell.buttonIndexPath=indexPath;
     
-    NSDictionary * currentAccessionDict = [self.accessionList objectAtIndex:indexPath.row];
+    NSDictionary *currentAccessionDict= dict;
+    //NSDictionary * currentAccessionDict = [self.accessionList objectAtIndex:indexPath.row];
     
     NSString *accStatus =[currentAccessionDict objectForKey:@"AccessionStatus"];
     
@@ -188,22 +189,44 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 # pragma Mark tableview delegate methods
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row < self.accessionList.count) {
-        return [self accessionCellForIndexPath:indexPath];
+    if (tableView==self.searchDisplayController.searchResultsTableView){
+        
+        NSDictionary *filterDict= [self.filteredAccList objectAtIndex:indexPath.row];
+        
+        return [self accessionCellForIndexPath:indexPath FromDictionary:filterDict];
     }
     else
     {
-        return [self loadingCell];
+        if (indexPath.row < self.accessionList.count) {
+            NSDictionary *fullDict= [self.accessionList objectAtIndex:indexPath.row];
+            return [self accessionCellForIndexPath:indexPath FromDictionary:fullDict];
+        }
+        else
+        {
+            return [self loadingCell];
+        }
     }
+
  
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (_currentPage< _totalPages)
-        return self.accessionList.count+ 1;
-    
-    return [self.accessionList count];
-    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredAccList count];
+        
+    } else {
+        
+        if (_currentPage< _totalPages)
+            return self.accessionList.count+ 1;
+        
+        return [self.accessionList count];
+    }
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -213,12 +236,68 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     }
 }
 
+- (void) filterAccessionsForSearchText:(NSString *) searchText scope:(NSString *)scope
+{
+    
+    AFOAuthCredential  *credential = [self getCredential];
+    
+    AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
+    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+    
+    //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+    
+    [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
+    reqManager.requestSerializer = serializer;
+    reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/FilterAccessions?searchString=%@",searchText];
+    
+    
+    [reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //NSLog(@"JSON: %@", responseObject);
+        
+        
+        //NSMutableArray * results = [NSMutableArray array];
+        
+        //[results addObject :[responseObject objectForKey:@"Accessions"]];
+        
+        
+        NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
+        
+        [self.filteredAccList removeAllObjects];
+        
+        [self.filteredAccList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
+        
+        NSLog(@"The count of the filter array is : %ld",(long)[self.filteredAccList count]);
+        [self.searchDisplayController.searchResultsTableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: Problem while fetching accessions: %@", error);
+    }];
+    
+}
+
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSLog(@"Search String is :%@",searchString);
+    [self filterAccessionsForSearchText:searchString
+                                  scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                         objectAtIndex:[self.searchDisplayController.searchBar
+                                                        selectedScopeButtonIndex]]];
+    return YES;
+}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"viewreport"])
     {
         NSIndexPath *indexPath = (NSIndexPath *)sender;
-        NSDictionary * cellDetails = [self.accessionList objectAtIndex:indexPath.row];
+        NSDictionary * cellDetails = nil;
+        if (self.searchDisplayController.active)
+            cellDetails=[self.filteredAccList objectAtIndex:indexPath.row];
+        else
+            cellDetails=[self.accessionList objectAtIndex:indexPath.row];
         NSLog(@"AccessionValue is %@",[cellDetails objectForKey:@"AccessionNo"]);
         AccessionReportViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
