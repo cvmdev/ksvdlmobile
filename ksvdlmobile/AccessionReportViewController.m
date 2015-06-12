@@ -71,7 +71,7 @@
                 self.standalone=YES;
                 
                 NSString *savedFilePath = [self getTempFilePathForAccession];
-                NSLog(@"PDF to be retrieved: %@",filePath);
+                NSLog(@"PDF to be display from temp directory: %@",filePath);
                 
                 PDFKDocument *document =[PDFKDocument documentWithContentsOfFile:savedFilePath password:nil];
                 [self loadDocument:document];
