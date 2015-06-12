@@ -174,7 +174,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized:%@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
     cell.caseCoordinatorLabel.text=[NSString stringWithFormat:@"CaseCoordinator:%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
     
-    if ([currentAccessionDict objectForKey:@"RefNumber"])
+    if (!([currentAccessionDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
     {
         cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref #:%@",[currentAccessionDict objectForKey:@"RefNumber"]];
         cell.referenceNumberLabel.hidden=false;
