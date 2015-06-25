@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFNetworking.h"
+#import "AuthAPIClient.h"
+#import "SWRevealViewController.h"
 
 @interface NavigationViewController : UITableViewController
 

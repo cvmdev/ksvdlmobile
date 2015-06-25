@@ -17,5 +17,6 @@
     @property (strong,nonatomic) NSMutableArray *filteredAccList;
     @property NSInteger currentPage;
     @property NSInteger totalPages;
+@property (weak,nonatomic) IBOutlet UIBarButtonItem *barButton1;
     -(void) fetchAccessions;
 @end

@@ -14,10 +14,25 @@ NSString * const CredentialIdentifier=@"VetViewID";
 
 @implementation HomeViewController
 
+//Open the promotion URL
+-(void)openPromotionURL :(id) sender
+{
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
+    NSLog(@"Tag = %d", gesture.view.tag);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/index.html"]];
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/images/development/lifelines/1501/Lifelines-banner-2015.jpg"]]];
+    _imageview.contentMode = UIViewContentModeScaleAspectFill;
+     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/fb-320x100.jpg"]]];
+    _imageview.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromotionURL:)];
+    tapped.numberOfTapsRequired = 1;
+    [_imageview addGestureRecognizer:tapped];
+  //  [tapped release];
+    
     
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "SVProgressHUD.h"
+#import "SWRevealViewController.h"
 
 @interface LoginViewController ()
 
@@ -21,7 +22,13 @@
     [super viewDidLoad];
     self.userText.delegate=self;
     self.userPwd.delegate=self;
+    
     // Do any additional setup after loading the view, typically from a nib.
+    _barButton2.target = self.revealViewController;
+    _barButton2.action = @selector(revealToggle:);
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.barButton2 setTarget: self.revealViewController];
+    [self.barButton2 setAction: @selector( rightRevealToggle: )];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,9 +42,6 @@
         
        if ([_userText.text length]!=0 && [_userPwd.text length]!=0)
        {
-           
-       
-           
                   // NSURL *baseURL = [NSURL URLWithString:@"http://129.130.128.31/TestProjects/TestAuthAPI/"];
            
                    [SVProgressHUD show];
@@ -55,6 +59,9 @@
                                                                  [AFOAuthCredential storeCredential:credential withIdentifier:credentialIdentifier];
                                                                  [SVProgressHUD dismiss];
                                                                  [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
+                                                                 
+                                                                 NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
+                                                                 [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
                                                                  
                                                                  //At this point show the next screen
                                                               }

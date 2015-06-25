@@ -40,7 +40,6 @@
     if ((!credential) || (credential.isExpired))
     {
         NSLog(@"ATVC:User is not logged in , send to login screen");
-        
     }
     else
     {

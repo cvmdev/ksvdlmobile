@@ -8,6 +8,7 @@
 
 #import "AccessionTableViewController.h"
 #import "AccessionReportViewController.h"
+#import "SWRevealViewController.h"
 
 const int kLoadingCellTag = 2015;
 NSString * const kCredentialIdentifier=@"VetViewID";
@@ -20,6 +21,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    _barButton1.target = self.revealViewController;
+    _barButton1.action = @selector(revealToggle:);
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.barButton1 setTarget: self.revealViewController];
+    [self.barButton1 setAction: @selector( rightRevealToggle: )];
+    
     
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
@@ -48,25 +56,17 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     return credential;
 }
 
-
-
 -(void) fetchAccessions
 {
         AFOAuthCredential  *credential = [self getCredential];
-        
-        
         if ((!credential) || (credential.isExpired))
         {
             NSLog(@"ATVC:User is not logged in , send to login screen");
-            
-            
         }
         else
         {
             NSLog(@"ATVC:User is logged in and authentication token is current");
-            
-           
-            
+
             AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
             AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
             
