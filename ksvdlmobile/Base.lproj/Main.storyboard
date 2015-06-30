@@ -540,6 +540,25 @@
                                     <segue destination="vXZ-lx-hvc" kind="custom" customClass="SWRevealViewControllerSegue" id="aRR-GD-dra"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sixth" textLabel="Q1O-Bp-bNU" style="IBUITableViewCellStyleDefault" id="1Gw-eQ-hal">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Gw-eQ-hal" id="hRR-65-bJl">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Home" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q1O-Bp-bNU">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="Giy-0N-OWv" kind="custom" customClass="SWRevealViewControllerSegue" id="u6r-eO-5Hw"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="dVW-LM-wRn" id="rfu-BC-B6I"/>
@@ -731,7 +750,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xEa-OO-ROn"/>
-        <segue reference="a5L-nw-JJJ"/>
+        <segue reference="u6r-eO-5Hw"/>
         <segue reference="aRR-GD-dra"/>
     </inferredMetricsTieBreakers>
 </document>

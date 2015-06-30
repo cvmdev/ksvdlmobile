@@ -30,11 +30,11 @@ NSString * const nCredentialIdentifier=@"VetViewID";
    AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
-        menu=@[@"first",@"second",@"fifth"];
+        menu=@[@"sixth",@"first",@"second",@"fifth"];
     }
     else
     {
-        menu=@[@"first",@"second",@"third",@"fourth"];
+        menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
     }
 }
 
@@ -43,11 +43,11 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
-        menu=@[@"first",@"second",@"fifth"];
+        menu=@[@"sixth",@"first",@"second",@"fifth"];
     }
     else
     {
-        menu=@[@"first",@"second",@"third",@"fourth"];
+        menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
@@ -99,55 +99,66 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
-         NSLog(@"STILL LOGGED IN");
         switch(indexPath.row)
          {
-            case 0: {
+            case 1: {
                 //Help page
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
                     break;
             }
-            case 1:
+            case 2:
             {
                 //Feedback page
                 NSLog(@"this is the link to feedback");
                 break;
             }
-            case 2:
+            case 3:
             {
                 //Login page
                 NSLog(@"this is the login");
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
             }
+             case 0:
+             {
+                 //Login page
+                 NSLog(@"this is the home page");
+                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
+             }
         } //end of switch statement
     }
     else
     {
         switch(indexPath.row)
         {
-            case 0: {
+            case 1: {
                 //Help page
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
                 break;
             }
-            case 1:
+            case 2:
             {
                 //Feedback page
                 NSLog(@"this is the link to feedback");
                 break;
             }
-            case 2:
+            case 3:
             {
                 NSLog(@"this is the notification settings");
                 break;
             }
-            case 3:
+            case 4:
             {
                 //Logout Logic
                [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 NSLog(@"Credential deleted successfully");
                 // break;
+            }
+            case 0:
+            {
+                //Login page
+                NSLog(@"this is the home page");
+                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
             }
         } //end of switch statement
     }
