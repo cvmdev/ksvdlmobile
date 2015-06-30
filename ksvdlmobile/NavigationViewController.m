@@ -99,6 +99,7 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
+         NSLog(@"STILL LOGGED IN");
         switch(indexPath.row)
          {
             case 0: {
@@ -117,7 +118,6 @@ NSString * const nCredentialIdentifier=@"VetViewID";
                 //Login page
                 NSLog(@"this is the login");
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
-                
             }
         } //end of switch statement
     }
@@ -144,16 +144,13 @@ NSString * const nCredentialIdentifier=@"VetViewID";
             case 3:
             {
                 //Logout Logic
-                [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
+               [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
+                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 NSLog(@"Credential deleted successfully");
-                //Redirect to Home Screen through Segue ???
-                
-                break;
+                // break;
             }
         } //end of switch statement
     }
-    
-    
     }
 
 

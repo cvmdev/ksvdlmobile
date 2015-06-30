@@ -482,6 +482,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.30980392156862746" green="0.14901960784313725" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="Giy-0N-OWv" kind="custom" customClass="SWRevealViewControllerSegue" id="a5L-nw-JJJ"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="third" textLabel="D0s-CP-8xa" style="IBUITableViewCellStyleDefault" id="BS7-Jc-J7A">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -731,6 +734,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xEa-OO-ROn"/>
-        <segue reference="cDr-5r-ECg"/>
+        <segue reference="a5L-nw-JJJ"/>
+        <segue reference="aRR-GD-dra"/>
     </inferredMetricsTieBreakers>
 </document>
