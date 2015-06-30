@@ -12,6 +12,8 @@
 
 - (void)accessionReportFor:(NSIndexPath *) indexPath;
 
+- (void)accessionaddtestFor:(NSIndexPath *) indexPath;
+
 @end
 
 @interface AccessionTableCell : UITableViewCell
@@ -24,6 +26,9 @@
     @property (nonatomic,weak) IBOutlet UILabel *caseCoordinatorLabel;
     @property (nonatomic,weak) IBOutlet UILabel *referenceNumberLabel;
 - (IBAction)viewReport:(id)sender;
+- (IBAction)addTest:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *addtestButton;
+
 //Manual Properties
 @property (strong,nonatomic) NSIndexPath *buttonIndexPath;
 

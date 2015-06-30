@@ -71,6 +71,8 @@
 		59ECE3B21B276D9900F38902 /* Thumbs@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39A1B276D9900F38902 /* Thumbs@3x.png */; };
 		59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
+		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
+		CD6694DE1B42D5CB00FC6E70 /* addtests.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6694DD1B42D5CB00FC6E70 /* addtests.png */; };
 		CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */; };
 		CDE49AD11B21F7D000A98FFA /* L3MEB.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE49AD01B21F7D000A98FFA /* L3MEB.png */; };
 /* End PBXBuildFile section */
@@ -182,6 +184,9 @@
 		59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@3x.psd"; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTestViewController.h; sourceTree = "<group>"; };
+		CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTestViewController.m; sourceTree = "<group>"; };
+		CD6694DD1B42D5CB00FC6E70 /* addtests.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addtests.png; sourceTree = "<group>"; };
 		CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		CDE49AD01B21F7D000A98FFA /* L3MEB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = L3MEB.png; sourceTree = "<group>"; };
@@ -238,6 +243,7 @@
 		593EBD051B18F1B7002927B4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD6694DD1B42D5CB00FC6E70 /* addtests.png */,
 				CDE49AD01B21F7D000A98FFA /* L3MEB.png */,
 				593EBD061B18F656002927B4 /* view-report-button.png */,
 			);
@@ -323,6 +329,8 @@
 				593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */,
 				CD31DD4B1B20D7D200451866 /* NavigationViewController.h */,
 				CD31DD4C1B20D7D200451866 /* NavigationViewController.m */,
+				CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */,
+				CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -548,6 +556,7 @@
 				59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */,
 				59ECE39E1B276D9900F38902 /* Bookmark@2x.png in Resources */,
 				59ECE3AE1B276D9900F38902 /* Thumbs.png in Resources */,
+				CD6694DE1B42D5CB00FC6E70 /* addtests.png in Resources */,
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,
 				59ECE3AB1B276D9900F38902 /* PageList@2x.psd in Resources */,
 				59ECE3B21B276D9900F38902 /* Thumbs@3x.png in Resources */,
@@ -621,6 +630,7 @@
 				59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */,
 				5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */,
 				59ECE35E1B27658900F38902 /* PDFKBasicPDFViewerSinglePageCollectionView.m in Sources */,
+				CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */,
 				59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */,
 				59ECE34D1B27655800F38902 /* CGPDFDocument.m in Sources */,
 				59ECE35D1B27658900F38902 /* PDFKBasicPDFViewer.m in Sources */,

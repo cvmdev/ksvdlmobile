@@ -144,7 +144,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gD-5O-ago">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gD-5O-ago">
                                             <rect key="frame" x="449" y="-1" width="130" height="33"/>
                                             <state key="normal" backgroundImage="view-report-button.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,6 +159,15 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAz-r1-UkH">
+                                            <rect key="frame" x="449" y="5" width="130" height="33"/>
+                                            <state key="normal" backgroundImage="addtests.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addTest:" destination="eFk-sa-bPt" eventType="touchUpInside" id="gcM-tL-km1"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerX" secondItem="xLG-Pi-jn6" secondAttribute="centerX" constant="270.5" id="0fv-WQ-HS8"/>
@@ -189,8 +198,10 @@
                                         <constraint firstItem="x2E-Oe-ciU" firstAttribute="leading" secondItem="5cU-eG-Ojg" secondAttribute="leading" id="lty-du-nBy"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="xLG-Pi-jn6" secondAttribute="bottom" constant="-4" id="pyT-JA-QIx"/>
                                         <constraint firstItem="eaS-k8-QRh" firstAttribute="top" secondItem="cyy-Nl-anB" secondAttribute="bottom" constant="-5" id="q54-a6-Wda"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cAz-r1-UkH" secondAttribute="trailing" constant="13" id="sBc-lC-u4P"/>
                                         <constraint firstItem="eaS-k8-QRh" firstAttribute="leading" secondItem="Vxf-Gw-gSB" secondAttribute="leading" constant="-1" id="ulO-gQ-UyI"/>
                                         <constraint firstItem="xLG-Pi-jn6" firstAttribute="leading" secondItem="Vxf-Gw-gSB" secondAttribute="leading" constant="2" id="vMm-9Q-yml"/>
+                                        <constraint firstItem="cAz-r1-UkH" firstAttribute="centerX" secondItem="5gD-5O-ago" secondAttribute="centerX" id="yRt-R0-Ui8"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -204,6 +215,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="accessionLabel" destination="eaS-k8-QRh" id="XGw-nG-KPH"/>
+                                    <outlet property="addtestButton" destination="cAz-r1-UkH" id="uFP-EX-LrK"/>
                                     <outlet property="caseCoordinatorLabel" destination="Vxf-Gw-gSB" id="0vq-DS-FOX"/>
                                     <outlet property="finalizedDateLabel" destination="x2E-Oe-ciU" id="Zi9-qJ-DiZ"/>
                                     <outlet property="ownerLabel" destination="cyy-Nl-anB" id="7Tl-MK-r8V"/>
@@ -211,6 +223,7 @@
                                     <outlet property="referenceNumberLabel" destination="xLG-Pi-jn6" id="4rP-Nw-j2x"/>
                                     <outlet property="statusLabel" destination="rpB-3P-YJK" id="B3e-Ax-Wwm"/>
                                     <outlet property="viewreportButton" destination="5gD-5O-ago" id="9xZ-eK-Kan"/>
+                                    <segue destination="6Wv-cf-GfX" kind="show" identifier="addtest" id="DRL-R6-9dD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -240,6 +253,150 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2012" y="118"/>
+        </scene>
+        <!--Add Tests View Controller-->
+        <scene sceneID="Dxo-My-Tuh">
+            <objects>
+                <viewController id="6Wv-cf-GfX" userLabel="Add Tests View Controller" customClass="AddTestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JOY-xf-G0G"/>
+                        <viewControllerLayoutGuide type="bottom" id="hJS-Bs-Xbt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nk4-e6-pkS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-Cx-VTZ">
+                                <rect key="frame" x="0.0" y="22" width="400" height="450"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Pd-tvA">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2U4-tN-o5K" userLabel="ClientNameText">
+                                                <rect key="frame" x="185" y="103" width="171" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accession Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNl-8G-4NV">
+                                                <rect key="frame" x="13" y="59" width="146" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.270588249" green="0.20392158630000001" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Wt-Jh-8Lz" userLabel="TextNameText">
+                                                <rect key="frame" x="185" y="205" width="171" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8vq-dM-BCw" userLabel="PhoneNumberText">
+                                                <rect key="frame" x="185" y="314" width="171" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-nT-XPW" userLabel="EmailText">
+                                                <rect key="frame" x="185" y="256" width="171" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-ka-gFD" userLabel="AccessionText">
+                                                <rect key="frame" x="185" y="59" width="171" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Owner Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="wCX-rh-Bu0">
+                                                <rect key="frame" x="14" y="153" width="170" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.270588249" green="0.20392158630000001" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="2Bc-5R-iW1">
+                                                <rect key="frame" x="13" y="256" width="81" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.270588249" green="0.20392158630000001" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Phone Number " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Fks-B8-DjI">
+                                                <rect key="frame" x="13" y="314" width="155" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.270588249" green="0.20392158630000001" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boA-x8-rly">
+                                                <rect key="frame" x="80" y="373" width="276" height="30"/>
+                                                <color key="backgroundColor" red="0.31764705879999999" green="0.15686274510000001" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="SEND REQUEST">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test Name Requested" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="CCQ-d5-ENd">
+                                                <rect key="frame" x="13" y="205" width="170" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.270588249" green="0.20392158630000001" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Client Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="mNI-zz-vG9">
+                                                <rect key="frame" x="13" y="103" width="146" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.270588249" green="0.20392158630000001" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wZ-Xz-yIm" userLabel="OwnerNameText">
+                                                <rect key="frame" x="185" y="153" width="171" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.81960784310000001" green="0.82745098039999998" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="0Wt-Jh-8Lz" firstAttribute="centerX" secondItem="8vq-dM-BCw" secondAttribute="centerX" id="1P0-eK-V2j"/>
+                                            <constraint firstItem="0Wt-Jh-8Lz" firstAttribute="centerX" secondItem="2U4-tN-o5K" secondAttribute="centerX" id="4hO-vp-jev"/>
+                                            <constraint firstItem="0Wt-Jh-8Lz" firstAttribute="centerX" secondItem="LJd-nT-XPW" secondAttribute="centerX" id="SFx-Wv-VGN"/>
+                                            <constraint firstItem="0Wt-Jh-8Lz" firstAttribute="centerX" secondItem="1wZ-Xz-yIm" secondAttribute="centerX" id="pMh-X1-aKc"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.65490196079999996" green="0.66274509800000003" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qmN-Pd-tvA" secondAttribute="bottom" id="i4k-qX-X5R"/>
+                                    <constraint firstItem="qmN-Pd-tvA" firstAttribute="leading" secondItem="d6d-Cx-VTZ" secondAttribute="leading" id="r8n-yc-P4K"/>
+                                    <constraint firstItem="qmN-Pd-tvA" firstAttribute="top" secondItem="d6d-Cx-VTZ" secondAttribute="top" id="rxq-mc-lTD"/>
+                                    <constraint firstAttribute="trailing" secondItem="qmN-Pd-tvA" secondAttribute="trailing" id="wD8-D8-Syt"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d6d-Cx-VTZ" secondAttribute="bottom" id="HiP-Rb-Prr"/>
+                            <constraint firstItem="d6d-Cx-VTZ" firstAttribute="top" secondItem="Nk4-e6-pkS" secondAttribute="top" id="Vm6-oB-T04"/>
+                            <constraint firstItem="d6d-Cx-VTZ" firstAttribute="leading" secondItem="Nk4-e6-pkS" secondAttribute="leading" id="cbx-IJ-3Io"/>
+                            <constraint firstAttribute="trailing" secondItem="d6d-Cx-VTZ" secondAttribute="trailing" id="uXl-pn-OjQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="HSX-Z3-1tz" userLabel="Add Tests">
+                        <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="g3M-Gd-nTG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="accessionTextField" destination="eDb-ka-gFD" id="IcP-lO-bej"/>
+                        <outlet property="barButton" destination="g3M-Gd-nTG" id="fcM-mY-C4A"/>
+                        <outlet property="ownernameTextField" destination="1wZ-Xz-yIm" id="0Wj-zK-BvP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QeO-pA-g7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2765" y="-1370"/>
         </scene>
         <!--Accession Report View Controller-->
         <scene sceneID="zLa-Tx-Wbq">
@@ -569,10 +726,11 @@
     </scenes>
     <resources>
         <image name="L3MEB.png" width="28" height="18"/>
+        <image name="addtests.png" width="144" height="30"/>
         <image name="view-report-button.png" width="130" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cDr-5r-ECg"/>
         <segue reference="LQw-T8-f9Z"/>
+        <segue reference="aRR-GD-dra"/>
     </inferredMetricsTieBreakers>
 </document>

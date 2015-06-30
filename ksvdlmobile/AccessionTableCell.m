@@ -20,4 +20,10 @@
     
     [self.accReportDelegate accessionReportFor:self.buttonIndexPath];
 }
+
+- (IBAction)addTest:(id)sender {
+    
+    [self.accReportDelegate accessionaddtestFor:self.buttonIndexPath];
+}
+
 @end

@@ -9,13 +9,14 @@
 #import "AccessionTableViewController.h"
 #import "AccessionReportViewController.h"
 #import "SWRevealViewController.h"
+#import "AddTestViewController.h"
 
 const int kLoadingCellTag = 2015;
 NSString * const kCredentialIdentifier=@"VetViewID";
 NSString * const simpleTableIdentifier = @"AccessionCell";
 
 @implementation AccessionTableViewController
-    
+
 @synthesize accessionList;
 
 - (void) viewDidLoad
@@ -58,48 +59,48 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 -(void) fetchAccessions
 {
-        AFOAuthCredential  *credential = [self getCredential];
-        if ((!credential) || (credential.isExpired))
-        {
-            NSLog(@"ATVC:User is not logged in , send to login screen");
-        }
-        else
-        {
-            NSLog(@"ATVC:User is logged in and authentication token is current");
-
-            AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
-            AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+    AFOAuthCredential  *credential = [self getCredential];
+    if ((!credential) || (credential.isExpired))
+    {
+        NSLog(@"ATVC:User is not logged in , send to login screen");
+    }
+    else
+    {
+        NSLog(@"ATVC:User is logged in and authentication token is current");
+        
+        AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
+        AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+        
+        //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+        
+        [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
+        reqManager.requestSerializer = serializer;
+        reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
+        
+        NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/acc?pageNo=%ld",(long)_currentPage];
+        
+        [reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+            //NSLog(@"JSON: %@", responseObject);
             
-            [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
-            reqManager.requestSerializer = serializer;
-            reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
-                
-            NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/acc?pageNo=%ld",(long)_currentPage];
+            _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
+            NSLog(@"Total Pages: %ld",(long)_totalPages);
             
-            [reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                
-                //NSLog(@"JSON: %@", responseObject);
-                
-                _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
-                NSLog(@"Total Pages: %ld",(long)_totalPages);
-                
-                //NSMutableArray * results = [NSMutableArray array];
-                
-                //[results addObject :[responseObject objectForKey:@"Accessions"]];
-                NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
-                
-                [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
-                
-                [self.tableView reloadData];
-                
-                
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error: Problem while fetching accessions: %@", error);
-            }];
-
-        }
+            //NSMutableArray * results = [NSMutableArray array];
+            
+            //[results addObject :[responseObject objectForKey:@"Accessions"]];
+            NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
+            
+            [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
+            
+            [self.tableView reloadData];
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: Problem while fetching accessions: %@", error);
+        }];
+        
+    }
 }
 
 // this cell is for showing the activity indicator when more rows are required to be retrieved.
@@ -137,6 +138,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         cell.backgroundColor= [[UIColor alloc] initWithRed:209.0/255.0 green:211/255.0 blue:212/255.0 alpha:0.5];
         cell.viewreportButton.hidden=false;
+        cell.addtestButton.hidden = true;
+        
         cell.statusLabel.hidden=TRUE;
         
     }
@@ -147,6 +150,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
         cell.statusLabel.hidden=false;
         cell.viewreportButton.hidden=TRUE;
+        //  cell.addtestButton.hidden=false;
     }
     if ([accStatus isEqualToString:@"Working"])
     {
@@ -154,7 +158,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:158.0/255.0 green:11.0/255.0 blue:15.0/255.0 alpha:1.0];
         cell.viewreportButton.hidden=TRUE;
-        cell.statusLabel.hidden=false;
+        //cell.addtestButton.hidden=false;
+        //  cell.statusLabel.hidden=false;
         
         
     }
@@ -206,8 +211,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             return [self loadingCell];
         }
     }
-
- 
+    
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -221,7 +226,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         return [self.accessionList count];
     }
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -302,20 +307,36 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         AccessionReportViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
     }
-   
-    
+    if ([segue.identifier isEqualToString:@"addtest"])
+    {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        NSDictionary * cellDetails = nil;
+        if (self.searchDisplayController.active)
+            cellDetails=[self.filteredAccList objectAtIndex:indexPath.row];
+        else
+            cellDetails=[self.accessionList objectAtIndex:indexPath.row];
+        NSLog(@"AccessionValue is %@",[cellDetails objectForKey:@"AccessionNo"]);
+        NSLog(@"Owner Name is %@",[cellDetails objectForKey:@"OwnerName"]);
+        //NSLog(@"Owner Name is %@",[cellDetails objectForKey:@"OwnerName"]);
+        
+        AddTestViewController *destViewController = segue.destinationViewController;
+        destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
+        destViewController.ownerName = [cellDetails objectForKey:@"OwnerName"];
+    }
 }
+
 
 
 
 #pragma Mark -- AccCellDelegate
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
-    
-    
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
-   
     [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
-    
+}
+
+-(void) accessionaddtestFor:(NSIndexPath *)indexPath{
+    NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
+    [self performSegueWithIdentifier:@"addtest" sender:indexPath];
 }
 
 @end
