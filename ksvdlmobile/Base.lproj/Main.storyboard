@@ -55,9 +55,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="VetView Login" id="rmP-ln-5sq">
                         <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="1cT-SZ-MTj"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
                         <outlet property="barButton2" destination="1cT-SZ-MTj" id="Ods-5p-XDj"/>
