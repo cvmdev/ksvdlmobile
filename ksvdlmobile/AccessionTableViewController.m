@@ -150,7 +150,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
         cell.statusLabel.hidden=false;
         cell.viewreportButton.hidden=TRUE;
-        //  cell.addtestButton.hidden=false;
+        cell.addtestButton.hidden=false;
     }
     if ([accStatus isEqualToString:@"Working"])
     {
@@ -158,10 +158,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:158.0/255.0 green:11.0/255.0 blue:15.0/255.0 alpha:1.0];
         cell.viewreportButton.hidden=TRUE;
-        //cell.addtestButton.hidden=false;
+        cell.addtestButton.hidden=false;
         //  cell.statusLabel.hidden=false;
-        
-        
     }
     
     if ([accStatus isEqualToString:@"Review"])
@@ -169,7 +167,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
-        
+        cell.addtestButton.hidden=false;
     }
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];

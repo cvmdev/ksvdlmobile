@@ -148,7 +148,7 @@ NSString * const nCredentialIdentifier=@"VetViewID";
                 NSLog(@"Credential deleted successfully");
                 //Redirect to Home Screen through Segue ???
                 
-                                break;
+                break;
             }
         } //end of switch statement
     }
