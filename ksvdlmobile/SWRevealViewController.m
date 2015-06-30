@@ -1623,11 +1623,11 @@ const int FrontViewPositionNone = 0xff;
     if ( self.storyboard && _rearViewController == nil )
     {
         //Try each segue separately so it doesn't break prematurely if either Rear or Right views are not used.
-        @try
-        {
-            [self performSegueWithIdentifier:SWSegueRearIdentifier sender:nil];
-        }
-        @catch(NSException *exception) {}
+//        @try
+//        {
+//            [self performSegueWithIdentifier:SWSegueRearIdentifier sender:nil];
+//        }
+//        @catch(NSException *exception) {}
         
         @try
         {

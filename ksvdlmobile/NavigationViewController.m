@@ -144,8 +144,11 @@ NSString * const nCredentialIdentifier=@"VetViewID";
             case 3:
             {
                 //Logout Logic
-                NSLog(@"The logout logic goes here");
-                break;
+                [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
+                NSLog(@"Credential deleted successfully");
+                //Redirect to Home Screen through Segue ???
+                
+                                break;
             }
         } //end of switch statement
     }
