@@ -146,7 +146,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     if ([accStatus isEqualToString:@"Finalized"])
     {
-        cell.backgroundColor= [[UIColor alloc] initWithRed:209.0/255.0 green:211/255.0 blue:212/255.0 alpha:0.5];
+        //cell.backgroundColor= [[UIColor alloc] initWithRed:209.0/255.0 green:211/255.0 blue:212/255.0 alpha:0.5];
+        cell.backgroundColor= [[UIColor alloc] initWithRed:145.0/255.0 green:145.0/255.0 blue:149.0/255.0 alpha:0.5];
         cell.viewreportButton.hidden=false;
         cell.addtestButton.hidden = true;
         
@@ -156,15 +157,17 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     if ([accStatus isEqualToString:@"New"])
     {
         cell.backgroundColor= [[UIColor alloc] initWithRed:60.0/255.0 green:184/255.0 blue:121/255.0 alpha:0.5];
+        //cell.backgroundColor= [[UIColor alloc] initWithRed:159.0/255.0 green:145/255.0 blue:112/255.0 alpha:0.5];
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
-        //cell.statusLabel.hidden=false;
+        cell.statusLabel.hidden=false;
         cell.viewreportButton.hidden=TRUE;
         cell.addtestButton.hidden=true;
     }
     if ([accStatus isEqualToString:@"Working"])
     {
-        cell.backgroundColor= [[UIColor alloc] initWithRed:246.0/255.0 green:152.0/255.0 blue:157.0/255.0 alpha:1.0];
+        //cell.backgroundColor= [[UIColor alloc] initWithRed:246.0/255.0 green:152.0/255.0 blue:157.0/255.0 alpha:1.0];
+        cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:158.0/255.0 green:11.0/255.0 blue:15.0/255.0 alpha:1.0];
         cell.viewreportButton.hidden=TRUE;
@@ -174,7 +177,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     if ([accStatus isEqualToString:@"Review"])
     {
-        cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
+        //cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
+        cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
         cell.addtestButton.hidden=false;

@@ -53,7 +53,7 @@
                             <constraint firstAttribute="centerX" secondItem="F5g-IT-bGI" secondAttribute="centerX" id="PIh-mv-5TX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="VetView Login" id="rmP-ln-5sq">
+                    <navigationItem key="navigationItem" title="Client Login" id="rmP-ln-5sq">
                         <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="1cT-SZ-MTj"/>
                     </navigationItem>
                     <connections>
@@ -776,8 +776,8 @@
         <image name="view-report-button.png" width="130" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xEa-OO-ROn"/>
         <segue reference="jgB-J5-wzS"/>
         <segue reference="cDr-5r-ECg"/>
+        <segue reference="LQw-T8-f9Z"/>
     </inferredMetricsTieBreakers>
 </document>

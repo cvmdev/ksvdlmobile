@@ -165,14 +165,9 @@ NSString * const nCredentialIdentifier=@"VetViewID";
             case 4:
             {
                 //Logout Logic
-               [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
-              //  [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
-                NSLog(@"Credential deleted successfully");
-                [self Loaddynamicmenu];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                });
-
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Log out will prevent notifications to be sent.Do you want to continue?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+                [alertView show];
+             
             }
             case 0:
             {
@@ -183,8 +178,22 @@ NSString * const nCredentialIdentifier=@"VetViewID";
         } //end of switch statement
     }
     }
-
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch(buttonIndex) {
+        case 0:
+            //stay in current view
+            break;
+        case 1:
+            [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
+            NSLog(@"Credential deleted successfully");
+            [self Loaddynamicmenu];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            break;
+    }
+}
 
 - (IBAction)ksvdlvideos1:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.youtube.com/channel/UCtx-lIIXqj5PAMQYryXaRhA"]];
