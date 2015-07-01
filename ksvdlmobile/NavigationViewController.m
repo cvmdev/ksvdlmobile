@@ -20,14 +20,8 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     NSArray *menu;
 }
 
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOnLogin:) name:@"USER_DID_LOGIN" object:nil];
-
-   AFOAuthCredential  *credential = [self getCredential];
+- (void)Loaddynamicmenu {
+    AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
         menu=@[@"sixth",@"first",@"second",@"fifth"];
@@ -38,9 +32,13 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     }
 }
 
-- (void)updateOnLogin:(NSNotification*)notification
-{
-    AFOAuthCredential  *credential = [self getCredential];
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOnLogin:) name:@"USER_DID_LOGIN" object:nil];
+
+   /*AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
         menu=@[@"sixth",@"first",@"second",@"fifth"];
@@ -48,7 +46,22 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     else
     {
         menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
+    }*/
+    [self Loaddynamicmenu];
+}
+
+- (void)updateOnLogin:(NSNotification*)notification
+{
+    /*AFOAuthCredential  *credential = [self getCredential];
+    if ((!credential) || (credential.isExpired))
+    {
+        menu=@[@"sixth",@"first",@"second",@"fifth"];
     }
+    else
+    {
+        menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
+    }*/
+    [self Loaddynamicmenu];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
@@ -91,6 +104,9 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     {
         NSLog(@"ATVC: Menu - This User is not logged in , send to login screen");
     }
+    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
+    cell.selectedBackgroundView.backgroundColor = [UIColor darkGrayColor] ;
     return cell;
 }
 
@@ -150,9 +166,13 @@ NSString * const nCredentialIdentifier=@"VetViewID";
             {
                 //Logout Logic
                [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
-                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
+              //  [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 NSLog(@"Credential deleted successfully");
-                // break;
+                [self Loaddynamicmenu];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+
             }
             case 0:
             {
