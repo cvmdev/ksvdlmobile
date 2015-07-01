@@ -98,7 +98,7 @@
 		593EBD061B18F656002927B4 /* view-report-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-report-button.png"; sourceTree = "<group>"; };
 		5959A3021B0D18C2005821B0 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		5959A3031B0D18C2005821B0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		59649EC51AEF1E0A00E5F1AD /* ksvdlmobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ksvdlmobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59649EC51AEF1E0A00E5F1AD /* KSVDL Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KSVDL Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59649EC91AEF1E0A00E5F1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59649ECA1AEF1E0A00E5F1AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		59649ECC1AEF1E0A00E5F1AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 		59649EC61AEF1E0A00E5F1AD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59649EC51AEF1E0A00E5F1AD /* ksvdlmobile.app */,
+				59649EC51AEF1E0A00E5F1AD /* KSVDL Mobile.app */,
 				59649EDE1AEF1E0A00E5F1AD /* ksvdlmobileTests.xctest */,
 			);
 			name = Products;
@@ -463,7 +463,7 @@
 			);
 			name = ksvdlmobile;
 			productName = ksvdlmobile;
-			productReference = 59649EC51AEF1E0A00E5F1AD /* ksvdlmobile.app */;
+			productReference = 59649EC51AEF1E0A00E5F1AD /* KSVDL Mobile.app */;
 			productType = "com.apple.product-type.application";
 		};
 		59649EDD1AEF1E0A00E5F1AD /* ksvdlmobileTests */ = {
@@ -767,7 +767,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ksvdlmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "KSVDL Mobile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -780,7 +780,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ksvdlmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "KSVDL Mobile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
