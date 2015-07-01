@@ -57,6 +57,16 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     return credential;
 }
 
+- (IBAction)refreshAccessionScreen:(id)sender {
+    
+    _currentPage=1;
+    [self.accessionList removeAllObjects];
+    [self.filteredAccList removeAllObjects];
+    [self fetchAccessions];
+    //[self.tableView reloadData];
+    [sender endRefreshing];
+}
+
 -(void) fetchAccessions
 {
     AFOAuthCredential  *credential = [self getCredential];
@@ -126,7 +136,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell = [[AccessionTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.accReportDelegate=self;
+        cell.accReportDelegate=self;
     cell.buttonIndexPath=indexPath;
     
     NSDictionary *currentAccessionDict= dict;
@@ -148,9 +158,9 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.backgroundColor= [[UIColor alloc] initWithRed:60.0/255.0 green:184/255.0 blue:121/255.0 alpha:0.5];
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
-        cell.statusLabel.hidden=false;
+        //cell.statusLabel.hidden=false;
         cell.viewreportButton.hidden=TRUE;
-        cell.addtestButton.hidden=false;
+        cell.addtestButton.hidden=true;
     }
     if ([accStatus isEqualToString:@"Working"])
     {
@@ -233,6 +243,18 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
     if (cell.tag==kLoadingCellTag){
         _currentPage++;
         [self fetchAccessions];
