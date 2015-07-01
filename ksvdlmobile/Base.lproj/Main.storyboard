@@ -220,7 +220,6 @@
                                     <outlet property="referenceNumberLabel" destination="xLG-Pi-jn6" id="4rP-Nw-j2x"/>
                                     <outlet property="statusLabel" destination="rpB-3P-YJK" id="B3e-Ax-Wwm"/>
                                     <outlet property="viewreportButton" destination="5gD-5O-ago" id="9xZ-eK-Kan"/>
-                                    <segue destination="6Wv-cf-GfX" kind="show" identifier="addtest" id="DRL-R6-9dD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -236,6 +235,7 @@
                         <outlet property="barButton1" destination="BQu-i3-wJq" id="7Yb-G2-K6K"/>
                         <outlet property="searchDisplayController" destination="JN0-4Y-l5Z" id="47X-MG-b5B"/>
                         <segue destination="kCM-IM-QfS" kind="show" identifier="viewreport" id="edF-SG-9LG"/>
+                        <segue destination="6Wv-cf-GfX" kind="show" identifier="addtest" id="uwR-xX-BE4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySu-Wn-b4D" userLabel="First Responder" sceneMemberID="firstResponder"/>
