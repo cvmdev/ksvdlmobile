@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "AddTestViewController.h"
 
+
 const int kLoadingCellTag = 2015;
 NSString * const kCredentialIdentifier=@"VetViewID";
 NSString * const simpleTableIdentifier = @"AccessionCell";
@@ -22,6 +23,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+   
+    
     
     _barButton1.target = self.revealViewController;
     _barButton1.action = @selector(revealToggle:);
@@ -310,7 +313,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         if([[cell.backgroundView.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]])
         {
-            NSLog(@"Resuse layer removed...................................");
+            
             [[cell.backgroundView.layer.sublayers objectAtIndex:0] removeFromSuperlayer];
             
         }
@@ -347,15 +350,20 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         //cell.backgroundColor= [[UIColor alloc] initWithRed:60.0/255.0 green:184/255.0 blue:121/255.0 alpha:0.5];
         //cell.backgroundColor= [[UIColor alloc] initWithRed:159.0/255.0 green:145/255.0 blue:112/255.0 alpha:0.5];
         
-        NSLog(@"New called........................................................");
+        
         [cell setBackgroundColor:[UIColor clearColor]];
         
-        CAGradientLayer *grad = [CAGradientLayer layer];
-        grad.frame = cell.bounds;
-        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:153.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:204.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+        self.gradientView = [[GradientView alloc] initWithFrame:self.view.bounds];
+        self.gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        [cell setBackgroundView:[[UIView alloc] init]];
-        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+        //CAGradientLayer *grad = [CAGradientLayer layer];
+        //grad.frame = cell.bounds;
+        self.gradientView.layer.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:153.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:204.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+        self.gradientView.frame=cell.bounds;
+        [cell setBackgroundView:self.gradientView];
+        //[cell.backgroundView.layer insertSublayer:self.gradientView.layer atIndex:0];
+       
+        
     }
     if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
     {
@@ -363,12 +371,15 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         //cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
         [cell setBackgroundColor:[UIColor clearColor]];
         
-        CAGradientLayer *grad = [CAGradientLayer layer];
-        grad.frame = cell.bounds;
-        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+        self.gradientView = [[GradientView alloc] initWithFrame:self.view.bounds];
+        self.gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+        //CAGradientLayer *grad = [CAGradientLayer layer];
+        //grad.frame = cell.bounds;
+        self.gradientView.layer.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
         
-        [cell setBackgroundView:[[UIView alloc] init]];
-        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+        [cell setBackgroundView:self.gradientView];
+        
     }
     if ([accStatus isEqualToString:@"Finalized"])
     {
@@ -376,13 +387,15 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         //cell.backgroundColor= [[UIColor alloc] initWithRed:145.0/255.0 green:145.0/255.0 blue:149.0/255.0 alpha:0.5];
         
         [cell setBackgroundColor:[UIColor clearColor]];
+        self.gradientView = [[GradientView alloc] initWithFrame:self.view.bounds];
+        self.gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        CAGradientLayer *grad = [CAGradientLayer layer];
-        grad.frame = cell.bounds;
-        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:149.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:231.0/255.0 green:222.0/255.0 blue:208.0/255.0 alpha:1.0] CGColor], nil];
+        //CAGradientLayer *grad = [CAGradientLayer layer];
+        //grad.frame = cell.bounds;
+        self.gradientView.layer.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:149.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:231.0/255.0 green:222.0/255.0 blue:208.0/255.0 alpha:1.0] CGColor], nil];
         
-        [cell setBackgroundView:[[UIView alloc] init]];
-        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+        [cell setBackgroundView:self.gradientView];
+        //[cell.backgroundView.layer insertSublayer:grad atIndex:0];
     }
 
 }

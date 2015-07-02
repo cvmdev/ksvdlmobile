@@ -26,6 +26,7 @@
 		59649EFD1AF179F100E5F1AD /* LockBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EFC1AF179F100E5F1AD /* LockBox.m */; };
 		59649F001B0B82DC00E5F1AD /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */; };
 		59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649F021B0CC48400E5F1AD /* AuthAPIClient.m */; };
+		59A024961B45C9AC00B3A0F7 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A024951B45C9AC00B3A0F7 /* GradientView.m */; };
 		59ECE34D1B27655800F38902 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ECE34A1B27655800F38902 /* CGPDFDocument.m */; };
 		59ECE34E1B27655800F38902 /* PDFKDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ECE34C1B27655800F38902 /* PDFKDocument.m */; };
 		59ECE35D1B27658900F38902 /* PDFKBasicPDFViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ECE3501B27658900F38902 /* PDFKBasicPDFViewer.m */; };
@@ -122,6 +123,8 @@
 		59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
 		59649F011B0CC48400E5F1AD /* AuthAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthAPIClient.h; sourceTree = "<group>"; };
 		59649F021B0CC48400E5F1AD /* AuthAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthAPIClient.m; sourceTree = "<group>"; };
+		59A024941B45C9AC00B3A0F7 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		59A024951B45C9AC00B3A0F7 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		59ECE3491B27655800F38902 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
 		59ECE34A1B27655800F38902 /* CGPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPDFDocument.m; sourceTree = "<group>"; };
 		59ECE34B1B27655800F38902 /* PDFKDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFKDocument.h; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 				59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */,
 				59649F011B0CC48400E5F1AD /* AuthAPIClient.h */,
 				59649F021B0CC48400E5F1AD /* AuthAPIClient.m */,
+				59A024941B45C9AC00B3A0F7 /* GradientView.h */,
+				59A024951B45C9AC00B3A0F7 /* GradientView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */,
 				59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */,
 				5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */,
+				59A024961B45C9AC00B3A0F7 /* GradientView.m in Sources */,
 				59ECE35E1B27658900F38902 /* PDFKBasicPDFViewerSinglePageCollectionView.m in Sources */,
 				CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */,
 				59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */,
