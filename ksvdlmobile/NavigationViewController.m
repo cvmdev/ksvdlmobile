@@ -8,9 +8,10 @@
 
 #import "NavigationViewController.h"
 #import "SWRevealViewController.h"
-#import "LoginViewController.h"
+//#import "LoginViewController.h"
+#import "GlobalConstants.h"
+#import "HttpClient.h"
 
-NSString * const nCredentialIdentifier=@"VetViewID";
 
 @interface NavigationViewController ()
 
@@ -20,9 +21,10 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     NSArray *menu;
 }
 
-- (void)Loaddynamicmenu {
-    AFOAuthCredential  *credential = [self getCredential];
-    if ((!credential) || (credential.isExpired))
+- (void)loadDynamicMenu {
+    //AFOAuthCredential  *credential = [self getCredential];
+    //if ((!credential) || (credential.isExpired))
+    if ([[AuthAPIClient sharedClient] isSignInRequired])
     {
         menu=@[@"sixth",@"first",@"second",@"fifth"];
     }
@@ -47,7 +49,7 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     {
         menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
     }*/
-    [self Loaddynamicmenu];
+    [self loadDynamicMenu];
 }
 
 - (void)updateOnLogin:(NSNotification*)notification
@@ -61,7 +63,7 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     {
         menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
     }*/
-    [self Loaddynamicmenu];
+    [self loadDynamicMenu];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
@@ -74,7 +76,7 @@ NSString * const nCredentialIdentifier=@"VetViewID";
 
 - (AFOAuthCredential *) getCredential
 {
-    AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:nCredentialIdentifier];
+    AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:kCredentialIdentifier];
     return credential;
 }
 
@@ -102,7 +104,7 @@ NSString * const nCredentialIdentifier=@"VetViewID";
     AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
-        NSLog(@"ATVC: Menu - This User is not logged in , send to login screen");
+        NSLog(@"NVC: Menu - This User is not logged in , send to login screen");
     }
     cell.backgroundColor = [UIColor darkGrayColor];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
@@ -112,15 +114,18 @@ NSString * const nCredentialIdentifier=@"VetViewID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
  
-    AFOAuthCredential  *credential = [self getCredential];
-    if ((!credential) || (credential.isExpired))
+    //AFOAuthCredential  *credential = [self getCredential];
+    //if ((!credential) || (credential.isExpired))
+    if ([[AuthAPIClient sharedClient] isSignInRequired])
     {
         switch(indexPath.row)
          {
             case 1: {
                 //Help page
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
-                    break;
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
+                
+    
+    break;
             }
             case 2:
             {
@@ -185,9 +190,10 @@ NSString * const nCredentialIdentifier=@"VetViewID";
             //stay in current view
             break;
         case 1:
-            [AFOAuthCredential deleteCredentialWithIdentifier:nCredentialIdentifier];
-            NSLog(@"Credential deleted successfully");
-            [self Loaddynamicmenu];
+            //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+            NSLog(@"Deleting token...NVC");
+            [[AuthAPIClient sharedClient] logOut];
+            [self loadDynamicMenu];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
