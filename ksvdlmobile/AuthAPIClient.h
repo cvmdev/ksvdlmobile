@@ -11,4 +11,10 @@
 
 @interface AuthAPIClient : AFOAuth2Client
 + (instancetype) sharedClient;
+- (void)refreshTokenWithSuccess:(void (^)(AFOAuthCredential *newCredential))success
+                        failure:(void (^)(NSError *error))failure;
+-(BOOL) hasUserEverLoggedIn;
+- (bool)isSignInRequired;
+- (AFOAuthCredential *)retrieveCredential;
+- (void) logOut;
 @end

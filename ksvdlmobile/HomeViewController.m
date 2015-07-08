@@ -7,10 +7,11 @@
 //
 
 #import "HomeViewController.h"
-#import "AFOAuth2Client.h"
 #import "SWRevealViewController.h"
-
-NSString * const CredentialIdentifier=@"VetViewID";
+#import "GlobalConstants.h"
+#import "AuthAPIClient.h"
+#import "HttpClient.h"
+#import "SVWebViewController.h"
 
 @implementation HomeViewController
 
@@ -41,19 +42,27 @@ NSString * const CredentialIdentifier=@"VetViewID";
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
     //The following two lines should be removed after testing..This is for testing various logins...
-//    [AFOAuthCredential deleteCredentialWithIdentifier:CredentialIdentifier];
+    
+    //force log out for testing
+    
+    //[[HttpClient sharedHTTPClient] removeTokenAndLogoutUser];
+    //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
 //    NSLog(@"Credential  Deleted");
 }
 
 - (IBAction)testfeessite:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL
-                                                URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul"]];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul"]];
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLTestFeesURL];
+    [self.navigationController pushViewController:webViewController animated:YES];
     
 }
 - (IBAction)ksvdlvideos:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL
-                                                URLWithString:@"https://www.youtube.com/channel/UCtx-lIIXqj5PAMQYryXaRhA"]];
+    
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.youtube.com/channel/UCtx-lIIXqj5PAMQYryXaRhA"]];
+    
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLYoutubeURL];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 
@@ -61,21 +70,23 @@ NSString * const CredentialIdentifier=@"VetViewID";
             NSLog(@"Button tapped");
     
             
-            AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:CredentialIdentifier];
-            if ((!credential) || (credential.isExpired))
-            {
-                NSLog(@"User is not logged in , send to login screen");
-                [self performSegueWithIdentifier:@"LoginScreen" sender:sender];
-                
-            }
-            else
-            {
-                NSLog(@"User is logged in and authentication token is current");
-                [self performSegueWithIdentifier:@"AccessionScreen" sender:sender];
-               
-            }
+    //AFOAuthCredential  *credential = [[AuthAPIClient sharedClient] retrieveCredential];
+    //if ((!credential) || (credential.isExpired))
     
+    if ([[AuthAPIClient sharedClient] isSignInRequired])
+    {
+        NSLog(@"User is not logged in , send to login screen");
+        [self performSegueWithIdentifier:@"LoginScreen" sender:sender];
+        
     }
+    else
+    {
+        NSLog(@"User is logged in and authentication token may or may not be current");
+        [self performSegueWithIdentifier:@"AccessionScreen" sender:sender];
+       
+    }
+    
+}
 
 
 @end

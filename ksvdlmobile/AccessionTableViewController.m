@@ -10,10 +10,10 @@
 #import "AccessionReportViewController.h"
 #import "SWRevealViewController.h"
 #import "AddTestViewController.h"
-
+#import "GlobalConstants.h"
+#import "HttpClient.h"
 
 const int kLoadingCellTag = 2015;
-NSString * const kCredentialIdentifier=@"VetViewID";
 NSString * const simpleTableIdentifier = @"AccessionCell";
 
 @implementation AccessionTableViewController
@@ -23,8 +23,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-   
-    
     
     _barButton1.target = self.revealViewController;
     _barButton1.action = @selector(revealToggle:);
@@ -35,13 +33,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
+    
+    //set current page as 1 and initialize array
     _currentPage=1;
     self.accessionList = [NSMutableArray array];
     self.filteredAccList=[NSMutableArray array];
+    
     [SVProgressHUD showWithStatus:@"Loading"];
     [self fetchAccessions];
-    
-    [SVProgressHUD dismiss];
     
 }
 -(void) viewWillDisappear:(BOOL)animated {
@@ -73,8 +72,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 -(void) fetchAccessions
 {
-    AFOAuthCredential  *credential = [self getCredential];
-    if ((!credential) || (credential.isExpired))
+    //AFOAuthCredential  *credential = [self getCredential];
+    if ([[AuthAPIClient sharedClient] isSignInRequired])
     {
         NSLog(@"ATVC:User is not logged in , send to login screen");
     }
@@ -82,36 +81,36 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         NSLog(@"ATVC:User is logged in and authentication token is current");
         
-        AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
-        AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+        //        AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
+        //        AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+        //
+        //        //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+        //
+        //        [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
+        //        reqManager.requestSerializer = serializer;
+        //        reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
+        //
+        //        NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/acc?pageNo=%ld",(long)_currentPage];
+        //
         
-        //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+        HttpClient *client = [HttpClient sharedHTTPClient];
         
-        [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
-        reqManager.requestSerializer = serializer;
-        reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
+        //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/acc?pageNo=%ld",(long)_currentPage];
-        
-        [reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            //NSLog(@"JSON: %@", responseObject);
-            
+        [client fetchAccessionsForPageNo:_currentPage WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
             _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
             NSLog(@"Total Pages: %ld",(long)_totalPages);
-            
-            //NSMutableArray * results = [NSMutableArray array];
-            
-            //[results addObject :[responseObject objectForKey:@"Accessions"]];
-            //NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
             
             [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
             
             [self.tableView reloadData];
+            [SVProgressHUD dismiss];
             
+        } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: Problem while fetching accessions: %@", error);
+            [SVProgressHUD dismiss];
+            
+            NSLog(@"Some Error while fetching data");
         }];
         
     }
@@ -146,7 +145,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     NSDictionary *currentAccessionDict= dict;
     //NSDictionary * currentAccessionDict = [self.accessionList objectAtIndex:indexPath.row];
-   
+    
     NSString *accStatus =[currentAccessionDict objectForKey:@"AccessionStatus"];
     
     
@@ -184,7 +183,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         [cell setBackgroundView:[[UIView alloc] init]];
         [cell.backgroundView.layer insertSublayer:grad atIndex:0];
-
+        
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
         cell.statusLabel.hidden=false;
@@ -223,7 +222,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         [cell setBackgroundView:[[UIView alloc] init]];
         [cell.backgroundView.layer insertSublayer:grad atIndex:0];
-
+        
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
         cell.addtestButton.hidden=false;
@@ -293,7 +292,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-   
+    
     if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -318,24 +317,24 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             
         }
     }
-
+    
     
     if (tableView==self.searchDisplayController.searchResultsTableView)
     {
         currCellDict= [self.filteredAccList objectAtIndex:indexPath.row];
         currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
         [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
-
+        
     }
     else
-     if (indexPath.row < self.accessionList.count)
-     {
-        currCellDict= [self.accessionList objectAtIndex:indexPath.row];
-        currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
-        [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
-     }
+        if (indexPath.row < self.accessionList.count)
+        {
+            currCellDict= [self.accessionList objectAtIndex:indexPath.row];
+            currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
+            [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
+        }
     
-        
+    
     //if its a loading cell indicator....no need to add any color
     if (cell.tag==kLoadingCellTag){
         _currentPage++;
@@ -362,7 +361,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         self.gradientView.frame=cell.bounds;
         [cell setBackgroundView:self.gradientView];
         //[cell.backgroundView.layer insertSublayer:self.gradientView.layer atIndex:0];
-       
+        
         
     }
     if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
@@ -373,7 +372,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         self.gradientView = [[GradientView alloc] initWithFrame:self.view.bounds];
         self.gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+        
         //CAGradientLayer *grad = [CAGradientLayer layer];
         //grad.frame = cell.bounds;
         self.gradientView.layer.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
@@ -397,35 +396,31 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         [cell setBackgroundView:self.gradientView];
         //[cell.backgroundView.layer insertSublayer:grad atIndex:0];
     }
-
+    
 }
 
 - (void) filterAccessionsForSearchText:(NSString *) searchText scope:(NSString *)scope
 {
     
-    AFOAuthCredential  *credential = [self getCredential];
+    //    AFOAuthCredential  *credential = [self getCredential];
+    //
+    //    AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
+    //    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+    //
+    //    //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+    //
+    //    [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
+    //    reqManager.requestSerializer = serializer;
+    //    reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
+    //
+    //    NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/FilterAccessions?searchString=%@",searchText];
+    //
     
-    AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
-    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+    HttpClient *client = [HttpClient sharedHTTPClient];
     
-    //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
+    //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
-    [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
-    reqManager.requestSerializer = serializer;
-    reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
-    
-    NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/FilterAccessions?searchString=%@",searchText];
-    
-    
-    [reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        //NSLog(@"JSON: %@", responseObject);
-        
-        
-        //NSMutableArray * results = [NSMutableArray array];
-        
-        //[results addObject :[responseObject objectForKey:@"Accessions"]];
-        
+    [client filterAccessionsWithSearchText:searchText WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
         
         NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
         
@@ -434,10 +429,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         [self.filteredAccList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
         
         NSLog(@"The count of the filter array is : %ld",(long)[self.filteredAccList count]);
+        
         [self.searchDisplayController.searchResultsTableView reloadData];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: Problem while fetching accessions: %@", error);
+    }andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: Problem while fetching accessions on search: %@", error);
     }];
     
 }
@@ -483,8 +479,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         destViewController.ownerName = [cellDetails objectForKey:@"OwnerName"];
     }
 }
-
-
 
 
 #pragma Mark -- AccCellDelegate

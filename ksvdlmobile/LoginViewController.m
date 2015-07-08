@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "SVProgressHUD.h"
 #import "SWRevealViewController.h"
+#import "GlobalConstants.h"
 
 @interface LoginViewController ()
 
@@ -42,21 +43,20 @@
         
        if ([_userText.text length]!=0 && [_userPwd.text length]!=0)
        {
-                  // NSURL *baseURL = [NSURL URLWithString:@"http://129.130.128.31/TestProjects/TestAuthAPI/"];
            
                    [SVProgressHUD show];
            
-                    NSString *tokenURLString = @"http://129.130.128.31/TestProjects/TestAuthAPI/oauth2/token";
-                    NSString *credentialIdentifier=@"VetViewID";
+                    
+           
                     
                     //AFOAuth2Client *oauthClient = [AFOAuth2Client clientWithBaseURL:baseURL clientID:@"vdliosapp" secret:@"somedummy"];
                     
-                    [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:tokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
+                    [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
                                                              success:^(AFOAuthCredential *credential) {
                                                                  
                                                           
                                                                  NSLog(@"Token:%@",credential.accessToken);
-                                                                 [AFOAuthCredential storeCredential:credential withIdentifier:credentialIdentifier];
+                                                                 [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
                                                                  [SVProgressHUD dismiss];
                                                                  [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
                                                                  

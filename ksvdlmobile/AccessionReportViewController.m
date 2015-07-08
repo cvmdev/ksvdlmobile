@@ -9,8 +9,11 @@
 #import "AccessionReportViewController.h"
 #import "SVProgressHUD.h"
 #import "AFNetworking.h"
-#import "AFOAuth2Client.h"
-
+//#import "AFOAuth2Client.h"
+#import "GlobalConstants.h"
+#import "AuthAPIClient.h"
+#import "HttpClient.h"
+const int retryCount=2;
 @implementation AccessionReportViewController
 
 -(void) viewDidLoad {
@@ -33,54 +36,76 @@
 -(void) downloadReportForAccession:(NSString *) accNum
 {
     
-    NSString *pdfUrlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/Orders/Report?accessionNumber=%@",accNum];
-   
-    AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"VetViewID"];
-    
-    if ((!credential) || (credential.isExpired))
-    {
-        NSLog(@"ATVC:User is not logged in , send to login screen");
-    }
-    else
-    {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-        
-        NSURL *pdfURL = [NSURL URLWithString:pdfUrlString];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:pdfURL];
-        
-        NSString *authToken = [NSString stringWithFormat:@"Bearer %@",credential.accessToken];
-        
-        [request setValue:authToken forHTTPHeaderField:@"Authorization"];
-        
-        NSString *fileName= [NSString stringWithFormat:@"%@.pdf",accNum];
-        
-        NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-            NSURL *directoryURL = [NSURL fileURLWithPath:NSTemporaryDirectory()];
-            return [directoryURL URLByAppendingPathComponent:fileName];
-            } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-                
-                NSLog(@"PDF File downloaded to: %@", filePath);
-                self.enableBookmarks = YES;
-                self.enableOpening = YES;
-                self.enablePrinting = YES;
-                self.enableSharing = YES;
-                self.enableThumbnailSlider = YES;
-                self.standalone=YES;
-                
-                NSString *savedFilePath = [self getTempFilePathForAccession];
-                NSLog(@"PDF to be display from temp directory: %@",filePath);
-                
-                PDFKDocument *document =[PDFKDocument documentWithContentsOfFile:savedFilePath password:nil];
-                [self loadDocument:document];
-                
-                [SVProgressHUD dismiss];
-            
-        }];
-        [downloadTask resume];
-   }
+//    NSString *pdfUrlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/Orders/Report?accessionNumber=%@",accNum];
+//   
+//    AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"VetViewID"];
+//    
+//    if ([[AuthAPIClient sharedClient] isSignInRequired])
+//    {
+//        NSLog(@"ATVC:User is not logged in , send to login screen");
+//    }
+//    else
+//    {
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//        
+//        NSURL *pdfURL = [NSURL URLWithString:pdfUrlString];
+//        
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:pdfURL];
+//        
+//        NSString *authToken = [NSString stringWithFormat:@"Bearer %@",credential.accessToken];
+//        
+//        [request setValue:authToken forHTTPHeaderField:@"Authorization"];
+//        
+//        NSString *fileName= [NSString stringWithFormat:@"%@.pdf",accNum];
+//        
+//        NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+//            NSURL *directoryURL = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+//            return [directoryURL URLByAppendingPathComponent:fileName];
+//            } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+//                
+//                NSLog(@"PDF File downloaded to: %@", filePath);
+//                self.enableBookmarks = YES;
+//                self.enableOpening = YES;
+//                self.enablePrinting = YES;
+//                self.enableSharing = YES;
+//                self.enableThumbnailSlider = YES;
+//                self.standalone=YES;
+//                
+//                NSString *savedFilePath = [self getTempFilePathForAccession];
+//                NSLog(@"PDF to be display from temp directory: %@",filePath);
+//                
+//                PDFKDocument *document =[PDFKDocument documentWithContentsOfFile:savedFilePath password:nil];
+//                [self loadDocument:document];
+//                
+//                [SVProgressHUD dismiss];
+//            
+//        }];
+//        [downloadTask resume];
+//   }
 
+    HttpClient * client = [HttpClient sharedHTTPClient];
+    
+    [client downloadReportForAccession:accNum WithRetryCounter:retryCount WithCompletionBlock:^(BOOL finished) {
+        if (finished)
+        {
+          
+            self.enableBookmarks = YES;
+            self.enableOpening = YES;
+            self.enablePrinting = YES;
+            self.enableSharing = YES;
+            self.enableThumbnailSlider = YES;
+            self.standalone=YES;
+
+            NSString *savedFilePath = [self getTempFilePathForAccession];
+
+            PDFKDocument *document =[PDFKDocument documentWithContentsOfFile:savedFilePath password:nil];
+            [self loadDocument:document];
+            
+            [SVProgressHUD dismiss];
+
+        }
+    }];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
