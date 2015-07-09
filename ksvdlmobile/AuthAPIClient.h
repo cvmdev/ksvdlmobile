@@ -10,11 +10,12 @@
 #import "AFOAuth2Client.h"
 
 @interface AuthAPIClient : AFOAuth2Client
+typedef void (^CustomCompletionBlock)(BOOL finished);
 + (instancetype) sharedClient;
 - (void)refreshTokenWithSuccess:(void (^)(AFOAuthCredential *newCredential))success
                         failure:(void (^)(NSError *error))failure;
 -(BOOL) hasUserEverLoggedIn;
 - (bool)isSignInRequired;
 - (AFOAuthCredential *)retrieveCredential;
-- (void) logOut;
+- (void) logOutWithCompletionBlock:(CustomCompletionBlock)completionBlock;
 @end

@@ -192,12 +192,14 @@
         case 1:
             //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
             NSLog(@"Deleting token...NVC");
-            [[AuthAPIClient sharedClient] logOut];
+            [[AuthAPIClient sharedClient] logOutWithCompletionBlock:^(BOOL finished){
             [self loadDynamicMenu];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
-            break;
+           
+            }];
+          break;
     }
 }
 
