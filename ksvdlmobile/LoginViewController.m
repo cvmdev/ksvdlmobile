@@ -10,6 +10,7 @@
 #import "SVProgressHUD.h"
 #import "SWRevealViewController.h"
 #import "GlobalConstants.h"
+#import "HttpClient.h"
 
 @interface LoginViewController ()
 
@@ -56,7 +57,10 @@
                                                                  
                                                           
                                                                  NSLog(@"Token:%@",credential.accessToken);
+                                                                 
                                                                  [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
+                                                                 [[HttpClient sharedHTTPClient] updateCredential:credential];
+                                                                 
                                                                  [SVProgressHUD dismiss];
                                                                  [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
                                                                  

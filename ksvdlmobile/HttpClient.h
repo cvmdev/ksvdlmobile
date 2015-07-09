@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "AFOAuth2Client.h"
 
 @interface HttpClient : AFHTTPRequestOperationManager
 
@@ -32,4 +33,5 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
                    WithRetryCounter:(int) retryCount
                 WithCompletionBlock:(CustomCompletionBlock)completionBlock;
 
+-(void) updateCredential:(AFOAuthCredential *)credential;
 @end
