@@ -177,22 +177,13 @@
             //stay in current view
             break;
         case 1:
-            //Added the following line to delete credential and execute the loaddynamicMenu - Arthi
-                [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
-            //Addition ends
-            
             NSLog(@"Deleting token...NVC");
-<<<<<<< HEAD
-            [[AuthAPIClient sharedClient] logOut];
-            
-=======
+
             [[AuthAPIClient sharedClient] logOutWithCompletionBlock:^(BOOL finished){
->>>>>>> origin/master
-            [self loadDynamicMenu];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-           
+                [self loadDynamicMenu];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
             }];
           break;
     }
