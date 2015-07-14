@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 @interface AddTestViewController : UIViewController
 @property (nonatomic) NSString * accessionNumber;
 @property (nonatomic) NSString * ownerName;
 
-@property (weak, nonatomic) IBOutlet UITextField *accessionTextField;
-@property (weak, nonatomic) IBOutlet UITextField *ownernameTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
+@property (weak, nonatomic) IBOutlet UILabel *atlabel;
+@property (weak, nonatomic) IBOutlet UILabel *ownerlabel;
+
+- (IBAction)openMail:(id)sender;
 
 @end

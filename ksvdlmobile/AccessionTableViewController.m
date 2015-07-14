@@ -188,7 +188,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
         cell.statusLabel.hidden=false;
         cell.viewreportButton.hidden=TRUE;
-        cell.addtestButton.hidden=true;
+        cell.addtestButton.hidden=false;
     }
     if ([accStatus isEqualToString:@"Working"])
     {

@@ -13,6 +13,7 @@
 #import "HttpClient.h"
 
 
+
 @interface NavigationViewController ()
 
 @end
@@ -22,8 +23,6 @@
 }
 
 - (void)loadDynamicMenu {
-    //AFOAuthCredential  *credential = [self getCredential];
-    //if ((!credential) || (credential.isExpired))
     if ([[AuthAPIClient sharedClient] isSignInRequired])
     {
         menu=@[@"sixth",@"first",@"second",@"fifth"];
@@ -39,16 +38,6 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOnLogin:) name:@"USER_DID_LOGIN" object:nil];
-
-   /*AFOAuthCredential  *credential = [self getCredential];
-    if ((!credential) || (credential.isExpired))
-    {
-        menu=@[@"sixth",@"first",@"second",@"fifth"];
-    }
-    else
-    {
-        menu=@[@"sixth",@"first",@"second",@"third",@"fourth"];
-    }*/
     [self loadDynamicMenu];
 }
 
@@ -106,7 +95,7 @@
     {
         NSLog(@"NVC: Menu - This User is not logged in , send to login screen");
     }
-    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.backgroundColor = [UIColor colorWithRed:79.0f/255.0f green:33.0f/255.0f blue:134.0f/255.0f alpha:1.0f];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
     cell.selectedBackgroundView.backgroundColor = [UIColor darkGrayColor] ;
     return cell;
@@ -123,9 +112,7 @@
             case 1: {
                 //Help page
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
-                
-    
-    break;
+                break;
             }
             case 2:
             {
@@ -190,14 +177,24 @@
             //stay in current view
             break;
         case 1:
-            //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+            //Added the following line to delete credential and execute the loaddynamicMenu - Arthi
+                [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+            //Addition ends
+            
             NSLog(@"Deleting token...NVC");
+<<<<<<< HEAD
             [[AuthAPIClient sharedClient] logOut];
+            
+=======
+            [[AuthAPIClient sharedClient] logOutWithCompletionBlock:^(BOOL finished){
+>>>>>>> origin/master
             [self loadDynamicMenu];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
-            break;
+           
+            }];
+          break;
     }
 }
 

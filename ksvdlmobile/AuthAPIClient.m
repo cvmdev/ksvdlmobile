@@ -51,7 +51,7 @@
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kCredentialIdentifier];
 }
 
--(void) logOut
+-(void) logOutWithCompletionBlock:(CustomCompletionBlock)completionBlock
 {
     
       
@@ -62,6 +62,7 @@
         NSLog(@"Removed Refresh token..Now deleting from device");
       
         [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+        completionBlock(true);
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {

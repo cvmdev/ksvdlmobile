@@ -14,6 +14,7 @@
 
 @interface AddTestViewController ()
 
+
 @end
 
 @implementation AddTestViewController
@@ -24,10 +25,9 @@
     NSLog(@"Accession Number from previous controller is :%@",self.accessionNumber);
     NSLog(@"Owner Name from previous controller is :%@",self.ownerName);
     
-    _accessionTextField.text = self.accessionNumber;
-    _ownernameTextField.text = self.ownerName;
-    _accessionTextField.userInteractionEnabled = false;
-    _ownernameTextField.userInteractionEnabled = false;
+
+   _atlabel.text = [NSString stringWithFormat:@"%@%@",@" Accession Number : ",self.accessionNumber];
+    _ownerlabel.text = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
     
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
@@ -50,4 +50,66 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (IBAction)openMail:(id)sender {
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        
+        mailer.mailComposeDelegate = self;
+        
+        [mailer setSubject:@"Request to add tests"];
+        
+        NSArray *toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+        [mailer setToRecipients:toRecipients];
+        
+    
+        NSString *accnos = [NSString stringWithFormat:@"%@%@",@" Accession Number : ",self.accessionNumber];
+        NSString *ownername = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
+        
+      NSString *emailBody = @"Email Body....";
+ 
+        [mailer setMessageBody:emailBody isHTML:YES];
+        
+        [self presentModalViewController:mailer animated:YES];
+    //    [mailer release];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                        message:@"Your device doesn't support the composer sheet"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    // Remove the mail view
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 @end

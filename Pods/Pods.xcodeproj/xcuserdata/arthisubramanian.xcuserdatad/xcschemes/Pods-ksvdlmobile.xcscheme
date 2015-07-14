@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "59649EC41AEF1E0A00E5F1AD"
-            BuildableName = "ksvdlmobile.app"
+            BuildableName = "KSVDL Mobile.app"
             BlueprintName = "ksvdlmobile"
             ReferencedContainer = "container:../ksvdlmobile.xcodeproj">
          </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "59649EC41AEF1E0A00E5F1AD"
-            BuildableName = "ksvdlmobile.app"
+            BuildableName = "KSVDL Mobile.app"
             BlueprintName = "ksvdlmobile"
             ReferencedContainer = "container:../ksvdlmobile.xcodeproj">
          </BuildableReference>

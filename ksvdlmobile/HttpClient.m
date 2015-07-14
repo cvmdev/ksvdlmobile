@@ -147,29 +147,29 @@
     
 }
 
--(void)removeTokenAndLogoutUser{
-    
-    if ([[AuthAPIClient sharedClient] retrieveCredential])
-    {
-       
-       
-        NSDictionary * params = @{@"tokenId":[[AuthAPIClient sharedClient] retrieveCredential].refreshToken,
-                                  @"appType":@"IOS"};
-        
-        NSLog(@"Refresh token is %@",[[AuthAPIClient sharedClient] retrieveCredential].refreshToken);
-        
-        [self POST:@"Logout" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        NSLog(@"Removed Refresh token..Now deleting from device");
-        [[AuthAPIClient sharedClient] logOut];
-            
-        }failure:^(AFHTTPRequestOperation *operation, NSError *error)
-         {
-             NSLog(@"There was a problem revoking the refresh token:%@",error);
-             
-         }];
-    }
-}
+//-(void)removeTokenAndLogoutUser{
+//    
+//    if ([[AuthAPIClient sharedClient] retrieveCredential])
+//    {
+//       
+//       
+//        NSDictionary * params = @{@"tokenId":[[AuthAPIClient sharedClient] retrieveCredential].refreshToken,
+//                                  @"appType":@"IOS"};
+//        
+//        NSLog(@"Refresh token is %@",[[AuthAPIClient sharedClient] retrieveCredential].refreshToken);
+//        
+//        [self POST:@"Logout" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject){
+//        
+//        NSLog(@"Removed Refresh token..Now deleting from device");
+//        [[AuthAPIClient sharedClient] logOut];
+//            
+//        }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+//         {
+//             NSLog(@"There was a problem revoking the refresh token:%@",error);
+//             
+//         }];
+//    }
+//}
 
 
 -(void) downloadReportForAccession:(NSString *)AccessionNo WithRetryCounter:(int) retryCount WithCompletionBlock:(CustomCompletionBlock)completionBlock{
