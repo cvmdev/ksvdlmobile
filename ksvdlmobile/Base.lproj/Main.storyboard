@@ -368,7 +368,6 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfY-9C-tfm">
                                                         <rect key="frame" x="66" y="63" width="171" height="128"/>
                                                         <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="textColor" red="0.65490196079999996" green="0.66274509800000003" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -458,7 +457,12 @@
                     <connections>
                         <outlet property="atlabel" destination="cXd-2M-bxV" id="17c-Sp-5WQ"/>
                         <outlet property="barButton" destination="g3M-Gd-nTG" id="fcM-mY-C4A"/>
+                        <outlet property="cltext" destination="2U4-tN-o5K" id="P6E-1Y-7YH"/>
+                        <outlet property="emailtext" destination="LJd-nT-XPW" id="mQl-TU-n0U"/>
+                        <outlet property="notestext" destination="UfY-9C-tfm" id="68L-Ot-sDk"/>
                         <outlet property="ownerlabel" destination="CZS-oj-aQn" id="R6R-ja-fJR"/>
+                        <outlet property="phtext" destination="8vq-dM-BCw" id="ERo-J5-Qny"/>
+                        <outlet property="testnametext" destination="0Wt-Jh-8Lz" id="ZhJ-lk-KVg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeO-pA-g7X" userLabel="First Responder" sceneMemberID="firstResponder"/>

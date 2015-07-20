@@ -16,6 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UILabel *atlabel;
 @property (weak, nonatomic) IBOutlet UILabel *ownerlabel;
+@property (weak, nonatomic) IBOutlet UITextField *cltext;
+@property (weak, nonatomic) IBOutlet UITextField *phtext;
+@property (weak, nonatomic) IBOutlet UITextField *emailtext;
+@property (weak, nonatomic) IBOutlet UITextField *testnametext;
+@property (weak, nonatomic) IBOutlet UITextView *notestext;
 
 - (IBAction)openMail:(id)sender;
 

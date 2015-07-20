@@ -68,19 +68,29 @@
         
         mailer.mailComposeDelegate = self;
         
-        [mailer setSubject:@"Request to add tests"];
+        NSString *prefixtxt = @"<h4>The following information has been submitted from the KSVDL Mobile App requesting additional tests - </h4>";
+        
+        NSString *accnos = [NSString stringWithFormat:@"%@%@",@" <b>Accession Number :</b> ",self.accessionNumber];
+        NSString *ownername = [NSString stringWithFormat:@"%@%@",@" <b>Owner Name :</b> ",self.ownerName];
+        NSString *clientnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Client Name :</b> ",_cltext.text];
+        NSString *phonetxt = [NSString stringWithFormat:@"%@%@",@" <b>Contact Number :</b> ",_phtext.text];
+        NSString *emailtxt = [NSString stringWithFormat:@"%@%@",@" <b>Email :</b> ",_emailtext.text];
+        NSString *textnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Test Name Requested :</b> ",_testnametext.text];
+        NSString *notestxt = [NSString stringWithFormat:@"%@%@",@" <b>Additional Notes :</b> ",_notestext.text];
+        
+        NSString *suffixtxt = @"<h4>Sent from KSVDL Mobile App</h4>";
+        
+        [mailer setSubject:@"Request to Add tests"];
         
         NSArray *toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
         [mailer setToRecipients:toRecipients];
-        
     
-        NSString *accnos = [NSString stringWithFormat:@"%@%@",@" Accession Number : ",self.accessionNumber];
-        NSString *ownername = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
+        NSArray *myStrings = [[NSArray alloc] initWithObjects:prefixtxt, accnos, ownername, clientnametxt, phonetxt, emailtxt, textnametxt, notestxt, suffixtxt, nil];
+       // NSString *joinedString = [myStrings componentsJoinedByString:@"|"];
+       
+        NSString *emailBody = [myStrings componentsJoinedByString:@"<br/>"];
         
-      NSString *emailBody = @"Email Body....";
- 
         [mailer setMessageBody:emailBody isHTML:YES];
-        
         [self presentModalViewController:mailer animated:YES];
     //    [mailer release];
     }
