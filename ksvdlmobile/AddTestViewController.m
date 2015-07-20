@@ -34,11 +34,20 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
+    
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
+    self.navigationItem.leftBarButtonItem=backBtn;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)popToRoot:(UIBarButtonItem*)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 /*

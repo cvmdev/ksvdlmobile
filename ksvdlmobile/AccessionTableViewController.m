@@ -29,6 +29,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton1 setTarget: self.revealViewController];
     [self.barButton1 setAction: @selector( rightRevealToggle: )];
+  
+    
+    
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
+    self.navigationItem.leftBarButtonItem=backBtn;
     
     
     self.tableView.dataSource=self;
@@ -43,6 +49,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [self fetchAccessions];
     
 }
+
+- (IBAction)popToRoot:(UIBarButtonItem*)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         // Navigation button was pressed. Do some stuff
