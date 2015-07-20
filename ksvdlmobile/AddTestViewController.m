@@ -80,28 +80,40 @@
         
         NSString *suffixtxt = @"<h4>Sent from KSVDL Mobile App</h4>";
         
-        [mailer setSubject:@"Request to Add tests"];
-        
-        NSArray *toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
-        [mailer setToRecipients:toRecipients];
-    
-        NSArray *myStrings = [[NSArray alloc] initWithObjects:prefixtxt, accnos, ownername, clientnametxt, phonetxt, emailtxt, textnametxt, notestxt, suffixtxt, nil];
-       // NSString *joinedString = [myStrings componentsJoinedByString:@"|"];
-       
-        NSString *emailBody = [myStrings componentsJoinedByString:@"<br/>"];
-        
-        [mailer setMessageBody:emailBody isHTML:YES];
-        [self presentModalViewController:mailer animated:YES];
+        if (_phtext.text && _phtext.text.length > 0)
+        {
+            [mailer setSubject:@"Request to Add tests"];
+            
+            NSArray *toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+            [mailer setToRecipients:toRecipients];
+            
+            NSArray *myStrings = [[NSArray alloc] initWithObjects:prefixtxt, accnos, ownername, clientnametxt, phonetxt, emailtxt, textnametxt, notestxt, suffixtxt, nil];
+            // NSString *joinedString = [myStrings componentsJoinedByString:@"|"];
+            
+            NSString *emailBody = [myStrings componentsJoinedByString:@"<br/>"];
+            
+            [mailer setMessageBody:emailBody isHTML:YES];
+            [self presentModalViewController:mailer animated:YES];
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Please fill the required information"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
     //    [mailer release];
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+        UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"Failure"
                                                         message:@"Your device doesn't support the composer sheet"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
-        [alert show];
+        [alert1 show];
     }
     
 }
