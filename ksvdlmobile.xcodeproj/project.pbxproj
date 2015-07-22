@@ -90,6 +90,7 @@
 		CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5E1BA81B55797A0068225F /* MessageUI.framework */; };
 		CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */; };
 		CDE49AD11B21F7D000A98FFA /* L3MEB.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE49AD01B21F7D000A98FFA /* L3MEB.png */; };
+		CDF95CAE1B603C3C00136270 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF95CAD1B603C3C00136270 /* nav_bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +236,7 @@
 		CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		CDE49AD01B21F7D000A98FFA /* L3MEB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = L3MEB.png; sourceTree = "<group>"; };
+		CDF95CAD1B603C3C00136270 /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
 		DE428B8D1A6416EADEFDBF9C /* Pods-ksvdlmobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ksvdlmobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ksvdlmobile/Pods-ksvdlmobile.debug.xcconfig"; sourceTree = "<group>"; };
 		E30B9D118234C0DD47CBB66C /* libPods-ksvdlmobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ksvdlmobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -337,6 +339,7 @@
 		59649EC81AEF1E0A00E5F1AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CDF95CAD1B603C3C00136270 /* nav_bg.png */,
 				59A0249D1B4D842400B3A0F7 /* Web */,
 				59ECE3481B27653700F38902 /* PDFKit */,
 				CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */,
@@ -646,6 +649,7 @@
 				59ECE3A91B276D9900F38902 /* PageList.psd in Resources */,
 				59A024C81B4D88DF00B3A0F7 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
 				59ECE3B01B276D9900F38902 /* Thumbs@2x.png in Resources */,
+				CDF95CAE1B603C3C00136270 /* nav_bg.png in Resources */,
 				59ECE3A21B276D9900F38902 /* Bookmarked.png in Resources */,
 				59ECE3811B276D0300F38902 /* TTOpenInAppActivity7@2x.png in Resources */,
 				59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */,
