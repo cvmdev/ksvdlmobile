@@ -14,6 +14,8 @@
 #import "GradientView.h"
 
 @interface AccessionTableViewController : UITableViewController<AccCellDelegate,UITableViewDelegate,UITableViewDataSource>
+
+    @property int selectedIndex;
     @property (strong,nonatomic) NSMutableArray *accessionList;
     @property (strong,nonatomic) NSMutableArray *filteredAccList;
     @property NSInteger currentPage;

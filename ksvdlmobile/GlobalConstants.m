@@ -12,6 +12,10 @@
 
 NSString *const kBaseURL=@"http://129.130.128.31/TestProjects/VetViewAPI/";
 NSString *const kTokenURLString = @"http://129.130.128.31/TestProjects/VetViewAPI/oauth2/token";
+
+//NSString *const kBaseURL=@"http://129.130.128.31/TestProjects/TestAuthAPI/api/Orders/";
+//NSString *const kTokenURLString = @"http://129.130.128.31/TestProjects/TestAuthAPI/oauth2/token";
+
 NSString *const kCredentialIdentifier=@"VetViewID";
 NSString *const kClientId=@"vdliosapp";
 NSString *const kClientSecret=@"dummy";

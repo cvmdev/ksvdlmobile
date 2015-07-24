@@ -10,8 +10,10 @@
 #import <MessageUI/MessageUI.h>
 
 @interface AddTestViewController : UIViewController
+
 @property (nonatomic) NSString * accessionNumber;
 @property (nonatomic) NSString * ownerName;
+@property (nonatomic) NSString * clientName;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UILabel *atlabel;

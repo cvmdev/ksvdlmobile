@@ -27,7 +27,7 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
                        WithSuccessBlock:(ApiClientSuccess)successBlock
                   andFailureBlock:(ApiClientFailure)failureBlock;
 
-- (void) removeTokenAndLogoutUser;
+//- (void) removeTokenAndLogoutUser;
 
 - (void) downloadReportForAccession:(NSString *)AccessionNo
                    WithRetryCounter:(int) retryCount

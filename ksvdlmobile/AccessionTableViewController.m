@@ -16,9 +16,11 @@
 const int kLoadingCellTag = 2015;
 NSString * const simpleTableIdentifier = @"AccessionCell";
 
-@implementation AccessionTableViewController
+@implementation AccessionTableViewController{
+    NSString * clientBusinessName;
+}
 
-@synthesize accessionList;
+@synthesize accessionList,selectedIndex;
 
 - (void) viewDidLoad
 {
@@ -42,6 +44,9 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     //set current page as 1 and initialize array
     _currentPage=1;
+    //set selectedIndex=-1; (which means currently no row is selected)
+    self.selectedIndex=-1;
+    
     self.accessionList = [NSMutableArray array];
     self.filteredAccList=[NSMutableArray array];
     
@@ -109,10 +114,15 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [client fetchAccessionsForPageNo:_currentPage WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
-            _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
-            NSLog(@"Total Pages: %ld",(long)_totalPages);
+            //_totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
             
-            [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
+            _totalPages = [[[[responseObject objectForKey:@"AccList"]objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
+            NSLog(@"Total Pages: %ld",(long)_totalPages);
+            NSLog(@"The data is %@",responseObject);
+            
+            clientBusinessName = [responseObject objectForKey:@"ClientName"];
+            
+            [self.accessionList addObjectsFromArray:[[responseObject objectForKey:@"AccList"]objectForKey:@"Accessions"]];
             
             [self.tableView reloadData];
             [SVProgressHUD dismiss];
@@ -246,6 +256,43 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized:%@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
     cell.caseCoordinatorLabel.text=[NSString stringWithFormat:@"CaseCoordinator:%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
     
+    NSString *fulltestString=@"";
+    int numNonNullTestCount =0;
+    NSArray *testArray=[currentAccessionDict objectForKey:@"Tests"];
+    
+    //if (!([currentAccessionDict objectForKey:@"Tests"]==(id)[NSNull null]))
+    numNonNullTestCount=[self nonNullTestCountForArray:testArray];
+    if (numNonNullTestCount>0)
+        {
+            fulltestString=@"Tests Ordered:\n";
+            NSUInteger ulLength=fulltestString.length;
+
+            for (NSString *testInfo in testArray)
+            {
+                if (!(testInfo==(id)[NSNull null]))
+                {
+                //numNonNullTestCount = numNonNullTestCount+1;
+                fulltestString = [fulltestString stringByAppendingString:testInfo];
+                fulltestString = [fulltestString stringByAppendingString:@"\n"];
+                }
+            }
+            
+            cell.testInfoLabel.hidden=false;
+            //cell.testInfoLabel.numberOfLines=[testArray count]+1;
+            cell.testInfoLabel.numberOfLines=numNonNullTestCount + 1;
+            cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
+            NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
+            NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
+            [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, ulLength)];//TextColor
+            [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(0, ulLength)];//Underline color
+            [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
+            //cell.testInfoLabel.text=fulltestString;
+            cell.testInfoLabel.attributedText=ulstring;
+        }
+    
+    else
+        cell.testInfoLabel.hidden=true;
+    
     if (!([currentAccessionDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
     {
         cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref #:%@",[currentAccessionDict objectForKey:@"RefNumber"]];
@@ -296,10 +343,78 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
 }
 
+- (int) nonNullTestCountForArray:(NSArray*) testArray{
+    
+    NSIndexSet *nonNullIndexes = [testArray indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+       return obj!= [NSNull null];
+    }];
+    
+    return (int)(nonNullIndexes.count);
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 90;
+    CGFloat defaultCellHeight=80;
+    
+    CGFloat currHeightOfCell=defaultCellHeight;
+    
+    
+    if (self.selectedIndex==indexPath.row)
+    {
+    //return 170;
+        NSDictionary *currCellDict=nil;
+        int numTestCount=0;
+        if (tableView==self.searchDisplayController.searchResultsTableView)
+        {
+            currCellDict= [self.filteredAccList objectAtIndex:indexPath.row];
+            //numTestCount =(int)[[currCellDict objectForKey:@"Tests"] count];
+            numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
+            if (numTestCount>0)
+            {
+            currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 30);
+            }
+            if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
+                currHeightOfCell=currHeightOfCell+20;
+            
+        }
+        else
+        {
+            if (indexPath.row < self.accessionList.count)
+            {
+                currCellDict= [self.accessionList objectAtIndex:indexPath.row];
+                numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
+                
+                if (numTestCount>0)
+                    currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 30);
+               
+                if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
+                    currHeightOfCell=currHeightOfCell+20;
+            }
+        
+        }
+    }
+    return currHeightOfCell;
 }
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"ROW SELECTED..%ld",indexPath.row);
+    if (self.selectedIndex ==indexPath.row)
+    {
+        self.selectedIndex=-1;
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        return;
+    }
+    
+    if (self.selectedIndex!=-1){
+        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:self.selectedIndex inSection:0];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    self.selectedIndex=(int)indexPath.row;
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -334,6 +449,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         currCellDict= [self.filteredAccList objectAtIndex:indexPath.row];
         currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
+       
         [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
         
     }
@@ -343,6 +459,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             currCellDict= [self.accessionList objectAtIndex:indexPath.row];
             currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
             [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
+            
         }
     
     
@@ -351,6 +468,30 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         _currentPage++;
         [self fetchAccessions];
     }
+    
+    
+}
+
+//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    
+//    return @"ACCESSION STATUS";
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel * sectionHeader = [[UILabel alloc] initWithFrame:CGRectZero];
+    sectionHeader.backgroundColor = [UIColor purpleColor];
+    sectionHeader.textAlignment = NSTextAlignmentCenter;
+    sectionHeader.font = [UIFont boldSystemFontOfSize:14];
+    sectionHeader.textColor = [UIColor whiteColor];
+    
+    sectionHeader.text=@"ACCESSION STATUS";
+    
+    return sectionHeader;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 24;
 }
 
 -(void) styleTableViewCell:(UITableViewCell *) cell forAccessionStatus :(NSString *)accStatus
@@ -433,11 +574,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     [client filterAccessionsWithSearchText:searchText WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
         
-        NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
+        //NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
         
         [self.filteredAccList removeAllObjects];
         
-        [self.filteredAccList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
+        [self.filteredAccList addObjectsFromArray:[[responseObject objectForKey:@"AccList"]objectForKey:@"Accessions"]];
         
         NSLog(@"The count of the filter array is : %ld",(long)[self.filteredAccList count]);
         
@@ -488,6 +629,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         AddTestViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
         destViewController.ownerName = [cellDetails objectForKey:@"OwnerName"];
+        destViewController.clientName=clientBusinessName;
     }
 }
 

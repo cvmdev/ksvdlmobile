@@ -57,7 +57,8 @@
         }
     };
     
-    NSString *Accessions = [NSString stringWithFormat:@"Accessions?pageNo=%ld",(long)pageNo];
+    //NSString *Accessions = [NSString stringWithFormat:@"Accessions?pageNo=%ld",(long)pageNo];
+    NSString *Accessions = [NSString stringWithFormat:@"AccTests?pageNo=%ld",(long)pageNo];
     
     NSLog(@"Fetching Accessions for Page No:%ld",(long)pageNo);
     __weak typeof(self) weakSelf=self;

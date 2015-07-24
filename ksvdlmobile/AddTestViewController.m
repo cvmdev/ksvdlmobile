@@ -27,7 +27,8 @@
     
 
    _atlabel.text = [NSString stringWithFormat:@"%@%@",@" Accession Number : ",self.accessionNumber];
-    _ownerlabel.text = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
+   _ownerlabel.text = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
+   _cltext.text=self.clientName;
     
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
@@ -35,9 +36,11 @@
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
-    self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
-    self.navigationItem.leftBarButtonItem=backBtn;
+    
+    //The following commented by Praveen..I think we need to have a back button on this page
+//    self.navigationItem.hidesBackButton = YES;
+//    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
+//    self.navigationItem.leftBarButtonItem=backBtn;
     
 }
 
