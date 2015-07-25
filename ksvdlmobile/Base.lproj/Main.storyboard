@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kvZ-w3-VjU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kvZ-w3-VjU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -53,7 +53,7 @@
                             <constraint firstAttribute="centerX" secondItem="F5g-IT-bGI" secondAttribute="centerX" id="PIh-mv-5TX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Client Login" id="rmP-ln-5sq">
+                    <navigationItem key="navigationItem" id="rmP-ln-5sq">
                         <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="1cT-SZ-MTj"/>
                     </navigationItem>
                     <connections>
@@ -460,7 +460,7 @@
                             <constraint firstAttribute="trailing" secondItem="d6d-Cx-VTZ" secondAttribute="trailing" id="uXl-pn-OjQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="HSX-Z3-1tz" userLabel="Add Tests">
+                    <navigationItem key="navigationItem" id="HSX-Z3-1tz" userLabel="Add Tests">
                         <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="g3M-Gd-nTG"/>
                     </navigationItem>
                     <connections>
@@ -788,10 +788,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="KSVDL" id="6Uy-Wq-aqM">
-                        <barButtonItem key="backBarButtonItem" title="HOME" id="iE6-2M-aBR">
-                            <color key="tintColor" red="0.97411616161616166" green="0.97411616161616166" blue="0.97411616161616166" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" id="6Uy-Wq-aqM">
                         <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="1q2-KZ-X1K">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -838,8 +835,8 @@
         <image name="view-report-button.png" width="130" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aRR-GD-dra"/>
-        <segue reference="u6r-eO-5Hw"/>
-        <segue reference="LQw-T8-f9Z"/>
+        <segue reference="xEa-OO-ROn"/>
+        <segue reference="jgB-J5-wzS"/>
+        <segue reference="cDr-5r-ECg"/>
     </inferredMetricsTieBreakers>
 </document>
