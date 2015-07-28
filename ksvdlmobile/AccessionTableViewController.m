@@ -554,19 +554,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 - (void) filterAccessionsForSearchText:(NSString *) searchText scope:(NSString *)scope
 {
     
-    //    AFOAuthCredential  *credential = [self getCredential];
-    //
-    //    AFHTTPRequestOperationManager * reqManager = [AFHTTPRequestOperationManager manager];
-    //    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
-    //
-    //    //NSLog(@"ATVC:Authorization Header Token:%@",credential.accessToken);
-    //
-    //    [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
-    //    reqManager.requestSerializer = serializer;
-    //    reqManager.responseSerializer=[AFJSONResponseSerializer serializer];
-    //
-    //    NSString *urlString = [NSString stringWithFormat:@"http://129.130.128.31/TestProjects/TestAuthAPI/api/orders/FilterAccessions?searchString=%@",searchText];
-    //
     
     HttpClient *client = [HttpClient sharedHTTPClient];
     
@@ -578,7 +565,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         [self.filteredAccList removeAllObjects];
         
-        [self.filteredAccList addObjectsFromArray:[[responseObject objectForKey:@"AccList"]objectForKey:@"Accessions"]];
+        [self.filteredAccList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
         
         NSLog(@"The count of the filter array is : %ld",(long)[self.filteredAccList count]);
         

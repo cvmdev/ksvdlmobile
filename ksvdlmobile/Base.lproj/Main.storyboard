@@ -838,8 +838,8 @@
         <image name="view-report-button.png" width="130" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jgB-J5-wzS"/>
         <segue reference="aRR-GD-dra"/>
-        <segue reference="u6r-eO-5Hw"/>
-        <segue reference="LQw-T8-f9Z"/>
+        <segue reference="xEa-OO-ROn"/>
     </inferredMetricsTieBreakers>
 </document>
