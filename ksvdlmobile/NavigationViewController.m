@@ -125,7 +125,7 @@
                 //Login page
                 NSLog(@"this is the login");
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
-                 }
+            }
              case 0:
              {
                  //Login page

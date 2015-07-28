@@ -35,7 +35,7 @@
     self.navigationItem.hidesBackButton = YES;
     UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     self.navigationItem.leftBarButtonItem=backBtn;
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +44,6 @@
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    NSLog(@"Popped to root");
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
