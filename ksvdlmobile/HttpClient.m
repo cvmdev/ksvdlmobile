@@ -148,6 +148,57 @@
     
 }
 
+- (void) validateAccessionFor:(NSString *) accNum WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
+    __block int retryCounter=1;
+    void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
+        successBlock(operation,responseObject);
+    };
+    
+    void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (operation.response.statusCode == 500) {
+            failureBlock(operation,error);
+        }
+    };
+    NSString *validateAccession = [NSString stringWithFormat:@"ValidateAccession?accessionNumber=%@",accNum];
+    
+    NSLog(@"Validating Accession for Showing Report...%@",accNum);
+    
+    __weak typeof(self) weakSelf=self;
+    [self GET:validateAccession parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          processSuccessBlock(operation, responseObject);
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          processFailureBlock(operation, error);
+          if (operation.response.statusCode == 401) {
+              NSLog(@"Authorization is denied");
+              if (retryCounter>0)
+              {
+                  
+                  [[AuthAPIClient sharedClient] refreshTokenWithSuccess:^(AFOAuthCredential *newCredential){
+                      
+                      //NSLog(@"Access token refreshed");
+                      //[weakself updateCredential:newCredential];
+                      NSLog(@"Update serializer token string value");
+                      [weakSelf updateCredential:newCredential];
+                      retryCounter--;
+                      AFHTTPRequestOperation *retryOperation = [self retryRequestForOperation:operation];
+                      [retryOperation setCompletionBlockWithSuccess:processSuccessBlock
+                                                            failure:processFailureBlock];
+                      
+                      NSLog(@"Retry operation starting..with retry counter:%ld",(long)retryCounter);
+                      
+                      [retryOperation start];
+                      
+                  }failure:^(NSError *error){
+                      NSLog(@"Failed to refresh token");
+                  }];
+              }
+          }
+      }];
+
+    
+}
+
 //-(void)removeTokenAndLogoutUser{
 //    
 //    if ([[AuthAPIClient sharedClient] retrieveCredential])
@@ -182,7 +233,7 @@
     }
     
     retryCount--;
-    NSString *pdfUrlString = [NSString stringWithFormat:@"%@/Report?accessionNumber=%@",kBaseURL,AccessionNo];
+    NSString *pdfUrlString = [NSString stringWithFormat:@"%@Report?accessionNumber=%@",kBaseURL,AccessionNo];
     
     //AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"VetViewID"];
     __block BOOL downloaded=NO;
@@ -226,6 +277,8 @@
             {
                 downloaded=NO;
                 NSHTTPURLResponse *httpResponse=(NSHTTPURLResponse *) response;
+                NSLog(@"The status code got back is :%ld",(long)httpResponse.statusCode);
+                
                 if (httpResponse.statusCode==401)
                 {
                 NSLog(@"Refresh Credentials....as we got back 401 unauthorized");
@@ -243,7 +296,13 @@
                 }
                 else
                 {
-                    NSLog(@"Something else went wrong while downloading the file%@",error);
+                    completionBlock(false);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while downloading the file" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alertView show];
+                        
+                    });
+                   
                 }
             }
         }];

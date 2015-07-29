@@ -620,11 +620,46 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     }
 }
 
+- (NSString * ) getCurrentAccessionForIndexPath: (NSIndexPath *) indexPath {
+    NSDictionary * cellAccNum = nil;
+    if (self.searchDisplayController.active)
+        cellAccNum=[self.filteredAccList objectAtIndex:indexPath.row];
+    else
+        cellAccNum=[self.accessionList objectAtIndex:indexPath.row];
+    
+    return [cellAccNum objectForKey:@"AccessionNo"];
+}
+
+- (NSString *) accessionValidForReport:(NSString *)accNum
+{
+    __block NSString * accessionValidMessage=@"Failure to View Report";
+    HttpClient *client = [HttpClient sharedHTTPClient];
+    [client validateAccessionFor:accNum WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Value got back from validate call is %@",responseObject);
+        if (operation.response.statusCode==200)
+        {
+            NSLog(@"Accession is valid..so set success");
+            accessionValidMessage =@"Success";
+        }
+        if (operation.response.statusCode==400)
+        {
+            accessionValidMessage=[responseObject objectForKey:@"Message"];
+        }
+    } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        accessionValidMessage= @"Unknown error while downloading file";
+       
+    }];
+    
+    return accessionValidMessage;
+}
 
 #pragma Mark -- AccCellDelegate
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
-    [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
+    //if ([([self accessionValidForReport:[self getCurrentAccessionForIndexPath:indexPath]]) isEqual:@"Success"])
+        
+        [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
 }
 
 -(void) accessionaddtestFor:(NSIndexPath *)indexPath{

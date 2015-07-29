@@ -29,6 +29,10 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
 
 //- (void) removeTokenAndLogoutUser;
 
+- (void) validateAccessionFor:(NSString *) accNum
+             WithSuccessBlock:(ApiClientSuccess)successBlock
+              andFailureBlock:(ApiClientFailure)failureBlock;
+
 - (void) downloadReportForAccession:(NSString *)AccessionNo
                    WithRetryCounter:(int) retryCount
                 WithCompletionBlock:(CustomCompletionBlock)completionBlock;

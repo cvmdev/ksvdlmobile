@@ -105,6 +105,11 @@ const int retryCount=2;
             [SVProgressHUD dismiss];
 
         }
+        else
+        {
+            //There was some problem lets dismiss the loading status..
+            [SVProgressHUD dismiss];
+        }
     }];
 }
 
