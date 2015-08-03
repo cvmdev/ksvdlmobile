@@ -56,7 +56,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {

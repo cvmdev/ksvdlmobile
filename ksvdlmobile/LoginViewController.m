@@ -44,7 +44,8 @@
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"LogintoHome" sender:sender];
 }
 
 - (IBAction)loginBtn:(id)sender {
