@@ -18,6 +18,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"30", @"accession_restrict",
+                                 nil];
+    
+    [defaults registerDefaults:appDefaults];
+    [defaults synchronize];
+    
     /*Navigation bar UI changes - begin */
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader.png"] forBarMetrics:UIBarMetricsDefault];

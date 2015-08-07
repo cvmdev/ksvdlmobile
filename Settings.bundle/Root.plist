@@ -40,6 +40,16 @@
                 <key>Type</key>
                 <string>PSToggleSwitchSpecifier</string>
             </dict>
+            <dict>
+                <key>DefaultValue</key>
+                <string>30</string>
+                <key>Key</key>
+                <string>accession_restrict</string>
+                <key>Title</key>
+                <string>Number of Accessions to display</string>
+                <key>Type</key>
+                <string>PSTextFieldSpecifier</string>
+            </dict>
         </array>
         <key>StringsTable</key>
         <string>Root</string>

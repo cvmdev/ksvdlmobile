@@ -26,6 +26,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 {
     [super viewDidLoad];
     
+    /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
+    NSUserDefaults *myDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *accessionrestrict         = [myDefaults objectForKey:@"accession_restrict"];
+    NSLog(@"The restriction for accession table is %@",accessionrestrict);
+    /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
+    
     _barButton1.target = self.revealViewController;
     _barButton1.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
