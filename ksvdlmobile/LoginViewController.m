@@ -77,7 +77,8 @@
                     
             [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
                                         success:^(AFOAuthCredential *credential) {
-                                                                 
+                                           
+                                            /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
                                                 {
                                                 UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -89,11 +90,11 @@
                                                 [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
                                                   }
                                                                  
-                                                    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                  [[NSNotificationCenter defaultCenter] addObserver:self
                                                     selector:@selector(tokenAvailableNotification:)
                                                     name:@"NEW_TOKEN_AVAILABLE"
                                                     object:nil];
-                                                                 
+                                            /*Push Notifications changes end--*/
                                                     NSLog(@"Token:%@",credential.accessToken);
                                                                  
                                                     [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
@@ -102,7 +103,7 @@
                                                     [SVProgressHUD dismiss];
                                                                  [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
                                                                  
-                                                                 NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
+                                                    NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
                                                                  [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
                                                                  
                                                                  //At this point show the next screen
@@ -124,6 +125,7 @@
     }
 }
 
+/*On Allowing push notifications - output the device token*/
 - (void)tokenAvailableNotification:(NSNotification *)notification {
     NSString *token = (NSString *)notification.object;
     NSLog(@"new token available : %@", token);

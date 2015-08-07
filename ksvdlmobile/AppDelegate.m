@@ -18,19 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-   /* Push Notifications*/
-   /* if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }*/
-    
-    /*Push Notifications*/
-    
     /*Navigation bar UI changes - begin */
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader.png"] forBarMetrics:UIBarMetricsDefault];
@@ -47,10 +34,7 @@
     return YES;
 }
 
-/*- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"Did Register for Remote Notifications with Device Token (%@)", deviceToken);
-}*/
-
+/*Push the device token from Appdelegate to the login view cotroller*/
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -63,10 +47,10 @@
     }
 }
 
+/* Failed to Register for Remote Notifications */
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Did Fail to Register for Remote Notifications");
     NSLog(@"%@, %@", error, error.localizedDescription);
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
