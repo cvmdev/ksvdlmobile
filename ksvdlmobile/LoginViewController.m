@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "GlobalConstants.h"
 #import "HttpClient.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -19,9 +20,11 @@
 @implementation LoginViewController
 //@synthesize userText=_userText;
 //@synthesize userPwd=_userPwd;
+//AppDelegate *appdelegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //appdelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.userText.delegate=self;
     self.userPwd.delegate=self;
     
@@ -35,6 +38,12 @@
     self.navigationItem.hidesBackButton = YES;
     UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     self.navigationItem.leftBarButtonItem=backBtn;
+}
+
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Did Fail to Register for Remote Notifications");
+    NSLog(@"%@, %@", error, error.localizedDescription);
     
 }
 
@@ -50,28 +59,47 @@
 
 - (IBAction)loginBtn:(id)sender {
     
+    if ([UIApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    
        NSLog(@"The username is %@",_userText.text);
         
        if ([_userText.text length]!=0 && [_userPwd.text length]!=0)
        {
-           
-                   [SVProgressHUD show];
-           
+            [SVProgressHUD show];
                     
-           
-                    
-                    //AFOAuth2Client *oauthClient = [AFOAuth2Client clientWithBaseURL:baseURL clientID:@"vdliosapp" secret:@"somedummy"];
-                    
-                    [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
-                                                             success:^(AFOAuthCredential *credential) {
+            [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
+                                        success:^(AFOAuthCredential *credential) {
                                                                  
-                                                          
-                                                                 NSLog(@"Token:%@",credential.accessToken);
+                                        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+                                                {
+                                                UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+                                                [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+                                                [[UIApplication sharedApplication] registerForRemoteNotifications];
+                                                    }
+                                                else
+                                                 {
+                                                [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+                                                  }
                                                                  
-                                                                 [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
+                                                    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                    selector:@selector(tokenAvailableNotification:)
+                                                    name:@"NEW_TOKEN_AVAILABLE"
+                                                    object:nil];
+                                                                 
+                                                    NSLog(@"Token:%@",credential.accessToken);
+                                                                 
+                                                    [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
                                                                  [[HttpClient sharedHTTPClient] updateCredential:credential];
                                                                  
-                                                                 [SVProgressHUD dismiss];
+                                                    [SVProgressHUD dismiss];
                                                                  [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
                                                                  
                                                                  NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
@@ -90,23 +118,19 @@
                         
                                                              }];
        }
-        
-                                        //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                                        //    NSDictionary *params = @{@"grant_type":@"password",
-                                        //                             @"userName":@"pravs",
-                                        //                             @"password":@"pravs",
-                                        //                             @"client_id":@"vdliosapp"};
-                                        //    [manager POST:@"http://129.130.128.31/TestProjects/TestAuthAPI/oauth2/token" parameters:params
-                                        //          success:^(AFHTTPRequestOperation *operation,id responseObject){
-                                        //              NSLog(@"JSON:%@",responseObject);
-                                        //          }
-                                        //          failure:^(AFHTTPRequestOperation *operation,NSError * error){
-                                        //             NSLog(@"Error:%@",error);
-                                        //          }];
     else
     {
         [LoginViewController showAlert:@"Please Enter Both Username and Password"];
     }
+}
+
+- (void)tokenAvailableNotification:(NSNotification *)notification {
+    NSString *token = (NSString *)notification.object;
+    NSLog(@"new token available : %@", token);
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
