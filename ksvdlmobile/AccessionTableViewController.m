@@ -290,7 +290,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
             NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
             NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
-            [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, ulLength)];//TextColor
+            [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
             [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(0, ulLength)];//Underline color
             [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
             //cell.testInfoLabel.text=fulltestString;
@@ -527,7 +527,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        
+        //cell.backgroundView.contentMode=UIViewContentModeLeft;
+
         
         
         
@@ -553,6 +554,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
+        //cell.backgroundView.contentMode=UIViewContentModeTop | UIViewContentModeLeft;
+
         
     }
     if ([accStatus isEqualToString:@"Finalized"])
@@ -576,7 +579,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeTop;
+        //cell.backgroundView.contentMode=UIViewContentModeLeft | UIViewContentModeTop;
     }
     
 }
