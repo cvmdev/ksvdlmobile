@@ -527,7 +527,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        //cell.backgroundView.contentMode=UIViewContentModeLeft;
+        cell.backgroundView.contentMode=UIViewContentModeLeft;
 
         
         
@@ -554,7 +554,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        //cell.backgroundView.contentMode=UIViewContentModeTop | UIViewContentModeLeft;
+        cell.backgroundView.contentMode=UIViewContentModeTop | UIViewContentModeLeft;
 
         
     }
@@ -579,7 +579,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        //cell.backgroundView.contentMode=UIViewContentModeLeft | UIViewContentModeTop;
+        cell.backgroundView.contentMode=UIViewContentModeLeft | UIViewContentModeTop;
     }
     
 }
