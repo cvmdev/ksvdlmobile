@@ -2,7 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+<<<<<<< HEAD
+      "scale" : "1x",
+      "filename" : "Add_Test_Button.png"
+=======
       "scale" : "1x"
+>>>>>>> origin/master
     },
     {
       "idiom" : "universal",
