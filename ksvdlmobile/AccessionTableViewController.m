@@ -576,7 +576,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        cell.autoresizesSubviews=false;
+        cell.backgroundView.contentMode=UIViewContentModeTop;
     }
     
 }
