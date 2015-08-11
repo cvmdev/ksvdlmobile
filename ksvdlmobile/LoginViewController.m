@@ -36,9 +36,7 @@
     [self.barButton2 setAction: @selector( rightRevealToggle: )];
     
     self.navigationItem.hidesBackButton = YES;
-    UIImage *temp = [[UIImage imageNamed:@"home"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithImage:temp style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
-   // backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal;
+    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     self.navigationItem.leftBarButtonItem=backBtn;
 }
 

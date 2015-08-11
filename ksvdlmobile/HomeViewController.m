@@ -26,8 +26,6 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-//    self.view.backgroundColor = [UIColor clearColor];
     self.navigationItem.hidesBackButton = YES;
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
      _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/fb-320x100.jpg"]]];

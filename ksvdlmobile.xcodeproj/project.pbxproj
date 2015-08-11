@@ -1006,7 +1006,7 @@
 				INFOPLIST_FILE = ksvdlmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "39c4f853-994e-40ec-8562-dda219a247b9";
+				PROVISIONING_PROFILE = "bfdb0e0d-302c-43f9-bb0d-fce1f0153609";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1021,7 +1021,7 @@
 				INFOPLIST_FILE = ksvdlmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "39c4f853-994e-40ec-8562-dda219a247b9";
+				PROVISIONING_PROFILE = "bfdb0e0d-302c-43f9-bb0d-fce1f0153609";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

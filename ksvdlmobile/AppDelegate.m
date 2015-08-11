@@ -16,7 +16,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     // Override point for customization after application launch.
     
     /*Initialise for accession restrict in notification settings*/
@@ -30,10 +29,6 @@
     
     /*Navigation bar UI changes - begin */
     
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader"] forBarMetrics:UIBarMetricsDefault];
     
     NSShadow *shadow = [[NSShadow alloc] init];
