@@ -16,4 +16,5 @@
     extern NSString *const kClientSecret;
     extern NSString *const kVDLYoutubeURL;
     extern NSString *const kVDLTestFeesURL;
+    extern NSString *const kVDLDeviceTokenString;
 @end

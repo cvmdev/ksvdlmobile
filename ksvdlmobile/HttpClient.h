@@ -37,5 +37,9 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
                    WithRetryCounter:(int) retryCount
                 WithCompletionBlock:(CustomCompletionBlock)completionBlock;
 
+- (void) addDeviceToken: (NSString *) dToken
+       WithSuccessBlock:(ApiClientSuccess)successBlock
+        andFailureBlock:(ApiClientFailure)failureBlock;
+
 -(void) updateCredential:(AFOAuthCredential *)credential;
 @end

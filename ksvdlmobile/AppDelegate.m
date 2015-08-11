@@ -29,7 +29,7 @@
     
     /*Navigation bar UI changes - begin */
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader"] forBarMetrics:UIBarMetricsDefault];
     
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
