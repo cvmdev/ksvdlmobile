@@ -36,12 +36,6 @@
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
-    
-    //The following commented by Praveen..I think we need to have a back button on this page
-//    self.navigationItem.hidesBackButton = YES;
-//    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
-//    self.navigationItem.leftBarButtonItem=backBtn;
-    
 }
 
 - (void)didReceiveMemoryWarning {
