@@ -21,4 +21,5 @@ NSString *const kClientId=@"vdliosapp";
 NSString *const kClientSecret=@"dummy";
 NSString *const kVDLYoutubeURL=@"https://www.youtube.com/channel/UCtx-lIIXqj5PAMQYryXaRhA";
 NSString *const kVDLTestFeesURL=@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul";
+NSString *const kVDLDeviceTokenString=@"ksvdldevicetoken";
 @end

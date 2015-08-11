@@ -30,7 +30,10 @@
     
     /*Navigation bar UI changes - begin */
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader"] forBarMetrics:UIBarMetricsDefault];
     
     NSShadow *shadow = [[NSShadow alloc] init];

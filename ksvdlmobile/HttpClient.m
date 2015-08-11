@@ -224,6 +224,51 @@
 //}
 
 
+- (void) addDeviceToken:(NSString *)dToken WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
+    
+    __block int retryCounter=1;
+    void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
+        successBlock(operation,responseObject);
+    };
+    
+    void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (operation.response.statusCode == 500) {
+            failureBlock(operation,error);
+        }
+    };
+
+   
+    //NSString *validateAccession = [NSString stringWithFormat:@"ValidateAccession?accessionNumber=%@",accNum];
+    NSString *addDeviceToken = [NSString stringWithFormat:@"RegisterIOSDevice?deviceToken=%@",dToken];
+    
+    [self GET:addDeviceToken parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          processSuccessBlock(operation, responseObject);
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             processFailureBlock(operation, error);
+          
+              if (retryCounter>0)
+              {
+                  NSLog(@"Something went wrong...lets try one more time to register the token...");
+                 retryCounter--;
+                  AFHTTPRequestOperation *retryOperation = [self retryRequestForOperation:operation];
+                  [retryOperation setCompletionBlockWithSuccess:processSuccessBlock
+                                                        failure:processFailureBlock];
+                  
+                  NSLog(@"Retry operation for adding device token starting..with retry counter:%ld",(long)retryCounter);
+                  
+                  [retryOperation start];
+                      
+              }
+          else
+          {
+              NSLog(@"Registration failed twice .. display error message");
+          }
+          
+      }];
+
+}
+
 -(void) downloadReportForAccession:(NSString *)AccessionNo WithRetryCounter:(int) retryCount WithCompletionBlock:(CustomCompletionBlock)completionBlock{
     
     if(retryCount==0)

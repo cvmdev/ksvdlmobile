@@ -131,6 +131,30 @@
 - (void)tokenAvailableNotification:(NSNotification *)notification {
     NSString *token = (NSString *)notification.object;
     NSLog(@"new token available : %@", token);
+    
+    
+    //Lets go ahead and call the api to add the token
+    
+    HttpClient *client = [HttpClient sharedHTTPClient];
+    
+    [client addDeviceToken:token WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
+    
+        if (operation.response.statusCode==200)
+        {
+            NSLog(@"Registration was a success....");
+            //Store User DevieToken in NSUSerDefaults
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:token forKey:kVDLDeviceTokenString];
+            [userDefaults synchronize];
+            NSLog(@"Added to NSUserDefaults");
+        }
+        
+    } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error while adding device token");
+    }];
+
+    
 }
 
 - (void)dealloc {

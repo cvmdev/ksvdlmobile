@@ -16,12 +16,21 @@
     },
     {
       "idiom" : "ipad",
+<<<<<<< HEAD
       "scale" : "1x",
       "filename" : "KSVDLNavigation_iPad_2048x128.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x"
+=======
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "KSVDLNavigationHeader@3x.png"
+>>>>>>> origin/master
     },
     {
       "idiom" : "watch",

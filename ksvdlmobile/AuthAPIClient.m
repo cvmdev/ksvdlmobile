@@ -46,6 +46,13 @@
     return false;
 }
 
+-(NSString *) getDeviceToken
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString * dToken = [defaults objectForKey:kVDLDeviceTokenString];
+    return dToken;
+}
+
 - (AFOAuthCredential *)retrieveCredential
 {
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kCredentialIdentifier];
@@ -55,11 +62,11 @@
 {
     
       
-    NSString * postLogout = [NSString stringWithFormat:@"Logout?tokenId=%@&appType=IOS",self.retrieveCredential.refreshToken];
+    NSString * postLogout = [NSString stringWithFormat:@"LogoutDevice?tokenId=%@&appType=IOS&deviceToken=%@",self.retrieveCredential.refreshToken,self.getDeviceToken];
     
     [self POST:postLogout parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        NSLog(@"Removed Refresh token..Now deleting from device");
+        NSLog(@"Removed Refresh token and Device Token..Now deleting from device");
       
         [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
         completionBlock(true);
