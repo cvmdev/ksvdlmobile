@@ -48,7 +48,7 @@
     
     //[[HttpClient sharedHTTPClient] removeTokenAndLogoutUser];
     //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
-//    NSLog(@"Credential  Deleted");
+     //NSLog(@"Credential  Deleted");
 }
 
 - (IBAction)testfeessite:(id)sender {

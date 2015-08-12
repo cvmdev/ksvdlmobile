@@ -207,16 +207,16 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         NSLog(@"New called........................................................");
         [cell setBackgroundColor:[UIColor clearColor]];
         
-        CAGradientLayer *grad = [CAGradientLayer layer];
-        grad.frame = cell.bounds;
-        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:153.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:204.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
-        
-        [cell setBackgroundView:[[UIView alloc] init]];
-        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+//        CAGradientLayer *grad = [CAGradientLayer layer];
+//        grad.frame = cell.bounds;
+//        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:153.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:204.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+//        
+//        [cell setBackgroundView:[[UIView alloc] init]];
+//        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
         
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
-        cell.statusLabel.hidden=false;
+        cell.statusLabel.hidden=TRUE;
         cell.viewreportButton.hidden=TRUE;
         cell.addtestButton.hidden=false;
     }
@@ -226,36 +226,37 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         //cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
         [cell setBackgroundColor:[UIColor clearColor]];
         
-        CAGradientLayer *grad = [CAGradientLayer layer];
-        grad.frame = cell.bounds;
-        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
-        
-        [cell setBackgroundView:[[UIView alloc] init]];
-        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+//        CAGradientLayer *grad = [CAGradientLayer layer];
+//        grad.frame = cell.bounds;
+//        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+//        
+//        [cell setBackgroundView:[[UIView alloc] init]];
+//        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
         
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:158.0/255.0 green:11.0/255.0 blue:15.0/255.0 alpha:1.0];
-        cell.viewreportButton.hidden=TRUE;
+        cell.viewreportButton.hidden=false;
         cell.addtestButton.hidden=false;
-        //  cell.statusLabel.hidden=false;
+        cell.statusLabel.hidden=TRUE;
     }
     
     if ([accStatus isEqualToString:@"Review"])
     {
         //cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
         //cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
-        [cell setBackgroundColor:[UIColor clearColor]];
-        
-        CAGradientLayer *grad = [CAGradientLayer layer];
-        grad.frame = cell.bounds;
-        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
-        
-        [cell setBackgroundView:[[UIView alloc] init]];
-        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+//        [cell setBackgroundColor:[UIColor clearColor]];
+//        
+//        CAGradientLayer *grad = [CAGradientLayer layer];
+//        grad.frame = cell.bounds;
+//        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+//        
+//        [cell setBackgroundView:[[UIView alloc] init]];
+//        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
         
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
-        cell.addtestButton.hidden=false;
+        cell.addtestButton.hidden=TRUE;
+        cell.viewreportButton.hidden=false;
     }
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
@@ -481,10 +482,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
 }
 
-//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    
-//    return @"ACCESSION STATUS";
-//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel * sectionHeader = [[UILabel alloc] initWithFrame:CGRectZero];
