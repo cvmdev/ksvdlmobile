@@ -101,8 +101,9 @@
 
 -(void)adViewDidReceiveAd:(GADBannerView *)adView{
     NSLog(@"Ad Recieved");
-    [UIView animateWithDuration:1.0 animations:^{adView.frame = CGRectMake(0.0, 350.0, adView.frame.size.width, adView.frame.size.height);
-     }];
+  //  [UIView animateWithDuration:1.0 animations:^{adView.frame = CGRectMake(0.0, 350.0, adView.frame.size.width, adView.frame.size.height);
+  //   }];
+    
 }
 
 

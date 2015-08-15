@@ -820,7 +820,7 @@
                                         <constraints>
                                             <constraint firstItem="gnY-28-SI3" firstAttribute="width" secondItem="2OZ-Ov-ZyD" secondAttribute="width" multiplier="45%" id="1o5-x6-Y45"/>
                                             <constraint firstItem="2OZ-Ov-ZyD" firstAttribute="leadingMargin" secondItem="gnY-28-SI3" secondAttribute="leadingMargin" id="3Df-jb-Dfm"/>
-                                            <constraint firstItem="2OZ-Ov-ZyD" firstAttribute="top" secondItem="LSt-oR-G3D" secondAttribute="top" constant="10" id="8pv-RG-E0l"/>
+                                            <constraint firstItem="2OZ-Ov-ZyD" firstAttribute="top" secondItem="LSt-oR-G3D" secondAttribute="top" constant="20" id="8pv-RG-E0l"/>
                                             <constraint firstItem="2OZ-Ov-ZyD" firstAttribute="centerX" secondItem="LSt-oR-G3D" secondAttribute="centerX" id="AKb-q4-e03"/>
                                             <constraint firstItem="DUp-lx-SA5" firstAttribute="width" secondItem="gnY-28-SI3" secondAttribute="width" id="BnA-3W-ss4"/>
                                             <constraint firstAttribute="height" constant="500" id="FqE-VG-Dbd"/>
