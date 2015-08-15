@@ -29,8 +29,21 @@
     
     /*Navigation bar UI changes - begin */
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader"] forBarMetrics:UIBarMetricsDefault];
+   // [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader"] forBarMetrics:UIBarMetricsDefault];
+    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(15, 80, 289, 153)];
+    scroll.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
     
+    UIImage *NavigationPortraitBackground = [[UIImage imageNamed:@"KSVDLNavigationHeader"]
+                                             resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    UIImage *NavigationLandscapeBackground = [[UIImage imageNamed:@"KSVDLNavigationHeader"]
+                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 40.0, 40.0)resizingMode:UIImageResizingModeStretch];
+    
+    [[UINavigationBar appearance] setBackgroundImage:NavigationPortraitBackground forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:NavigationLandscapeBackground forBarMetrics:UIBarMetricsCompact];
+    
+    
+
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
     shadow.shadowOffset = CGSizeMake(0, 1);

@@ -223,7 +223,7 @@ CGRect IASKCGRectSwap(CGRect rect);
     }
     
 	if (!self.title) {
-		self.title = NSLocalizedString(@"Settings", @"");
+		self.title = NSLocalizedString(@"", @"");
 	}
 	
 	if ([self.settingsStore isKindOfClass:[IASKSettingsStoreUserDefaults class]]) {

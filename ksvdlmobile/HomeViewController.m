@@ -12,6 +12,11 @@
 #import "AuthAPIClient.h"
 #import "HttpClient.h"
 #import "SVWebViewController.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import "appID.h"
+
+
+
 
 @implementation HomeViewController
 
@@ -23,10 +28,46 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/index.html"]];
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.scrollView.contentSize = self.TextcontentView.frame.size;
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    //self.scrollView.contentSize = self.TextcontentView.frame.size;
+    
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.TextcontentView
+                                                                      attribute:NSLayoutAttributeLeading
+                                                                      relatedBy:0
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:10];
+    [self.view addConstraint:leftConstraint];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.TextcontentView
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:0
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                        constant:-10];
+    [self.view addConstraint:rightConstraint];
+    
     self.navigationItem.hidesBackButton = YES;
+    
+    self.bannerView = [[GADBannerView alloc] initWithFrame: CGRectMake(0.0, 0.0, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
+    self.bannerView.adUnitID = MyAdUnit;
+    self.bannerView.delegate = self;
+    [self.bannerView setRootViewController:self];
+    [self.view addSubview:self.bannerView];
+    [self.bannerView loadRequest:[self createRequest]];
+    
+    
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
      _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/fb-320x100.jpg"]]];
     _imageview.userInteractionEnabled = YES;
@@ -49,6 +90,26 @@
     //[[HttpClient sharedHTTPClient] removeTokenAndLogoutUser];
     //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
      //NSLog(@"Credential  Deleted");
+}
+
+
+-(GADRequest *) createRequest{
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:kGADSimulatorID, nil];
+    return request;
+}
+
+-(void)adViewDidReceiveAd:(GADBannerView *)adView{
+    NSLog(@"Ad Recieved");
+    [UIView animateWithDuration:1.0 animations:^{adView.frame = CGRectMake(0.0, 350.0, adView.frame.size.width, adView.frame.size.height);
+     }];
+}
+
+
+
+-(void)adView:(GADBannerView *)view
+didFailToReceiveAdWithError:(GADRequestError *)error{
+    NSLog(@"Failed: %@",[error localizedFailureReason]);
 }
 
 - (IBAction)testfeessite:(id)sender {

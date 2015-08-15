@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     //appdelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.userText.delegate=self;
     self.userPwd.delegate=self;

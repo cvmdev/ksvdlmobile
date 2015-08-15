@@ -22,20 +22,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.TextContentView
+                                                                      attribute:NSLayoutAttributeLeading
+                                                                      relatedBy:0
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:10];
+    [self.view addConstraint:leftConstraint];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.TextContentView
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:0
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                        constant:-10];
+    [self.view addConstraint:rightConstraint];
+
+    
     NSLog(@"Accession Number from previous controller is :%@",self.accessionNumber);
     NSLog(@"Owner Name from previous controller is :%@",self.ownerName);
     
 
    _atlabel.text = [NSString stringWithFormat:@"%@%@",@" Accession Number : ",self.accessionNumber];
    _ownerlabel.text = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
-   _cltext.text=self.clientName;
+    _clientlabel.text = [NSString stringWithFormat:@"%@%@",@" Client Name : ",self.clientName];
+   //_cltext.text=self.clientName;
     
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +89,7 @@
         
         NSString *accnos = [NSString stringWithFormat:@"%@%@",@" <b>Accession Number :</b> ",self.accessionNumber];
         NSString *ownername = [NSString stringWithFormat:@"%@%@",@" <b>Owner Name :</b> ",self.ownerName];
-        NSString *clientnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Client Name :</b> ",_cltext.text];
+        NSString *clientnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Client Name :</b> ",self.clientName];
         NSString *phonetxt = [NSString stringWithFormat:@"%@%@",@" <b>Contact Number :</b> ",_phtext.text];
         NSString *emailtxt = [NSString stringWithFormat:@"%@%@",@" <b>Email :</b> ",_emailtext.text];
         NSString *textnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Test Name Requested :</b> ",_testnametext.text];
@@ -81,7 +101,18 @@
         {
             [mailer setSubject:@"Request to Add tests"];
             
-            NSArray *toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+            NSArray *toRecipients;
+            
+            
+            if([self.accessionNumber hasPrefix:@"R"])
+            {
+               toRecipients = [NSArray arrayWithObject:@"arthisubramanian85@gmail.com"];
+            }
+            else
+            {
+               toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+            }
+            
             [mailer setToRecipients:toRecipients];
             
             NSArray *myStrings = [[NSArray alloc] initWithObjects:prefixtxt, accnos, ownername, clientnametxt, phonetxt, emailtxt, textnametxt, notestxt, suffixtxt, nil];

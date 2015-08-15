@@ -83,6 +83,14 @@
 		CD8820AB1B6F0E7B00CECF56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8820AA1B6F0E7B00CECF56 /* UIKit.framework */; };
 		CD8820AD1B6F0E8700CECF56 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8820AC1B6F0E8700CECF56 /* CoreGraphics.framework */; };
 		CD8820AF1B6F0E9400CECF56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8820AE1B6F0E9400CECF56 /* Foundation.framework */; };
+		CDBD15CB1B7EF26D00B1F0E9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */; };
+		CDBD15CC1B7EF26D00B1F0E9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBD15C91B7EF26D00B1F0E9 /* README.txt */; };
+		CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBD15CA1B7EF26D00B1F0E9 /* README.txt */; };
+		CDBD15CF1B7EF28A00B1F0E9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15CE1B7EF28A00B1F0E9 /* AdSupport.framework */; };
+		CDBD15D11B7EF2A300B1F0E9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D01B7EF2A300B1F0E9 /* CoreData.framework */; };
+		CDBD15D31B7EF2A900B1F0E9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D21B7EF2A900B1F0E9 /* StoreKit.framework */; };
+		CDBD15D51B7EF2D000B1F0E9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D41B7EF2D000B1F0E9 /* SystemConfiguration.framework */; };
+		CDBD15D71B7EF2E300B1F0E9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D61B7EF2E300B1F0E9 /* AudioToolbox.framework */; };
 		CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +258,20 @@
 		CD8820AA1B6F0E7B00CECF56 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CD8820AC1B6F0E8700CECF56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CD8820AE1B6F0E9400CECF56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		CDBD15C41B7EF26D00B1F0E9 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		CDBD15C51B7EF26D00B1F0E9 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		CDBD15C61B7EF26D00B1F0E9 /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
+		CDBD15C71B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		CDBD15C81B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		CDBD15C91B7EF26D00B1F0E9 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		CDBD15CA1B7EF26D00B1F0E9 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		CDBD15CE1B7EF28A00B1F0E9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		CDBD15D01B7EF2A300B1F0E9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CDBD15D21B7EF2A900B1F0E9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CDBD15D41B7EF2D000B1F0E9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CDBD15D61B7EF2E300B1F0E9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CDBD15D81B7EF5A300B1F0E9 /* appID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = appID.h; sourceTree = "<group>"; };
 		CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DE428B8D1A6416EADEFDBF9C /* Pods-ksvdlmobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ksvdlmobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ksvdlmobile/Pods-ksvdlmobile.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,11 +283,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDBD15D71B7EF2E300B1F0E9 /* AudioToolbox.framework in Frameworks */,
+				CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */,
+				CDBD15D51B7EF2D000B1F0E9 /* SystemConfiguration.framework in Frameworks */,
+				CDBD15D31B7EF2A900B1F0E9 /* StoreKit.framework in Frameworks */,
+				CDBD15D11B7EF2A300B1F0E9 /* CoreData.framework in Frameworks */,
+				CDBD15CF1B7EF28A00B1F0E9 /* AdSupport.framework in Frameworks */,
 				CD8820AF1B6F0E9400CECF56 /* Foundation.framework in Frameworks */,
 				CD8820AD1B6F0E8700CECF56 /* CoreGraphics.framework in Frameworks */,
 				CD8820AB1B6F0E7B00CECF56 /* UIKit.framework in Frameworks */,
-				CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */,
 				59649EF71AF129D300E5F1AD /* Security.framework in Frameworks */,
+				CDBD15CB1B7EF26D00B1F0E9 /* GoogleMobileAds.framework in Frameworks */,
 				50ECDF1CEE7F3CC3C451B39F /* libPods-ksvdlmobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +320,11 @@
 		0854645FADD96E551F347CDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDBD15D61B7EF2E300B1F0E9 /* AudioToolbox.framework */,
+				CDBD15D41B7EF2D000B1F0E9 /* SystemConfiguration.framework */,
+				CDBD15D21B7EF2A900B1F0E9 /* StoreKit.framework */,
+				CDBD15D01B7EF2A300B1F0E9 /* CoreData.framework */,
+				CDBD15CE1B7EF28A00B1F0E9 /* AdSupport.framework */,
 				CD8820AE1B6F0E9400CECF56 /* Foundation.framework */,
 				CD8820AC1B6F0E8700CECF56 /* CoreGraphics.framework */,
 				CD8820AA1B6F0E7B00CECF56 /* UIKit.framework */,
@@ -320,6 +353,7 @@
 		59649EBC1AEF1E0A00E5F1AD = {
 			isa = PBXGroup;
 			children = (
+				CDBD15C11B7EF22F00B1F0E9 /* AdMob */,
 				CD8820691B6F0E5A00CECF56 /* InAppSettingsKit */,
 				59649EC71AEF1E0A00E5F1AD /* ksvdlmobile */,
 				59649EE11AEF1E0A00E5F1AD /* ksvdlmobileTests */,
@@ -352,6 +386,7 @@
 				59649ED71AEF1E0A00E5F1AD /* LaunchScreen.xib */,
 				59649EC81AEF1E0A00E5F1AD /* Supporting Files */,
 				CD8820671B6F0DB600CECF56 /* Settings.bundle */,
+				CDBD15D81B7EF5A300B1F0E9 /* appID.h */,
 			);
 			path = ksvdlmobile;
 			sourceTree = "<group>";
@@ -620,6 +655,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CDBD15C11B7EF22F00B1F0E9 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */,
+				CDBD15C31B7EF26D00B1F0E9 /* Mediation Adapters */,
+				CDBD15CA1B7EF26D00B1F0E9 /* README.txt */,
+			);
+			name = AdMob;
+			sourceTree = "<group>";
+		};
+		CDBD15C31B7EF26D00B1F0E9 /* Mediation Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				CDBD15C41B7EF26D00B1F0E9 /* GADMAdNetworkAdapterProtocol.h */,
+				CDBD15C51B7EF26D00B1F0E9 /* GADMAdNetworkConnectorProtocol.h */,
+				CDBD15C61B7EF26D00B1F0E9 /* GADMEnums.h */,
+				CDBD15C71B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
+				CDBD15C81B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
+				CDBD15C91B7EF26D00B1F0E9 /* README.txt */,
+			);
+			path = "Mediation Adapters";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -734,10 +792,12 @@
 				CD8820A41B6F0E5A00CECF56 /* IASKLocalizable.strings in Resources */,
 				59ECE3A11B276D9900F38902 /* Bookmark@3x.psd in Resources */,
 				59A024C01B4D88DF00B3A0F7 /* SVWebViewController.strings in Resources */,
+				CDBD15CC1B7EF26D00B1F0E9 /* README.txt in Resources */,
 				59ECE39D1B276D9900F38902 /* Bookmark.psd in Resources */,
 				59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */,
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,
 				59ECE3AB1B276D9900F38902 /* PageList@2x.psd in Resources */,
+				CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */,
 				59649ED61AEF1E0A00E5F1AD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1003,10 +1063,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ksvdlmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "bfdb0e0d-302c-43f9-bb0d-fce1f0153609";
+				PROVISIONING_PROFILE = "39c4f853-994e-40ec-8562-dda219a247b9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1018,10 +1082,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ksvdlmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "bfdb0e0d-302c-43f9-bb0d-fce1f0153609";
+				PROVISIONING_PROFILE = "39c4f853-994e-40ec-8562-dda219a247b9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
