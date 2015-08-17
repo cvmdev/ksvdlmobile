@@ -3,11 +3,12 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "Home_TestFees_Link_height100.png"
+      "filename" : "Home_TestFees_Link_161x100.png"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Home_TestFees_Link_290x180.png"
     },
     {
       "idiom" : "iphone",

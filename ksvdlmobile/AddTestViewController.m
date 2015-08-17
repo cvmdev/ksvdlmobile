@@ -22,6 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+   // self.navigationItem.backBarButtonItem.image
+    
+   /* UIImage *temp = [[UIImage imageNamed:@"back"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithImage:temp style:UIBarButtonItemStyleDone target:self action:@selector(popToBack)];
+    self.navigationItem.leftBarButtonItem=backBtn;
+    */
+  
     
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.TextContentView
                                                                       attribute:NSLayoutAttributeLeading
@@ -66,6 +73,13 @@
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+-(void)popToBack
+{
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 /*
 #pragma mark - Navigation

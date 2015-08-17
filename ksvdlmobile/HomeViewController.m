@@ -15,9 +15,6 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "appID.h"
 
-
-
-
 @implementation HomeViewController
 
 //Open the promotion URL
@@ -40,6 +37,9 @@
     
     //self.scrollView.contentSize = self.TextcontentView.frame.size;
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+    
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.TextcontentView
                                                                       attribute:NSLayoutAttributeLeading
                                                                       relatedBy:0
@@ -60,7 +60,12 @@
     
     self.navigationItem.hidesBackButton = YES;
     
-    self.bannerView = [[GADBannerView alloc] initWithFrame: CGRectMake(0.0, 0.0, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
+    //self.bannerView = [[GADBannerView alloc] initWithFrame: CGRectMake(0.0, 0.0, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
+    
+   
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+   
+    
     self.bannerView.adUnitID = MyAdUnit;
     self.bannerView.delegate = self;
     [self.bannerView setRootViewController:self];
@@ -92,6 +97,15 @@
      //NSLog(@"Credential  Deleted");
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInt
+                               duration:(NSTimeInterval)duration {
+    if (UIInterfaceOrientationIsLandscape(toInt)) {
+        self.bannerView.adSize = kGADAdSizeSmartBannerLandscape;
+    } else {
+        self.bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    }
+}
+
 
 -(GADRequest *) createRequest{
     GADRequest *request = [GADRequest request];
@@ -103,14 +117,13 @@
     NSLog(@"Ad Recieved");
   //  [UIView animateWithDuration:1.0 animations:^{adView.frame = CGRectMake(0.0, 350.0, adView.frame.size.width, adView.frame.size.height);
   //   }];
-    
 }
 
 
 
 -(void)adView:(GADBannerView *)view
 didFailToReceiveAdWithError:(GADRequestError *)error{
-    NSLog(@"Failed: %@",[error localizedFailureReason]);
+    NSLog(@"Failed Ad: %@",[error localizedFailureReason]);
 }
 
 - (IBAction)testfeessite:(id)sender {
