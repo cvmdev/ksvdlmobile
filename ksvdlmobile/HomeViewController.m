@@ -35,8 +35,7 @@
 {
     [super viewDidLoad];
     
-    //self.scrollView.contentSize = self.TextcontentView.frame.size;
-    
+    /*The following couple of lines of code are remove the BACK botton text from the help video and test and fees page*/
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
