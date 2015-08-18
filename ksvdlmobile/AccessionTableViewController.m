@@ -17,7 +17,7 @@ const int kLoadingCellTag = 2015;
 NSString * const simpleTableIdentifier = @"AccessionCell";
 
 @implementation AccessionTableViewController{
-    NSString * clientBusinessName;
+    //NSString * clientBusinessName;
 }
 
 @synthesize accessionList,selectedIndex;
@@ -123,16 +123,17 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [client fetchAccessionsForPageNo:_currentPage WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
-            //_totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
+            _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
             
-            _totalPages = [[[[responseObject objectForKey:@"AccList"]objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
+            //_totalPages = [[[[responseObject objectForKey:@"AccList"]objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
             NSLog(@"Total Pages: %ld",(long)_totalPages);
             NSLog(@"The data is %@",responseObject);
             
-            clientBusinessName = [responseObject objectForKey:@"ClientName"];
+            //clientBusinessName = [responseObject objectForKey:@"ClientName"];
             
-            [self.accessionList addObjectsFromArray:[[responseObject objectForKey:@"AccList"]objectForKey:@"Accessions"]];
+            //[self.accessionList addObjectsFromArray:[[responseObject objectForKey:@"AccList"]objectForKey:@"Accessions"]];
             
+            [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
             [self.tableView reloadData];
             [SVProgressHUD dismiss];
             
@@ -648,7 +649,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         AddTestViewController *destViewController = segue.destinationViewController;
         destViewController.accessionNumber = [cellDetails objectForKey:@"AccessionNo"];
         destViewController.ownerName = [cellDetails objectForKey:@"OwnerName"];
-        destViewController.clientName=clientBusinessName;
+        //destViewController.clientName=clientBusinessName;
+        destViewController.clientName=[cellDetails objectForKey:@"ClinicName"];
     }
 }
 
