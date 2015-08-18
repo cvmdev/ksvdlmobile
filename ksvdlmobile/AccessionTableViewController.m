@@ -26,6 +26,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 {
     [super viewDidLoad];
     
+    /*The following couple of lines of code are remove the BACK botton text from the ADD TESTS page*/
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+    
     /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
     NSUserDefaults *myDefaults = [NSUserDefaults standardUserDefaults];
     NSString *accessionrestrict         = [myDefaults objectForKey:@"accession_restrict"];
@@ -194,6 +198,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         [cell setBackgroundView:[[UIView alloc] init]];
         [cell.backgroundView.layer insertSublayer:grad atIndex:0];
         
+        cell.finalizedDateLabel.hidden=false;
         cell.viewreportButton.hidden=false;
         cell.addtestButton.hidden = true;
         
@@ -573,6 +578,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 //        
 //        [cell setBackgroundView:self.gradientView];
 //        //[cell.backgroundView.layer insertSublayer:grad atIndex:0];
+        
+        
         UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Finalized"];
         
         UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:backGround];

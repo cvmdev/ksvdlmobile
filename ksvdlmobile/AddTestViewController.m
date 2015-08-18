@@ -21,8 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.TextContentView
                                                                       attribute:NSLayoutAttributeLeading
                                                                       relatedBy:0
@@ -66,6 +65,13 @@
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+-(void)popToBack
+{
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 /*
 #pragma mark - Navigation

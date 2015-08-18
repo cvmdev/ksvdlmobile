@@ -9,9 +9,7 @@
 #ifndef ksvdlmobile_appID_h
 #define ksvdlmobile_appID_h
 
-#define MyAdUnit @"ca-app-pub-3940256099942544/6300978111";
-
-
+#define MyAdUnit @"ca-app-pub-9389010818687634/8260541905";
 
 
 #endif
