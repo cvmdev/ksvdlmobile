@@ -26,6 +26,7 @@
     @property (nonatomic,weak) IBOutlet UILabel *caseCoordinatorLabel;
     @property (nonatomic,weak) IBOutlet UILabel *referenceNumberLabel;
     @property (nonatomic,weak) IBOutlet UILabel *testInfoLabel;
+    @property (nonatomic,weak) IBOutlet UILabel *dvmLabel;
 - (IBAction)viewReport:(id)sender;
 - (IBAction)addTest:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *addtestButton;

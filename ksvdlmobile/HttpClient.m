@@ -89,7 +89,21 @@
                       [retryOperation start];
                       
                   }failure:^(NSError *error){
-                      NSLog(@"Failed to refresh token");
+                      NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                      NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+                      NSLog(@"The dictionary has :%@",serializedData);
+                      if ([serializedData objectForKey:@"error"])
+                          {
+                              NSString * errorReason = [serializedData objectForKey:@"error"];
+                              if ([errorReason isEqualToString:@"invalid_grant"])
+                              {
+                                  NSLog(@"Failed to refresh token");
+                                  [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+                                  NSLog(@"Credential  Deleted");
+
+                                  failureBlock(operation,error);
+                              }
+                          }
                   }];
               }
           }

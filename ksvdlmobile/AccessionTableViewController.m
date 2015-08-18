@@ -134,7 +134,9 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             
             [SVProgressHUD dismiss];
             
-            NSLog(@"Some Error while fetching data");
+            NSLog(@"Some Error while fetching data--possibly a problem while refreshing credentials");
+            [self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
+            
         }];
         
     }
@@ -197,7 +199,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     if ([accStatus isEqualToString:@"New"])
     {
         
-        NSLog(@"New called........................................................");
+        //NSLog(@"New called........................................................");
         [cell setBackgroundColor:[UIColor clearColor]];
         
         
@@ -288,6 +290,15 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     else
         cell.testInfoLabel.hidden=true;
     
+    if (!([currentAccessionDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
+    {
+        cell.dvmLabel.text= [NSString stringWithFormat:@"DVM :%@",[currentAccessionDict objectForKey:@"RdvmName"]];
+        cell.dvmLabel.hidden=false;
+    }
+    else
+        cell.dvmLabel.hidden=TRUE;
+
+    
     if (!([currentAccessionDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
     {
         cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref #:%@",[currentAccessionDict objectForKey:@"RefNumber"]];
@@ -331,7 +342,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     } else {
         
         if (_currentPage< _totalPages)
-            return self.accessionList.count+ 1;
+           return self.accessionList.count+ 1;
         
         return [self.accessionList count];
     }
@@ -370,6 +381,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             }
             if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
                 currHeightOfCell=currHeightOfCell+20;
+            if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
+                currHeightOfCell=currHeightOfCell+20;
             
         }
         else
@@ -384,6 +397,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                
                 if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
                     currHeightOfCell=currHeightOfCell+20;
+                if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
+                    currHeightOfCell=currHeightOfCell+20;
             }
         
         }
@@ -397,17 +412,35 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     if (self.selectedIndex ==indexPath.row)
     {
         self.selectedIndex=-1;
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        });
         return;
     }
     
     if (self.selectedIndex!=-1){
         NSIndexPath *prevPath = [NSIndexPath indexPathForRow:self.selectedIndex inSection:0];
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
+        });
     }
     
     self.selectedIndex=(int)indexPath.row;
-    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    //[self.tableView beginUpdates];
+    //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    //[self.tableView endUpdates];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        });
+    
+    
 }
 
 
@@ -429,15 +462,15 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     NSDictionary *currCellDict = nil;
     NSString *currCellStatus=nil;
     
-    if([cell.backgroundView.layer.sublayers count] >0)
-    {
-        if([[cell.backgroundView.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]])
-        {
-            
-            [[cell.backgroundView.layer.sublayers objectAtIndex:0] removeFromSuperlayer];
-            
-        }
-    }
+//    if([cell.backgroundView.layer.sublayers count] >0)
+//    {
+//        if([[cell.backgroundView.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]])
+//        {
+//            
+//            [[cell.backgroundView.layer.sublayers objectAtIndex:0] removeFromSuperlayer];
+//            
+//        }
+//    }
     
     
     if (tableView==self.searchDisplayController.searchResultsTableView)
@@ -468,22 +501,24 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel * sectionHeader = [[UILabel alloc] initWithFrame:CGRectZero];
-    sectionHeader.backgroundColor = [UIColor purpleColor];
-    sectionHeader.textAlignment = NSTextAlignmentCenter;
-    sectionHeader.font = [UIFont boldSystemFontOfSize:14];
-    sectionHeader.textColor = [UIColor whiteColor];
-    
-    sectionHeader.text=@"ACCESSION STATUS";
-    
-    return sectionHeader;
-    
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    return 24;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UILabel * sectionHeader = [[UILabel alloc] initWithFrame:CGRectZero];
+//    sectionHeader.backgroundColor = [UIColor purpleColor];
+//    sectionHeader.textAlignment = NSTextAlignmentCenter;
+//    sectionHeader.font = [UIFont boldSystemFontOfSize:14];
+//    sectionHeader.textColor = [UIColor whiteColor];
+//    
+//    sectionHeader.text=@"ACCESSION STATUS";
+//    
+//    return sectionHeader;
+//    
+//}
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    
+//    return 24;
+//}
 
 -(void) styleTableViewCell:(UITableViewCell *) cell forAccessionStatus :(NSString *)accStatus
 {
