@@ -10,6 +10,17 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
+        <dict>
+            <key>DefaultValue</key>
+            <string>USERNAME</string>
+            <key>Key</key>
+            <string>username</string>
+            <key>Title</key>
+            <string>Logged in as:</string>
+            <key>Type</key>
+            <string>PSTitleValueSpecifier</string>
+        </dict>
+        
 		<dict>
 			<key>DefaultValue</key>
 			<true/>

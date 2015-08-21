@@ -17,7 +17,7 @@
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "Home_Accessions_Link_400Width.png"
+      "filename" : "Home_Accessions_Link_290x180-1.png"
     },
     {
       "idiom" : "ipad",
@@ -40,6 +40,7 @@
   ],
   "info" : {
     "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "template-rendering-intent" : "original"
   }
 }

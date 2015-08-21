@@ -35,9 +35,34 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"Google Mobile Ads SDK version: %@", [DFPRequest sdkVersion]);
+    
     /*The following couple of lines of code are remove the BACK botton text from the help video and test and fees page*/
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
+    
+    
+    
+    UIImage *btnimages = [UIImage imageNamed:@"hpaccession"];
+    CGSize buttonSize = CGSizeMake(btnimages.size.width, btnimages.size.height);
+    [_accessionnumber setImage:btnimages forState:UIControlStateNormal];
+    [_accessionnumber setFrame:CGRectMake(0, 0, buttonSize.width, buttonSize.height)];
+    
+    
+    UIImage *testfeesimages = [UIImage imageNamed:@"hptestfees"];
+     CGSize buttonSize2 = CGSizeMake(btnimages.size.width, btnimages.size.height);
+    [_testfeesbutton setImage:testfeesimages forState:UIControlStateNormal];
+   // [_testfeesbutton setContentMode:UIViewContentModeScaleAspectFit];
+    [_testfeesbutton setFrame:CGRectMake(0, 0, buttonSize2.width, buttonSize2.height)];
+    
+    UIImage *helpvideosimages = [UIImage imageNamed:@"hphelpvideos"];
+     CGSize buttonSize3 = CGSizeMake(btnimages.size.width, btnimages.size.height);
+    [_helpvideosbutton setImage:helpvideosimages forState:UIControlStateNormal];
+   // [_helpvideosbutton setContentMode:UIViewContentModeScaleAspectFit];
+    [_helpvideosbutton setFrame:CGRectMake(0, 0, buttonSize3.width, buttonSize3.height)];
+    
+    
+
     
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.TextcontentView
                                                                       attribute:NSLayoutAttributeLeading
@@ -62,18 +87,18 @@
     //self.bannerView = [[GADBannerView alloc] initWithFrame: CGRectMake(0.0, 0.0, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
     
    
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+   /** self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
    
     
     self.bannerView.adUnitID = MyAdUnit;
     self.bannerView.delegate = self;
     [self.bannerView setRootViewController:self];
     [self.view addSubview:self.bannerView];
-    [self.bannerView loadRequest:[self createRequest]];
+    [self.bannerView loadRequest:[self createRequest]]; **/
     
     
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
-     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/fb-320x100.jpg"]]];
+     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://playhousesquare.s3.amazonaws.com/img/Banners_SpecialEvents.png"]]];
     _imageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromotionURL:)];
     tapped.numberOfTapsRequired = 1;

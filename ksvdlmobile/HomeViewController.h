@@ -16,6 +16,9 @@
 @interface HomeViewController : UIViewController <GADBannerViewDelegate> {
     GADBannerView *bannerView_;
 }
+@property (weak, nonatomic) IBOutlet UIButton *accessionnumber;
+@property (weak, nonatomic) IBOutlet UIButton *testfeesbutton;
+@property (weak, nonatomic) IBOutlet UIButton *helpvideosbutton;
 
 @property (nonatomic,strong)GADBannerView *bannerView;
 -(GADRequest *)createRequest;

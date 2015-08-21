@@ -83,6 +83,10 @@
 		CD8820AB1B6F0E7B00CECF56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8820AA1B6F0E7B00CECF56 /* UIKit.framework */; };
 		CD8820AD1B6F0E8700CECF56 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8820AC1B6F0E8700CECF56 /* CoreGraphics.framework */; };
 		CD8820AF1B6F0E9400CECF56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8820AE1B6F0E9400CECF56 /* Foundation.framework */; };
+		CD969D3C1B84F38D002C99DF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D3B1B84F38D002C99DF /* AVFoundation.framework */; };
+		CD969D3E1B84F397002C99DF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D3D1B84F397002C99DF /* CoreTelephony.framework */; };
+		CD969D411B84F3A1002C99DF /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D3F1B84F3A1002C99DF /* EventKit.framework */; };
+		CD969D421B84F3A1002C99DF /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D401B84F3A1002C99DF /* EventKitUI.framework */; };
 		CDBD15CB1B7EF26D00B1F0E9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */; };
 		CDBD15CC1B7EF26D00B1F0E9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBD15C91B7EF26D00B1F0E9 /* README.txt */; };
 		CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBD15CA1B7EF26D00B1F0E9 /* README.txt */; };
@@ -258,6 +262,10 @@
 		CD8820AA1B6F0E7B00CECF56 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CD8820AC1B6F0E8700CECF56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CD8820AE1B6F0E9400CECF56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CD969D3B1B84F38D002C99DF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CD969D3D1B84F397002C99DF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		CD969D3F1B84F3A1002C99DF /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		CD969D401B84F3A1002C99DF /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		CDBD15C41B7EF26D00B1F0E9 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
 		CDBD15C51B7EF26D00B1F0E9 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
@@ -283,10 +291,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDBD15D71B7EF2E300B1F0E9 /* AudioToolbox.framework in Frameworks */,
-				CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */,
-				CDBD15D51B7EF2D000B1F0E9 /* SystemConfiguration.framework in Frameworks */,
 				CDBD15D31B7EF2A900B1F0E9 /* StoreKit.framework in Frameworks */,
+				CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */,
+				CD969D411B84F3A1002C99DF /* EventKit.framework in Frameworks */,
+				CD969D421B84F3A1002C99DF /* EventKitUI.framework in Frameworks */,
+				CD969D3E1B84F397002C99DF /* CoreTelephony.framework in Frameworks */,
+				CD969D3C1B84F38D002C99DF /* AVFoundation.framework in Frameworks */,
+				CDBD15D71B7EF2E300B1F0E9 /* AudioToolbox.framework in Frameworks */,
+				CDBD15D51B7EF2D000B1F0E9 /* SystemConfiguration.framework in Frameworks */,
 				CDBD15D11B7EF2A300B1F0E9 /* CoreData.framework in Frameworks */,
 				CDBD15CF1B7EF28A00B1F0E9 /* AdSupport.framework in Frameworks */,
 				CD8820AF1B6F0E9400CECF56 /* Foundation.framework in Frameworks */,
@@ -320,6 +332,10 @@
 		0854645FADD96E551F347CDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD969D3F1B84F3A1002C99DF /* EventKit.framework */,
+				CD969D401B84F3A1002C99DF /* EventKitUI.framework */,
+				CD969D3D1B84F397002C99DF /* CoreTelephony.framework */,
+				CD969D3B1B84F38D002C99DF /* AVFoundation.framework */,
 				CDBD15D61B7EF2E300B1F0E9 /* AudioToolbox.framework */,
 				CDBD15D41B7EF2D000B1F0E9 /* SystemConfiguration.framework */,
 				CDBD15D21B7EF2A900B1F0E9 /* StoreKit.framework */,

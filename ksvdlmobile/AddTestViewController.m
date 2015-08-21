@@ -47,7 +47,7 @@
 
    _atlabel.text = [NSString stringWithFormat:@"%@%@",@" Accession Number : ",self.accessionNumber];
    _ownerlabel.text = [NSString stringWithFormat:@"%@%@",@" Owner Name : ",self.ownerName];
-    _clientlabel.text = [NSString stringWithFormat:@"%@%@",@" Client Name : ",self.clientName];
+    _clientlabel.text = [NSString stringWithFormat:@"%@%@",@" Client : ",self.clientName];
    //_cltext.text=self.clientName;
     
     _barButton.target = self.revealViewController;
@@ -95,7 +95,7 @@
         
         NSString *accnos = [NSString stringWithFormat:@"%@%@",@" <b>Accession Number :</b> ",self.accessionNumber];
         NSString *ownername = [NSString stringWithFormat:@"%@%@",@" <b>Owner Name :</b> ",self.ownerName];
-        NSString *clientnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Client Name :</b> ",self.clientName];
+        NSString *clientnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Client :</b> ",self.clientName];
         NSString *phonetxt = [NSString stringWithFormat:@"%@%@",@" <b>Contact Number :</b> ",_phtext.text];
         NSString *emailtxt = [NSString stringWithFormat:@"%@%@",@" <b>Email :</b> ",_emailtext.text];
         NSString *textnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Test Name Requested :</b> ",_testnametext.text];

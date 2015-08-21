@@ -18,12 +18,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //[userDefaults setObject:token forKey:kVDLDeviceTokenString];
+    
+    
     /*Initialise for accession restrict in notification settings*/
     NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"30", @"accession_restrict",
                                  nil];
     
+
     [defaults registerDefaults:appDefaults];
     [defaults synchronize];
     
@@ -37,10 +42,10 @@
                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     UIImage *NavigationLandscapeBackground = [[UIImage imageNamed:@"KSVDLNavigationHeader"]
-                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 40.0, 40.0)resizingMode:UIImageResizingModeStretch];
+                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 50.0, 50.0)];
     
     [[UINavigationBar appearance] setBackgroundImage:NavigationPortraitBackground forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setBackgroundImage:NavigationLandscapeBackground forBarMetrics:UIBarMetricsCompact];
+    [[UINavigationBar appearance] setBackgroundImage:NavigationLandscapeBackground forBarMetrics:UIBarMetricsDefault];
     
 
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back"]];

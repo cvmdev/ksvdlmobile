@@ -3,17 +3,16 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "KSVDLNavigationHeader_640x128-1.png"
+      "filename" : "KSVDLNavigationHeader_iPhone_6_P_750x128-1.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "KSVDLNavigationHeader_640x128.png"
+      "filename" : "KSVDLNavigationHeader_iPhone_6_L_1334x128.png"
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x",
-      "filename" : "KSVDLNavigation_iPad_2048x128-1.png"
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",
@@ -22,7 +21,7 @@
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "KSVDLNavigation_iPad_2048x128.png"
+      "filename" : "KSVDLNavigation_iPad_L_2048x128.png"
     },
     {
       "idiom" : "watch",
