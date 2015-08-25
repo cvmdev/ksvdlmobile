@@ -46,7 +46,7 @@
 
 - (void) fetchAccessionsForPageNo:(NSInteger)pageNo WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
     
-    __block int retryCounter=1;
+    __block int retryCounter=2;
     void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
         successBlock(operation,responseObject);
     };
@@ -112,7 +112,7 @@
 
 
 -(void)filterAccessionsWithSearchText:(NSString *)searchText WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
-    __block int retryCounter=1;
+    __block int retryCounter=2;
     void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
         successBlock(operation,responseObject);
     };

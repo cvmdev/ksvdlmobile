@@ -180,10 +180,17 @@
             NSLog(@"Deleting token...NVC");
 
             [[AuthAPIClient sharedClient] logOutWithCompletionBlock:^(BOOL finished){
-                [self loadDynamicMenu];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                });
+                if (finished)
+                {
+                    [self loadDynamicMenu];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                    });
+                }
+                else
+                {
+                    NSLog(@"There was an issue logging out...lets handle it...");
+                }
             }];
           break;
     }

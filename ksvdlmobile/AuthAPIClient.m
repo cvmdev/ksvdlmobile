@@ -69,6 +69,8 @@
         NSLog(@"Removed Refresh token and Device Token..Now deleting from device");
       
         [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVDLUserString];
+        
         completionBlock(true);
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -77,6 +79,7 @@
          NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
          NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
          NSLog(@"The dictionary has :%@",serializedData);
+         completionBlock(false);
          
      }];
    

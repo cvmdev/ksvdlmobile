@@ -173,6 +173,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     //NSDictionary * currentAccessionDict = [self.accessionList objectAtIndex:indexPath.row];
     
     NSString *accStatus =[currentAccessionDict objectForKey:@"AccessionStatus"];
+    NSInteger labId = [[currentAccessionDict objectForKey:@"LabId"] integerValue];
     
     
     if ([accStatus isEqualToString:@"Finalized"])
@@ -209,26 +210,22 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.viewreportButton.hidden=TRUE;
         cell.addtestButton.hidden=false;
     }
-    if ([accStatus isEqualToString:@"Working"])
+    if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
     {
-             [cell setBackgroundColor:[UIColor clearColor]];
-        
-//        CAGradientLayer *grad = [CAGradientLayer layer];
-//        grad.frame = cell.bounds;
-//        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
-//        
-//        [cell setBackgroundView:[[UIView alloc] init]];
-//        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
-        
+        [cell setBackgroundColor:[UIColor clearColor]];
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:158.0/255.0 green:11.0/255.0 blue:15.0/255.0 alpha:1.0];
-        cell.viewreportButton.hidden=false;
+        
+        if (labId==1)
+            cell.viewreportButton.hidden=false;
+        else
+            cell.viewreportButton.hidden=true;
         cell.addtestButton.hidden=false;
         cell.statusLabel.hidden=TRUE;
     }
     
-    if ([accStatus isEqualToString:@"Review"])
-    {
+    //if ([accStatus isEqualToString:@"Review"])
+    //{
         //cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
         //cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
 //        [cell setBackgroundColor:[UIColor clearColor]];
@@ -240,19 +237,32 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 //        [cell setBackgroundView:[[UIView alloc] init]];
 //        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
         
-        cell.finalizedDateLabel.hidden=TRUE;
-        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
-        cell.addtestButton.hidden=TRUE;
-        cell.viewreportButton.hidden=false;
-    }
+//        cell.finalizedDateLabel.hidden=TRUE;
+//        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
+//        cell.addtestButton.hidden=TRUE;
+//        if (labId==1)
+//            cell.viewreportButton.hidden=false;
+//        else
+//            cell.viewreportButton.hidden=true;
+    //}
+    
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
     cell.accessionLabel.text=[NSString stringWithFormat:@"Accession#:%@",[currentAccessionDict objectForKey:@"AccessionNo"]];
     cell.statusLabel.text=[currentAccessionDict objectForKey:@"AccessionStatus"];
     cell.receivedDateLabel.text=[NSString stringWithFormat:@"Received:%@",[currentAccessionDict objectForKey:@"ReceivedDate"]];
     cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized:%@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
-    cell.caseCoordinatorLabel.text=[NSString stringWithFormat:@"CaseCoordinator:%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
+    //cell.caseCoordinatorLabel.text=[NSString stringWithFormat:@"CaseCoordinator:%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
     
+    
+    if (!([currentAccessionDict objectForKey:@"CaseCoordinator"]==(id)[NSNull null]))
+    {
+        cell.caseCoordinatorLabel.text= [NSString stringWithFormat:@"CaseCoordinator :%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
+        cell.caseCoordinatorLabel.hidden=false;
+    }
+    else
+        cell.caseCoordinatorLabel.hidden=TRUE;
+
     NSString *fulltestString=@"";
     int numNonNullTestCount =0;
     NSArray *testArray=[currentAccessionDict objectForKey:@"Tests"];
@@ -412,9 +422,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     if (self.selectedIndex ==indexPath.row)
     {
         self.selectedIndex=-1;
-        //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         });
         return;
@@ -429,12 +438,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         });
     }
     
-    self.selectedIndex=(int)indexPath.row;
+        self.selectedIndex=(int)indexPath.row;
     
-    //[self.tableView beginUpdates];
-    //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    //[self.tableView endUpdates];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];

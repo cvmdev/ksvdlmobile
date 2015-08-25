@@ -81,6 +81,12 @@
             [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
                                         success:^(AFOAuthCredential *credential) {
                                            
+                                            //Upon login success store username in NSUserDefaults
+                                            
+                                            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                                            [userDefaults setObject:_userText.text forKey:kVDLUserString];
+                                            [userDefaults synchronize];
+                                            
                                             /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
                                                 {
