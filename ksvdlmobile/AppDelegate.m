@@ -25,11 +25,22 @@
     
     /*Initialise for accession restrict in notification settings*/
     NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
+    
+    
+   /* NSString *myString = [defaults stringForKey:@"kVDLUserString"];
+    NSLog(@"Username",myString);
+    */
+    
+    /*mystring needs to hold the username*/
+    NSString *myString;
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"30", @"accession_restrict",
+                                 myString, @"loginname",
                                  nil];
     
-
+    
+    //[[NSUserDefaults standardUserDefaults] setObject:savedValue forKey:@"username"];
+    
     [defaults registerDefaults:appDefaults];
     [defaults synchronize];
     

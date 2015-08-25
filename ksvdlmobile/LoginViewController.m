@@ -16,6 +16,7 @@
 @interface LoginViewController ()
 
 
+
 @end
 @implementation LoginViewController
 //@synthesize userText=_userText;
@@ -87,6 +88,7 @@
                                             [userDefaults setObject:_userText.text forKey:kVDLUserString];
                                             [userDefaults synchronize];
                                             
+                                    
                                             /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
                                                 {

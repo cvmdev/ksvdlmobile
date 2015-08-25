@@ -30,4 +30,6 @@ NSString *const kVDLYoutubeURL=@"https://www.youtube.com/channel/UCtx-lIIXqj5PAM
 NSString *const kVDLTestFeesURL=@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul";
 NSString *const kVDLDeviceTokenString=@"ksvdldevicetoken";
 NSString *const kVDLUserString=@"vdlusername";
+
+
 @end
