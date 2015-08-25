@@ -11,6 +11,7 @@
 //#import "LoginViewController.h"
 #import "GlobalConstants.h"
 #import "HttpClient.h"
+#import "SVWebViewController.h"
 
 
 
@@ -40,6 +41,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOnLogin:) name:@"USER_DID_LOGIN" object:nil];
     [self loadDynamicMenu];
 }
+
 
 - (void)updateOnLogin:(NSNotification*)notification
 {
@@ -111,13 +113,14 @@
          {
             case 1: {
                 //Help page
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
+                // NSLog(@"Help Page");
+                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
             case 2:
             {
                 //Feedback page
-                NSLog(@"this is the link to feedback");
+                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://goo.gl/forms/OK3kc7PF2W"]];
                 break;
             }
             case 3:
@@ -140,13 +143,14 @@
         {
             case 1: {
                 //Help page
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/resources/news/newsletter/april2015/Shipping_Diagnostic_Samples_KSVDL.html"]];
+                // NSLog(@"Help Page");
+                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
             case 2:
             {
                 //Feedback page
-                NSLog(@"this is the link to feedback");
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://goo.gl/forms/OK3kc7PF2W"]];
                 break;
             }
             case 3:

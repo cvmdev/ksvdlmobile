@@ -98,7 +98,7 @@
     
     
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
-     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://playhousesquare.s3.amazonaws.com/img/Banners_SpecialEvents.png"]]];
+     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.webshade.com.au/images/banner_notree.gif"]]];
     _imageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromotionURL:)];
     tapped.numberOfTapsRequired = 1;
