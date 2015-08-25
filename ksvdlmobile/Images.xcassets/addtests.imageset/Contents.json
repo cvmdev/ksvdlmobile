@@ -3,15 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Add_Test_Button.png"
+      "filename" : "Add_Test_Button_32x120.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Add_Test_Button_64x240.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Add_Test_Button_96x360.png"
     }
   ],
   "info" : {

@@ -21,6 +21,7 @@
     //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //[userDefaults setObject:token forKey:kVDLDeviceTokenString];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     /*Initialise for accession restrict in notification settings*/
     NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];

@@ -96,6 +96,7 @@
 		CDBD15D51B7EF2D000B1F0E9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D41B7EF2D000B1F0E9 /* SystemConfiguration.framework */; };
 		CDBD15D71B7EF2E300B1F0E9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D61B7EF2E300B1F0E9 /* AudioToolbox.framework */; };
 		CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */; };
+		CDF044D21B8C0C0C0071F36C /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF044D11B8C0C0C0071F36C /* HelpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,8 @@
 		CDBD15D81B7EF5A300B1F0E9 /* appID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = appID.h; sourceTree = "<group>"; };
 		CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		CDF044D01B8C0C0C0071F36C /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = ../HelpViewController.h; sourceTree = "<group>"; };
+		CDF044D11B8C0C0C0071F36C /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = ../HelpViewController.m; sourceTree = "<group>"; };
 		DE428B8D1A6416EADEFDBF9C /* Pods-ksvdlmobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ksvdlmobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ksvdlmobile/Pods-ksvdlmobile.debug.xcconfig"; sourceTree = "<group>"; };
 		E30B9D118234C0DD47CBB66C /* libPods-ksvdlmobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ksvdlmobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -450,6 +453,8 @@
 				593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */,
 				CD31DD4B1B20D7D200451866 /* NavigationViewController.h */,
 				CD31DD4C1B20D7D200451866 /* NavigationViewController.m */,
+				CDF044D01B8C0C0C0071F36C /* HelpViewController.h */,
+				CDF044D11B8C0C0C0071F36C /* HelpViewController.m */,
 				CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */,
 				CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */,
 			);
@@ -900,6 +905,7 @@
 				CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */,
 				CD8820A91B6F0E5A00CECF56 /* IASKTextField.m in Sources */,
 				CD8820A21B6F0E5A00CECF56 /* IASKSettingsStoreUserDefaults.m in Sources */,
+				CDF044D21B8C0C0C0071F36C /* HelpViewController.m in Sources */,
 				59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */,
 				CD8820A81B6F0E5A00CECF56 /* IASKSwitch.m in Sources */,
 				59ECE34D1B27655800F38902 /* CGPDFDocument.m in Sources */,
