@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GlobalConstants.h"
 
 @interface AppDelegate ()
 
@@ -32,7 +33,9 @@
     */
     
     /*mystring needs to hold the username*/
-    NSString *myString;
+   // NSString *myString;
+    NSString * myString = [defaults objectForKey:kVDLUserString];
+    
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"30", @"accession_restrict",
                                  myString, @"loginname",
