@@ -283,6 +283,54 @@
 
 }
 
+-(void) updateNotifications:(NSArray *)notificationArray forDevice:(NSString *)dToken WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
+    
+    __block int retryCounter=1;
+    void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
+        successBlock(operation,responseObject);
+    };
+    
+    void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (operation.response.statusCode == 500) {
+            failureBlock(operation,error);
+        }
+    };
+    
+    NSString * newStatus = notificationArray[0];
+    NSString * prelimStatus= notificationArray[1];
+    NSString * finalStatus = notificationArray[2];
+    
+     NSString *updateNotifications = [NSString stringWithFormat:@"?Notifications?deviceToken=%@&newStatus=%@,prelimStatus=%@,finalStatus=%@&",dToken,newStatus,prelimStatus,finalStatus];
+    
+    [self POST:updateNotifications parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          processSuccessBlock(operation, responseObject);
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          processFailureBlock(operation, error);
+          
+          if (retryCounter>0)
+          {
+              NSLog(@"Something went wrong...lets try one more time to update the notifications...");
+              retryCounter--;
+              AFHTTPRequestOperation *retryOperation = [self retryRequestForOperation:operation];
+              [retryOperation setCompletionBlockWithSuccess:processSuccessBlock
+                                                    failure:processFailureBlock];
+              
+              NSLog(@"Retry operation for updating notification settings:%ld",(long)retryCounter);
+              
+              [retryOperation start];
+              
+          }
+          else
+          {
+              NSLog(@"Problem with updating notifications....");
+          }
+          
+      }];
+
+    
+}
+
 -(void) downloadReportForAccession:(NSString *)AccessionNo WithRetryCounter:(int) retryCount WithCompletionBlock:(CustomCompletionBlock)completionBlock{
     
     if(retryCount==0)

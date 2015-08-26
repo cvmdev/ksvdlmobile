@@ -176,7 +176,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     NSInteger labId = [[currentAccessionDict objectForKey:@"LabId"] integerValue];
     
     
-    if ([accStatus isEqualToString:@"Finalized"])
+    if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
     {
         //cell.backgroundColor= [[UIColor alloc] initWithRed:209.0/255.0 green:211/255.0 blue:212/255.0 alpha:0.5];
         //cell.backgroundColor= [[UIColor alloc] initWithRed:145.0/255.0 green:145.0/255.0 blue:149.0/255.0 alpha:0.5];
@@ -555,7 +555,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
         
     }
-    if ([accStatus isEqualToString:@"Finalized"])
+    if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
     {
               
         UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Finalized"];

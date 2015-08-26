@@ -41,5 +41,10 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
        WithSuccessBlock:(ApiClientSuccess)successBlock
         andFailureBlock:(ApiClientFailure)failureBlock;
 
+- (void) updateNotifications:(NSArray *) notificationArray
+             forDevice:(NSString *)dToken
+             WithSuccessBlock:(ApiClientSuccess)successBlock
+             andFailureBlock:(ApiClientFailure)failureBlock;
+
 -(void) updateCredential:(AFOAuthCredential *)credential;
 @end
