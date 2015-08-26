@@ -93,14 +93,14 @@
                                             /*Get value of kVDLUserString in mystring - not working*/
                                             NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
                                             NSString *myString = [defaults stringForKey:kVDLUserString];
-                                            NSLog(@"My string value",myString);
+                                            NSLog(@"My string value:%@",myString);
                                             
                                             NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                                                          @"30", @"accession_restrict",
                                                                          myString, @"loginname",
                                                                          nil];
                                             [defaults registerDefaults:appDefaults];
-                                            [defaults synchronize];
+                                           [defaults synchronize];
                                             /*****/
                                             
                                             
