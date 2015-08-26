@@ -98,27 +98,18 @@
     
     
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
-     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.webshade.com.au/images/banner_notree.gif"]]];
+     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/Rabies_Ad.png"]]];
     _imageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromotionURL:)];
     tapped.numberOfTapsRequired = 1;
     [_imageview addGestureRecognizer:tapped];
   //  [tapped release];
     
-    
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
-    
-    //The following two lines should be removed after testing..This is for testing various logins...
-    
-    //force log out for testing
-    
-    //[[HttpClient sharedHTTPClient] removeTokenAndLogoutUser];
-    //[AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
-     //NSLog(@"Credential  Deleted");
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInt
