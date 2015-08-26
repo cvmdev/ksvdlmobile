@@ -34,7 +34,8 @@
     
     /*mystring needs to hold the username*/
    // NSString *myString;
-    NSString * myString = [defaults objectForKey:kVDLUserString];
+    NSString *myString = [defaults objectForKey:kVDLUserString];
+    NSLog(@"My string",myString);
     
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"30", @"accession_restrict",
