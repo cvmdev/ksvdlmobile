@@ -371,7 +371,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat defaultCellHeight=80;
+    CGFloat defaultCellHeight=95;
     
     CGFloat currHeightOfCell=defaultCellHeight;
     
@@ -388,12 +388,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
             if (numTestCount>0)
             {
-            currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 30);
+            currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 15);
             }
-            if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
-                currHeightOfCell=currHeightOfCell+20;
-            if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
-                currHeightOfCell=currHeightOfCell+20;
+//            if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
+//                currHeightOfCell=currHeightOfCell+15;
+//            if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
+//                currHeightOfCell=currHeightOfCell+15;
             
         }
         else
@@ -404,12 +404,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
                 
                 if (numTestCount>0)
-                    currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 30);
+                    currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
                
-                if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
-                    currHeightOfCell=currHeightOfCell+20;
-                if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
-                    currHeightOfCell=currHeightOfCell+20;
+//                if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
+//                    currHeightOfCell=currHeightOfCell+20;
+//                if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
+//                    currHeightOfCell=currHeightOfCell+20;
             }
         
         }

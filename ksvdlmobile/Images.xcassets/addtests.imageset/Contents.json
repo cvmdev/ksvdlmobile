@@ -17,11 +17,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Add_Test_Button_64x240-1.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Add_Test_Button_96x360-1.png"
     },
     {
       "idiom" : "watch",

@@ -3,30 +3,33 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "Home_Accessions_Link_161x100.png"
+      "filename" : "Home_Accessions_Link_iPhone_145x90.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "Home_Accessions_Link_290x180.png"
+      "filename" : "Home_Accessions_Link_iPhone_290x180.png"
     },
     {
       "idiom" : "iphone",
+      "filename" : "Home_Accessions_Link_iPhone_290x180-1.png",
       "subtype" : "retina4",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Home_Accessions_Link_iPhone_580x360.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "Home_Accessions_Link_290x180-1.png"
+      "filename" : "Home_Accessions_Link_iPad_324x200.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Home_Accessions_Link_iPad_647x400.png"
     },
     {
       "idiom" : "watch",

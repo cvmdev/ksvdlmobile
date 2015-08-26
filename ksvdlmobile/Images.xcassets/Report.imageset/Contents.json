@@ -12,6 +12,7 @@
     },
     {
       "idiom" : "iphone",
+      "filename" : "Report_Button_64x240-1.png",
       "subtype" : "retina4",
       "scale" : "2x"
     },
@@ -22,11 +23,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Report_Button_64x240-2.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Report_Button_96x360-1.png"
     },
     {
       "idiom" : "watch",

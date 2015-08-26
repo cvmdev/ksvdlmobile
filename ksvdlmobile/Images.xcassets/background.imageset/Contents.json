@@ -3,15 +3,23 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "Background_Screen_750x1334.png"
+      "filename" : "Background_Screen_iPhone_640x1136.png"
     },
     {
       "idiom" : "iphone",
+      "scale" : "2x",
+      "filename" : "Background_Screen_iPhone_750x1334.png"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "Background_Screen_iPhone_1242x2208.png",
+      "subtype" : "retina4",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Background_Screen_iPhone_1242x2208-1.png"
     },
     {
       "idiom" : "ipad",
@@ -20,20 +28,6 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{130,145}",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{146,165}",
       "scale" : "2x"
     }
   ],
