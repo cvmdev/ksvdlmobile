@@ -16,6 +16,7 @@
 @interface LoginViewController ()
 
 
+
 @end
 @implementation LoginViewController
 //@synthesize userText=_userText;
@@ -87,6 +88,23 @@
                                             [userDefaults setObject:_userText.text forKey:kVDLUserString];
                                             [userDefaults synchronize];
                                             
+                                            
+                                            
+                                            /*Get value of kVDLUserString in mystring - not working*/
+                                            NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
+                                            NSString *myString = [defaults stringForKey:kVDLUserString];
+                                            NSLog(@"My string value",myString);
+                                            
+                                            NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                         @"30", @"accession_restrict",
+                                                                         myString, @"loginname",
+                                                                         nil];
+                                            [defaults registerDefaults:appDefaults];
+                                            [defaults synchronize];
+                                            /*****/
+                                            
+                                            
+                                    
                                             /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
                                                 {

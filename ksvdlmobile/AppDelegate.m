@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GlobalConstants.h"
 
 @interface AppDelegate ()
 
@@ -24,14 +25,8 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     /*Initialise for accession restrict in notification settings*/
-    NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
-    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"30", @"accession_restrict",
-                                 nil];
     
-
-    [defaults registerDefaults:appDefaults];
-    [defaults synchronize];
+    //[[NSUserDefaults standardUserDefaults] setObject:savedValue forKey:@"username"];
     
     /*Navigation bar UI changes - begin */
     

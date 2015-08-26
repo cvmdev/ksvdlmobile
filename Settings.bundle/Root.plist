@@ -14,7 +14,7 @@
             <key>DefaultValue</key>
             <string>USERNAME</string>
             <key>Key</key>
-            <string>username</string>
+            <string>loginname</string>
             <key>Title</key>
             <string>Logged in as:</string>
             <key>Type</key>
