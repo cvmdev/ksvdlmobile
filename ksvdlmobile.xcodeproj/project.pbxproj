@@ -63,6 +63,7 @@
 		59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE3991B276D9900F38902 /* Thumbs@2x.psd */; };
 		59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
+		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
 		CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5E1BA81B55797A0068225F /* MessageUI.framework */; };
 		CD8820681B6F0DB600CECF56 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD8820671B6F0DB600CECF56 /* Settings.bundle */; };
@@ -214,6 +215,7 @@
 		59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@3x.psd"; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = ../InAppSettings.bundle; sourceTree = "<group>"; };
 		CD5E1BA81B55797A0068225F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTestViewController.h; sourceTree = "<group>"; };
 		CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTestViewController.m; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				59649ED51AEF1E0A00E5F1AD /* Images.xcassets */,
 				59649ED71AEF1E0A00E5F1AD /* LaunchScreen.xib */,
 				59649EC81AEF1E0A00E5F1AD /* Supporting Files */,
+				CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */,
 				CD8820671B6F0DB600CECF56 /* Settings.bundle */,
 				CDBD15D81B7EF5A300B1F0E9 /* appID.h */,
 			);
@@ -831,6 +834,7 @@
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,
 				59ECE3AB1B276D9900F38902 /* PageList@2x.psd in Resources */,
 				CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */,
+				CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */,
 				59649ED61AEF1E0A00E5F1AD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

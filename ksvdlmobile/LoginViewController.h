@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "AuthAPIClient.h"
 
+#if USES_IASK_STATIC_LIBRARY
+#import "InAppSettingsKit/IASKAppSettingsViewController.h"
+#else
+#import "IASKAppSettingsViewController.h"
+#endif
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate>
+
+@interface LoginViewController : UIViewController<IASKSettingsDelegate,UITextFieldDelegate>
 
 + (void) showAlert:(NSString *)alertMessage;
 @property (weak, nonatomic) IBOutlet UITextField *userText;

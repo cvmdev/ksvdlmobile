@@ -12,6 +12,11 @@
 #import "GlobalConstants.h"
 #import "HttpClient.h"
 #import "AppDelegate.h"
+#ifdef USES_IASK_STATIC_LIBRARY
+#import "InAppSettingsKit/IASKSettingsReader.h"
+#else
+#import "IASKSettingsReader.h"
+#endif
 
 @interface LoginViewController ()
 
@@ -25,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     //appdelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.userText.delegate=self;
@@ -92,17 +98,38 @@
                                             
                                             /*Get value of kVDLUserString in mystring - not working*/
                                             NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
-                                            NSString *myString = [defaults stringForKey:kVDLUserString];
-                                            NSLog(@"My string value:%@",myString);
+                                            NSString *usernamevalue = [defaults stringForKey:kVDLUserString];
+                                            NSLog(@"My string value:%@",usernamevalue);
                                             
+                                            /*Setting the default values for the notification settings - begins*/
                                             NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                                                          @"30", @"accession_restrict",
-                                                                         myString, @"loginname",
+                                                                         usernamevalue, @"loginname",
+                                                                         @"Yes", @"sample_arr",
+                                                                         @"No", @"prelim_results",
+                                                                         @"Yes", @"final_result",
                                                                          nil];
                                             [defaults registerDefaults:appDefaults];
-                                           [defaults synchronize];
-                                            /*****/
+                                            [defaults synchronize];
+                                            /*Setting the default values for the notification settings - ends*/
                                             
+                                           
+                                            /*When changes to settings occur - implement the following */
+                                            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingDidChange:) name:kIASKAppSettingChanged object:nil];
+                                            BOOL samplearrival = [[NSUserDefaults standardUserDefaults] boolForKey:@"sample_arr"];
+                                            
+                                            BOOL prelimresults = [[NSUserDefaults standardUserDefaults] boolForKey:@"prelim_results"];
+                                            
+                                            BOOL finalresults = [[NSUserDefaults standardUserDefaults] boolForKey:@"final_result"];
+                                            NSString *accessions = [[NSUserDefaults standardUserDefaults] objectForKey:@"accession_restrict"];
+                                            [[NSUserDefaults standardUserDefaults] synchronize];
+                                            
+                                            NSLog(@"Toggle Button Values");
+                                            NSLog(@"Sample Arrival:%@",samplearrival ? @"Yes" : @"No");
+                                            NSLog(@"Prelim Results:%@",prelimresults ? @"Yes" : @"No");
+                                            NSLog(@"Final Results:%@",finalresults ? @"Yes" : @"No");
+                                            NSLog(@"Accessions number:%@",accessions);
+                                            /*When changes to settings occur - implement the above*/
                                             
                                     
                                             /*Push Notifications changes begin--*/
@@ -150,6 +177,20 @@
     {
         [LoginViewController showAlert:@"Please Enter Both Username and Password"];
     }
+}
+
+/*Called when settings are changed*/
+- (void)settingDidChange:(NSNotification*)notification {
+    if ([notification.object isEqual:@"sample_arr"]) {
+        BOOL samplearrival1 = (BOOL)[[notification.userInfo objectForKey:@"sample_arr"] intValue];
+    }
+    if ([notification.object isEqual:@"prelim_results"]) {
+        BOOL prelimresults1 = (BOOL)[[notification.userInfo objectForKey:@"prelim_results"] intValue];
+    }
+    if ([notification.object isEqual:@"final_result"]) {
+        BOOL finalresults1 = (BOOL)[[notification.userInfo objectForKey:@"final_result"] intValue];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 /*On Allowing push notifications - output the device token*/

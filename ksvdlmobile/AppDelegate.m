@@ -24,9 +24,14 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    
+    
+    // Load the default values for the user defaults
+    
     /*Initialise for accession restrict in notification settings*/
     
     //[[NSUserDefaults standardUserDefaults] setObject:savedValue forKey:@"username"];
+    
     
     /*Navigation bar UI changes - begin */
     

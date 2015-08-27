@@ -940,6 +940,7 @@ static NSDictionary *oldUserDefaults = nil;
 }
 
 - (void)didChangeSettingViaIASK:(NSNotification*)notification {
+    NSLog(@"Settings has changed");
 	[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
 }
 

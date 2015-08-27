@@ -10,18 +10,7 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
-        <dict>
-            <key>DefaultValue</key>
-            <string>USERNAME</string>
-            <key>Key</key>
-            <string>loginname</string>
-            <key>Title</key>
-            <string>Logged in as:</string>
-            <key>Type</key>
-            <string>PSTitleValueSpecifier</string>
-        </dict>
-        
-		<dict>
+       		<dict>
 			<key>DefaultValue</key>
 			<true/>
 			<key>Key</key>
@@ -45,7 +34,7 @@
 			<key>DefaultValue</key>
 			<true/>
 			<key>Key</key>
-			<string>final_results</string>
+			<string>final_result</string>
 			<key>Title</key>
 			<string>Final Results</string>
 			<key>Type</key>
