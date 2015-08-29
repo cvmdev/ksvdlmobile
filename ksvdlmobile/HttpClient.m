@@ -10,6 +10,8 @@
 #import "GlobalConstants.h"
 #import "AuthAPIClient.h"
 
+
+
 @implementation HttpClient
 
 + (HttpClient *) sharedHTTPClient
@@ -34,10 +36,28 @@
         
         [serializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
         self.requestSerializer = serializer;
+ 
     }
     
     return self;
 }
+
+- (void)settingDidChange:(NSNotification*)notification {
+    NSLog(@"at settingsdidchange event...");
+//    if ([notification.object isEqual:@"sample_arr"]) {
+//        BOOL samplearrival1 = (BOOL)[[notification.userInfo objectForKey:@"sample_arr"] intValue];
+//    }
+//    if ([notification.object isEqual:@"prelim_results"]) {
+//        BOOL prelimresults1 = (BOOL)[[notification.userInfo objectForKey:@"prelim_results"] intValue];
+//    }
+//    if ([notification.object isEqual:@"final_result"]) {
+//        BOOL finalresults1 = (BOOL)[[notification.userInfo objectForKey:@"final_result"] intValue];
+    //}
+      //[[NSUserDefaults standardUserDefaults] synchronize];
+    [self updateNotifications];
+   }
+
+
 
 -(void) updateCredential:(AFOAuthCredential *)credential{
     AFHTTPRequestSerializer *currentserializer= (AFHTTPRequestSerializer *)self.requestSerializer;
@@ -252,10 +272,11 @@
     };
 
    
+
     //NSString *validateAccession = [NSString stringWithFormat:@"ValidateAccession?accessionNumber=%@",accNum];
     NSString *addDeviceToken = [NSString stringWithFormat:@"RegisterIOSDevice?deviceToken=%@",dToken];
     
-    [self GET:addDeviceToken parameters:nil
+    [self POST:addDeviceToken parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           processSuccessBlock(operation, responseObject);
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -283,7 +304,19 @@
 
 }
 
--(void) updateNotifications:(NSArray *)notificationArray forDevice:(NSString *)dToken WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
+-(void) updateNotifications{
+    if (![[AuthAPIClient sharedClient] isSignInRequired])
+    {
+        [self updateNotificationsWithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Notifications updated successfully");
+        } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failure while updating notifications");
+            
+        }];
+    }
+}
+
+-(void) updateNotificationsWithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
     
     __block int retryCounter=1;
     void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -296,34 +329,57 @@
         }
     };
     
-    NSString * newStatus = notificationArray[0];
-    NSString * prelimStatus= notificationArray[1];
-    NSString * finalStatus = notificationArray[2];
+    NSInteger newStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"] integerValue];
+    NSInteger prelimStatus= [[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"] integerValue];
+    NSInteger finalStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"] integerValue];
     
-     NSString *updateNotifications = [NSString stringWithFormat:@"?Notifications?deviceToken=%@&newStatus=%@,prelimStatus=%@,finalStatus=%@&",dToken,newStatus,prelimStatus,finalStatus];
+    NSLog(@"The new notification values to be updated to the db are :%ld-%ld-%ld",newStatus,prelimStatus,finalStatus);
     
+    NSString *dToken= [[NSUserDefaults standardUserDefaults] objectForKey:kVDLDeviceTokenString];
+    
+     NSString *updateNotifications = [NSString stringWithFormat:@"Notifications?deviceToken=%@&newStatus=%ld&prelimStatus=%ld&finalStatus=%ld",dToken,newStatus,prelimStatus,finalStatus];
+    NSLog(@"call url is %@:",updateNotifications);
+    
+    __weak typeof(self) weakSelf=self;
+
     [self POST:updateNotifications parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           processSuccessBlock(operation, responseObject);
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Error While updating notifications....%@",error);
           processFailureBlock(operation, error);
-          
-          if (retryCounter>0)
-          {
-              NSLog(@"Something went wrong...lets try one more time to update the notifications...");
-              retryCounter--;
-              AFHTTPRequestOperation *retryOperation = [self retryRequestForOperation:operation];
-              [retryOperation setCompletionBlockWithSuccess:processSuccessBlock
-                                                    failure:processFailureBlock];
-              
-              NSLog(@"Retry operation for updating notification settings:%ld",(long)retryCounter);
-              
-              [retryOperation start];
-              
-          }
+          if (operation.response.statusCode == 401) {
+              NSLog(@"Authorization is denied");
+              if (retryCounter>0)
+              {
+                  [[AuthAPIClient sharedClient] refreshTokenWithSuccess:^(AFOAuthCredential *newCredential){
+                      
+                      //NSLog(@"Access token refreshed");
+                      //[weakself updateCredential:newCredential];
+                      NSLog(@"Update serializer token string value");
+                      [weakSelf updateCredential:newCredential];
+                      retryCounter--;
+//                      AFHTTPRequestOperation *retryOperation = [weakSelf retryRequestForOperation:operation];
+//                      [retryOperation setCompletionBlockWithSuccess:processSuccessBlock
+//                                                            failure:processFailureBlock];
+                      
+                      NSLog(@"Retry operation starting for updating notifs..with retry counter:%ld",(long)retryCounter);
+                      
+                      [weakSelf POST:updateNotifications parameters:nil
+                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                             processSuccessBlock(operation, responseObject);
+                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                             NSLog(@"Error While updating notifications 2n time....%@",error);
+                         }];
+                   
+                  }failure:^(NSError *error){
+                      NSLog(@"Failed to refresh token");
+                  }];
+              }
+        }
           else
           {
-              NSLog(@"Problem with updating notifications....");
+              failureBlock(operation,error);
           }
           
       }];
@@ -432,7 +488,7 @@
     
     AFHTTPRequestOperation *retryOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     retryOperation.responseSerializer=[AFJSONResponseSerializer serializer];
-    
+    //NSLog(@"Returning retryOperation");
     return retryOperation;
     
 }

@@ -1,6 +1,11 @@
 {
   "images" : [
     {
+      "idiom" : "iphone",
+      "size" : "29x29",
+      "scale" : "1x"
+    },
+    {
       "size" : "29x29",
       "idiom" : "iphone",
       "filename" : "KSVDL-Mobile-Icon_58.png",
@@ -23,6 +28,18 @@
       "idiom" : "iphone",
       "filename" : "KSVDL-Mobile-Icon_120.png",
       "scale" : "3x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "KSVDL-Mobile-Icon_57.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "KSVDL-Mobile-Icon_57-1.png",
+      "scale" : "2x"
     },
     {
       "size" : "60x60",

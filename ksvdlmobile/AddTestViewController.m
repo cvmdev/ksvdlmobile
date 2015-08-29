@@ -55,6 +55,15 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
+    
+    
+    //The following adds UITextView with rounded corners
+    [_notestext.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
+    [_notestext.layer setBorderColor: [[UIColor grayColor] CGColor]];
+    [_notestext.layer setBorderWidth: 1.0];
+    [_notestext.layer setCornerRadius:8.0f];
+    [_notestext.layer setMasksToBounds:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

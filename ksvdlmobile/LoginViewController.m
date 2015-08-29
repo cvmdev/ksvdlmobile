@@ -102,36 +102,71 @@
                                             NSLog(@"My string value:%@",usernamevalue);
                                             
                                             /*Setting the default values for the notification settings - begins*/
-                                            NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                         @"30", @"accession_restrict",
-                                                                         usernamevalue, @"loginname",
-                                                                         @"Yes", @"sample_arr",
-                                                                         @"No", @"prelim_results",
-                                                                         @"Yes", @"final_result",
-                                                                         nil];
-                                            [defaults registerDefaults:appDefaults];
-                                            [defaults synchronize];
+                                            
+                                            if ([defaults objectForKey:@"sample_arr"]==nil)
+                                            {
+                                                NSLog(@"All notification settings are empty initially");
+                                                NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                             @"30", @"accession_restrict",
+                                                                             usernamevalue, @"loginname",
+                                                                             @"Yes", @"sample_arr",
+                                                                             @"No", @"prelim_results",
+                                                                             @"Yes", @"final_result",
+                                                                             nil];
+                                                [defaults registerDefaults:appDefaults];
+                                                [defaults synchronize];
+                                            }
+                                            else
+                                            {
+                                                NSLog(@"Notification settings are not initially empty,so set and read the current value");
+                                                
+                                                NSString * samplearrival = [[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"];
+                                                
+                                                NSString *prelimresults = [[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"];
+                                                
+                                                NSString *finalresults = [[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"];
+                                                
+                                                NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                            usernamevalue, @"loginname",
+                                                                             samplearrival, @"sample_arr",
+                                                                             prelimresults, @"prelim_results",
+                                                                             finalresults, @"final_result",
+                                                                             nil];
+                                                
+                                                [defaults registerDefaults:appDefaults];
+                                                [defaults synchronize];
+
+                                                NSLog(@"Notification settings changed between logins");
+                                                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                                dispatch_async(queue, ^ {
+                                                    [[HttpClient sharedHTTPClient] updateNotifications];
+                                             
+                                                });
+                                            }
                                             /*Setting the default values for the notification settings - ends*/
                                             
                                            
                                             /*When changes to settings occur - implement the following */
-                                            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingDidChange:) name:kIASKAppSettingChanged object:nil];
-                                            BOOL samplearrival = [[NSUserDefaults standardUserDefaults] boolForKey:@"sample_arr"];
-                                            
-                                            BOOL prelimresults = [[NSUserDefaults standardUserDefaults] boolForKey:@"prelim_results"];
-                                            
-                                            BOOL finalresults = [[NSUserDefaults standardUserDefaults] boolForKey:@"final_result"];
-                                            NSString *accessions = [[NSUserDefaults standardUserDefaults] objectForKey:@"accession_restrict"];
-                                            [[NSUserDefaults standardUserDefaults] synchronize];
-                                            
-                                            NSLog(@"Toggle Button Values");
-                                            NSLog(@"Sample Arrival:%@",samplearrival ? @"Yes" : @"No");
-                                            NSLog(@"Prelim Results:%@",prelimresults ? @"Yes" : @"No");
-                                            NSLog(@"Final Results:%@",finalresults ? @"Yes" : @"No");
-                                            NSLog(@"Accessions number:%@",accessions);
+                                            //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingDidChange:) name:kIASKAppSettingChanged object:nil];
+//                                            BOOL samplearrival = [[NSUserDefaults standardUserDefaults] boolForKey:@"sample_arr"];
+//                                            
+//                                            BOOL prelimresults = [[NSUserDefaults standardUserDefaults] boolForKey:@"prelim_results"];
+//                                            
+//                                            BOOL finalresults = [[NSUserDefaults standardUserDefaults] boolForKey:@"final_result"];
+//                                            NSString *accessions = [[NSUserDefaults standardUserDefaults] objectForKey:@"accession_restrict"];
+//                                            [[NSUserDefaults standardUserDefaults] synchronize];
+//                                            
+//                                            NSLog(@"Toggle Button Values");
+//                                            NSLog(@"Sample Arrival:%@",samplearrival ? @"Yes" : @"No");
+//                                            NSLog(@"Prelim Results:%@",prelimresults ? @"Yes" : @"No");
+//                                            NSLog(@"Final Results:%@",finalresults ? @"Yes" : @"No");
+//                                            NSLog(@"Accessions number:%@",accessions);
                                             /*When changes to settings occur - implement the above*/
                                             
-                                    
+                                             NSLog(@"SampleArrival:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"]);
+                                             NSLog(@"Prelim:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"]);
+                                             NSLog(@"Final:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"]);
+                                            
                                             /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
                                                 {
@@ -179,19 +214,20 @@
     }
 }
 
-/*Called when settings are changed*/
-- (void)settingDidChange:(NSNotification*)notification {
-    if ([notification.object isEqual:@"sample_arr"]) {
-        BOOL samplearrival1 = (BOOL)[[notification.userInfo objectForKey:@"sample_arr"] intValue];
-    }
-    if ([notification.object isEqual:@"prelim_results"]) {
-        BOOL prelimresults1 = (BOOL)[[notification.userInfo objectForKey:@"prelim_results"] intValue];
-    }
-    if ([notification.object isEqual:@"final_result"]) {
-        BOOL finalresults1 = (BOOL)[[notification.userInfo objectForKey:@"final_result"] intValue];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
+//Called when settings are changed
+//- (void)settingDidChange:(NSNotification*)notification {
+//    NSLog(@"at settingsdidchange event...");
+//    if ([notification.object isEqual:@"sample_arr"]) {
+//        BOOL samplearrival1 = (BOOL)[[notification.userInfo objectForKey:@"sample_arr"] intValue];
+//    }
+//    if ([notification.object isEqual:@"prelim_results"]) {
+//        BOOL prelimresults1 = (BOOL)[[notification.userInfo objectForKey:@"prelim_results"] intValue];
+//    }
+//    if ([notification.object isEqual:@"final_result"]) {
+//        BOOL finalresults1 = (BOOL)[[notification.userInfo objectForKey:@"final_result"] intValue];
+//    }
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+//   }
 
 /*On Allowing push notifications - output the device token*/
 - (void)tokenAvailableNotification:(NSNotification *)notification {

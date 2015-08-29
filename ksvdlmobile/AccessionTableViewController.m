@@ -106,6 +106,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     if ([[AuthAPIClient sharedClient] isSignInRequired])
     {
         NSLog(@"ATVC:User is not logged in , send to login screen");
+        [self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
     }
     else
     {
@@ -136,6 +137,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             [SVProgressHUD dismiss];
             
             NSLog(@"Some Error while fetching data--possibly a problem while refreshing credentials");
+            NSLog(@"Error is %@",error);
             [self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
             
         }];

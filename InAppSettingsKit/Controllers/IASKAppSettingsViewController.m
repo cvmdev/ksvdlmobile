@@ -26,6 +26,8 @@
 #import "IASKSpecifierValuesViewController.h"
 #import "IASKTextField.h"
 #import "IASKMultipleValueSelection.h"
+#import "HttpClient.h"
+#import "AuthAPIClient.h"
 
 #if !__has_feature(objc_arc)
 #error "IASK needs ARC"
@@ -940,9 +942,35 @@ static NSDictionary *oldUserDefaults = nil;
 }
 
 - (void)didChangeSettingViaIASK:(NSNotification*)notification {
-    NSLog(@"Settings has changed");
+    NSLog(@"Settings has changed for %@",notification.object);
 	[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
+    NSLog(@"value after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"]);
+   
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^ {
+                   [[HttpClient sharedHTTPClient] updateNotifications];
+        
+
+    });
 }
+//
+//    if (![[AuthAPIClient sharedClient] isSignInRequired])
+//    {
+//        
+//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//        dispatch_async(queue, ^ {
+//           // [[HttpClient sharedHTTPClient] updateNotifications];
+//            [[HttpClient sharedHTTPClient] updateNotificationsWithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                NSLog(@"Notifications updated successfully");
+//            } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                NSLog(@"Failure while updating notifications");
+//                
+//            }];
+//
+//            
+//        });
+//    }
+
 
 - (void)reload {
 	// wait 0.5 sec until UI is available after applicationWillEnterForeground
