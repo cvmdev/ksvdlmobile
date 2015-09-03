@@ -122,11 +122,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             
             //_totalPages = [[[[responseObject objectForKey:@"AccList"]objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
             NSLog(@"Total Pages: %ld",(long)_totalPages);
-            NSLog(@"The data is %@",responseObject);
-            
-            //clientBusinessName = [responseObject objectForKey:@"ClientName"];
-            
-            //[self.accessionList addObjectsFromArray:[[responseObject objectForKey:@"AccList"]objectForKey:@"Accessions"]];
+            //NSLog(@"The data is %@",responseObject);
             
             [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
             [self.tableView reloadData];
@@ -135,10 +131,18 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             [SVProgressHUD dismiss];
-            
-            NSLog(@"Some Error while fetching data--possibly a problem while refreshing credentials");
+            if (![[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
+                NSLog(@"Network Unreachable..display an alert to the user");
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
+                [self.navigationController popToRootViewControllerAnimated:NO];
+                
+            }
+            NSLog(@"Some Error while fetching accession data--");
             NSLog(@"Error is %@",error);
-            [self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
+            //[self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
+            
             
         }];
         
@@ -593,6 +597,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         [self.searchDisplayController.searchResultsTableView reloadData];
         
     }andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (![[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Network Unreachable..display an alert to the user");
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
+        }
         NSLog(@"Error: Problem while fetching accessions on search: %@", error);
     }];
     

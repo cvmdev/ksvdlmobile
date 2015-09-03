@@ -17,5 +17,7 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
 -(BOOL) hasUserEverLoggedIn;
 - (bool)isSignInRequired;
 - (AFOAuthCredential *)retrieveCredential;
-- (void) logOutWithCompletionBlock:(CustomCompletionBlock)completionBlock;
+- (void) logOutWithRetryCount:(int)retryCounter
+           AndCompletionBlock:(CustomCompletionBlock)completionBlock;
+
 @end

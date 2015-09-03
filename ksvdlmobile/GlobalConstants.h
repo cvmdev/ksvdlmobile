@@ -18,4 +18,5 @@
     extern NSString *const kVDLTestFeesURL;
     extern NSString *const kVDLDeviceTokenString;
     extern NSString * const kVDLUserString;
+    extern int const kRetryCount;
 @end

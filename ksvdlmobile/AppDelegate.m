@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GlobalConstants.h"
+#import "AFNetworking.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,8 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     
+    //monitor the changes in network
+    [self monitorNetworkStatus];
     
     // Load the default values for the user defaults
     
@@ -105,6 +108,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)monitorNetworkStatus{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+    }];
 }
 
 @end

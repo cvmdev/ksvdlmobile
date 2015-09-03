@@ -94,7 +94,7 @@
                                             [userDefaults setObject:_userText.text forKey:kVDLUserString];
                                             [userDefaults synchronize];
                                             
-                                            
+                                            NSLog(@"Username added to NSUserDefaults");
                                             
                                             /*Get value of kVDLUserString in mystring - not working*/
                                             NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
@@ -125,6 +125,8 @@
                                                 NSString *prelimresults = [[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"];
                                                 
                                                 NSString *finalresults = [[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"];
+                                                
+                                                NSLog(@"The current notification settings values are %@-%@-%@",samplearrival,prelimresults,finalresults);
                                                 
                                                 NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                                                             usernamevalue, @"loginname",
@@ -187,13 +189,14 @@
                                                     NSLog(@"Token:%@",credential.accessToken);
                                                                  
                                                     [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
-                                                                 [[HttpClient sharedHTTPClient] updateCredential:credential];
+                                                    [[HttpClient sharedHTTPClient] updateCredential:credential];
                                                                  
                                                     [SVProgressHUD dismiss];
-                                                                 [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
-                                                                 
                                                     NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
-                                                                 [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
+                                                    [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
+                                                    [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
+                                                                 
+                                            
                                                                  
                                                                  //At this point show the next screen
                                                               }

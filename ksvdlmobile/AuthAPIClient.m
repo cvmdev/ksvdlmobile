@@ -58,10 +58,13 @@
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kCredentialIdentifier];
 }
 
--(void) logOutWithCompletionBlock:(CustomCompletionBlock)completionBlock
+-(void) logOutWithRetryCount:(int)retryCounter
+          AndCompletionBlock:(CustomCompletionBlock)completionBlock
+
 {
     
-      
+    __block int retryCount=retryCounter;
+    __weak typeof(self) weakSelf=self;
     NSString * postLogout = [NSString stringWithFormat:@"LogoutDevice?tokenId=%@&appType=IOS&deviceToken=%@",self.retrieveCredential.refreshToken,self.getDeviceToken];
     
     [self POST:postLogout parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
@@ -75,12 +78,27 @@
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         NSLog(@"There was a problem revoking the refresh token:%@",error);
+         if (retryCounter>0)
+         {
+             if ((operation.response.statusCode==401) || (operation.response.statusCode==500))
+                 {
+                     NSLog(@"There was an error while logging out,so retrying request");
+                    
+                     [weakSelf logOutWithRetryCount:retryCount--
+                                 AndCompletionBlock:completionBlock];
+                      
+                     
+                 }
+             
+         }
+         else
+         {
+         NSLog(@"There was a problem logging out/revoking the refresh token:%@",error);
          NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
          NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
          NSLog(@"The dictionary has :%@",serializedData);
          completionBlock(false);
-         
+         }
      }];
    
     

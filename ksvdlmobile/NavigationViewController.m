@@ -21,6 +21,7 @@
 
 @implementation NavigationViewController{
     NSArray *menu;
+    
 }
 
 - (void)loadDynamicMenu {
@@ -95,7 +96,7 @@
     AFOAuthCredential  *credential = [self getCredential];
     if ((!credential) || (credential.isExpired))
     {
-        NSLog(@"NVC: Menu - This User is not logged in , send to login screen");
+        NSLog(@"NVC: Menu - This User is not logged in or refresh token not valid");
     }
     cell.backgroundColor = [UIColor colorWithRed:79.0f/255.0f green:33.0f/255.0f blue:134.0f/255.0f alpha:1.0f];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
@@ -183,18 +184,19 @@
         case 1:
             NSLog(@"Deleting token...NVC");
 
-            [[AuthAPIClient sharedClient] logOutWithCompletionBlock:^(BOOL finished){
-                if (finished)
-                {
-                    [self loadDynamicMenu];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.tableView reloadData];
-                    });
-                }
-                else
-                {
-                    NSLog(@"There was an issue logging out...lets handle it...");
-                }
+            [[AuthAPIClient sharedClient] logOutWithRetryCount:kRetryCount
+                                            AndCompletionBlock:^(BOOL finished){
+                        if (finished)
+                        {
+                            [self loadDynamicMenu];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.tableView reloadData];
+                            });
+                        }
+                        else
+                        {
+                            NSLog(@"There was an issue logging out...lets handle it...");
+                        }
             }];
           break;
     }

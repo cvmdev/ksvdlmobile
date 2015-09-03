@@ -144,16 +144,37 @@ didFailToReceiveAdWithError:(GADRequestError *)error{
 - (IBAction)testfeessite:(id)sender {
     
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul"]];
-    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLTestFeesURL];
-    [self.navigationController pushViewController:webViewController animated:YES];
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLTestFeesURL];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
+    
+    else
+    {
+        NSLog(@"Network Unreachable..display an alert to the user");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
     
 }
 - (IBAction)ksvdlvideos:(id)sender {
     
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.youtube.com/channel/UCtx-lIIXqj5PAMQYryXaRhA"]];
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLYoutubeURL];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
     
-    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLYoutubeURL];
-    [self.navigationController pushViewController:webViewController animated:YES];
+    else
+    {
+        NSLog(@"Network Unreachable..display an alert to the user");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
 }
 
 

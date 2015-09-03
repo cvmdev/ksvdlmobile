@@ -9,11 +9,9 @@
 #import "AccessionReportViewController.h"
 #import "SVProgressHUD.h"
 #import "AFNetworking.h"
-//#import "AFOAuth2Client.h"
 #import "GlobalConstants.h"
 #import "AuthAPIClient.h"
 #import "HttpClient.h"
-const int retryCount=2;
 @implementation AccessionReportViewController
 
 -(void) viewDidLoad {
@@ -86,7 +84,7 @@ const int retryCount=2;
 
     HttpClient * client = [HttpClient sharedHTTPClient];
     
-    [client downloadReportForAccession:accNum WithRetryCounter:retryCount WithCompletionBlock:^(BOOL finished) {
+    [client downloadReportForAccession:accNum WithRetryCounter:kRetryCount WithCompletionBlock:^(BOOL finished) {
         if (finished)
         {
           
