@@ -36,5 +36,9 @@
 
 @property (nonatomic,weak) id <AccCellDelegate> accReportDelegate;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *caseCoordinatorHeightConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dvmHeightConstraint;
+
 
 @end

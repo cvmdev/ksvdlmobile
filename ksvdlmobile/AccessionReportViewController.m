@@ -96,6 +96,8 @@
             self.standalone=YES;
 
             NSString *savedFilePath = [self getTempFilePathForAccession];
+            
+            NSLog(@"Retrieving File from :%@",savedFilePath);
 
             PDFKDocument *document =[PDFKDocument documentWithContentsOfFile:savedFilePath password:nil];
             [self loadDocument:document];

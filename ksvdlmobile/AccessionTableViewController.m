@@ -266,10 +266,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         cell.caseCoordinatorLabel.text= [NSString stringWithFormat:@"CaseCoordinator :%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
         cell.caseCoordinatorLabel.hidden=false;
+        cell.caseCoordinatorHeightConstraint.constant=15;
     }
     else
+    {
         cell.caseCoordinatorLabel.hidden=TRUE;
-
+        cell.caseCoordinatorHeightConstraint.constant=0;
+    }
     NSString *fulltestString=@"";
     int numNonNullTestCount =0;
     NSArray *testArray=[currentAccessionDict objectForKey:@"Tests"];
@@ -311,10 +314,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         cell.dvmLabel.text= [NSString stringWithFormat:@"DVM :%@",[currentAccessionDict objectForKey:@"RdvmName"]];
         cell.dvmLabel.hidden=false;
+        cell.dvmHeightConstraint.constant=15;
     }
     else
+    {
         cell.dvmLabel.hidden=TRUE;
-
+        cell.dvmHeightConstraint.constant=0;
+    }
     
     if (!([currentAccessionDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
     {

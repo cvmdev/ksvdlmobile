@@ -509,6 +509,23 @@
         
         __weak typeof(self) weakSelf=self;
         
+        
+        //The following removes the temporary file ...its possible that the file could have been corrupt
+        NSString *tmpDirectory=NSTemporaryDirectory();
+
+        //NSString *ex = [NSString stringWithFormat:@"%@.pdf",self.accessionNumber];
+        NSString *filePath = [tmpDirectory
+                              stringByAppendingPathComponent:fileName];
+        
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+        
+        if (fileExists)
+        {
+            NSLog(@"File already existed..so removing it");
+            NSError *error = nil;
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+        }
+        
         NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
             NSURL *directoryURL = [NSURL fileURLWithPath:NSTemporaryDirectory()];
             return [directoryURL URLByAppendingPathComponent:fileName];
@@ -516,6 +533,8 @@
             
             if (!error)
             {
+                NSLog(@"File downloaded successfully");
+                NSLog(@"File Downloaded to: %@", filePath);
                 downloaded=YES;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completionBlock(downloaded);

@@ -17,6 +17,7 @@
     @synthesize caseCoordinatorLabel;
     @synthesize referenceNumberLabel;
     @synthesize dvmLabel;
+@synthesize caseCoordinatorHeightConstraint;
 - (IBAction)viewReport:(id)sender {
     
     [self.accReportDelegate accessionReportFor:self.buttonIndexPath];

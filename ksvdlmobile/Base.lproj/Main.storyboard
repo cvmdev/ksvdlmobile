@@ -378,7 +378,9 @@
                                 <connections>
                                     <outlet property="accessionLabel" destination="eaS-k8-QRh" id="XGw-nG-KPH"/>
                                     <outlet property="addtestButton" destination="cAz-r1-UkH" id="uFP-EX-LrK"/>
+                                    <outlet property="caseCoordinatorHeightConstraint" destination="ZA7-Kh-T37" id="S05-Ft-Ezi"/>
                                     <outlet property="caseCoordinatorLabel" destination="Vxf-Gw-gSB" id="0vq-DS-FOX"/>
+                                    <outlet property="dvmHeightConstraint" destination="UaT-I5-3Io" id="ttY-VO-xTX"/>
                                     <outlet property="dvmLabel" destination="xT1-e9-J3n" id="dq4-bc-bfC"/>
                                     <outlet property="finalizedDateLabel" destination="x2E-Oe-ciU" id="Zi9-qJ-DiZ"/>
                                     <outlet property="ownerLabel" destination="cyy-Nl-anB" id="7Tl-MK-r8V"/>
