@@ -1,33 +1,28 @@
 //
-//  HelpViewController.m
+//  WebViewController.m
 //  ksvdlmobile
 //
-//  Created by Arthi Subramanian on 8/24/15.
+//  Created by Arthi Subramanian on 9/10/15.
 //  Copyright (c) 2015 Praveen. All rights reserved.
 //
 
-#import "HelpViewController.h"
+#import "WebViewController.h"
 #import "SWRevealViewController.h"
 
-@interface HelpViewController ()
+@interface WebViewController ()
 
 @end
 
-@implementation HelpViewController
+@implementation WebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.navigationItem.hidesBackButton = YES;
-    //  UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
+    // UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     UIImage *temp = [[UIImage imageNamed:@"home"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithImage:temp style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     self.navigationItem.leftBarButtonItem=backBtn;
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-self.textViewHeightConstraint.constant = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, CGFLOAT_MAX)].height;
     
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
@@ -35,18 +30,19 @@ self.textViewHeightConstraint.constant = [self.textView sizeThatFits:CGSizeMake(
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
-
-    
-}
-
-- (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-    [self performSegueWithIdentifier:@"Helptohome" sender:sender];
+    // Do any additional setup after loading the view.
+    NSURL *helppageURL = [NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/help.html"];
+    NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
+    [myWebView loadRequest:helppagerequest];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)popToRoot:(UIBarButtonItem*)sender {
+    [self performSegueWithIdentifier:@"webviewtohome" sender:sender];
 }
 
 /*

@@ -17,6 +17,15 @@
 
 @end
 
+/*Added for phone and email validation*/
+@interface NSString (emailValidation)
+-(BOOL)isValidEmail;
+@end
+
+@interface NSString (phonenumberValidation)
+-(BOOL)isValidPhone;
+@end
+
 @implementation AddTestViewController
 
 - (void)viewDidLoad {
@@ -112,31 +121,57 @@
         
         NSString *suffixtxt = @"<h4>Sent from KSVDL Mobile App</h4>";
         
-        if (_phtext.text && _phtext.text.length > 0)
+        if ((_phtext.text && _phtext.text.length > 0) && (_testnametext.text && _testnametext.text.length > 0))
         {
-            [mailer setSubject:@"Request to Add tests"];
-            
-            NSArray *toRecipients;
-            
-            
-            if([self.accessionNumber hasPrefix:@"R"])
+            if([_phtext.text isValidPhone])
             {
-               toRecipients = [NSArray arrayWithObject:@"arthisubramanian85@gmail.com"];
+                if((_emailtext.text.length>0 && [_emailtext.text isValidEmail]) || (_emailtext.text.length==0)) //When email exisits, ensure its valid
+                {
+                    NSLog(@"Valid Email ID");
+                    [mailer setSubject:@"Request to Add tests"];
+                    
+                    NSArray *toRecipients;
+                    
+                    if([self.accessionNumber hasPrefix:@"R"])
+                    {
+                        toRecipients = [NSArray arrayWithObject:@"arthisubramanian85@gmail.com"];
+                    }
+                    else
+                    {
+                        toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+                    }
+                    
+                    [mailer setToRecipients:toRecipients];
+                    NSArray *myStrings = [[NSArray alloc] initWithObjects:prefixtxt, accnos, ownername, clientnametxt, phonetxt, emailtxt, textnametxt, notestxt, suffixtxt, nil];
+                    // NSString *joinedString = [myStrings componentsJoinedByString:@"|"];
+                    NSString *emailBody = [myStrings componentsJoinedByString:@"<br/>"];
+                    [mailer setMessageBody:emailBody isHTML:YES];
+                    [self presentModalViewController:mailer animated:YES];
+                    [mailer.navigationBar setTintColor:[UIColor whiteColor]];
+                    NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Arial" size:13.0],NSFontAttributeName, nil];
+                    
+                    [mailer.navigationBar setTitleTextAttributes:size];
+                }
+                else
+                {
+                    UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                     message:@"Not a valid Email"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"OK"
+                                                           otherButtonTitles:nil];
+                    [alert1 show];
+                    
+                }
             }
             else
             {
-               toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                 message:@"Not a valid Phone Number"
+                                                                delegate:self
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil];
+                [alert2 show];
             }
-            
-            [mailer setToRecipients:toRecipients];
-            
-            NSArray *myStrings = [[NSArray alloc] initWithObjects:prefixtxt, accnos, ownername, clientnametxt, phonetxt, emailtxt, textnametxt, notestxt, suffixtxt, nil];
-            // NSString *joinedString = [myStrings componentsJoinedByString:@"|"];
-            
-            NSString *emailBody = [myStrings componentsJoinedByString:@"<br/>"];
-            
-            [mailer setMessageBody:emailBody isHTML:YES];
-            [self presentModalViewController:mailer animated:YES];
         }
         else
         {
@@ -147,15 +182,15 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }
-    //    [mailer release];
+        //    [mailer release];
     }
     else
     {
         UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"Failure"
-                                                        message:@"Your device doesn't support the composer sheet"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+                                                         message:@"Your device doesn't support the composer sheet"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
         [alert1 show];
     }
     
@@ -184,6 +219,31 @@
     
     // Remove the mail view
     [self dismissModalViewControllerAnimated:YES];
+}
+
+@end
+
+
+@implementation NSString (emailValidation)
+-(BOOL)isValidEmail
+{
+    BOOL stricterFilter = NO;
+    
+    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:self];
+}
+@end
+
+
+@implementation NSString (phonenumberValidation)
+-(BOOL)isValidPhone
+{
+    NSString *phoneRegex = @"^\\+(?:[0-9] ?){6,14}[0-9]$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    return [phoneTest evaluateWithObject:self];
 }
 
 @end

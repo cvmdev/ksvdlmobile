@@ -38,9 +38,9 @@
     NSLog(@"Google Mobile Ads SDK version: %@", [DFPRequest sdkVersion]);
     
     /*The following couple of lines of code are remove the BACK botton text from the help video and test and fees page*/
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIImage *temp = [[UIImage imageNamed:@"home"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:temp style:UIBarButtonItemStyleDone target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
-    
     
     
     UIImage *btnimages = [UIImage imageNamed:@"hpaccession"];

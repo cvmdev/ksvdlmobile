@@ -62,6 +62,7 @@
 		59ECE3AF1B276D9900F38902 /* Thumbs.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE3971B276D9900F38902 /* Thumbs.psd */; };
 		59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE3991B276D9900F38902 /* Thumbs@2x.psd */; };
 		59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */; };
+		CD042C531BA1F50800C28D53 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD042C521BA1F50800C28D53 /* WebViewController.m */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
 		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
@@ -98,7 +99,6 @@
 		CDBD15D51B7EF2D000B1F0E9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D41B7EF2D000B1F0E9 /* SystemConfiguration.framework */; };
 		CDBD15D71B7EF2E300B1F0E9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D61B7EF2E300B1F0E9 /* AudioToolbox.framework */; };
 		CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */; };
-		CDF044D21B8C0C0C0071F36C /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF044D11B8C0C0C0071F36C /* HelpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +213,8 @@
 		59ECE3971B276D9900F38902 /* Thumbs.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.psd; sourceTree = "<group>"; };
 		59ECE3991B276D9900F38902 /* Thumbs@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@2x.psd"; sourceTree = "<group>"; };
 		59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@3x.psd"; sourceTree = "<group>"; };
+		CD042C511BA1F50800C28D53 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		CD042C521BA1F50800C28D53 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = ../InAppSettings.bundle; sourceTree = "<group>"; };
@@ -287,8 +289,6 @@
 		CDBD15D81B7EF5A300B1F0E9 /* appID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = appID.h; sourceTree = "<group>"; };
 		CDE49ACD1B21F79200A98FFA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CDE49ACE1B21F79200A98FFA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		CDF044D01B8C0C0C0071F36C /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = ../HelpViewController.h; sourceTree = "<group>"; };
-		CDF044D11B8C0C0C0071F36C /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = ../HelpViewController.m; sourceTree = "<group>"; };
 		DE428B8D1A6416EADEFDBF9C /* Pods-ksvdlmobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ksvdlmobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ksvdlmobile/Pods-ksvdlmobile.debug.xcconfig"; sourceTree = "<group>"; };
 		E30B9D118234C0DD47CBB66C /* libPods-ksvdlmobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ksvdlmobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -467,10 +467,10 @@
 				593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */,
 				CD31DD4B1B20D7D200451866 /* NavigationViewController.h */,
 				CD31DD4C1B20D7D200451866 /* NavigationViewController.m */,
-				CDF044D01B8C0C0C0071F36C /* HelpViewController.h */,
-				CDF044D11B8C0C0C0071F36C /* HelpViewController.m */,
 				CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */,
 				CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */,
+				CD042C511BA1F50800C28D53 /* WebViewController.h */,
+				CD042C521BA1F50800C28D53 /* WebViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -905,6 +905,7 @@
 				59ECE3721B276BD400F38902 /* PDFKThumbQueue.m in Sources */,
 				59ECE3601B27658900F38902 /* PDFKPageContent.m in Sources */,
 				CD88209F1B6F0E5A00CECF56 /* IASKSettingsReader.m in Sources */,
+				CD042C531BA1F50800C28D53 /* WebViewController.m in Sources */,
 				5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */,
 				CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */,
 				CD8820A01B6F0E5A00CECF56 /* IASKSettingsStore.m in Sources */,
@@ -921,7 +922,6 @@
 				CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */,
 				CD8820A91B6F0E5A00CECF56 /* IASKTextField.m in Sources */,
 				CD8820A21B6F0E5A00CECF56 /* IASKSettingsStoreUserDefaults.m in Sources */,
-				CDF044D21B8C0C0C0071F36C /* HelpViewController.m in Sources */,
 				59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */,
 				CD8820A81B6F0E5A00CECF56 /* IASKSwitch.m in Sources */,
 				59ECE34D1B27655800F38902 /* CGPDFDocument.m in Sources */,

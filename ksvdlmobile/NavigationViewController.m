@@ -112,15 +112,23 @@
     {
         switch(indexPath.row)
          {
+             case 0:
+             {
+                 //Login page
+                 NSLog(@"this is the home page");
+                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
+                 break;
+             }
             case 1: {
                 //Help page
-                // NSLog(@"Help Page");
+                NSLog(@"this is the help page");
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
             case 2:
             {
                 //Feedback page
+                    NSLog(@"this is the feedback page");
                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://goo.gl/forms/OK3kc7PF2W"]];
                 break;
             }
@@ -130,27 +138,29 @@
                 NSLog(@"this is the login");
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
             }
-             case 0:
-             {
-                 //Login page
-                 NSLog(@"this is the home page");
-                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
-             }
         } //end of switch statement
     }
     else
     {
         switch(indexPath.row)
         {
+            case 0:
+            {
+                //Login page
+                NSLog(@"this is the home page");
+                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
+                break;
+            }
             case 1: {
                 //Help page
-                // NSLog(@"Help Page");
+                NSLog(@"this is the help page");
                 [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
             case 2:
             {
                 //Feedback page
+                NSLog(@"this is the feedback page");
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://goo.gl/forms/OK3kc7PF2W"]];
                 break;
             }
@@ -165,12 +175,6 @@
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Log out will prevent notifications to be sent.Do you want to continue?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
                 [alertView show];
              
-            }
-            case 0:
-            {
-                //Login page
-                NSLog(@"this is the home page");
-                [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
             }
         } //end of switch statement
     }
