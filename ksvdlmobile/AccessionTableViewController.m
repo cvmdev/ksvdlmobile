@@ -57,6 +57,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     //set current page as 1 and initialize array
     _currentPage=1;
+    
     //set selectedIndex=-1; (which means currently no row is selected)
     self.selectedIndex=-1;
     
@@ -96,13 +97,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [self.accessionList removeAllObjects];
     [self.filteredAccList removeAllObjects];
     [self fetchAccessions];
-    //[self.tableView reloadData];
     [sender endRefreshing];
 }
 
 -(void) fetchAccessions
 {
-    //AFOAuthCredential  *credential = [self getCredential];
     if ([[AuthAPIClient sharedClient] isSignInRequired])
     {
         NSLog(@"ATVC:User is not logged in , send to login screen");
@@ -115,7 +114,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         HttpClient *client = [HttpClient sharedHTTPClient];
         
-        //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [client fetchAccessionsForPageNo:_currentPage WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
             _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
@@ -141,7 +139,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             }
             NSLog(@"Some Error while fetching accession data--");
             NSLog(@"Error is %@",error);
-            //[self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
+            [self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
             
             
         }];
@@ -207,10 +205,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     if ([accStatus isEqualToString:@"New"])
     {
         
-        //NSLog(@"New called........................................................");
         [cell setBackgroundColor:[UIColor clearColor]];
-        
-        
         cell.finalizedDateLabel.hidden=TRUE;
         cell.statusLabel.textColor=[[UIColor alloc] initWithRed:0/255.0 green:114.0/255.0 blue:54.0/255.0 alpha:1.0];
         cell.statusLabel.hidden=TRUE;
@@ -253,14 +248,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 //            cell.viewreportButton.hidden=true;
     //}
     
-    
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
     cell.accessionLabel.text=[NSString stringWithFormat:@"Accession#:%@",[currentAccessionDict objectForKey:@"AccessionNo"]];
     cell.statusLabel.text=[currentAccessionDict objectForKey:@"AccessionStatus"];
     cell.receivedDateLabel.text=[NSString stringWithFormat:@"Received:%@",[currentAccessionDict objectForKey:@"ReceivedDate"]];
     cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized:%@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
-    //cell.caseCoordinatorLabel.text=[NSString stringWithFormat:@"CaseCoordinator:%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
-    
     
     if (!([currentAccessionDict objectForKey:@"CaseCoordinator"]==(id)[NSNull null]))
     {
@@ -277,7 +269,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     int numNonNullTestCount =0;
     NSArray *testArray=[currentAccessionDict objectForKey:@"Tests"];
     
-    //if (!([currentAccessionDict objectForKey:@"Tests"]==(id)[NSNull null]))
+    //cell.testInfoLabel.hidden=TRUE;
+    
     numNonNullTestCount=[self nonNullTestCountForArray:testArray];
     if (numNonNullTestCount>0)
         {
@@ -295,6 +288,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             }
             
             cell.testInfoLabel.hidden=false;
+            
             //cell.testInfoLabel.numberOfLines=[testArray count]+1;
             cell.testInfoLabel.numberOfLines=numNonNullTestCount + 1;
             cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
@@ -432,10 +426,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"ROW SELECTED..%ld",indexPath.row);
+    
+    
     if (self.selectedIndex ==indexPath.row)
     {
         self.selectedIndex=-1;
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         });
@@ -443,7 +439,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     }
     
     if (self.selectedIndex!=-1){
+
         NSIndexPath *prevPath = [NSIndexPath indexPathForRow:self.selectedIndex inSection:0];
+      
+        
         //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -457,8 +456,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         });
-    
-    
 }
 
 
@@ -551,9 +548,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.backgroundView=cellBackgroundImage;
         cell.backgroundView.contentMode=UIViewContentModeLeft;
 
-        
-        
-        
     }
     if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
     {
@@ -565,8 +559,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
         cell.backgroundView.contentMode=UIViewContentModeTop | UIViewContentModeLeft;
-
-        
     }
     if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
     {
@@ -584,8 +576,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 - (void) filterAccessionsForSearchText:(NSString *) searchText scope:(NSString *)scope
 {
-    
-    
     HttpClient *client = [HttpClient sharedHTTPClient];
     
     //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -660,6 +650,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     }
 }
 
+
 - (NSString * ) getCurrentAccessionForIndexPath: (NSIndexPath *) indexPath {
     NSDictionary * cellAccNum = nil;
     if (self.searchDisplayController.active)
@@ -669,6 +660,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     return [cellAccNum objectForKey:@"AccessionNo"];
 }
+
 
 - (NSString *) accessionValidForReport:(NSString *)accNum
 {
@@ -693,6 +685,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     return accessionValidMessage;
 }
+
 
 #pragma Mark -- AccCellDelegate
 -(void) accessionReportFor:(NSIndexPath *)indexPath{

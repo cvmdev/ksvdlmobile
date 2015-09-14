@@ -110,6 +110,8 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
+    
+    
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInt

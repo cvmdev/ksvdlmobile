@@ -11,12 +11,12 @@
 @implementation GlobalConstants
 
 //Local PC
-//NSString *const kBaseURL=@"http://129.130.128.31/TestProjects/VetViewAPI/";
-//NSString *const kTokenURLString = @"http://129.130.128.31/TestProjects/VetViewAPI/oauth2/token";
+NSString *const kBaseURL=@"http://129.130.128.31/TestProjects/VetViewAPI/";
+NSString *const kTokenURLString = @"http://129.130.128.31/TestProjects/VetViewAPI/oauth2/token";
 
 //Test Web Server
-NSString *const kBaseURL=@"http://129.130.129.27/KSVDL/VetViewAPI/";
-NSString *const kTokenURLString = @"http://129.130.129.27/KSVDL/VetViewAPI/oauth2/token";
+//NSString *const kBaseURL=@"http://129.130.129.27/KSVDL/VetViewAPI/";
+//NSString *const kTokenURLString = @"http://129.130.129.27/KSVDL/VetViewAPI/oauth2/token";
 
 
 //Local PC test version

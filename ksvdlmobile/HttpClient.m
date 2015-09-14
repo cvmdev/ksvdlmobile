@@ -9,7 +9,7 @@
 #import "HttpClient.h"
 #import "GlobalConstants.h"
 #import "AuthAPIClient.h"
-
+#import <sys/utsname.h>
 
 
 @implementation HttpClient
@@ -63,6 +63,8 @@
     AFHTTPRequestSerializer *currentserializer= (AFHTTPRequestSerializer *)self.requestSerializer;
     [currentserializer setValue:[NSString stringWithFormat:@"Bearer %@", credential.accessToken] forHTTPHeaderField:@"Authorization"];
 }
+
+
 
 - (void) fetchAccessionsForPageNo:(NSInteger)pageNo WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
     
@@ -322,9 +324,17 @@
     };
 
    
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSLog(@"Device Type:%@",[NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding]);
+    NSLog(@"OS Version:%@",[[UIDevice currentDevice] systemVersion]);
+    NSString *deviceType=[NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    NSString *osVersion =[[UIDevice currentDevice] systemVersion];
+    
+    NSString * dInfo = [NSString stringWithFormat:@"%@-%@",deviceType,osVersion];
 
     //NSString *validateAccession = [NSString stringWithFormat:@"ValidateAccession?accessionNumber=%@",accNum];
-    NSString *addDeviceToken = [NSString stringWithFormat:@"RegisterIOSDevice?deviceToken=%@",dToken];
+    NSString *addDeviceToken = [NSString stringWithFormat:@"RegisterIOSDevice?deviceToken=%@&deviceInfo=%@",dToken,dInfo];
     __weak typeof(self) weakSelf=self;
 
     

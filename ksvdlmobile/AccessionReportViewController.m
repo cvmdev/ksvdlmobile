@@ -16,19 +16,14 @@
 
 -(void) viewDidLoad {
     
-    [SVProgressHUD showWithStatus:@"Loading"];
-    
-    [super viewDidLoad];
-    
-    NSLog(@"Accession Number from previous controller is :%@",self.accessionNumber);
-    
-    [self downloadReportForAccession:self.accessionNumber];
- 
-//    else
-//    {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"There was a problem downloading the report" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alertView show];
-//    }
+        [SVProgressHUD showWithStatus:@"Loading"];
+        
+        [super viewDidLoad];
+        
+        NSLog(@"Accession Number from previous controller is :%@",self.accessionNumber);
+        
+        [self downloadReportForAccession:self.accessionNumber];
+
     }
 
 -(void) downloadReportForAccession:(NSString *) accNum
