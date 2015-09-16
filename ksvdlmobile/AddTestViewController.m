@@ -62,6 +62,7 @@
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    self.revealViewController.panGestureRecognizer.enabled=YES;
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
     

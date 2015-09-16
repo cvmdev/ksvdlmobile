@@ -22,6 +22,7 @@
     
     //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //[userDefaults setObject:token forKey:kVDLDeviceTokenString];
+
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -29,16 +30,14 @@
     //monitor the changes in network
     [self monitorNetworkStatus];
     
-    // Load the default values for the user defaults
+   // Preloads keyboard so there's no lag on initial keyboard appearance.
+    UITextField *lagFreeField = [[UITextField alloc] init];
+    [self.window addSubview:lagFreeField];
+    [lagFreeField becomeFirstResponder];
+    [lagFreeField resignFirstResponder];
+    [lagFreeField removeFromSuperview];
     
-    /*Initialise for accession restrict in notification settings*/
     
-    //[[NSUserDefaults standardUserDefaults] setObject:savedValue forKey:@"username"];
-    
-    
-    /*Navigation bar UI changes - begin */
-    
-   // [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"KSVDLNavigationHeader"] forBarMetrics:UIBarMetricsDefault];
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(15, 80, 289, 153)];
     scroll.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
     
@@ -46,7 +45,7 @@
                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     UIImage *NavigationLandscapeBackground = [[UIImage imageNamed:@"KSVDLNavigationHeader"]
-                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 50.0, 50.0)];
+                                              resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0)];
     
     [[UINavigationBar appearance] setBackgroundImage:NavigationPortraitBackground forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:NavigationLandscapeBackground forBarMetrics:UIBarMetricsDefault];
