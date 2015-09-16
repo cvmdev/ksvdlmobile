@@ -249,14 +249,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     //}
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
-    cell.accessionLabel.text=[NSString stringWithFormat:@"Accession#:%@",[currentAccessionDict objectForKey:@"AccessionNo"]];
+    cell.accessionLabel.text=[NSString stringWithFormat:@"Accession#: %@",[currentAccessionDict objectForKey:@"AccessionNo"]];
     cell.statusLabel.text=[currentAccessionDict objectForKey:@"AccessionStatus"];
-    cell.receivedDateLabel.text=[NSString stringWithFormat:@"Received:%@",[currentAccessionDict objectForKey:@"ReceivedDate"]];
-    cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized:%@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
+    cell.receivedDateLabel.text=[NSString stringWithFormat:@"Received: %@",[currentAccessionDict objectForKey:@"ReceivedDate"]];
+    cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized: %@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
     
     if (!([currentAccessionDict objectForKey:@"CaseCoordinator"]==(id)[NSNull null]))
     {
-        cell.caseCoordinatorLabel.text= [NSString stringWithFormat:@"CaseCoordinator :%@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
+        cell.caseCoordinatorLabel.text= [NSString stringWithFormat:@"Case Coordinator: %@",[currentAccessionDict objectForKey:@"CaseCoordinator"]];
         cell.caseCoordinatorLabel.hidden=false;
         cell.caseCoordinatorHeightConstraint.constant=15;
     }
@@ -306,7 +306,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     if (!([currentAccessionDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
     {
-        cell.dvmLabel.text= [NSString stringWithFormat:@"DVM :%@",[currentAccessionDict objectForKey:@"RdvmName"]];
+        cell.dvmLabel.text= [NSString stringWithFormat:@"DVM: %@",[currentAccessionDict objectForKey:@"RdvmName"]];
         cell.dvmLabel.hidden=false;
         cell.dvmHeightConstraint.constant=15;
     }
@@ -318,7 +318,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     if (!([currentAccessionDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
     {
-        cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref #:%@",[currentAccessionDict objectForKey:@"RefNumber"]];
+        cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref# :%@",[currentAccessionDict objectForKey:@"RefNumber"]];
         cell.referenceNumberLabel.hidden=false;
     }
     else
@@ -546,7 +546,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeLeft;
+        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
 
     }
     if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
@@ -558,18 +558,18 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeTop | UIViewContentModeLeft;
+        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
     }
     if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
     {
               
         UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Finalized"];
         
-        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:backGround];
+        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:[backGround stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0]];
         
         cellBackgroundImage.image=backGround;
         cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeLeft | UIViewContentModeTop;
+        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
     }
     
 }

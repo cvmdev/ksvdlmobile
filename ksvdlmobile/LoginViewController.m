@@ -171,45 +171,50 @@
                                             
                                             /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
-                                                {
-                                                UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-                                                [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-                                                [[UIApplication sharedApplication] registerForRemoteNotifications];
-                                                    }
-                                                else
-                                                 {
-                                                [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-                                                  }
-                                                                 
-                                                  [[NSNotificationCenter defaultCenter] addObserver:self
-                                                    selector:@selector(tokenAvailableNotification:)
-                                                    name:@"NEW_TOKEN_AVAILABLE"
-                                                    object:nil];
-                                            /*Push Notifications changes end--*/
-                                                    NSLog(@"Token:%@",credential.accessToken);
-                                                                 
-                                                    [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
-                                                    [[HttpClient sharedHTTPClient] updateCredential:credential];
-                                                                 
-                                                    [SVProgressHUD dismiss];
-                                                    NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
-                                                    [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
-                                                    [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
-                                                                 
+                                        {
+                                                    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+                                                    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+                                                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+                                        }
                                             
+                                        else
+                                        {
+                                                     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+                                        }
                                                                  
-                                                                 //At this point show the next screen
-                                                              }
-                                                             failure:^(NSError *error){
-                                                                [SVProgressHUD dismiss];
-                                                                 NSLog(@"Error:%@",error.userInfo);
-                                                                 NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-                                                                 NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
-                                                                 NSLog(@"The dictionary has :%@",serializedData);
-                                                                 if ([serializedData objectForKey:@"error_description"])
-                                                                     [LoginViewController showAlert:serializedData[@"error_description"]];
-                        
-                                                             }];
+                                      [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                               selector:@selector(tokenAvailableNotification:)
+                                                                                   name:@"NEW_TOKEN_AVAILABLE"
+                                                                                 object:nil];
+                                            /*Push Notifications changes end--*/
+                                            
+                                            
+                                        NSLog(@"Access Token:%@",credential.accessToken);
+                                                     
+                                        [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
+                                        NSLog(@"Access token stored in keychain");
+                                        [[HttpClient sharedHTTPClient] updateCredential:credential];
+                                            NSLog(@"Credential updated");
+                                            
+                                        [SVProgressHUD dismiss];
+                                        NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
+                                        [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
+                                        [self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
+                                                     
+                                
+                                                     
+                                                     //At this point show the next screen
+                                                  }
+                                                 failure:^(NSError *error){
+                                                    [SVProgressHUD dismiss];
+                                                     NSLog(@"Error:%@",error.userInfo);
+                                                     NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                                                     NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+                                                     NSLog(@"The dictionary has :%@",serializedData);
+                                                     if ([serializedData objectForKey:@"error_description"])
+                                                         [LoginViewController showAlert:serializedData[@"error_description"]];
+            
+                                                 }];
        }
     else
     {
@@ -246,12 +251,14 @@
     
         if (operation.response.statusCode==200)
         {
-            NSLog(@"Registration was a success....");
+            NSLog(@"Device Registration was a success....");
             //Store User DevieToken in NSUSerDefaults
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             [userDefaults setObject:token forKey:kVDLDeviceTokenString];
             [userDefaults synchronize];
-            NSLog(@"Added to NSUserDefaults");
+            NSLog(@"Device Token Added to NSUserDefaults");
+            //[self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
+
         }
         
     } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {

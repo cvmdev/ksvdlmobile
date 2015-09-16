@@ -16,11 +16,13 @@
 
 + (HttpClient *) sharedHTTPClient
 {
+    NSLog(@"Initializing HTTPClient");
     static HttpClient *sharedHTTPClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
         sharedHTTPClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     });
+    
     return sharedHTTPClient;
     
 }
@@ -30,7 +32,10 @@
     self = [super initWithBaseURL:url];
     
     if (self) {
+        NSLog(@"Before initialization");
         AFOAuthCredential  *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:kCredentialIdentifier];
+        NSLog(@"After initialization");
+
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
         
@@ -76,9 +81,11 @@
     
     void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        
+        __weak typeof(self) weakSelf=self;
         if (operation.response.statusCode == 500) {
             NSLog(@"Got an internal server error while fetching accessions");
+            NSLog(@"Full Error:%@",error);
+            
             NSLog(@"Error:%@",error.userInfo);
             NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
             NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
@@ -86,6 +93,67 @@
             
             //failureBlock(operation,error);
         }
+        
+        if (retryCounter>0)
+        {
+            retryCounter--;
+            if (operation.response.statusCode==500)
+            {
+                if (retryCounter<=1)
+                {
+                    NSLog(@"Sleeping for a few seconds...");
+                    [NSThread sleepForTimeInterval:2.0f];
+                }
+                NSLog(@"Retrying the operation again after internal server error with Retry Counter value:%d",retryCounter);
+                [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:processFailureBlock];
+            }
+            if (operation.response.statusCode == 401) {
+                NSLog(@"Authorization is denied,so refreshing credentials");
+                
+                [[AuthAPIClient sharedClient] refreshTokenWithSuccess:^(AFOAuthCredential *newCredential){
+                    
+                    NSLog(@"Refresh Success:Update serializer token string value");
+                    [weakSelf updateCredential:newCredential];
+                    NSLog(@"Retrying the operation after refreshing token");
+                    [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:failureBlock];
+                    
+                }failure:^(NSError *error){
+                    NSLog(@"Refresh Token Failure");
+                    NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                    NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+                    NSLog(@"The dictionary has :%@",serializedData);
+                    if ([serializedData objectForKey:@"error"])
+                    {
+                        NSString * errorReason = [serializedData objectForKey:@"error"];
+                        if ([errorReason isEqualToString:@"invalid_grant"])
+                        {
+                            NSLog(@"Failed to refresh token");
+                            [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+                            NSLog(@"Credential  Deleted");
+                            
+                            failureBlock(operation,error);
+                        }
+                    }
+                }];
+            }
+            else
+            {
+                NSLog(@"Unknown Error:%@",error);
+                failureBlock(operation,error);
+            }
+            
+        }
+        else
+        {
+            NSLog(@"All the retries have been finished or internet connection not available...Maybe a message indicating that something went wrong");
+            
+            failureBlock(operation,error);
+            
+            
+        }
+
+        
+        
     };
     
     //NSString *Accessions = [NSString stringWithFormat:@"Accessions?pageNo=%ld",(long)pageNo];
@@ -99,61 +167,108 @@
           processSuccessBlock(operation, responseObject);
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
           processFailureBlock(operation, error);
-         
-              if (retryCounter>0)
-              {
-                  retryCounter--;
-                  if (operation.response.statusCode==500)
-                  {
-                      NSLog(@"Retrying the operation again after internal server error");
-                      [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:failureBlock];
-                  }
-                  if (operation.response.statusCode == 401) {
-                              NSLog(@"Authorization is denied,so refreshing credentials");
-                              
-                              [[AuthAPIClient sharedClient] refreshTokenWithSuccess:^(AFOAuthCredential *newCredential){
-                                  
-                               NSLog(@"Refresh Success:Update serializer token string value");
-                               [weakSelf updateCredential:newCredential];
-                               NSLog(@"Retrying the operation after refreshing token");
-                               [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:failureBlock];
-                      
-                          }failure:^(NSError *error){
-                              NSLog(@"Refresh Token Failure");
-                              NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-                              NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
-                              NSLog(@"The dictionary has :%@",serializedData);
-                              if ([serializedData objectForKey:@"error"])
-                                  {
-                                      NSString * errorReason = [serializedData objectForKey:@"error"];
-                                      if ([errorReason isEqualToString:@"invalid_grant"])
-                                      {
-                                          NSLog(@"Failed to refresh token");
-                                          [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
-                                          NSLog(@"Credential  Deleted");
-
-                                          failureBlock(operation,error);
-                                      }
-                                  }
-                          }];
-                  }
-                  else
-                  {
-                      NSLog(@"Unknown Error:%@",error);
-                      failureBlock(operation,error);
-                  }
-                  
-              }
-             else
-             {
-                 NSLog(@"All the retries have been finished or internet connection not available...Maybe a message indicating that something went wrong");
-                
-                 failureBlock(operation,error);
-                 
-
-             }
-      }];
+          
+                }];
 }
+
+
+
+
+//- (void) fetchAccessionsForPageNo:(NSInteger)pageNo WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
+//    
+//    __block int retryCounter=kRetryCount;
+//    void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        successBlock(operation,responseObject);
+//    };
+//    
+//    void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        
+//        if (operation.response.statusCode == 500) {
+//            NSLog(@"Got an internal server error while fetching accessions");
+//            NSLog(@"Full Error:%@",error);
+//
+//            NSLog(@"Error:%@",error.userInfo);
+//            NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+//            NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+//            NSLog(@"The internal server error is :%@",serializedData);
+//            
+//            //failureBlock(operation,error);
+//        }
+//    };
+//    
+//    //NSString *Accessions = [NSString stringWithFormat:@"Accessions?pageNo=%ld",(long)pageNo];
+//    NSString *Accessions = [NSString stringWithFormat:@"AccTests?pageNo=%ld",(long)pageNo];
+//    
+//    NSLog(@"Fetching Accessions for Page No:%ld",(long)pageNo);
+//    __weak typeof(self) weakSelf=self;
+//    
+//    [self GET:Accessions parameters:nil
+//      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//          processSuccessBlock(operation, responseObject);
+//      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//          processFailureBlock(operation, error);
+//         
+//              if (retryCounter>0)
+//              {
+//                  retryCounter--;
+//                  if (operation.response.statusCode==500)
+//                  {
+//                      if (retryCounter<=1)
+//                      {
+//                          NSLog(@"Sleeping for a few seconds...");
+//                          [NSThread sleepForTimeInterval:2.0f];
+//                      }
+//                      NSLog(@"Retrying the operation again after internal server error with Retry Counter value:%d",retryCounter);
+//                      [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:failureBlock];
+//                  }
+//                  if (operation.response.statusCode == 401) {
+//                              NSLog(@"Authorization is denied,so refreshing credentials");
+//                              
+//                              [[AuthAPIClient sharedClient] refreshTokenWithSuccess:^(AFOAuthCredential *newCredential){
+//                                  
+//                               NSLog(@"Refresh Success:Update serializer token string value");
+//                               [weakSelf updateCredential:newCredential];
+//                               NSLog(@"Retrying the operation after refreshing token");
+//                               [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:failureBlock];
+//                      
+//                          }failure:^(NSError *error){
+//                              NSLog(@"Refresh Token Failure");
+//                              NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+//                              NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+//                              NSLog(@"The dictionary has :%@",serializedData);
+//                              if ([serializedData objectForKey:@"error"])
+//                                  {
+//                                      NSString * errorReason = [serializedData objectForKey:@"error"];
+//                                      if ([errorReason isEqualToString:@"invalid_grant"])
+//                                      {
+//                                          NSLog(@"Failed to refresh token");
+//                                          [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+//                                          NSLog(@"Credential  Deleted");
+//
+//                                          failureBlock(operation,error);
+//                                      }
+//                                  }
+//                          }];
+//                  }
+//                  else
+//                  {
+//                      NSLog(@"Unknown Error:%@",error);
+//                      failureBlock(operation,error);
+//                  }
+//                  
+//              }
+//             else
+//             {
+//                 NSLog(@"All the retries have been finished or internet connection not available...Maybe a message indicating that something went wrong");
+//                
+//                 failureBlock(operation,error);
+//                 
+//
+//             }
+//      }];
+//}
 
 -(void) retryOperationForOperation:(AFHTTPRequestOperation *)operation
                   WithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
@@ -168,6 +283,7 @@
 
     
 }
+
 
 -(void)filterAccessionsWithSearchText:(NSString *)searchText WithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
     __block int retryCounter=kRetryCount;
