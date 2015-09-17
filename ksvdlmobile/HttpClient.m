@@ -302,6 +302,9 @@
             //failureBlock(operation,error);
         }
     };
+    
+    searchText = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
     NSString *FilterAccessions = [NSString stringWithFormat:@"FilterAccessions?searchString=%@",searchText];
     
     NSLog(@"Fetching Accessions for Search String....");

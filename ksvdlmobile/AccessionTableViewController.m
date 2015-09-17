@@ -138,10 +138,15 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 [self.navigationController popToRootViewControllerAnimated:NO];
                 
             }
-            NSLog(@"Some Error while fetching accession data--");
-            NSLog(@"Error is %@",error);
-            [self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
-            
+            else
+            {
+                NSLog(@"Some Error while fetching accession data--");
+                NSLog(@"Error is %@",error);
+                //[self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while fetching Accessions.Please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
+                [self.navigationController popToRootViewControllerAnimated:NO];
+            }
             
         }];
         
@@ -395,13 +400,9 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
             if (numTestCount>0)
             {
-            currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 15);
+            currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
             }
-//            if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
-//                currHeightOfCell=currHeightOfCell+15;
-//            if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
-//                currHeightOfCell=currHeightOfCell+15;
-            
+     
         }
         else
         {
