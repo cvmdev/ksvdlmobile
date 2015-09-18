@@ -21,8 +21,11 @@
 + (void) showAlert:(NSString *)alertMessage;
 @property (weak, nonatomic) IBOutlet UITextField *userText;
 @property (weak, nonatomic) IBOutlet UITextField *userPwd;
+@property (weak, nonatomic) IBOutlet UIButton *createAccount;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPassword;
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *barButton2;
 - (IBAction)loginBtn:(id)sender;
+
 
 @end
 

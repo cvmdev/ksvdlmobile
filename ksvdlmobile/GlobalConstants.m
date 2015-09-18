@@ -30,6 +30,7 @@ NSString *const kVDLYoutubeURL=@"https://www.youtube.com/channel/UCtx-lIIXqj5PAM
 NSString *const kVDLTestFeesURL=@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul";
 NSString *const kVDLFeedbackFormURL=@"http://goo.gl/forms/OK3kc7PF2W";
 NSString *const kVDLHelpPage=@"http://www.ksvdl.org/mobileapp/help.html";
+NSString *const kVDLPortalLogin=@"https://vetview2.vet.k-state.edu/LabPortal";
 NSString *const kVDLDeviceTokenString=@"ksvdldevicetoken";
 NSString *const kVDLUserString=@"vdlusername";
 const int kRetryCount=3;
