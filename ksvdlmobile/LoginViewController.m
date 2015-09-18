@@ -12,6 +12,7 @@
 #import "GlobalConstants.h"
 #import "HttpClient.h"
 #import "AppDelegate.h"
+#import "SVWebViewController.h"
 #ifdef USES_IASK_STATIC_LIBRARY
 #import "InAppSettingsKit/IASKSettingsReader.h"
 #else
@@ -31,7 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    
+    /*The following couple of lines of code are remove the BACK botton text from the vetview test page*/
+ /*   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];  */
+    
+   // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     //appdelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.userText.delegate=self;
     self.userPwd.delegate=self;
@@ -62,6 +68,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)createAcccount:(id)sender {
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLPortalLogin];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
+    else
+    {
+        NSLog(@"Network Unreachable..display an alert to the user");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    
+}
+- (IBAction)forgotPassword:(id)sender {
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLPortalLogin];
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
+    else
+    {
+        NSLog(@"Network Unreachable..display an alert to the user");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+}
+
+
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
     //[self.navigationController popToRootViewControllerAnimated:YES];

@@ -12,8 +12,6 @@
 #import "AuthAPIClient.h"
 #import "HttpClient.h"
 #import "SVWebViewController.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
-#import "appID.h"
 
 @implementation HomeViewController
 

@@ -1,19 +1,19 @@
 //
-//  WebViewController.m
+//  KSVDLWebViewController.m
 //  ksvdlmobile
 //
-//  Created by Arthi Subramanian on 9/10/15.
+//  Created by Arthi Subramanian on 9/18/15.
 //  Copyright (c) 2015 Praveen. All rights reserved.
 //
 
-#import "WebViewController.h"
+#import "KSVDLWebViewController.h"
 #import "SWRevealViewController.h"
 
-@interface WebViewController ()
+@interface KSVDLWebViewController ()
 
 @end
 
-@implementation WebViewController
+@implementation KSVDLWebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,9 +32,9 @@
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
     // Do any additional setup after loading the view.
-    NSURL *helppageURL = [NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/helpfile.html"];
+    NSURL *helppageURL = [NSURL URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/"];
     NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
-    [myWebView loadRequest:helppagerequest];
+    [WebView loadRequest:helppagerequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,17 +43,17 @@
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    [self performSegueWithIdentifier:@"webviewtohome" sender:sender];
+    [self performSegueWithIdentifier:@"ksvdlwebviewtohome" sender:sender];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
