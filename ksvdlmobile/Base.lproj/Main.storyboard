@@ -544,7 +544,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gyv-qS-5kI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gyv-qS-5kI">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-Cx-VTZ">
@@ -728,13 +728,17 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="leading" secondItem="gyv-qS-5kI" secondAttribute="leading" id="0Ug-al-y1I"/>
                             <constraint firstAttribute="width" secondItem="gyv-qS-5kI" secondAttribute="width" id="8G3-Fn-L2v"/>
                             <constraint firstItem="d6d-Cx-VTZ" firstAttribute="bottom" secondItem="Nk4-e6-pkS" secondAttribute="bottomMargin" constant="28" id="HiP-Rb-Prr"/>
+                            <constraint firstItem="gyv-qS-5kI" firstAttribute="top" secondItem="JOY-xf-G0G" secondAttribute="bottom" id="NIq-mQ-io2"/>
                             <constraint firstItem="d6d-Cx-VTZ" firstAttribute="top" secondItem="Nk4-e6-pkS" secondAttribute="topMargin" constant="28" id="Vm6-oB-T04"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gyv-qS-5kI" secondAttribute="trailing" id="XEQ-2c-zi9"/>
                             <constraint firstAttribute="leadingMargin" secondItem="d6d-Cx-VTZ" secondAttribute="leading" id="cbx-IJ-3Io"/>
                             <constraint firstAttribute="height" secondItem="gyv-qS-5kI" secondAttribute="height" id="cuQ-fT-TwF"/>
+                            <constraint firstItem="hJS-Bs-Xbt" firstAttribute="top" secondItem="gyv-qS-5kI" secondAttribute="bottom" id="hdh-jB-thJ"/>
                             <constraint firstItem="d6d-Cx-VTZ" firstAttribute="trailing" secondItem="Nk4-e6-pkS" secondAttribute="trailingMargin" id="uXl-pn-OjQ"/>
                         </constraints>
                     </view>
