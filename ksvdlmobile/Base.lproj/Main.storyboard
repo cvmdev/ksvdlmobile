@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kvZ-w3-VjU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kvZ-w3-VjU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -563,7 +563,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-nT-XPW" userLabel="EmailText">
-                                                        <rect key="frame" x="66" y="96" width="171" height="30"/>
+                                                        <rect key="frame" x="66" y="104" width="171" height="30"/>
                                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -1031,7 +1031,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="ksvdlvideos:" destination="Giy-0N-OWv" eventType="touchUpInside" id="1ss-1D-ezp"/>
+                                                    <segue destination="Ekq-ow-LPh" kind="show" id="Whw-f8-pyn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnY-28-SI3" userLabel="TestFeesButton">
@@ -1041,7 +1041,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="testfeessite:" destination="Giy-0N-OWv" eventType="touchUpInside" id="JKR-c5-wXt"/>
+                                                    <segue destination="22Y-It-ewx" kind="show" id="Znz-f4-dQd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OZ-Ov-ZyD" userLabel="AccessionButton">
@@ -1178,6 +1178,50 @@
             </objects>
             <point key="canvasLocation" x="1239" y="118"/>
         </scene>
+        <!--TestFees Web View Controller-->
+        <scene sceneID="T8p-RW-lM3">
+            <objects>
+                <viewController id="22Y-It-ewx" userLabel="TestFees Web View Controller" customClass="TestFessWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="djy-86-Uzx"/>
+                        <viewControllerLayoutGuide type="bottom" id="b55-wl-NqN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dID-d2-dXU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6UQ-zX-YwU">
+                                <rect key="frame" x="-2" y="2" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6UQ-zX-YwU" firstAttribute="leading" secondItem="dID-d2-dXU" secondAttribute="leadingMargin" id="Dw5-Vg-0Lx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6UQ-zX-YwU" secondAttribute="trailing" id="Edh-ec-OA8"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="6UQ-zX-YwU" secondAttribute="bottom" id="dPW-qp-iFe"/>
+                            <constraint firstItem="b55-wl-NqN" firstAttribute="top" secondItem="6UQ-zX-YwU" secondAttribute="bottom" id="jxN-18-56m"/>
+                            <constraint firstItem="6UQ-zX-YwU" firstAttribute="top" secondItem="dID-d2-dXU" secondAttribute="topMargin" id="yH6-XD-yx2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dPW-qp-iFe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="OLV-Wr-iyI">
+                        <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="IMN-lo-aJT"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="WebView" destination="6UQ-zX-YwU" id="1tQ-BA-rop"/>
+                        <outlet property="barButton" destination="IMN-lo-aJT" id="HtN-UB-3O6"/>
+                        <segue destination="Giy-0N-OWv" kind="show" identifier="testfeeswebviewtohome" id="czI-Jb-bBP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFW-RS-Uxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1258" y="870"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="e0u-jY-6X3">
             <objects>
@@ -1200,6 +1244,50 @@
                 </barButtonItem>
             </objects>
             <point key="canvasLocation" x="359" y="118"/>
+        </scene>
+        <!--YouTube Videos View Controller-->
+        <scene sceneID="62k-7B-V7p">
+            <objects>
+                <viewController id="Ekq-ow-LPh" userLabel="YouTube Videos View Controller" customClass="Youtubeviewcontroller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zti-lv-GxQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="tqA-ER-9rJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DK4-FD-1au">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lf7-6G-1Ml">
+                                <rect key="frame" x="-2" y="2" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lf7-6G-1Ml" secondAttribute="trailing" id="H5R-h9-1jR"/>
+                            <constraint firstItem="tqA-ER-9rJ" firstAttribute="top" secondItem="Lf7-6G-1Ml" secondAttribute="bottom" id="IIu-qR-y53"/>
+                            <constraint firstItem="Lf7-6G-1Ml" firstAttribute="top" secondItem="DK4-FD-1au" secondAttribute="topMargin" id="IPi-BI-RPK"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Lf7-6G-1Ml" secondAttribute="bottom" id="VDW-8h-FNB"/>
+                            <constraint firstItem="Lf7-6G-1Ml" firstAttribute="leading" secondItem="DK4-FD-1au" secondAttribute="leadingMargin" id="rel-3V-q0S"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="VDW-8h-FNB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="bGW-dM-Dqe">
+                        <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="tYC-FX-cF9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="WebView" destination="Lf7-6G-1Ml" id="5MN-RQ-VET"/>
+                        <outlet property="barButton" destination="tYC-FX-cF9" id="NS3-AP-QRc"/>
+                        <segue destination="Giy-0N-OWv" kind="show" identifier="youtubewebviewtohome" id="Y2R-el-mIG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="58H-Aj-HO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="482" y="874"/>
         </scene>
         <!--In-App Settings-->
         <scene sceneID="l1k-p4-ER1">
@@ -1232,9 +1320,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xEa-OO-ROn"/>
-        <segue reference="K9H-Az-XVs"/>
         <segue reference="cDr-5r-ECg"/>
+        <segue reference="Y2R-el-mIG"/>
+        <segue reference="xEa-OO-ROn"/>
         <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>
