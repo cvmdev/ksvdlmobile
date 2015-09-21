@@ -97,7 +97,7 @@
     
     
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
-     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/Rabies_Ad.png"]]];
+     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/asp/app/Free_BQA_640px.png"]]];
     _imageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromotionURL:)];
     tapped.numberOfTapsRequired = 1;
