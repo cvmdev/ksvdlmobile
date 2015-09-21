@@ -1232,9 +1232,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cDr-5r-ECg"/>
-        <segue reference="b5z-gQ-egg"/>
-        <segue reference="Htf-al-Bab"/>
         <segue reference="xEa-OO-ROn"/>
+        <segue reference="K9H-Az-XVs"/>
+        <segue reference="cDr-5r-ECg"/>
+        <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>
