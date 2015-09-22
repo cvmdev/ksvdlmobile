@@ -275,6 +275,7 @@
                                             <rect key="frame" x="448" y="39" width="150" height="10"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="10" id="8Vt-09-87P"/>
+                                                <constraint firstAttribute="width" constant="150" id="q9G-Lf-GM4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -310,6 +311,7 @@
                                         <constraint firstItem="5gD-5O-ago" firstAttribute="leading" secondItem="cAz-r1-UkH" secondAttribute="trailing" constant="7" id="12f-1K-5JV"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="rpB-3P-YJK" secondAttribute="trailing" constant="12" id="17q-oA-P6C"/>
                                         <constraint firstItem="5cU-eG-Ojg" firstAttribute="leading" secondItem="x2E-Oe-ciU" secondAttribute="leading" id="1MY-tz-mRk"/>
+                                        <constraint firstItem="5cU-eG-Ojg" firstAttribute="width" secondItem="x2E-Oe-ciU" secondAttribute="width" id="1z5-aQ-1CU"/>
                                         <constraint firstItem="x2E-Oe-ciU" firstAttribute="firstBaseline" secondItem="Vxf-Gw-gSB" secondAttribute="firstBaseline" constant="21" id="28z-EC-Zk0"/>
                                         <constraint firstItem="Vxf-Gw-gSB" firstAttribute="top" secondItem="5cU-eG-Ojg" secondAttribute="bottom" constant="-24" id="2ep-Dm-N0I"/>
                                         <constraint firstItem="cyy-Nl-anB" firstAttribute="top" secondItem="MzL-HX-0LM" secondAttribute="top" constant="5" id="3Dv-JD-ngT"/>
@@ -347,7 +349,7 @@
                                         <constraint firstItem="5gD-5O-ago" firstAttribute="width" secondItem="cAz-r1-UkH" secondAttribute="width" id="Ndi-dH-aHj"/>
                                         <constraint firstItem="cyy-Nl-anB" firstAttribute="leading" secondItem="MzL-HX-0LM" secondAttribute="leadingMargin" constant="2" id="NyW-f2-qK5"/>
                                         <constraint firstItem="x2E-Oe-ciU" firstAttribute="centerY" secondItem="Vxf-Gw-gSB" secondAttribute="centerY" constant="-0.5" id="O6F-vO-tPK"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="5cU-eG-Ojg" secondAttribute="trailing" constant="-6" id="O7d-Vs-IrK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5cU-eG-Ojg" secondAttribute="trailing" constant="2" id="O7d-Vs-IrK"/>
                                         <constraint firstItem="x2E-Oe-ciU" firstAttribute="baseline" secondItem="Vxf-Gw-gSB" secondAttribute="baseline" constant="-6" id="O9i-Cg-KSg"/>
                                         <constraint firstItem="ZqM-Z3-Qwt" firstAttribute="top" secondItem="xLG-Pi-jn6" secondAttribute="bottom" constant="-1" id="Of0-qs-MVq"/>
                                         <constraint firstItem="x2E-Oe-ciU" firstAttribute="baseline" secondItem="Vxf-Gw-gSB" secondAttribute="baseline" constant="28" id="Pq5-fk-F4I"/>
@@ -446,8 +448,10 @@
                                             <exclude reference="IHa-pq-pQD"/>
                                             <exclude reference="LWV-At-49R"/>
                                             <exclude reference="NQs-Za-21T"/>
+                                            <exclude reference="O7d-Vs-IrK"/>
                                             <exclude reference="UHw-e8-6Mw"/>
                                             <exclude reference="gh1-dr-fw2"/>
+                                            <exclude reference="tsP-Yy-cbz"/>
                                             <exclude reference="28z-EC-Zk0"/>
                                             <exclude reference="4J4-Ny-rIY"/>
                                             <exclude reference="5fo-FL-h0h"/>
@@ -467,6 +471,7 @@
                                             <exclude reference="IB4-9L-4wR"/>
                                             <exclude reference="Ndi-dH-aHj"/>
                                             <exclude reference="SBn-8P-u6F"/>
+                                            <exclude reference="bBS-PT-l2v"/>
                                             <exclude reference="baP-9x-RcP"/>
                                             <exclude reference="hSf-13-FX2"/>
                                             <exclude reference="nnA-0k-EVu"/>

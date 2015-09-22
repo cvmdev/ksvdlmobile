@@ -10,7 +10,7 @@
 #import "GlobalConstants.h"
 #import "AuthAPIClient.h"
 #import <sys/utsname.h>
-
+#import "SVProgressHUD.h"
 
 @implementation HttpClient
 
@@ -703,8 +703,10 @@
                 {
                     completionBlock(false);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while downloading the file" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alertView show];
+                    //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while downloading the file" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    
+                    //[alertView show];
+                        [SVProgressHUD showErrorWithStatus:@"Problem while downloading the file, please try again"];
                         
                     });
                    

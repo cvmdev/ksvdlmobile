@@ -133,8 +133,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             if (![[AFNetworkReachabilityManager sharedManager] isReachable])
             {
                 NSLog(@"Network Unreachable..display an alert to the user");
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alertView show];
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                [alertView show];
+                [SVProgressHUD showErrorWithStatus:@"Not connected to the internet,please verify"];
+
                 [self.navigationController popToRootViewControllerAnimated:NO];
                 
             }
@@ -143,8 +145,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 NSLog(@"Some Error while fetching accession data--");
                 NSLog(@"Error is %@",error);
                 //[self performSegueWithIdentifier:@"AccessionToLogin" sender:self];
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while fetching Accessions.Please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alertView show];
+                //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while fetching Accessions.Please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                //[alertView show];
+                [SVProgressHUD showErrorWithStatus:@"Problem while fetching accessions, please try again"];
+
                 [self.navigationController popToRootViewControllerAnimated:NO];
             }
             
