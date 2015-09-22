@@ -13,6 +13,9 @@
 #import "HttpClient.h"
 #import "SVWebViewController.h"
 
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
+
 @implementation HomeViewController
 
 //Open the promotion URL
@@ -20,7 +23,7 @@
 {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     NSLog(@"Tag = %d", gesture.view.tag);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ksvdl.org/mobileapp/index.html"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/app_promotion.html"]];
 }
 
 -(void)viewDidLayoutSubviews
@@ -97,7 +100,15 @@
     
     
     _imageview.contentMode = UIViewContentModeScaleAspectFill;
-     _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/asp/app/Free_BQA_640px.png"]]];
+    
+    if ( IDIOM == IPAD ) {
+        /* do something specifically for iPad. */
+         _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/asp/app/Free_BQA_700px.png"]]];
+    } else {
+        /* do something specifically for iPhone or iPod touch. */
+            _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/asp/app/Free_BQA_250px.png"]]];
+    }
+    
     _imageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromotionURL:)];
     tapped.numberOfTapsRequired = 1;

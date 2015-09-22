@@ -1059,7 +1059,7 @@
                                                     <action selector="submitTap:" destination="Giy-0N-OWv" eventType="touchUpInside" id="j6f-5W-sK1"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhr-ES-MQ0">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhr-ES-MQ0">
                                                 <rect key="frame" x="91" y="307" width="240" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="GgX-q9-igY"/>
@@ -1099,9 +1099,9 @@
                                             <constraint firstItem="dhr-ES-MQ0" firstAttribute="height" secondItem="gnY-28-SI3" secondAttribute="height" id="cmN-Fl-UcL"/>
                                             <constraint firstItem="dhr-ES-MQ0" firstAttribute="leading" secondItem="LSt-oR-G3D" secondAttribute="leading" constant="91" id="fdX-ta-f3r"/>
                                             <constraint firstAttribute="bottom" secondItem="dhr-ES-MQ0" secondAttribute="bottom" constant="15" id="fqN-wq-MVn"/>
-                                            <constraint firstItem="dhr-ES-MQ0" firstAttribute="top" secondItem="gnY-28-SI3" secondAttribute="bottom" constant="50" id="h6Y-Da-djf"/>
+                                            <constraint firstItem="dhr-ES-MQ0" firstAttribute="top" secondItem="gnY-28-SI3" secondAttribute="bottom" constant="20" id="h6Y-Da-djf"/>
                                             <constraint firstItem="gnY-28-SI3" firstAttribute="top" secondItem="2OZ-Ov-ZyD" secondAttribute="bottom" constant="20" id="ih5-6d-JBz"/>
-                                            <constraint firstItem="dhr-ES-MQ0" firstAttribute="top" secondItem="DUp-lx-SA5" secondAttribute="bottom" constant="50" id="itk-8g-ijf"/>
+                                            <constraint firstItem="dhr-ES-MQ0" firstAttribute="top" secondItem="DUp-lx-SA5" secondAttribute="bottom" constant="20" id="itk-8g-ijf"/>
                                             <constraint firstItem="DUp-lx-SA5" firstAttribute="top" secondItem="2OZ-Ov-ZyD" secondAttribute="bottom" constant="20" id="ugM-RA-94m"/>
                                             <constraint firstAttribute="bottom" secondItem="dhr-ES-MQ0" secondAttribute="bottom" constant="10" id="whe-k1-qc4"/>
                                             <constraint firstItem="dhr-ES-MQ0" firstAttribute="height" secondItem="DUp-lx-SA5" secondAttribute="height" id="yMO-fb-I6g"/>
@@ -1114,6 +1114,8 @@
                                                 <exclude reference="3Df-jb-Dfm"/>
                                                 <exclude reference="Z3l-AY-ZF5"/>
                                                 <exclude reference="aGf-do-5VK"/>
+                                                <exclude reference="ygZ-rK-Jpm"/>
+                                                <exclude reference="zj9-3Q-p7k"/>
                                                 <exclude reference="1LH-mX-gjL"/>
                                                 <exclude reference="3Ac-2U-LOF"/>
                                                 <exclude reference="NWD-JY-UM1"/>
