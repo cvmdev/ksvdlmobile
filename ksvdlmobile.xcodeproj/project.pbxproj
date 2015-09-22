@@ -63,6 +63,8 @@
 		59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE3991B276D9900F38902 /* Thumbs@2x.psd */; };
 		59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */; };
 		CD042C531BA1F50800C28D53 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD042C521BA1F50800C28D53 /* WebViewController.m */; };
+		CD1965AF1BB0671A0018F75A /* TestFessWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965AE1BB0671A0018F75A /* TestFessWebViewController.m */; };
+		CD1965B21BB0752B0018F75A /* Youtubeviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
 		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
@@ -216,6 +218,10 @@
 		59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@3x.psd"; sourceTree = "<group>"; };
 		CD042C511BA1F50800C28D53 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CD042C521BA1F50800C28D53 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		CD1965AD1BB0671A0018F75A /* TestFessWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFessWebViewController.h; sourceTree = "<group>"; };
+		CD1965AE1BB0671A0018F75A /* TestFessWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFessWebViewController.m; sourceTree = "<group>"; };
+		CD1965B01BB0752B0018F75A /* Youtubeviewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Youtubeviewcontroller.h; sourceTree = "<group>"; };
+		CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Youtubeviewcontroller.m; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = ../InAppSettings.bundle; sourceTree = "<group>"; };
@@ -474,6 +480,10 @@
 				CD042C521BA1F50800C28D53 /* WebViewController.m */,
 				CDC8CF831BAC7F3E00F76C86 /* KSVDLWebViewController.h */,
 				CDC8CF841BAC7F3E00F76C86 /* KSVDLWebViewController.m */,
+				CD1965AD1BB0671A0018F75A /* TestFessWebViewController.h */,
+				CD1965AE1BB0671A0018F75A /* TestFessWebViewController.m */,
+				CD1965B01BB0752B0018F75A /* Youtubeviewcontroller.h */,
+				CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -905,6 +915,7 @@
 				59ECE37D1B276D0300F38902 /* TTOpenInAppActivity.m in Sources */,
 				CD88209B1B6F0E5A00CECF56 /* IASKAppSettingsViewController.m in Sources */,
 				CD8820A61B6F0E5A00CECF56 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
+				CD1965B21BB0752B0018F75A /* Youtubeviewcontroller.m in Sources */,
 				59ECE3721B276BD400F38902 /* PDFKThumbQueue.m in Sources */,
 				59ECE3601B27658900F38902 /* PDFKPageContent.m in Sources */,
 				CD88209F1B6F0E5A00CECF56 /* IASKSettingsReader.m in Sources */,
@@ -915,6 +926,7 @@
 				CD8820A01B6F0E5A00CECF56 /* IASKSettingsStore.m in Sources */,
 				59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */,
 				59A024C31B4D88DF00B3A0F7 /* SVWebViewController.m in Sources */,
+				CD1965AF1BB0671A0018F75A /* TestFessWebViewController.m in Sources */,
 				59A024C11B4D88DF00B3A0F7 /* SVModalWebViewController.m in Sources */,
 				59A0249C1B4ADA2900B3A0F7 /* GlobalConstants.m in Sources */,
 				5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */,
