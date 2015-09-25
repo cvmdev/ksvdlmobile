@@ -32,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addtestButton;
 
 //Manual Properties
-@property (strong,nonatomic) NSIndexPath *buttonIndexPath;
+@property (weak,nonatomic) NSIndexPath *buttonIndexPath;
 
 @property (nonatomic,weak) id <AccCellDelegate> accReportDelegate;
 

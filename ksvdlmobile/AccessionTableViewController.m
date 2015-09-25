@@ -18,10 +18,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 @implementation AccessionTableViewController{
     //NSString * clientBusinessName;
+    UIActivityIndicatorView * activityView;
+    UIView *loadingView;
+    NSString *currentSearchString;
 }
 
 @synthesize accessionList,selectedIndex;
 
+# pragma mark view life cycle methods
 - (void) viewDidLoad
 {
     [super viewDidLoad];
@@ -33,7 +37,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
     NSUserDefaults *myDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *accessionrestrict         = [myDefaults objectForKey:@"accession_restrict"];
+    NSString *accessionrestrict = [myDefaults objectForKey:@"accession_restrict"];
     NSLog(@"The restriction for accession table is %@",accessionrestrict);
     /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
     
@@ -42,16 +46,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton1 setTarget: self.revealViewController];
     [self.barButton1 setAction: @selector( rightRevealToggle: )];
-  
-    
-    
+   
     self.navigationItem.hidesBackButton = YES;
     
-  //  UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
+    //  UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     UIImage *temp = [[UIImage imageNamed:@"home"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithImage:temp style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
     self.navigationItem.leftBarButtonItem=backBtn;
-    
     
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
@@ -62,17 +63,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     //set selectedIndex=-1; (which means currently no row is selected)
     self.selectedIndex=-1;
     
+    //initialize main accession array and another array for accession search array.
     self.accessionList = [NSMutableArray array];
     self.filteredAccList=[NSMutableArray array];
     
     [SVProgressHUD showWithStatus:@"Loading"];
+    
     [self fetchAccessions];
     
-}
-
-- (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-    [self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -84,7 +82,43 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     //[self.navigationController popToRootViewControllerAnimated:NO];
 }
 
+
+
 #pragma mark instant methods
+//Create a UIView with activity indicator for brief display while search is being done
+- (UIView *) SearchIndicatorView
+{
+    loadingView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 100, 30)];
+    loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    //loadingView.clipsToBounds = YES;
+    
+    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(30,3,200,30)];
+    loadingLabel.backgroundColor = [UIColor clearColor];
+    loadingLabel.textColor = [UIColor whiteColor];
+    loadingLabel.adjustsFontSizeToFitWidth = YES;
+    //loadingLabel.textAlignment = UITextAlignmentCenter;
+    loadingLabel.text = @"Searching  ";
+    [loadingView addSubview:loadingLabel];
+    
+    //loadingView.layer.cornerRadius = 10.0;
+    activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityView.frame = CGRectMake(200,3, activityView.bounds.size.width, activityView.bounds.size.height);
+    [loadingView addSubview:activityView];
+   
+    return loadingView;
+}
+
+//hide view once the search is finished
+-(void) hideSearchIndicator
+{
+    [activityView stopAnimating];
+    [loadingView removeFromSuperview];
+}
+
+- (IBAction)popToRoot:(UIBarButtonItem*)sender {
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
+}
 
 - (AFOAuthCredential *) getCredential
 {
@@ -112,9 +146,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     {
         NSLog(@"ATVC:User is logged in and authentication token is current");
         
-        
         HttpClient *client = [HttpClient sharedHTTPClient];
-        
         
         [client fetchAccessionsForPageNo:_currentPage WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
             _totalPages = [[[responseObject objectForKey:@"Paging"] objectForKey:@"PageCount"] intValue];
@@ -124,6 +156,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             //NSLog(@"The data is %@",responseObject);
             
             [self.accessionList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
+            if (self.accessionList.count==0)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showInfoWithStatus:@"Unable to find any accessions for your account"];
+                });
+            }
             [self.tableView reloadData];
             [SVProgressHUD dismiss];
             
@@ -133,10 +171,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             if (![[AFNetworkReachabilityManager sharedManager] isReachable])
             {
                 NSLog(@"Network Unreachable..display an alert to the user");
-//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//                [alertView show];
+                //                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                //                [alertView show];
                 [SVProgressHUD showErrorWithStatus:@"Not connected to the internet,please verify"];
-
+                
                 [self.navigationController popToRootViewControllerAnimated:NO];
                 
             }
@@ -148,7 +186,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while fetching Accessions.Please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 //[alertView show];
                 [SVProgressHUD showErrorWithStatus:@"Problem while fetching accessions, please try again"];
-
+                
                 [self.navigationController popToRootViewControllerAnimated:NO];
             }
             
@@ -170,6 +208,55 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [activityIndicator startAnimating];
     cell.tag=kLoadingCellTag;
     return cell;
+    
+}
+
+- (int) nonNullTestCountForArray:(NSArray*) testArray{
+    
+    NSIndexSet *nonNullIndexes = [testArray indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return obj!= [NSNull null];
+    }];
+    
+    return (int)(nonNullIndexes.count);
+}
+
+-(void) styleTableViewCell:(UITableViewCell *) cell forAccessionStatus :(NSString *)accStatus
+{
+    if ([accStatus isEqualToString:@"New"])
+    {
+        
+        UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_New"];
+        
+        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:backGround];
+        
+        cellBackgroundImage.image=backGround;
+        cell.backgroundView=cellBackgroundImage;
+        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
+        
+    }
+    if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
+    {
+        
+        UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Working"];
+        
+        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:backGround];
+        
+        cellBackgroundImage.image=backGround;
+        cell.backgroundView=cellBackgroundImage;
+        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
+    }
+    if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
+    {
+        
+        UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Finalized"];
+        
+        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:[backGround stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0]];
+        
+        cellBackgroundImage.image=backGround;
+        cell.backgroundView=cellBackgroundImage;
+        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
+    }
+    
 }
 
 - (UITableViewCell *) accessionCellForIndexPath:(NSIndexPath *) indexPath FromDictionary:(NSDictionary *) dict{
@@ -189,7 +276,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     NSString *accStatus =[currentAccessionDict objectForKey:@"AccessionStatus"];
     NSInteger labId = [[currentAccessionDict objectForKey:@"LabId"] integerValue];
-    
     
     if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
     {
@@ -238,24 +324,24 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     //if ([accStatus isEqualToString:@"Review"])
     //{
-        //cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
-        //cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
-//        [cell setBackgroundColor:[UIColor clearColor]];
-//        
-//        CAGradientLayer *grad = [CAGradientLayer layer];
-//        grad.frame = cell.bounds;
-//        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
-//        
-//        [cell setBackgroundView:[[UIView alloc] init]];
-//        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
-        
-//        cell.finalizedDateLabel.hidden=TRUE;
-//        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
-//        cell.addtestButton.hidden=TRUE;
-//        if (labId==1)
-//            cell.viewreportButton.hidden=false;
-//        else
-//            cell.viewreportButton.hidden=true;
+    //cell.backgroundColor= [[UIColor alloc] initWithRed:249.0/255.0 green:173.0/255.0 blue:29.0/255.0 alpha:1.0];
+    //cell.backgroundColor= [[UIColor alloc] initWithRed:255.0/255.0 green:238/255.0 blue:187.0/255.0 alpha:0.5];
+    //        [cell setBackgroundColor:[UIColor clearColor]];
+    //
+    //        CAGradientLayer *grad = [CAGradientLayer layer];
+    //        grad.frame = cell.bounds;
+    //        grad.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:153.0/255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:204.0/255.0 alpha:1.0] CGColor], nil];
+    //
+    //        [cell setBackgroundView:[[UIView alloc] init]];
+    //        [cell.backgroundView.layer insertSublayer:grad atIndex:0];
+    
+    //        cell.finalizedDateLabel.hidden=TRUE;
+    //        cell.statusLabel.textColor=[[UIColor alloc] initWithRed:247.0/255.0 green:148.0/255.0 blue:29.0/255.0 alpha:1.0];
+    //        cell.addtestButton.hidden=TRUE;
+    //        if (labId==1)
+    //            cell.viewreportButton.hidden=false;
+    //        else
+    //            cell.viewreportButton.hidden=true;
     //}
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
@@ -275,6 +361,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         cell.caseCoordinatorLabel.hidden=TRUE;
         cell.caseCoordinatorHeightConstraint.constant=0;
     }
+    
     NSString *fulltestString=@"";
     int numNonNullTestCount =0;
     NSArray *testArray=[currentAccessionDict objectForKey:@"Tests"];
@@ -283,33 +370,33 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     numNonNullTestCount=[self nonNullTestCountForArray:testArray];
     if (numNonNullTestCount>0)
+    {
+        fulltestString=@"Tests Ordered:\n";
+        NSUInteger ulLength=fulltestString.length;
+        
+        for (NSString *testInfo in testArray)
         {
-            fulltestString=@"Tests Ordered:\n";
-            NSUInteger ulLength=fulltestString.length;
-
-            for (NSString *testInfo in testArray)
+            if (!(testInfo==(id)[NSNull null]))
             {
-                if (!(testInfo==(id)[NSNull null]))
-                {
                 //numNonNullTestCount = numNonNullTestCount+1;
                 fulltestString = [fulltestString stringByAppendingString:testInfo];
                 fulltestString = [fulltestString stringByAppendingString:@"\n"];
-                }
             }
-            
-            cell.testInfoLabel.hidden=false;
-            
-            //cell.testInfoLabel.numberOfLines=[testArray count]+1;
-            cell.testInfoLabel.numberOfLines=numNonNullTestCount + 1;
-            cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
-            NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
-            NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
-            [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
-            [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(0, ulLength)];//Underline color
-            [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
-            //cell.testInfoLabel.text=fulltestString;
-            cell.testInfoLabel.attributedText=ulstring;
         }
+        
+        cell.testInfoLabel.hidden=false;
+        
+        //cell.testInfoLabel.numberOfLines=[testArray count]+1;
+        cell.testInfoLabel.numberOfLines=numNonNullTestCount + 1;
+        cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
+        NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
+        NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
+        [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
+        [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(0, ulLength)];//Underline color
+        [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
+        //cell.testInfoLabel.text=fulltestString;
+        cell.testInfoLabel.attributedText=ulstring;
+    }
     
     else
         cell.testInfoLabel.hidden=true;
@@ -336,15 +423,52 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     return cell;
 }
 
+- (void) filterAccessionsForSearchText:(NSString *) searchText scope:(NSString *)scope
+{
+    
+    HttpClient *client = [HttpClient sharedHTTPClient];
+    
+    [activityView startAnimating];
+    //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [client filterAccessionsWithSearchText:searchText WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
+        
+        if ([searchText isEqualToString:currentSearchString])
+        {
+            [self.filteredAccList removeAllObjects];
+            [self.filteredAccList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
+            NSLog(@"The count of the filter array is : %ld",(long)[self.filteredAccList count]);
+            //[searchActivityIndicator stopAnimating];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideSearchIndicator];
+                self.searchDisplayController.searchResultsTableView.tableHeaderView=nil;
+            });
+            
+         [self.searchDisplayController.searchResultsTableView reloadData];
+        }
+        
+    }andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (![[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            //[searchActivityIndicator stopAnimating];
+            [self hideSearchIndicator];
+            NSLog(@"Network Unreachable..display an alert to the user");
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
+        }
+        NSLog(@"Error: Problem while fetching accessions on search: %@", error);
+    }];
+    
+}
 
 
 # pragma Mark tableview delegate methods
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView==self.searchDisplayController.searchResultsTableView){
-        
         NSDictionary *filterDict= [self.filteredAccList objectAtIndex:indexPath.row];
-        
         return [self accessionCellForIndexPath:indexPath FromDictionary:filterDict];
     }
     else
@@ -367,34 +491,23 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         return [self.filteredAccList count];
         
     } else {
-        
         if (_currentPage< _totalPages)
-           return self.accessionList.count+ 1;
+            return self.accessionList.count+ 1;
         
         return [self.accessionList count];
     }
     
 }
 
-- (int) nonNullTestCountForArray:(NSArray*) testArray{
-    
-    NSIndexSet *nonNullIndexes = [testArray indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-       return obj!= [NSNull null];
-    }];
-    
-    return (int)(nonNullIndexes.count);
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat defaultCellHeight=95;
-    
     CGFloat currHeightOfCell=defaultCellHeight;
-    
     
     if (self.selectedIndex==indexPath.row)
     {
-    //return 170;
+        //return 170;
         NSDictionary *currCellDict=nil;
         int numTestCount=0;
         if (tableView==self.searchDisplayController.searchResultsTableView)
@@ -404,9 +517,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
             if (numTestCount>0)
             {
-            currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
+                currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
             }
-     
         }
         else
         {
@@ -417,13 +529,12 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 
                 if (numTestCount>0)
                     currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
-               
-//                if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
-//                    currHeightOfCell=currHeightOfCell+20;
-//                if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
-//                    currHeightOfCell=currHeightOfCell+20;
+                
+                //                if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
+                //                    currHeightOfCell=currHeightOfCell+20;
+                //                if(!([currCellDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
+                //                    currHeightOfCell=currHeightOfCell+20;
             }
-        
         }
     }
     return currHeightOfCell;
@@ -433,11 +544,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     NSLog(@"ROW SELECTED..%ld",indexPath.row);
     
-    
     if (self.selectedIndex ==indexPath.row)
     {
         self.selectedIndex=-1;
-
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         });
@@ -445,25 +555,20 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     }
     
     if (self.selectedIndex!=-1){
-
-        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:self.selectedIndex inSection:0];
-      
         
+        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:self.selectedIndex inSection:0];
         //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationFade];
         });
     }
     
-        self.selectedIndex=(int)indexPath.row;
-    
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        });
+    self.selectedIndex=(int)indexPath.row;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    });
 }
-
 
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -483,22 +588,20 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     NSDictionary *currCellDict = nil;
     NSString *currCellStatus=nil;
     
-//    if([cell.backgroundView.layer.sublayers count] >0)
-//    {
-//        if([[cell.backgroundView.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]])
-//        {
-//            
-//            [[cell.backgroundView.layer.sublayers objectAtIndex:0] removeFromSuperlayer];
-//            
-//        }
-//    }
-    
+    //    if([cell.backgroundView.layer.sublayers count] >0)
+    //    {
+    //        if([[cell.backgroundView.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]])
+    //        {
+    //
+    //            [[cell.backgroundView.layer.sublayers objectAtIndex:0] removeFromSuperlayer];
+    //
+    //        }
+    //    }
     
     if (tableView==self.searchDisplayController.searchResultsTableView)
     {
         currCellDict= [self.filteredAccList objectAtIndex:indexPath.row];
         currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
-       
         [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
         
     }
@@ -508,17 +611,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             currCellDict= [self.accessionList objectAtIndex:indexPath.row];
             currCellStatus =[currCellDict objectForKey:@"AccessionStatus"];
             [self styleTableViewCell:cell forAccessionStatus:currCellStatus];
-            
         }
-    
     
     //if its a loading cell indicator....no need to add any color
     if (cell.tag==kLoadingCellTag){
         _currentPage++;
         [self fetchAccessions];
     }
-    
-    
 }
 
 
@@ -541,87 +640,24 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 //    return 24;
 //}
 
--(void) styleTableViewCell:(UITableViewCell *) cell forAccessionStatus :(NSString *)accStatus
-{
-    if ([accStatus isEqualToString:@"New"])
-    {
-   
-        UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_New"];
-        
-        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:backGround];
-        
-        cellBackgroundImage.image=backGround;
-        cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
 
-    }
-    if ([accStatus isEqualToString:@"Working"] || [accStatus isEqualToString:@"Review"])
-    {
-        
-        UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Working"];
-        
-        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:backGround];
-        
-        cellBackgroundImage.image=backGround;
-        cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
-    }
-    if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
-    {
-              
-        UIImage *backGround =[UIImage imageNamed:@"Accession_Cell_Finalized"];
-        
-        UIImageView *cellBackgroundImage = [[UIImageView alloc] initWithImage:[backGround stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0]];
-        
-        cellBackgroundImage.image=backGround;
-        cell.backgroundView=cellBackgroundImage;
-        cell.backgroundView.contentMode=UIViewContentModeTopLeft;
-    }
-    
-}
 
-- (void) filterAccessionsForSearchText:(NSString *) searchText scope:(NSString *)scope
-{
-    HttpClient *client = [HttpClient sharedHTTPClient];
-    
-    //[reqManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
-    [client filterAccessionsWithSearchText:searchText WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
-        
-        //NSLog(@"Values are: %@",[responseObject objectForKey:@"Accessions"]);
-        
-        [self.filteredAccList removeAllObjects];
-        
-        [self.filteredAccList addObjectsFromArray:[responseObject objectForKey:@"Accessions"]];
-        
-        NSLog(@"The count of the filter array is : %ld",(long)[self.filteredAccList count]);
-        
-        [self.searchDisplayController.searchResultsTableView reloadData];
-        
-    }andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (![[AFNetworkReachabilityManager sharedManager] isReachable])
-        {
-            NSLog(@"Network Unreachable..display an alert to the user");
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alertView show];
-            [self.navigationController popToRootViewControllerAnimated:NO];
-            
-        }
-        NSLog(@"Error: Problem while fetching accessions on search: %@", error);
-    }];
-    
-}
-
+# pragma mark SearchBar delegate method
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
+    
     NSLog(@"Search String is :%@",searchString);
+    currentSearchString=searchString;
+    controller.searchResultsTableView.tableHeaderView= [self SearchIndicatorView];
+    
     [self filterAccessionsForSearchText:searchString
                                   scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                         objectAtIndex:[self.searchDisplayController.searchBar
+                                            objectAtIndex:[self.searchDisplayController.searchBar
                                                         selectedScopeButtonIndex]]];
     return YES;
 }
+
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"viewreport"])
@@ -667,7 +703,6 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     return [cellAccNum objectForKey:@"AccessionNo"];
 }
 
-
 - (NSString *) accessionValidForReport:(NSString *)accNum
 {
     __block NSString * accessionValidMessage=@"Failure to View Report";
@@ -697,8 +732,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
     //if ([([self accessionValidForReport:[self getCurrentAccessionForIndexPath:indexPath]]) isEqual:@"Success"])
-        
-        [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
+    [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
 }
 
 -(void) accessionaddtestFor:(NSIndexPath *)indexPath{

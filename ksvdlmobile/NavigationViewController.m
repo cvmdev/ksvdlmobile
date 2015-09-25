@@ -172,7 +172,7 @@
             case 4:
             {
                 //Logout Logic
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Log out will prevent notifications to be sent.Do you want to continue?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Log out will prevent notifications from being sent.Do you want to continue?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
                 [alertView show];
              
             }

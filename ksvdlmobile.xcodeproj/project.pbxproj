@@ -21,7 +21,6 @@
 		59649ED91AEF1E0A00E5F1AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59649ED71AEF1E0A00E5F1AD /* LaunchScreen.xib */; };
 		59649EE51AEF1E0A00E5F1AD /* ksvdlmobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EE41AEF1E0A00E5F1AD /* ksvdlmobileTests.m */; };
 		59649EF71AF129D300E5F1AD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59649EF61AF129D300E5F1AD /* Security.framework */; };
-		59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EF91AF12A3E00E5F1AD /* KeychainItemWrapper.m */; };
 		59649F001B0B82DC00E5F1AD /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */; };
 		59649F031B0CC48400E5F1AD /* AuthAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649F021B0CC48400E5F1AD /* AuthAPIClient.m */; };
 		59A024961B45C9AC00B3A0F7 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A024951B45C9AC00B3A0F7 /* GradientView.m */; };
@@ -139,8 +138,6 @@
 		59649EE31AEF1E0A00E5F1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59649EE41AEF1E0A00E5F1AD /* ksvdlmobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ksvdlmobileTests.m; sourceTree = "<group>"; };
 		59649EF61AF129D300E5F1AD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		59649EF81AF12A3E00E5F1AD /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		59649EF91AF12A3E00E5F1AD /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		59649EFE1B0B82DC00E5F1AD /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
 		59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
 		59649F011B0CC48400E5F1AD /* AuthAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthAPIClient.h; sourceTree = "<group>"; };
@@ -500,8 +497,6 @@
 		59649EF51AF125F100E5F1AD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				59649EF81AF12A3E00E5F1AD /* KeychainItemWrapper.h */,
-				59649EF91AF12A3E00E5F1AD /* KeychainItemWrapper.m */,
 				59649EFE1B0B82DC00E5F1AD /* AFOAuth2Client.h */,
 				59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */,
 				59649F011B0CC48400E5F1AD /* AuthAPIClient.h */,
@@ -924,7 +919,6 @@
 				5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */,
 				CDE49ACF1B21F79200A98FFA /* SWRevealViewController.m in Sources */,
 				CD8820A01B6F0E5A00CECF56 /* IASKSettingsStore.m in Sources */,
-				59649EFA1AF12A3E00E5F1AD /* KeychainItemWrapper.m in Sources */,
 				59A024C31B4D88DF00B3A0F7 /* SVWebViewController.m in Sources */,
 				CD1965AF1BB0671A0018F75A /* TestFessWebViewController.m in Sources */,
 				59A024C11B4D88DF00B3A0F7 /* SVModalWebViewController.m in Sources */,

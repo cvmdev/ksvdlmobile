@@ -11,7 +11,6 @@
 #import "AuthAPIClient.h"
 #import "AccessionTableCell.h"
 #import "SVProgressHUD.h"
-#import "GradientView.h"
 
 @interface AccessionTableViewController : UITableViewController<AccCellDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -20,7 +19,7 @@
     @property (strong,nonatomic) NSMutableArray *filteredAccList;
     @property NSInteger currentPage;
     @property NSInteger totalPages;
-    @property (nonatomic, strong) GradientView *gradientView;
+    //@property (nonatomic, strong) GradientView *gradientView;
     
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *barButton1;
 - (IBAction)refreshAccessionScreen:(id)sender;
