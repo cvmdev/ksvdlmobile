@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ksvdlmobile/LoginViewController.m"
-            timestampString = "464290112.105337"
+            timestampString = "464897967.936273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-loginBtn:"
             landmarkType = "5">
          </BreakpointContent>

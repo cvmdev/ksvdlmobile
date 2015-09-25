@@ -38,6 +38,11 @@
     [WebView loadRequest:helppagerequest];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [WebView loadHTMLString:nil baseURL:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

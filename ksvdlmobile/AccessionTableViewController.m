@@ -37,8 +37,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
     NSUserDefaults *myDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *accessionrestrict = [myDefaults objectForKey:@"accession_restrict"];
-    NSLog(@"The restriction for accession table is %@",accessionrestrict);
+   /* NSString *accessionrestrict = [myDefaults objectForKey:@"accession_restrict"];
+    NSLog(@"The restriction for accession table is %@",accessionrestrict);*/
     /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
     
     _barButton1.target = self.revealViewController;

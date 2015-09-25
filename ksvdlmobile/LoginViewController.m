@@ -146,7 +146,6 @@
                                             {
                                                 NSLog(@"All notification settings are empty initially");
                                                 NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                             @"30", @"accession_restrict",
                                                                              usernamevalue, @"loginname",
                                                                              @"Yes", @"sample_arr",
                                                                              @"No", @"prelim_results",
@@ -229,7 +228,7 @@
                                             
                                             
                                         NSLog(@"Access Token:%@",credential.accessToken);
-                                                     
+
                                         [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
                                         NSLog(@"Access token stored in keychain");
                                         [[HttpClient sharedHTTPClient] updateCredential:credential];
