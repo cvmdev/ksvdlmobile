@@ -811,6 +811,68 @@
             </objects>
             <point key="canvasLocation" x="365" y="-818"/>
         </scene>
+        <!--About WebView Controller-->
+        <scene sceneID="Ax0-ge-mw5">
+            <objects>
+                <viewController id="vaX-XE-mji" userLabel="About WebView Controller" customClass="AboutWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r95-dZ-WBj"/>
+                        <viewControllerLayoutGuide type="bottom" id="I0K-ow-Y2b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vu8-HJ-U9Y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Zz-sX-1uW">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVK-wX-82v">
+                                        <rect key="frame" x="-87" y="49" width="413" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeH-ve-TEy">
+                                        <rect key="frame" x="-180" y="-236" width="600" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </webView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qeH-ve-TEy" firstAttribute="height" secondItem="1Zz-sX-1uW" secondAttribute="height" multiplier="90%" id="2Hh-oM-Hzl"/>
+                                    <constraint firstItem="XVK-wX-82v" firstAttribute="height" secondItem="1Zz-sX-1uW" secondAttribute="height" multiplier="10%" id="2vX-aN-d7R"/>
+                                    <constraint firstItem="XVK-wX-82v" firstAttribute="leading" secondItem="1Zz-sX-1uW" secondAttribute="leading" id="5vJ-EV-hY7"/>
+                                    <constraint firstAttribute="width" secondItem="qeH-ve-TEy" secondAttribute="width" id="DaN-oF-wtb"/>
+                                    <constraint firstItem="XVK-wX-82v" firstAttribute="top" secondItem="1Zz-sX-1uW" secondAttribute="top" id="FrN-Jy-B8E"/>
+                                    <constraint firstItem="qeH-ve-TEy" firstAttribute="top" secondItem="XVK-wX-82v" secondAttribute="bottom" constant="25" id="Klw-Dx-fan"/>
+                                    <constraint firstItem="qeH-ve-TEy" firstAttribute="leading" secondItem="1Zz-sX-1uW" secondAttribute="leading" id="T4d-h8-ReV"/>
+                                    <constraint firstItem="XVK-wX-82v" firstAttribute="width" secondItem="1Zz-sX-1uW" secondAttribute="width" id="c7L-D4-uwv"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I0K-ow-Y2b" firstAttribute="top" secondItem="1Zz-sX-1uW" secondAttribute="bottom" id="9J8-7Z-n8x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Zz-sX-1uW" secondAttribute="trailing" id="kP9-EJ-HIY"/>
+                            <constraint firstItem="1Zz-sX-1uW" firstAttribute="top" secondItem="r95-dZ-WBj" secondAttribute="bottom" id="uRH-db-1ck"/>
+                            <constraint firstItem="1Zz-sX-1uW" firstAttribute="leading" secondItem="vu8-HJ-U9Y" secondAttribute="leadingMargin" id="yXS-rd-bbQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="D2d-dQ-uZW">
+                        <barButtonItem key="rightBarButtonItem" image="L3MEB.png" id="tC0-qc-VT6">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="BarButton" destination="tC0-qc-VT6" id="44C-cL-OFc"/>
+                        <outlet property="WebView" destination="qeH-ve-TEy" id="YpO-Qt-lAY"/>
+                        <outlet property="text1" destination="XVK-wX-82v" id="zkz-EV-UJG"/>
+                        <segue destination="Giy-0N-OWv" kind="show" identifier="abouttohome" id="zQH-oA-PxO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9E-If-rvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="382" y="-1707"/>
+        </scene>
         <!--Web View Controller-->
         <scene sceneID="h4i-Ys-78w">
             <objects>
@@ -1001,6 +1063,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.94117647059999998" green="0.80784313730000001" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="vaX-XE-mji" kind="custom" customClass="SWRevealViewControllerSegue" id="H12-ZA-Jru"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1337,9 +1402,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K9H-Az-XVs"/>
-        <segue reference="cDr-5r-ECg"/>
+        <segue reference="zQH-oA-PxO"/>
+        <segue reference="aRR-GD-dra"/>
         <segue reference="Htf-al-Bab"/>
-        <segue reference="LQw-T8-f9Z"/>
+        <segue reference="xEa-OO-ROn"/>
     </inferredMetricsTieBreakers>
 </document>
