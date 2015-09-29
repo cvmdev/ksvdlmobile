@@ -65,6 +65,8 @@
 		CD1965AF1BB0671A0018F75A /* TestFessWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965AE1BB0671A0018F75A /* TestFessWebViewController.m */; };
 		CD1965B21BB0752B0018F75A /* Youtubeviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */; };
 		CD1965B51BB8E98D0018F75A /* AboutWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965B41BB8E98D0018F75A /* AboutWebViewController.m */; };
+		CD1965BB1BBB145A0018F75A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1965BA1BBB145A0018F75A /* icon.png */; };
+		CD1965BD1BBB14B10018F75A /* KSU_CVM_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1965BC1BBB14B10018F75A /* KSU_CVM_logo.png */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
 		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
@@ -222,6 +224,8 @@
 		CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Youtubeviewcontroller.m; sourceTree = "<group>"; };
 		CD1965B31BB8E98D0018F75A /* AboutWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWebViewController.h; sourceTree = "<group>"; };
 		CD1965B41BB8E98D0018F75A /* AboutWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWebViewController.m; sourceTree = "<group>"; };
+		CD1965BA1BBB145A0018F75A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		CD1965BC1BBB14B10018F75A /* KSU_CVM_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KSU_CVM_logo.png; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = ../InAppSettings.bundle; sourceTree = "<group>"; };
@@ -378,6 +382,8 @@
 		593EBD051B18F1B7002927B4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD1965BA1BBB145A0018F75A /* icon.png */,
+				CD1965BC1BBB14B10018F75A /* KSU_CVM_logo.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -827,6 +833,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59ECE3A91B276D9900F38902 /* PageList.psd in Resources */,
+				CD1965BD1BBB14B10018F75A /* KSU_CVM_logo.png in Resources */,
 				59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */,
 				CD8820681B6F0DB600CECF56 /* Settings.bundle in Resources */,
 				59649ED41AEF1E0A00E5F1AD /* Main.storyboard in Resources */,
@@ -846,6 +853,7 @@
 				59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */,
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,
 				59ECE3AB1B276D9900F38902 /* PageList@2x.psd in Resources */,
+				CD1965BB1BBB145A0018F75A /* icon.png in Resources */,
 				CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */,
 				CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */,
 				59649ED61AEF1E0A00E5F1AD /* Images.xcassets in Resources */,

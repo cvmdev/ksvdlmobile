@@ -15,6 +15,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *BarButton;
-@property (weak, nonatomic) IBOutlet UILabel *text1;
+
 
 @end

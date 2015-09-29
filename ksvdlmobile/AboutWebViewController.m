@@ -32,20 +32,31 @@
     [self.BarButton setTarget: self.revealViewController];
     [self.BarButton setAction: @selector( rightRevealToggle: )];
     
-    
+ 
     // Do any additional setup after loading the view.
-    NSURL *aboutpageURL = [NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/about.html"];
+ /*   NSURL *aboutpageURL = [NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/about.html"];
     NSURLRequest *aboutpagerequest = [NSURLRequest requestWithURL:aboutpageURL];
-    [WebView loadRequest:aboutpagerequest];
+    [WebView loadRequest:aboutpagerequest];  */
+    
+    
+   /* NSString *make = @"Porsche";
+    NSString *model = @"911";
+    int year = 1968;
+    NSString *message = [NSString stringWithFormat:@"That's a %@ %@ from %d!",
+                         make, model, year];
+    NSLog(@"%@", message);
+    */
+    
+    
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
     
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    _text1.text =[NSString stringWithFormat:@"%@%@",@" Version : ",appVersion];
+    NSString *version =[NSString stringWithFormat:@"%@%@",@" Version : ",appVersion];
     
-   /* NSString *myHTML = [NSString stringWithFormat:@"<html><body><h1>About Page</h1><ul><li>Dr. Tammy Beckham, Dean of the College of Veterinary Medicine</li><li>Dr. Gary Anderson, Director/Professor, Kansas State Veterinary Diagnostic Laboratory</li><li>Dr. Kelli M. Almes, Assistant Professor</li><li>Manickam Dhandapani, Web/Database Developer</li><li>Dr. Gregg A. Hanzlicek, Assistant Professor</li><li>Eric Herrman, System Administrator</li><li>Mal Hoover, Medical Illustrator</li><li>Praveen Ramanan, Database Engineer</li><li>Dr. Priscilla Roddy, Assistant Dean, Administration and Finance</li><li>Arthi Subramanian, Web/Database Developer</li><li>Justin Wiebers, Director, Client Connections</li></ul></body></html>", _text1.text];
+    NSString *myHTML = [NSString stringWithFormat:@"<html><body><h3>About Page</h3><img style='width: 150px;' src='icon.png'><p><strong>KSVDL Mobile<br/>Version is %@</strong><br/>&copy;2015 Kansas State University College of Veterinary Medicine</p><img style='width: 250px;' src='KSU_CVM_logo.png' /><ul><li>Dr. Tammy Beckham, Dean of the College of Veterinary Medicine</li><li>Dr. Gary Anderson, Director/Professor, Kansas State Veterinary Diagnostic Laboratory</li><li>Dr. Kelli M. Almes, Assistant Professor</li><li>Manickam Dhandapani, Web/Database Developer</li><li>Dr. Gregg A. Hanzlicek, Assistant Professor</li><li>Eric Herrman, System Administrator</li><li>Mal Hoover, Medical Illustrator</li><li>Praveen Ramanan, Database Engineer</li><li>Dr. Priscilla Roddy, Assistant Dean, Administration and Finance</li><li>Arthi Subramanian, Web/Database Developer</li><li>Justin Wiebers, Director, Client Connections</li></ul></body></html>",appVersion];
     
-    [WebView loadHTMLString:myHTML baseURL:nil];*/
-    
-    
+    [WebView loadHTMLString:myHTML baseURL:baseURL];
 }
 
 
