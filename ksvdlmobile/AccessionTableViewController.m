@@ -43,7 +43,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     _barButton1.target = self.revealViewController;
     _barButton1.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.barButton1 setTarget: self.revealViewController];
     [self.barButton1 setAction: @selector( rightRevealToggle: )];
    
@@ -72,6 +72,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [self fetchAccessions];
     
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
 
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
