@@ -132,8 +132,14 @@
                                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                             [userDefaults setObject:_userText.text forKey:kVDLUserString];
                                             [userDefaults synchronize];
-                                            
                                             NSLog(@"Username added to NSUserDefaults");
+
+                                            NSLog(@"Login is a success and Access Token is :%@",credential.accessToken);
+                                            [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
+                                            NSLog(@"Access token stored in keychain");
+                                            [[HttpClient sharedHTTPClient] updateCredential:credential];
+                                            NSLog(@"Credential updated for the Authorization header");
+                                            
                                             
                                             /*Get value of kVDLUserString in mystring - not working*/
                                             NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
@@ -228,12 +234,7 @@
                                             /*Push Notifications changes end--*/
                                             
                                             
-                                        NSLog(@"Access Token:%@",credential.accessToken);
-                                                     
-                                        [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
-                                        NSLog(@"Access token stored in keychain");
-                                        [[HttpClient sharedHTTPClient] updateCredential:credential];
-                                            NSLog(@"Credential updated");
+                                        
                                             
                                         [SVProgressHUD dismiss];
                                         NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
@@ -291,7 +292,7 @@
         if (operation.response.statusCode==200)
         {
             NSLog(@"Device Registration was a success....");
-            //Store User DevieToken in NSUSerDefaults
+            //Store User DeviceToken in NSUSerDefaults
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             [userDefaults setObject:token forKey:kVDLDeviceTokenString];
             [userDefaults synchronize];

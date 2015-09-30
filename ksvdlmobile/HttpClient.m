@@ -432,7 +432,7 @@
     
     void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         if (operation.response.statusCode == 500) {
-            NSLog(@"Got an internal server error while accession search");
+            NSLog(@"Got an internal server error while adding device token");
             NSLog(@"Error:%@",error.userInfo);
             NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
             NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
