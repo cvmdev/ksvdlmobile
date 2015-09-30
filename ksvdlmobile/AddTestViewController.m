@@ -68,7 +68,7 @@
     
     
     //The following adds UITextView with rounded corners
-    [_notestext.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
+    //[_notestext.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
     [_notestext.layer setBorderColor: [[UIColor grayColor] CGColor]];
     [_notestext.layer setBorderWidth: 1.0];
     [_notestext.layer setCornerRadius:8.0f];
@@ -108,6 +108,10 @@
     {
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         
+        
+        NSString *phonenos = _inttext.text;
+        phonenos = [phonenos stringByAppendingString:_phtext.text];
+        
         mailer.mailComposeDelegate = self;
         
         NSString *prefixtxt = @"<h4>The following information has been submitted from the KSVDL Mobile App requesting additional tests - </h4>";
@@ -115,7 +119,7 @@
         NSString *accnos = [NSString stringWithFormat:@"%@%@",@" <b>Accession Number :</b> ",self.accessionNumber];
         NSString *ownername = [NSString stringWithFormat:@"%@%@",@" <b>Owner Name :</b> ",self.ownerName];
         NSString *clientnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Client :</b> ",self.clientName];
-        NSString *phonetxt = [NSString stringWithFormat:@"%@%@",@" <b>Contact Number :</b> ",_phtext.text];
+        NSString *phonetxt = [NSString stringWithFormat:@"%@%@",@" <b>Contact Number :</b> ",phonenos];
         NSString *emailtxt = [NSString stringWithFormat:@"%@%@",@" <b>Email :</b> ",_emailtext.text];
         NSString *textnametxt = [NSString stringWithFormat:@"%@%@",@" <b>Test Name Requested :</b> ",_testnametext.text];
         NSString *notestxt = [NSString stringWithFormat:@"%@%@",@" <b>Additional Notes :</b> ",_notestext.text];
@@ -135,11 +139,11 @@
                     
                     if([self.accessionNumber hasPrefix:@"R"])
                     {
-                        toRecipients = [NSArray arrayWithObject:@"arthisubramanian85@gmail.com"];
+                        toRecipients = [NSArray arrayWithObject:@"rabies@vet.k-state.edu"];
                     }
                     else
                     {
-                        toRecipients = [NSArray arrayWithObject:@"arthis@vet.k-state.edu"];
+                        toRecipients = [NSArray arrayWithObject:@"clientcare@vet.k-state.edu"];
                     }
                     
                     [mailer setToRecipients:toRecipients];
@@ -242,7 +246,7 @@
 @implementation NSString (phonenumberValidation)
 -(BOOL)isValidPhone
 {
-    NSString *phoneRegex = @"^\\+(?:[0-9] ?){6,14}[0-9]$";
+    NSString *phoneRegex = @"^[0-9-]*$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:self];
 }

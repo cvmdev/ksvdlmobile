@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailtext;
 @property (weak, nonatomic) IBOutlet UITextField *testnametext;
 @property (weak, nonatomic) IBOutlet UITextView *notestext;
+@property (weak, nonatomic) IBOutlet UITextField *inttext;
 
 @property (nonatomic, assign) id currentResponder;
 @property (weak, nonatomic) IBOutlet UIView *TextContentView;
