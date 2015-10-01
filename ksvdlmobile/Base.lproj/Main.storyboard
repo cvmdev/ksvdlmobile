@@ -1380,9 +1380,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zQH-oA-PxO"/>
-        <segue reference="cDr-5r-ECg"/>
         <segue reference="xEa-OO-ROn"/>
+        <segue reference="czI-Jb-bBP"/>
+        <segue reference="cDr-5r-ECg"/>
         <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>

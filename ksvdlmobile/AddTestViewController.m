@@ -133,7 +133,7 @@
                 if((_emailtext.text.length>0 && [_emailtext.text isValidEmail]) || (_emailtext.text.length==0)) //When email exisits, ensure its valid
                 {
                     NSLog(@"Valid Email ID");
-                    [mailer setSubject:@"Request to Add tests"];
+                    [mailer setSubject:@"Request to Add new tests"];
                     
                     NSArray *toRecipients;
                     
