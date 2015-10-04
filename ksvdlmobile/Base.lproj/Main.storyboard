@@ -1379,15 +1379,6 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="jgB-J5-wzS"/>
-        <segue reference="xEa-OO-ROn"/>
-        <segue reference="ofy-ii-baV"/>
-=======
-        <segue reference="xEa-OO-ROn"/>
-        <segue reference="czI-Jb-bBP"/>
-        <segue reference="cDr-5r-ECg"/>
->>>>>>> origin/master
         <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>

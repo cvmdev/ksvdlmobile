@@ -159,9 +159,7 @@
     //NSString *Accessions = [NSString stringWithFormat:@"Accessions?pageNo=%ld",(long)pageNo];
     NSString *Accessions = [NSString stringWithFormat:@"AccTests?pageNo=%ld",(long)pageNo];
     
-    NSLog(@"Fetching Accessions for Page No:%ld",(long)pageNo);
-    __weak typeof(self) weakSelf=self;
-    
+    NSLog(@"Fetching Accessions for Page No:%ld",(long)pageNo);    
     [self GET:Accessions parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           processSuccessBlock(operation, responseObject);

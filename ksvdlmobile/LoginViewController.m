@@ -234,19 +234,6 @@
                                                                                  object:nil];
                                             /*Push Notifications changes end--*/
                                             
-                                            
-<<<<<<< HEAD
-
-=======
-
-                                        NSLog(@"Access Token:%@",credential.accessToken);
-
-                                        [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
-                                        NSLog(@"Access token stored in keychain");
-                                        [[HttpClient sharedHTTPClient] updateCredential:credential];
-                                            NSLog(@"Credential updated");
->>>>>>> origin/master
-                                            
                                         [SVProgressHUD dismiss];
                                         NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
                                         [[NSNotificationCenter defaultCenter] postNotification:loginNotification];
