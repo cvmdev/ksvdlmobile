@@ -24,10 +24,25 @@
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "Background_Screen_1536x2048.png"
+      "filename" : "Background_Screen_iPad_1536x2048.png"
     },
     {
       "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "Background_Screen_iPad_2048x1536.png"
+    },
+    {
+      "idiom" : "watch",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "screenWidth" : "{130,145}",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "screenWidth" : "{146,165}",
       "scale" : "2x"
     }
   ],

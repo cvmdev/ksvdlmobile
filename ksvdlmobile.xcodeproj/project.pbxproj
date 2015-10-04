@@ -72,7 +72,6 @@
 		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
 		CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5E1BA81B55797A0068225F /* MessageUI.framework */; };
-		CD8820681B6F0DB600CECF56 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD8820671B6F0DB600CECF56 /* Settings.bundle */; };
 		CD88209B1B6F0E5A00CECF56 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88206C1B6F0E5A00CECF56 /* IASKAppSettingsViewController.m */; };
 		CD88209C1B6F0E5A00CECF56 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88206E1B6F0E5A00CECF56 /* IASKAppSettingsWebViewController.m */; };
 		CD88209D1B6F0E5A00CECF56 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8820701B6F0E5A00CECF56 /* IASKMultipleValueSelection.m */; };
@@ -234,7 +233,6 @@
 		CD5E1BA81B55797A0068225F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTestViewController.h; sourceTree = "<group>"; };
 		CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTestViewController.m; sourceTree = "<group>"; };
-		CD8820671B6F0DB600CECF56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		CD88206B1B6F0E5A00CECF56 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
 		CD88206C1B6F0E5A00CECF56 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKAppSettingsViewController.m; sourceTree = "<group>"; };
 		CD88206D1B6F0E5A00CECF56 /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
@@ -435,7 +433,6 @@
 				59649ED71AEF1E0A00E5F1AD /* LaunchScreen.xib */,
 				59649EC81AEF1E0A00E5F1AD /* Supporting Files */,
 				CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */,
-				CD8820671B6F0DB600CECF56 /* Settings.bundle */,
 			);
 			path = ksvdlmobile;
 			sourceTree = "<group>";
@@ -838,7 +835,6 @@
 				59ECE3A91B276D9900F38902 /* PageList.psd in Resources */,
 				CD1965BD1BBB14B10018F75A /* KSU_CVM_logo.png in Resources */,
 				59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */,
-				CD8820681B6F0DB600CECF56 /* Settings.bundle in Resources */,
 				59649ED41AEF1E0A00E5F1AD /* Main.storyboard in Resources */,
 				59ECE3AF1B276D9900F38902 /* Thumbs.psd in Resources */,
 				59649ED91AEF1E0A00E5F1AD /* LaunchScreen.xib in Resources */,

@@ -43,7 +43,11 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     _barButton1.target = self.revealViewController;
     _barButton1.action = @selector(revealToggle:);
+<<<<<<< HEAD
     
+=======
+    //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+>>>>>>> origin/master
     [self.barButton1 setTarget: self.revealViewController];
     [self.barButton1 setAction: @selector( rightRevealToggle: )];
    
@@ -77,6 +81,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         // Navigation button was pressed. Do some stuff

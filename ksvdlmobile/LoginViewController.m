@@ -118,6 +118,8 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
     
+       //Added to remove whitespace
+       _userText.text = [_userText.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
        NSLog(@"The username is %@",_userText.text);
         
        if ([_userText.text length]!=0 && [_userPwd.text length]!=0)
@@ -233,7 +235,17 @@
                                             /*Push Notifications changes end--*/
                                             
                                             
+<<<<<<< HEAD
 
+=======
+
+                                        NSLog(@"Access Token:%@",credential.accessToken);
+
+                                        [AFOAuthCredential storeCredential:credential withIdentifier:kCredentialIdentifier];
+                                        NSLog(@"Access token stored in keychain");
+                                        [[HttpClient sharedHTTPClient] updateCredential:credential];
+                                            NSLog(@"Credential updated");
+>>>>>>> origin/master
                                             
                                         [SVProgressHUD dismiss];
                                         NSNotification *loginNotification = [NSNotification notificationWithName:@"USER_DID_LOGIN" object:nil];
