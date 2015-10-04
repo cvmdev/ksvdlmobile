@@ -65,9 +65,13 @@
     
     __block int retryCount=retryCounter;
     __weak typeof(self) weakSelf=self;
-    NSString * postLogout = [NSString stringWithFormat:@"LogoutDevice?tokenId=%@&appType=IOS&deviceToken=%@",self.retrieveCredential.refreshToken,self.getDeviceToken];
+    //NSString * postLogout = [NSString stringWithFormat:@"LogoutDevice?tokenId=%@&appType=IOS&deviceToken=%@",self.retrieveCredential.refreshToken,self.getDeviceToken];
+
+    NSDictionary *logoutParams= @{@"tokenId":self.retrieveCredential.refreshToken,
+                                  @"appType":@"IOS",
+                                  @"deviceToken":self.getDeviceToken ? self.getDeviceToken :@""};
     
-    [self POST:postLogout parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [self POST:@"LogoutDevice" parameters:logoutParams success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"Removed Refresh token and Device Token..Now deleting from device");
       

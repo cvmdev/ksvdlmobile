@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "GlobalConstants.h"
 #import "AFNetworking.h"
+#import "AccessionTableViewController.h"
+#import "SWRevealViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -65,6 +68,12 @@
                                                            [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
 
      /*Navigation bar UI changes - end */
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
+    //[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitle:@""];
+
+    //[[UIBarButtonItem appearanceWhenContainedIn:[UIActivityViewController class], nil] setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 
@@ -85,6 +94,20 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Did Fail to Register for Remote Notifications");
     NSLog(@"%@, %@", error, error.localizedDescription);
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    
+    SWRevealViewController *navigationController = (SWRevealViewController *)self.window.rootViewController;
+    UINavigationController *nav = (UINavigationController *)navigationController.frontViewController;
+    
+    UIStoryboard * ksvdlStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AccessionTableViewController *avc = [ksvdlStoryBoard instantiateViewControllerWithIdentifier:@"accvc"];
+    [nav pushViewController:avc animated:YES];
+
+    
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

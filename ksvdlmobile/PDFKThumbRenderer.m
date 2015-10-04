@@ -160,6 +160,11 @@
                 //Transform the page ref to draw into the rect.
 				CGContextConcatCTM(context, CGPDFPageGetDrawingTransform(thePDFPageRef, kCGPDFCropBox, thumbRect, 0, true));
                 
+                //newly added
+                CGContextSetRenderingIntent(context, kCGRenderingIntentDefault);
+                CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+                //end newly added
+                
                 //Render
 				CGContextDrawPDFPage(context, thePDFPageRef);
                 

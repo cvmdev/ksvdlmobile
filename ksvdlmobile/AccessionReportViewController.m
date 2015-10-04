@@ -111,9 +111,11 @@
 - (void) viewWillDisappear:(BOOL)animated {
     
     //delete the temp file that was created
+    if (self.isMovingFromParentViewController) {
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:[self getTempFilePathForAccession] error:&error];
     NSLog(@"Temp File deleted successfully");
+    }
 
 }
 

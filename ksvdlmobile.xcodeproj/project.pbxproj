@@ -12,6 +12,7 @@
 		5933A6BE1B14AFAE00831D7D /* AccessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */; };
 		593EBCCE1B17B6D8002927B4 /* AccessionReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */; };
 		5952F17C1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5952F17B1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf */; };
+		5952F17E1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5952F17D1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png */; };
 		5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5959A3031B0D18C2005821B0 /* HomeViewController.m */; };
 		59649ECB1AEF1E0A00E5F1AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECA1AEF1E0A00E5F1AD /* main.m */; };
 		59649ECE1AEF1E0A00E5F1AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECD1AEF1E0A00E5F1AD /* AppDelegate.m */; };
@@ -125,6 +126,7 @@
 		593EBCCC1B17B6D8002927B4 /* AccessionReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessionReportViewController.h; sourceTree = "<group>"; };
 		593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionReportViewController.m; sourceTree = "<group>"; };
 		5952F17B1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Dog_Barking_Notification.caf; sourceTree = "<group>"; };
+		5952F17D1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KSVDL_NavigationBar_Gradient.png; sourceTree = "<group>"; };
 		5959A3021B0D18C2005821B0 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		5959A3031B0D18C2005821B0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		59649EC51AEF1E0A00E5F1AD /* KSVDL Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KSVDL Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				CD1965BA1BBB145A0018F75A /* icon.png */,
+				5952F17D1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png */,
 				CD1965BC1BBB14B10018F75A /* KSU_CVM_logo.png */,
 			);
 			name = Images;
@@ -852,6 +855,7 @@
 				59ECE39D1B276D9900F38902 /* Bookmark.psd in Resources */,
 				59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */,
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,
+				5952F17E1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png in Resources */,
 				59ECE3AB1B276D9900F38902 /* PageList@2x.psd in Resources */,
 				CD1965BB1BBB145A0018F75A /* icon.png in Resources */,
 				CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */,
@@ -1125,8 +1129,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1135,7 +1139,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "6fe6f064-7104-43a4-af0c-625c080497ee";
+				PROVISIONING_PROFILE = "acb6b179-3e16-4448-bdc3-96590d478831";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1157,7 +1161,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "6fe6f064-7104-43a4-af0c-625c080497ee";
+				PROVISIONING_PROFILE = "acb6b179-3e16-4448-bdc3-96590d478831";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

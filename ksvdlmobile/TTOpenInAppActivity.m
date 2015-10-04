@@ -46,6 +46,7 @@
     if(self =[super init]){
         self.superView = view;
         self.barButtonItem = barButtonItem;
+        self.barButtonItem.title=@"";
     }
     return self;
 }

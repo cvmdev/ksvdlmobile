@@ -359,13 +359,14 @@
 {
     if (self.presentingViewController) {
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }
+        }
 }
 
 - (void)send
 {
     UIActivityViewController *activityViewController;
     TTOpenInAppActivity *openInAppActivity;
+   
     if (_enableOpening) {
         openInAppActivity = [[TTOpenInAppActivity alloc] initWithView:self.view andBarButtonItem:_shareItem];
         activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[_document.fileURL] applicationActivities:@[openInAppActivity]];
@@ -373,6 +374,23 @@
         activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[_document.fileURL] applicationActivities:nil];
     }
     
+    [[UINavigationBar appearance] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+
+    [[UINavigationBar appearance] setBarTintColor:[[UIColor alloc] initWithRed:81.0/255.0 green:40.0/255.0 blue:136.0/255.0 alpha:1.0]];
+    
+    activityViewController.completionHandler = ^(NSString *activityType, BOOL completed) {
+
+        UIImage *NavigationPortraitBackground = [[UIImage imageNamed:@"KSVDLNavigationHeader"]
+                                                 resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
+        UIImage *NavigationLandscapeBackground = [[UIImage imageNamed:@"KSVDLNavigationHeader"]
+                                                  resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0)];
+        
+        [self.navigationController.navigationBar setBackgroundImage:NavigationPortraitBackground forBarMetrics: UIBarMetricsDefault];
+         [self.navigationController.navigationBar setBackgroundImage:NavigationLandscapeBackground forBarMetrics:UIBarMetricsLandscapePhone];
+
+   };
+
     if (!_enablePrinting) {
         activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard];
     }
@@ -390,7 +408,17 @@
             openInAppActivity.superViewController = activityViewController;
         }
         // Show UIActivityViewController
+
         [self presentViewController:activityViewController animated:YES completion:NULL];
+        
+//        [self presentViewController:activityViewController animated:YES completion:^{
+//            [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:nil] forBarMetrics:UIBarMetricsDefault];
+//
+//            //[[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:81.0/255.0 green:40.0/255.0 blue:136.0/255.0 alpha:1.0]];
+//
+//        }];
+        
+        
     } else {
         // Create pop up
         self.activityPopoverController = [[UIPopoverController alloc] initWithContentViewController:activityViewController];

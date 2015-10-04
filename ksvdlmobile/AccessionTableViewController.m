@@ -35,7 +35,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     [[self navigationItem] setBackBarButtonItem:backButton];
     
     /*Receiveing the accessions table restriction from the root.plist in settings.bundle*/
-    NSUserDefaults *myDefaults = [NSUserDefaults standardUserDefaults];
+  //  NSUserDefaults *myDefaults = [NSUserDefaults standardUserDefaults];
     
    /* NSString *accessionrestrict = [myDefaults objectForKey:@"accession_restrict"];
     NSLog(@"The restriction for accession table is %@",accessionrestrict);*/
@@ -43,7 +43,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     _barButton1.target = self.revealViewController;
     _barButton1.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
     [self.barButton1 setTarget: self.revealViewController];
     [self.barButton1 setAction: @selector( rightRevealToggle: )];
    
@@ -73,10 +73,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         // Navigation button was pressed. Do some stuff
-        [self.navigationController popToRootViewControllerAnimated:NO];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     [super viewWillDisappear:animated];
     //[self.navigationController popToRootViewControllerAnimated:NO];
@@ -116,8 +120,8 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-    [self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
 }
 
 - (AFOAuthCredential *) getCredential
