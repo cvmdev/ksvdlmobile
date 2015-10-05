@@ -542,20 +542,24 @@
         }
     };
     
-    NSInteger newStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"] integerValue];
-    NSInteger prelimStatus= [[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"] integerValue];
-    NSInteger finalStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"] integerValue];
+    int newStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"] intValue];
+    int prelimStatus= [[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"] intValue];
+    int finalStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"] intValue];
     
-    NSLog(@"The new notification values to be updated to the db are :%ld-%ld-%ld",newStatus,prelimStatus,finalStatus);
+   NSLog(@"The new notification values to be updated to the db are :%d-%d-%d",newStatus,prelimStatus,finalStatus);
     
     NSString *dToken= [[NSUserDefaults standardUserDefaults] objectForKey:kVDLDeviceTokenString];
     
-     NSString *updateNotifications = [NSString stringWithFormat:@"Notifications?deviceToken=%@&newStatus=%ld&prelimStatus=%ld&finalStatus=%ld",dToken,newStatus,prelimStatus,finalStatus];
-    NSLog(@"call url is %@:",updateNotifications);
+    NSDictionary *notificationParams= @{@"deviceToken":dToken ? dToken :@"",
+                                        @"newStatus":[NSNumber numberWithInt:newStatus],
+                                        @"prelimStatus":[NSNumber numberWithInt:prelimStatus],
+                                        @"finalStatus":[NSNumber numberWithInt:finalStatus]};
+    
+    //NSString *updateNotifications = [NSString stringWithFormat:@"Notifications?deviceToken=%@&newStatus=%ld&prelimStatus=%ld&finalStatus=%ld",dToken,newStatus,prelimStatus,finalStatus];
     
     __weak typeof(self) weakSelf=self;
 
-    [self POST:updateNotifications parameters:nil
+    [self POST:@"Notifications" parameters:notificationParams
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           processSuccessBlock(operation, responseObject);
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -578,7 +582,7 @@
                       
                       NSLog(@"Retry operation starting for updating notifs..with retry counter:%ld",(long)retryCounter);
                       
-                      [weakSelf POST:updateNotifications parameters:nil
+                      [weakSelf POST:@"Notifications" parameters:notificationParams
                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
                              processSuccessBlock(operation, responseObject);
                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -376,35 +376,76 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     numNonNullTestCount=[self nonNullTestCountForArray:testArray];
     if (numNonNullTestCount>0)
     {
-        fulltestString=@"Tests Ordered:\n";
-        NSUInteger ulLength=fulltestString.length;
         
-        for (NSString *testInfo in testArray)
+     // if cell is getting expanded
+      if (self.selectedIndex ==indexPath.row)
         {
-            if (!(testInfo==(id)[NSNull null]))
+            fulltestString=@" Tests Ordered:\n";
+            NSUInteger ulLength=fulltestString.length;
+            for (NSString *testInfo in testArray)
             {
-                //numNonNullTestCount = numNonNullTestCount+1;
-                fulltestString = [fulltestString stringByAppendingString:testInfo];
-                fulltestString = [fulltestString stringByAppendingString:@"\n"];
+                if (!(testInfo==(id)[NSNull null]))
+                {
+                    //numNonNullTestCount = numNonNullTestCount+1;
+                    NSString *tabString = @"\t";
+                    NSString *testInfoWithTab = [tabString stringByAppendingString:testInfo];
+                    fulltestString = [fulltestString stringByAppendingString:testInfoWithTab];
+                    fulltestString = [fulltestString stringByAppendingString:@"\n"];
+                }
             }
+                
+        
+            //cell.testInfoLabel.hidden=false;
+            //cell.testInfoLabel.numberOfLines=[testArray count]+1;
+            cell.testInfoLabel.numberOfLines=numNonNullTestCount + 1;
+            cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
+            
+            NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
+            NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
+            [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
+            [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(1, ulLength-1)];//Underline color
+            [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(1, ulLength-1)];//TextColor
+            //cell.testInfoLabel.text=fulltestString;
+            
+            NSTextAttachment *expand = [[NSTextAttachment alloc] init];
+            expand.image = [UIImage imageNamed:@"Test-Expand"];
+            NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:expand];
+
+            NSMutableAttributedString *testString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
+            [testString appendAttributedString:ulstring];
+            
+            cell.testInfoLabel.attributedText=testString;
+            
         }
         
-        cell.testInfoLabel.hidden=false;
-        
-        //cell.testInfoLabel.numberOfLines=[testArray count]+1;
-        cell.testInfoLabel.numberOfLines=numNonNullTestCount + 1;
-        cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
-        NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
-        NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
-        [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
-        [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(0, ulLength)];//Underline color
-        [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
-        //cell.testInfoLabel.text=fulltestString;
-        cell.testInfoLabel.attributedText=ulstring;
+        //cell is not expanded or going to be collapsed
+        else
+        {
+            fulltestString=@" Tests Ordered";
+            NSUInteger ulLength=fulltestString.length;
+            cell.testInfoLabel.lineBreakMode=NSLineBreakByWordWrapping;
+            NSMutableAttributedString* ulstring = [[NSMutableAttributedString alloc]initWithString:fulltestString];
+            NSNumber* underlineNumber = [NSNumber numberWithInteger:NSUnderlineStyleSingle];
+            [ulstring addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, ulLength)];//TextColor
+            [ulstring addAttribute:NSUnderlineStyleAttributeName value:underlineNumber range:NSMakeRange(1, ulLength-1)];//Underline color
+            [ulstring addAttribute:NSUnderlineColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(1, ulLength-1)];//TextColor
+            
+            NSTextAttachment *expand = [[NSTextAttachment alloc] init];
+            expand.image = [UIImage imageNamed:@"Test-Collapse"];
+            NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:expand];
+            
+            NSMutableAttributedString *testString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
+            [testString appendAttributedString:ulstring];
+            
+            cell.testInfoLabel.attributedText=testString;
+
+        }
     }
     
     else
-        cell.testInfoLabel.hidden=true;
+        //cell.testInfoLabel.hidden=true;
+        //fulltestString=@"Empty";
+        cell.testInfoLabel.text=@"";
     
     if (!([currentAccessionDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
     {
@@ -507,7 +548,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat defaultCellHeight=95;
+    CGFloat defaultCellHeight=115;
     CGFloat currHeightOfCell=defaultCellHeight;
     
     if (self.selectedIndex==indexPath.row)
@@ -522,7 +563,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
             numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
             if (numTestCount>0)
             {
-                currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
+                currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 15);
             }
         }
         else
@@ -533,7 +574,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
                 numTestCount = [self nonNullTestCountForArray:[currCellDict objectForKey:@"Tests"]];
                 
                 if (numTestCount>0)
-                    currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 20);
+                    currHeightOfCell = currHeightOfCell + ((numTestCount+1) * 15);
                 
                 //                if(!([currCellDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
                 //                    currHeightOfCell=currHeightOfCell+20;
