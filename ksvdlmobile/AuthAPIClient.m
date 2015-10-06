@@ -76,8 +76,14 @@
         NSLog(@"Removed Refresh token and Device Token..Now deleting from device");
       
         [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+        //Deleting NSDefaults
+        NSLog(@"Deleting NSDefaults values in notif settings");
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVDLUserString];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sample_arr"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"prelim_results"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"final_result"];
         
+
         completionBlock(true);
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error)

@@ -150,7 +150,25 @@
                                             
                                             /*Setting the default values for the notification settings - begins*/
                                             
-                                            if ([defaults objectForKey:@"sample_arr"]==nil)
+                                            
+                                            NSLog(@"All notification settings are empty initially set to 101");
+                                         /*   NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                         usernamevalue, @"loginname",
+                                                                         @"Yes", @"sample_arr",
+                                                                         @"No", @"prelim_results",
+                                                                         @"Yes", @"final_result",
+                                                                         nil];
+                                    */
+                                            [defaults setObject:usernamevalue forKey:@"loginname"];
+                                            [defaults setObject:@YES forKey:@"sample_arr"];
+                                            [defaults setObject:@NO forKey:@"prelim_results"];
+                                            [defaults setObject:@YES forKey:@"final_result"];
+                                          //  [defaults registerDefaults:appDefaults];
+                                            [defaults synchronize];
+                                            
+                                            
+                                        /* The following if-else loop is commented out coz the entry is always removed on logout and so we just need to reset the values to 1-0-1 on login.
+                                         if ([defaults objectForKey:@"sample_arr"]==nil)
                                             {
                                                 NSLog(@"All notification settings are empty initially");
                                                 NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -190,7 +208,7 @@
                                                     [[HttpClient sharedHTTPClient] updateNotifications];
                                              
                                                 });
-                                            }
+                                            }*/
                                             /*Setting the default values for the notification settings - ends*/
                                             
                                            
