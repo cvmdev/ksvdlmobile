@@ -1232,6 +1232,7 @@
                         <outlet property="testfeesbutton" destination="gnY-28-SI3" id="GM3-Lx-Lr9"/>
                         <segue destination="WuK-KV-8Kz" kind="show" identifier="AccessionScreen" id="xEa-OO-ROn"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="LoginScreen" id="cDr-5r-ECg"/>
+                        <segue destination="wWe-XE-pYC" kind="show" identifier="TestFeesScreen" id="w8J-T2-Fxn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agF-u7-FdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1280,7 +1281,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFW-RS-Uxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258" y="870"/>
+            <point key="canvasLocation" x="1147" y="928"/>
+        </scene>
+        <!--Test Fees Master View Controller-->
+        <scene sceneID="R9w-b8-BGc">
+            <objects>
+                <tableViewController id="wWe-XE-pYC" customClass="TestFeesMasterViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="h5Z-sp-3ob">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="wJg-8A-flw" customClass="TestFeesTableCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wJg-8A-flw" id="AM4-kR-9Iw">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TestName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDa-4u-vIQ">
+                                            <rect key="frame" x="8" y="8" width="584" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Specimens" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-IB-WsZ">
+                                            <rect key="frame" x="8" y="33" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Species" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcA-t5-fzf">
+                                            <rect key="frame" x="8" y="50" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8b-eL-TKq">
+                                            <rect key="frame" x="8" y="67" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="priceLabel" destination="Y8b-eL-TKq" id="EmM-oI-LWy"/>
+                                    <outlet property="speciesLabel" destination="zcA-t5-fzf" id="6H1-E8-16k"/>
+                                    <outlet property="specimenLabel" destination="r1Y-IB-WsZ" id="mTQ-dB-Vak"/>
+                                    <outlet property="testNameLabel" destination="yDa-4u-vIQ" id="u4G-7H-Dk1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wWe-XE-pYC" id="YJi-0R-rOs"/>
+                            <outlet property="delegate" destination="wWe-XE-pYC" id="uw6-ph-Ccz"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SOW-Bc-xQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="882"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e0u-jY-6X3">
@@ -1379,9 +1438,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YYx-cp-DEl"/>
         <segue reference="xEa-OO-ROn"/>
-        <segue reference="ofy-ii-baV"/>
+        <segue reference="czI-Jb-bBP"/>
+        <segue reference="cDr-5r-ECg"/>
         <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>
