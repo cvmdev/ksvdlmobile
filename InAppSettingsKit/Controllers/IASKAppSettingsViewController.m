@@ -944,7 +944,16 @@ static NSDictionary *oldUserDefaults = nil;
 - (void)didChangeSettingViaIASK:(NSNotification*)notification {
     NSLog(@"Settings has changed for %@",notification.object);
 	[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
-    NSLog(@"value after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"]);
+    NSLog(@"value of sameple ARR after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"]);
+    
+    NSNumber *prelimvalue = [[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"];
+    NSLog(@"value of PREL RESULTS before change is :%@",prelimvalue);
+    if (prelimvalue == nil) {
+        // No value found
+        prelimvalue = @5;
+    }
+    NSLog(@"value of PREL RESULTS after change is :%@",prelimvalue);
+    NSLog(@"value of FINAL RESULTS after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"]);
    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^ {
