@@ -1379,9 +1379,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a5L-nw-JJJ"/>
-        <segue reference="aRR-GD-dra"/>
+        <segue reference="ofy-ii-baV"/>
         <segue reference="xEa-OO-ROn"/>
+        <segue reference="YYx-cp-DEl"/>
         <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>
