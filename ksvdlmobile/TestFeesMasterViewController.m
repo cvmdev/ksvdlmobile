@@ -112,6 +112,10 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return 300.0;
+    }
+    else
     return UITableViewAutomaticDimension;
 }
 
@@ -135,6 +139,10 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
 //
 //    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 //    return size.height+1;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return 120.0;
+    }
+    else
     return UITableViewAutomaticDimension;
 
 }
@@ -152,7 +160,7 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         currentDict = [self.filteredTestFeesList objectAtIndex:indexPath.row];
-        NSLog(@"Filtered dictionary test name is :%@",[currentDict objectForKey:@"TestName"]);
+        //NSLog(@"Filtered dictionary test name is :%@",[currentDict objectForKey:@"TestName"]);
         
     } else {
         currentDict = [self.testfeesList objectAtIndex:indexPath.row];
@@ -204,7 +212,7 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
     [self.filteredTestFeesList removeAllObjects];
     
     self.filteredTestFeesList = [NSMutableArray arrayWithArray:[self.testfeesList filteredArrayUsingPredicate:finalPredicate]];
-    NSLog(@"Filter count is #####################################################################################:%ld",self.filteredTestFeesList.count);
+    NSLog(@"Filter Search count is ######################################:%ld",self.filteredTestFeesList.count);
     [self.searchDisplayController.searchResultsTableView reloadData];
 
 }
@@ -217,7 +225,7 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSLog(@"Reload Called");
+    //NSLog(@"Reload Called");
     [self filterTestFees:searchString
                 scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
                                       objectAtIndex:[self.searchDisplayController.searchBar
