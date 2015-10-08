@@ -45,4 +45,8 @@ typedef void (^CustomCompletionBlock)(BOOL finished);
 -(void) updateNotificationsWithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock;
 
 -(void) updateCredential:(AFOAuthCredential *)credential;
+
+-(void) fetchTestAndFeesWithSuccessBlock:(ApiClientSuccess)successBlock
+                         andFailureBlock:(ApiClientFailure)failureBlock;
+
 @end

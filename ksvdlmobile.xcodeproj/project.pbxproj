@@ -15,6 +15,7 @@
 		5952F17E1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5952F17D1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png */; };
 		5952F1811BC3256000F16744 /* TestFeesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5952F1801BC3256000F16744 /* TestFeesMasterViewController.m */; };
 		5952F1841BC3276200F16744 /* TestFeesTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5952F1831BC3276200F16744 /* TestFeesTableCell.m */; };
+		5952F1871BC4662C00F16744 /* TestFeesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5952F1861BC4662C00F16744 /* TestFeesDetailViewController.m */; };
 		5959A3041B0D18C2005821B0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5959A3031B0D18C2005821B0 /* HomeViewController.m */; };
 		59649ECB1AEF1E0A00E5F1AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECA1AEF1E0A00E5F1AD /* main.m */; };
 		59649ECE1AEF1E0A00E5F1AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59649ECD1AEF1E0A00E5F1AD /* AppDelegate.m */; };
@@ -132,6 +133,8 @@
 		5952F1801BC3256000F16744 /* TestFeesMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFeesMasterViewController.m; sourceTree = "<group>"; };
 		5952F1821BC3276200F16744 /* TestFeesTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFeesTableCell.h; sourceTree = "<group>"; };
 		5952F1831BC3276200F16744 /* TestFeesTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFeesTableCell.m; sourceTree = "<group>"; };
+		5952F1851BC4662C00F16744 /* TestFeesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFeesDetailViewController.h; sourceTree = "<group>"; };
+		5952F1861BC4662C00F16744 /* TestFeesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFeesDetailViewController.m; sourceTree = "<group>"; };
 		5959A3021B0D18C2005821B0 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		5959A3031B0D18C2005821B0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		59649EC51AEF1E0A00E5F1AD /* KSVDL Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KSVDL Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -500,6 +503,8 @@
 				CD1965B41BB8E98D0018F75A /* AboutWebViewController.m */,
 				5952F17F1BC3256000F16744 /* TestFeesMasterViewController.h */,
 				5952F1801BC3256000F16744 /* TestFeesMasterViewController.m */,
+				5952F1851BC4662C00F16744 /* TestFeesDetailViewController.h */,
+				5952F1861BC4662C00F16744 /* TestFeesDetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -921,6 +926,7 @@
 				59649ED11AEF1E0A00E5F1AD /* LoginViewController.m in Sources */,
 				CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */,
 				59ECE3621B27658900F38902 /* PDFKPageContentView.m in Sources */,
+				5952F1871BC4662C00F16744 /* TestFeesDetailViewController.m in Sources */,
 				59ECE3741B276BD400F38902 /* PDFKThumbRequest.m in Sources */,
 				593EBCCE1B17B6D8002927B4 /* AccessionReportViewController.m in Sources */,
 				CD8820A31B6F0E5A00CECF56 /* IASKSpecifier.m in Sources */,

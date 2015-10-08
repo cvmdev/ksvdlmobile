@@ -749,4 +749,63 @@
     return errorMessage;
 }
 
+- (void) fetchTestAndFeesWithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock
+{
+    __block int retryCounter=kRetryCount;
+    void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        successBlock(operation,responseObject);
+    };
+    
+    void (^processFailureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        __weak typeof(self) weakSelf=self;
+        if (operation.response.statusCode == 500) {
+            NSLog(@"Got an internal server error while fetching accessions");
+            NSLog(@"Full Error:%@",error);
+            
+            NSLog(@"Error:%@",error.userInfo);
+            NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+            NSDictionary *serializedData = [NSJSONSerialization JSONObjectWithData:errorData options:kNilOptions error:nil];
+            NSLog(@"The internal server error is :%@",serializedData);
+            
+            //failureBlock(operation,error);
+        }
+        
+        if (retryCounter>0)
+        {
+            retryCounter--;
+            if (operation.response.statusCode==500)
+            {
+                if (retryCounter<=1)
+                {
+                    NSLog(@"Sleeping for a few seconds...");
+                    [NSThread sleepForTimeInterval:2.0f];
+                }
+                NSLog(@"Retrying the Test Fees Fetch operation again after internal server error with Retry Counter value:%d",retryCounter);
+                [weakSelf retryOperationForOperation:operation WithSuccessBlock:successBlock AndFailureBlock:processFailureBlock];
+            }
+            
+        }
+        else
+        {
+            NSLog(@"All the retries have been finished or internet connection not available...Maybe a message indicating that something went wrong");
+            
+            failureBlock(operation,error);
+
+        }
+
+    };
+
+    NSLog(@"Fetching Test And Fees");
+    [self GET:@"TestFees" parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          processSuccessBlock(operation, responseObject);
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          processFailureBlock(operation, error);
+          
+      }];
+    
+}
+
 @end

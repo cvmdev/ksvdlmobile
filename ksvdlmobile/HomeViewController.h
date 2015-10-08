@@ -24,6 +24,8 @@
 -(GADRequest *)createRequest;
 
 - (IBAction)submitTap:(id)sender;
+- (IBAction) testFeesCatalog:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageview;

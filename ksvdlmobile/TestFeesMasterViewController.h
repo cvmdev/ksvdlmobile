@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TestFeesTableCell.h"
+@interface TestFeesMasterViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>
 
-@interface TestFeesMasterViewController : UITableViewController
+@property (weak,nonatomic) IBOutlet UIBarButtonItem *menubarButton;
+
+@property (strong,nonatomic) NSMutableArray *testfeesList;
+@property (strong,nonatomic) NSMutableArray *filteredTestFeesList;
 
 @end

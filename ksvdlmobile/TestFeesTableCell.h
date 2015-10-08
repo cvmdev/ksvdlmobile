@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TestFeesTableCell : UITableViewCell
-@property(strong,nonatomic) IBOutlet UILabel *testNameLabel;
-@property(strong,nonatomic) IBOutlet UILabel *speciesLabel;
-@property(strong,nonatomic) IBOutlet UILabel *specimenLabel;
-@property(strong,nonatomic) IBOutlet UILabel *priceLabel;
+@property(nonatomic,weak) IBOutlet UILabel *testNameLabel;
+@property(nonatomic,weak) IBOutlet UILabel *speciesLabel;
+@property(nonatomic,weak) IBOutlet UILabel *specimenLabel;
+@property(nonatomic,weak) IBOutlet UILabel *priceLabel;
 //@property(strong,nonatomic) IBOutlet UILabel *sectionLabel;
 
 @end
