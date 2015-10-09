@@ -13,6 +13,8 @@
 #import "TestFeesDetailViewController.h"
 
 NSString * const testFeesTableIdentifier = @"TestFeesCell";
+CGFloat boldTextFontSize = 13.0f;
+
 
 @interface TestFeesMasterViewController()
 
@@ -21,7 +23,9 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
 @end
 
 @implementation TestFeesMasterViewController
-
+{
+NSRange specimenRange,speciesRange,priceRange;
+}
 - (void) viewDidLoad
 {
     [super viewDidLoad];
@@ -31,16 +35,14 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
     [self.menubarButton setTarget: self.revealViewController];
     [self.menubarButton setAction: @selector( rightRevealToggle: )];
     
-
-    
-    //  UIBarButtonItem *backBtn =[[UIBarButtonItem alloc]initWithTitle:@"HOME" style:UIBarButtonItemStyleDone target:self action:@selector(popToRoot:)];
-   
-    
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//
-//    self.tableView.estimatedRowHeight = 200;
+    
+    specimenRange = NSMakeRange(0,[@"Specimens:" length]);
+    speciesRange = NSMakeRange(0,[@"Species:" length]);
+    priceRange = NSMakeRange(0,[@"Price:" length]);
+
+   
     
     self.testfeesList = [NSMutableArray array];
     self.filteredTestFeesList=[NSMutableArray array];
@@ -138,9 +140,21 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
 //    [self.prototypeCell layoutIfNeeded];
 //
 //    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    return size.height+1;
+//    return size.height+1;or
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return 120.0;
+        
+        
+        //check for null first
+         if (!([[self.filteredTestFeesList objectAtIndex:indexPath.row] objectForKey:@"Specimens"]==(id)[NSNull null]))
+         {
+            NSString *specimenText = [[self.filteredTestFeesList objectAtIndex:indexPath.row] objectForKey:@"Specimens"];
+            CGSize size = [specimenText sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(280.0f, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+            NSLog(@"%f",size.height);
+            return size.height + 100.0f;
+         }
+        else
+            return 120.0f;
     }
     else
     return UITableViewAutomaticDimension;
@@ -185,23 +199,41 @@ NSString * const testFeesTableIdentifier = @"TestFeesCell";
         testfeesCell.testNameLabel.text=[testFeesDict objectForKey:@"TestName"];
         
         if (!([testFeesDict objectForKey:@"Specimen"]==(id)[NSNull null]))
+        {
             testfeesCell.specimenLabel.text=[NSString stringWithFormat:@"Specimen: %@",[testFeesDict objectForKey:@"Specimens"]];
+         }
         else
+        {
             testfeesCell.specimenLabel.text=@"Specimen:";
+            
+        }
+        testfeesCell.specimenLabel.attributedText=[self boldLabelText:testfeesCell.specimenLabel.text forRange:specimenRange];
 
         if (!([testFeesDict objectForKey:@"Species"]==(id)[NSNull null]))
             testfeesCell.speciesLabel.text=[NSString stringWithFormat:@"Species: %@",[testFeesDict objectForKey:@"Species"]];
         else
             testfeesCell.speciesLabel.text=@"Species:";
-        
+    
+        testfeesCell.speciesLabel.attributedText=[self boldLabelText:testfeesCell.speciesLabel.text forRange:speciesRange];
+
+    
         if (!([testFeesDict objectForKey:@"Pricing"]==(id)[NSNull null]))
             testfeesCell.priceLabel.text=[NSString stringWithFormat:@"Price: %@",[testFeesDict objectForKey:@"Pricing"]];
         else
             testfeesCell.priceLabel.text=@"Price:";
+        testfeesCell.priceLabel.attributedText=[self boldLabelText:testfeesCell.priceLabel.text forRange:priceRange];
+
 
     //}
 }
 
+-  (NSMutableAttributedString *) boldLabelText:(NSString *) labelText forRange:(NSRange) textRange
+{
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:labelText];
+    [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:boldTextFontSize]}
+                                    range:textRange];
+    return attributedText;
+}
 - (void)filterTestFees:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"TestName contains[c] %@", searchText];

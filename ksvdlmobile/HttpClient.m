@@ -522,8 +522,13 @@
     {
         [self updateNotificationsWithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"Notifications updated successfully");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD showInfoWithStatus:@"Notification Settings Updated"];
+            });
         } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Failure while updating notifications");
+            [SVProgressHUD showErrorWithStatus:@"Notification Settings Update Failed"];
+
             
         }];
     }
@@ -559,7 +564,7 @@
     
     __weak typeof(self) weakSelf=self;
 
-    [self POST:@"Notifications" parameters:notificationParams
+    [self POST:@"NotificationStatus" parameters:notificationParams
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           processSuccessBlock(operation, responseObject);
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -71,7 +71,7 @@
                                   @"appType":@"IOS",
                                   @"deviceToken":self.getDeviceToken ? self.getDeviceToken :@""};
     
-    [self POST:@"LogoutDevice" parameters:logoutParams success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [self POST:@"Logout" parameters:logoutParams success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSLog(@"Removed Refresh token and Device Token..Now deleting from device");
       
