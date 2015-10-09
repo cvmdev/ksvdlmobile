@@ -38,7 +38,7 @@ NSRange specimenRange,speciesRange,priceRange;
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     
-    specimenRange = NSMakeRange(0,[@"Specimens:" length]);
+    specimenRange = NSMakeRange(0,[@"Specimen:" length]);
     speciesRange = NSMakeRange(0,[@"Species:" length]);
     priceRange = NSMakeRange(0,[@"Price:" length]);
 
@@ -57,14 +57,14 @@ NSRange specimenRange,speciesRange,priceRange;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
--(void) viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-        // Navigation button was pressed. Do some stuff
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    [super viewWillDisappear:animated];
-    //[self.navigationController popToRootViewControllerAnimated:NO];
-}
+//-(void) viewWillDisappear:(BOOL)animated {
+//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+//        // Navigation button was pressed. Do some stuff
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }
+//    [super viewWillDisappear:animated];
+//    //[self.navigationController popToRootViewControllerAnimated:NO];
+//}
 
 - (void) fetchTestAndFees
 {
@@ -198,7 +198,7 @@ NSRange specimenRange,speciesRange,priceRange;
         
         testfeesCell.testNameLabel.text=[testFeesDict objectForKey:@"TestName"];
         
-        if (!([testFeesDict objectForKey:@"Specimen"]==(id)[NSNull null]))
+        if (!([testFeesDict objectForKey:@"Specimens"]==(id)[NSNull null]))
         {
             testfeesCell.specimenLabel.text=[NSString stringWithFormat:@"Specimen: %@",[testFeesDict objectForKey:@"Specimens"]];
          }
@@ -239,8 +239,10 @@ NSRange specimenRange,speciesRange,priceRange;
     NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"TestName contains[c] %@", searchText];
     NSPredicate *specimenPredicate = [NSPredicate predicateWithFormat:@"Specimens contains[c] %@", searchText];
     NSPredicate *speciesPredicate = [NSPredicate predicateWithFormat:@"Species contains[c] %@", searchText];
+    NSPredicate *sectionPredicate = [NSPredicate predicateWithFormat:@"Section contains[c] %@", searchText];
 
-    NSPredicate *finalPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[namePredicate,speciesPredicate,specimenPredicate]];
+
+    NSPredicate *finalPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[namePredicate,speciesPredicate,specimenPredicate,sectionPredicate]];
     [self.filteredTestFeesList removeAllObjects];
     
     self.filteredTestFeesList = [NSMutableArray arrayWithArray:[self.testfeesList filteredArrayUsingPredicate:finalPredicate]];

@@ -1358,13 +1358,8 @@
                         <viewControllerLayoutGuide type="top" id="SSt-Uv-VHy"/>
                         <viewControllerLayoutGuide type="bottom" id="hia-Dm-mV9"/>
                     </layoutGuides>
-<<<<<<< HEAD
-                    <view key="view" contentMode="scaleToFill" id="dID-d2-dXU">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-=======
                     <view key="view" contentMode="scaleToFill" id="yw1-xM-uVG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
->>>>>>> TestFees
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMF-4r-yLH">
@@ -1767,12 +1762,6 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="ofy-ii-baV"/>
-        <segue reference="xEa-OO-ROn"/>
-        <segue reference="YYx-cp-DEl"/>
-=======
->>>>>>> TestFees
         <segue reference="Htf-al-Bab"/>
         <segue reference="ofy-ii-baV"/>
         <segue reference="xEa-OO-ROn"/>
