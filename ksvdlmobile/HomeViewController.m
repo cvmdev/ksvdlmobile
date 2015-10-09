@@ -154,13 +154,16 @@ didFailToReceiveAdWithError:(GADRequestError *)error{
     NSLog(@"Failed Ad: %@",[error localizedFailureReason]);
 }
 
-- (IBAction)testfeessite:(id)sender {
+- (IBAction) testFeesCatalog:(id)sender {
     
+    NSLog(@"Test Fees is called........................");
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/catalog.zul"]];
     if ([[AFNetworkReachabilityManager sharedManager] isReachable])
     {
-        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLTestFeesURL];
-        [self.navigationController pushViewController:webViewController animated:YES];
+//        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLTestFeesURL];
+//        [self.navigationController pushViewController:webViewController animated:YES];
+        
+        [self performSegueWithIdentifier:@"TestFeesScreen" sender:sender];
     }
     
     else
