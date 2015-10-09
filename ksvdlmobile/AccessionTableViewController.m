@@ -121,8 +121,9 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    //[self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
+     NSLog(@"%@",self.navigationController.viewControllers);
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"AccessiontoHome" sender:sender];
 }
 
 - (AFOAuthCredential *) getCredential

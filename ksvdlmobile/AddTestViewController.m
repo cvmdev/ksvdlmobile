@@ -104,6 +104,10 @@
 
 
 - (IBAction)openMail:(id)sender {
+    [[UINavigationBar appearance] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBarTintColor:[[UIColor alloc] initWithRed:81.0/255.0 green:40.0/255.0 blue:136.0/255.0 alpha:1.0]];
+    
+    
     if ([MFMailComposeViewController canSendMail])
     {
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
