@@ -536,7 +536,7 @@
 
 -(void) updateNotificationsWithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
     
-    __block int retryCounter=1;
+    __block int retryCounter=kRetryCount;
     void (^processSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
         successBlock(operation,responseObject);
     };

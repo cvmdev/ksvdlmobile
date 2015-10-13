@@ -1395,7 +1395,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9Q-pS-RB6" userLabel="ContentView">
                                         <rect key="frame" x="13" y="29" width="573" height="800"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5u-uE-POe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestName" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5u-uE-POe">
                                                 <rect key="frame" x="10" y="5" width="500" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

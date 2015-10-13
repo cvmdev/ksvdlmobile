@@ -74,6 +74,16 @@
 
     //[[UIBarButtonItem appearanceWhenContainedIn:[UIActivityViewController class], nil] setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
+    //The following lines are used to track whether the app was reinstalled...if so, delete the keychain items
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"FirstRun"]) {
+        
+        [AFOAuthCredential deleteCredentialWithIdentifier:kCredentialIdentifier];
+
+        [[NSUserDefaults standardUserDefaults] setValue:@"1strun" forKey:@"FirstRun"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     return YES;
 }
 
