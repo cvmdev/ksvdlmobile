@@ -97,9 +97,6 @@
 		CD969D3E1B84F397002C99DF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D3D1B84F397002C99DF /* CoreTelephony.framework */; };
 		CD969D411B84F3A1002C99DF /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D3F1B84F3A1002C99DF /* EventKit.framework */; };
 		CD969D421B84F3A1002C99DF /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD969D401B84F3A1002C99DF /* EventKitUI.framework */; };
-		CDBD15CB1B7EF26D00B1F0E9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */; };
-		CDBD15CC1B7EF26D00B1F0E9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBD15C91B7EF26D00B1F0E9 /* README.txt */; };
-		CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBD15CA1B7EF26D00B1F0E9 /* README.txt */; };
 		CDBD15CF1B7EF28A00B1F0E9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15CE1B7EF28A00B1F0E9 /* AdSupport.framework */; };
 		CDBD15D11B7EF2A300B1F0E9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D01B7EF2A300B1F0E9 /* CoreData.framework */; };
 		CDBD15D31B7EF2A900B1F0E9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBD15D21B7EF2A900B1F0E9 /* StoreKit.framework */; };
@@ -293,14 +290,6 @@
 		CD969D3D1B84F397002C99DF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		CD969D3F1B84F3A1002C99DF /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		CD969D401B84F3A1002C99DF /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
-		CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		CDBD15C41B7EF26D00B1F0E9 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		CDBD15C51B7EF26D00B1F0E9 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		CDBD15C61B7EF26D00B1F0E9 /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
-		CDBD15C71B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
-		CDBD15C81B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		CDBD15C91B7EF26D00B1F0E9 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		CDBD15CA1B7EF26D00B1F0E9 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		CDBD15CE1B7EF28A00B1F0E9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CDBD15D01B7EF2A300B1F0E9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CDBD15D21B7EF2A900B1F0E9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -333,7 +322,6 @@
 				CD8820AD1B6F0E8700CECF56 /* CoreGraphics.framework in Frameworks */,
 				CD8820AB1B6F0E7B00CECF56 /* UIKit.framework in Frameworks */,
 				59649EF71AF129D300E5F1AD /* Security.framework in Frameworks */,
-				CDBD15CB1B7EF26D00B1F0E9 /* GoogleMobileAds.framework in Frameworks */,
 				50ECDF1CEE7F3CC3C451B39F /* libPods-ksvdlmobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +397,6 @@
 		59649EBC1AEF1E0A00E5F1AD = {
 			isa = PBXGroup;
 			children = (
-				CDBD15C11B7EF22F00B1F0E9 /* AdMob */,
 				CD8820691B6F0E5A00CECF56 /* InAppSettingsKit */,
 				59649EC71AEF1E0A00E5F1AD /* ksvdlmobile */,
 				59649EE11AEF1E0A00E5F1AD /* ksvdlmobileTests */,
@@ -724,29 +711,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CDBD15C11B7EF22F00B1F0E9 /* AdMob */ = {
-			isa = PBXGroup;
-			children = (
-				CDBD15C21B7EF26D00B1F0E9 /* GoogleMobileAds.framework */,
-				CDBD15C31B7EF26D00B1F0E9 /* Mediation Adapters */,
-				CDBD15CA1B7EF26D00B1F0E9 /* README.txt */,
-			);
-			name = AdMob;
-			sourceTree = "<group>";
-		};
-		CDBD15C31B7EF26D00B1F0E9 /* Mediation Adapters */ = {
-			isa = PBXGroup;
-			children = (
-				CDBD15C41B7EF26D00B1F0E9 /* GADMAdNetworkAdapterProtocol.h */,
-				CDBD15C51B7EF26D00B1F0E9 /* GADMAdNetworkConnectorProtocol.h */,
-				CDBD15C61B7EF26D00B1F0E9 /* GADMEnums.h */,
-				CDBD15C71B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
-				CDBD15C81B7EF26D00B1F0E9 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
-				CDBD15C91B7EF26D00B1F0E9 /* README.txt */,
-			);
-			path = "Mediation Adapters";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -862,14 +826,12 @@
 				CD8820A41B6F0E5A00CECF56 /* IASKLocalizable.strings in Resources */,
 				59ECE3A11B276D9900F38902 /* Bookmark@3x.psd in Resources */,
 				59A024C01B4D88DF00B3A0F7 /* SVWebViewController.strings in Resources */,
-				CDBD15CC1B7EF26D00B1F0E9 /* README.txt in Resources */,
 				59ECE39D1B276D9900F38902 /* Bookmark.psd in Resources */,
 				59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */,
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,
 				5952F17E1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png in Resources */,
 				59ECE3AB1B276D9900F38902 /* PageList@2x.psd in Resources */,
 				CD1965BB1BBB145A0018F75A /* icon.png in Resources */,
-				CDBD15CD1B7EF26D00B1F0E9 /* README.txt in Resources */,
 				CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */,
 				59649ED61AEF1E0A00E5F1AD /* Images.xcassets in Resources */,
 			);
