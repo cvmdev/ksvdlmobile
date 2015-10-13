@@ -9,19 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SVProgressHUD.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
 
-@class GADBannerView,GADRequest;
 
-@interface HomeViewController : UIViewController <GADBannerViewDelegate> {
-    GADBannerView *bannerView_;
+@interface HomeViewController : UIViewController {
+
+
 }
 @property (weak, nonatomic) IBOutlet UIButton *accessionnumber;
 @property (weak, nonatomic) IBOutlet UIButton *testfeesbutton;
 @property (weak, nonatomic) IBOutlet UIButton *helpvideosbutton;
-
-@property (nonatomic,strong)GADBannerView *bannerView;
--(GADRequest *)createRequest;
 
 - (IBAction)submitTap:(id)sender;
 - (IBAction) testFeesCatalog:(id)sender;

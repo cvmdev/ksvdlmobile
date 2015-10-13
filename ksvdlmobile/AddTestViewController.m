@@ -114,7 +114,7 @@
         
         
         NSString *phonenos = _inttext.text;
-        phonenos = [phonenos stringByAppendingString:_phtext.text];
+       // phonenos = [phonenos stringByAppendingString:_phtext.text];
         
         mailer.mailComposeDelegate = self;
         
@@ -130,10 +130,8 @@
         
         NSString *suffixtxt = @"<h4>Sent from KSVDL Mobile App</h4>";
         
-        if ((_phtext.text && _phtext.text.length > 0) && (_testnametext.text && _testnametext.text.length > 0))
+        if ((_inttext.text && _inttext.text.length > 0) && (_testnametext.text && _testnametext.text.length > 0))
         {
-            if([_phtext.text isValidPhone])
-            {
                 if((_emailtext.text.length>0 && [_emailtext.text isValidEmail]) || (_emailtext.text.length==0)) //When email exisits, ensure its valid
                 {
                     NSLog(@"Valid Email ID");
@@ -171,16 +169,6 @@
                     [alert1 show];
                     
                 }
-            }
-            else
-            {
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                 message:@"Not a valid Phone Number"
-                                                                delegate:self
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil];
-                [alert2 show];
-            }
         }
         else
         {

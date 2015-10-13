@@ -8,6 +8,7 @@
 
 #import "WebViewController.h"
 #import "SWRevealViewController.h"
+#import "GlobalConstants.h"
 
 @interface WebViewController ()
 
@@ -32,7 +33,7 @@
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
     // Do any additional setup after loading the view.
-    NSURL *helppageURL = [NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/helpfile.html"];
+    NSURL *helppageURL = [NSURL URLWithString:kVDLYoutubeURL];
     NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
     [myWebView loadRequest:helppagerequest];
 }

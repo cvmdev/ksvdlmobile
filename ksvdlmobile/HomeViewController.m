@@ -23,7 +23,7 @@
 {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     NSLog(@"Tag = %d", gesture.view.tag);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/app_promotion.html"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kVDLPromotionString]];
 }
 
 -(void)viewDidLayoutSubviews
@@ -35,8 +35,6 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"Google Mobile Ads SDK version: %@", [DFPRequest sdkVersion]);
     
     /*The following couple of lines of code are remove the BACK botton text from the help video and test and fees page*/
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
@@ -125,34 +123,6 @@
     
 }
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInt
-                               duration:(NSTimeInterval)duration {
-    if (UIInterfaceOrientationIsLandscape(toInt)) {
-        self.bannerView.adSize = kGADAdSizeSmartBannerLandscape;
-    } else {
-        self.bannerView.adSize = kGADAdSizeSmartBannerPortrait;
-    }
-}
-
-
--(GADRequest *) createRequest{
-    GADRequest *request = [GADRequest request];
-    request.testDevices = [NSArray arrayWithObjects:kGADSimulatorID, nil];
-    return request;
-}
-
--(void)adViewDidReceiveAd:(GADBannerView *)adView{
-    NSLog(@"Ad Recieved");
-  //  [UIView animateWithDuration:1.0 animations:^{adView.frame = CGRectMake(0.0, 350.0, adView.frame.size.width, adView.frame.size.height);
-  //   }];
-}
-
-
-
--(void)adView:(GADBannerView *)view
-didFailToReceiveAdWithError:(GADRequestError *)error{
-    NSLog(@"Failed Ad: %@",[error localizedFailureReason]);
-}
 
 - (IBAction) testFeesCatalog:(id)sender {
     
