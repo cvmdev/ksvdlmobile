@@ -21,5 +21,6 @@
     extern NSString * const kVDLFeedbackFormURL;
     extern NSString * const kVDLHelpPage;
     extern NSString * const kVDLPortalLogin;
+    extern NSString * const kVDLPromotionString;
     extern int const kRetryCount;
 @end

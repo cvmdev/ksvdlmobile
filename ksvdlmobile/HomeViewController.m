@@ -23,7 +23,7 @@
 {
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     NSLog(@"Tag = %d", gesture.view.tag);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.vet.k-state.edu/asp/app/app_promotion.html"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kVDLPromotionString]];
 }
 
 -(void)viewDidLayoutSubviews

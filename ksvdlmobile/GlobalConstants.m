@@ -29,10 +29,11 @@ NSString *const kClientSecret=@"dummy";
 NSString *const kVDLYoutubeURL=@"https://www.youtube.com/channel/UCtx-lIIXqj5PAMQYryXaRhA";
 NSString *const kVDLTestFeesURL=@"http://www.ksvdl.org/resources/test.html";
 NSString *const kVDLFeedbackFormURL=@"http://goo.gl/forms/OK3kc7PF2W";
-NSString *const kVDLHelpPage=@"http://www.ksvdl.org/mobileapp/help.html";
+NSString *const kVDLHelpPage=@"https://www.vet.k-state.edu/asp/app/helpfile.html";
 NSString *const kVDLPortalLogin=@"https://vetview2.vet.k-state.edu/LabPortal";
 NSString *const kVDLDeviceTokenString=@"ksvdldevicetoken";
 NSString *const kVDLUserString=@"vdlusername";
+NSString *const kVDLPromotionString=@"https://www.vet.k-state.edu/asp/app/app_promotion.html";
 const int kRetryCount=3;
 
 @end
