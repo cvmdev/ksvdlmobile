@@ -126,7 +126,7 @@
        {
             [SVProgressHUD show];
                     
-            [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"dummy"
+            [[AuthAPIClient sharedClient] authenticateUsingOAuthWithURLString:kTokenURLString username:_userText.text password:_userPwd.text scope:@"none"
                                         success:^(AFOAuthCredential *credential) {
                                            
                                             //Upon login success store username in NSUserDefaults

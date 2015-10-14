@@ -351,7 +351,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     //}
     
     cell.ownerLabel.text = [currentAccessionDict objectForKey:@"OwnerName"];
-    cell.accessionLabel.text=[NSString stringWithFormat:@"Accession#: %@",[currentAccessionDict objectForKey:@"AccessionNo"]];
+    cell.accessionLabel.text=[NSString stringWithFormat:@"Accession# %@",[currentAccessionDict objectForKey:@"AccessionNo"]];
     cell.statusLabel.text=[currentAccessionDict objectForKey:@"AccessionStatus"];
     cell.receivedDateLabel.text=[NSString stringWithFormat:@"Received: %@",[currentAccessionDict objectForKey:@"ReceivedDate"]];
     cell.finalizedDateLabel.text=[NSString stringWithFormat:@"Finalized: %@",[currentAccessionDict objectForKey:@"FinalizedDate"]];
@@ -450,7 +450,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     if (!([currentAccessionDict objectForKey:@"RdvmName"]==(id)[NSNull null]))
     {
-        cell.dvmLabel.text= [NSString stringWithFormat:@"DVM: %@",[currentAccessionDict objectForKey:@"RdvmName"]];
+        cell.dvmLabel.text= [NSString stringWithFormat:@"DVM: Dr %@",[currentAccessionDict objectForKey:@"RdvmName"]];
         cell.dvmLabel.hidden=false;
         cell.dvmHeightConstraint.constant=15;
     }
@@ -462,7 +462,7 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
     if (!([currentAccessionDict objectForKey:@"RefNumber"]==(id)[NSNull null]))
     {
-        cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref# :%@",[currentAccessionDict objectForKey:@"RefNumber"]];
+        cell.referenceNumberLabel.text= [NSString stringWithFormat:@"Ref# %@",[currentAccessionDict objectForKey:@"RefNumber"]];
         cell.referenceNumberLabel.hidden=false;
     }
     else

@@ -614,6 +614,9 @@
     if(retryCount==0)
     {
         NSLog(@"Already retried once with an updated credential");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:@"Problem while downloading the file, please try again"];
+        });
         return;
     }
     
