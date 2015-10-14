@@ -1197,7 +1197,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LSt-oR-G3D" secondAttribute="trailing" id="09K-FJ-Jyj"/>
-                                    <constraint firstAttribute="height" constant="350" id="2Lg-44-AQ5"/>
                                     <constraint firstAttribute="bottom" secondItem="LSt-oR-G3D" secondAttribute="bottom" id="Q8b-4u-gF4"/>
                                     <constraint firstItem="LSt-oR-G3D" firstAttribute="top" secondItem="BNv-LJ-cS3" secondAttribute="top" constant="8" id="rPp-Dm-r8I"/>
                                 </constraints>
@@ -1210,6 +1209,7 @@
                         <constraints>
                             <constraint firstItem="BNv-LJ-cS3" firstAttribute="width" secondItem="pRJ-4G-yzG" secondAttribute="width" id="350-0y-FzY"/>
                             <constraint firstItem="BNv-LJ-cS3" firstAttribute="bottom" secondItem="RrA-vd-2dn" secondAttribute="bottomMargin" constant="28" id="9ki-jz-PEA"/>
+                            <constraint firstItem="BNv-LJ-cS3" firstAttribute="bottom" secondItem="RrA-vd-2dn" secondAttribute="bottomMargin" constant="28" id="HCe-7S-6Hf"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BNv-LJ-cS3" secondAttribute="leading" identifier="leadingmargin_mainscroll" id="M1e-kc-7N0"/>
                             <constraint firstAttribute="height" secondItem="pRJ-4G-yzG" secondAttribute="height" id="Vp8-jK-5hm"/>
                             <constraint firstItem="BNv-LJ-cS3" firstAttribute="top" secondItem="RrA-vd-2dn" secondAttribute="topMargin" constant="28" id="YL4-eC-uLY"/>
