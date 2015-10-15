@@ -922,7 +922,13 @@ CGRect IASKCGRectSwap(CGRect rect);
     [_settingsStore synchronize];
 }
 
-static NSDictionary *oldUserDefaults = nil;
+//static NSDictionary *oldUserDefaults = nil;
+NSDictionary *oldUserDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"Yes", @"sample_arr",
+                             @"No", @"prelim_results",
+                             @"Yes", @"final_result",
+                             nil];
+
 - (void)userDefaultsDidChange {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		IASKSettingsStoreUserDefaults *udSettingsStore = (id)self.settingsStore;
