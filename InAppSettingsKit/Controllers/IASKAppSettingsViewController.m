@@ -230,10 +230,18 @@ CGRect IASKCGRectSwap(CGRect rect);
 	
 	if ([self.settingsStore isKindOfClass:[IASKSettingsStoreUserDefaults class]]) {
 		NSNotificationCenter *dc = NSNotificationCenter.defaultCenter;
+        
 		IASKSettingsStoreUserDefaults *udSettingsStore = (id)self.settingsStore;
 		[dc addObserver:self selector:@selector(userDefaultsDidChange) name:NSUserDefaultsDidChangeNotification object:udSettingsStore.defaults];
+        
+       
+        NSLog(@"BEFORE ANY CHANGE1 :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"]);
+        NSLog(@"BEFORE ANY CHANGE2 :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"]);
+        NSLog(@"BEFORE ANY CHANGE3 :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"]);
+        
+
 		[dc addObserver:self selector:@selector(didChangeSettingViaIASK:) name:kIASKAppSettingChanged object:nil];
-		[self userDefaultsDidChange]; // force update in case of changes while we were hidden
+	//	[self userDefaultsDidChange]; // force update in case of changes while we were hidden
 	}
 	[super viewWillAppear:animated];
 }
@@ -914,7 +922,13 @@ CGRect IASKCGRectSwap(CGRect rect);
     [_settingsStore synchronize];
 }
 
-static NSDictionary *oldUserDefaults = nil;
+//static NSDictionary *oldUserDefaults = nil;
+NSDictionary *oldUserDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"Yes", @"sample_arr",
+                             @"No", @"prelim_results",
+                             @"Yes", @"final_result",
+                             nil];
+
 - (void)userDefaultsDidChange {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		IASKSettingsStoreUserDefaults *udSettingsStore = (id)self.settingsStore;
@@ -942,9 +956,10 @@ static NSDictionary *oldUserDefaults = nil;
 }
 
 - (void)didChangeSettingViaIASK:(NSNotification*)notification {
+    
     NSLog(@"Settings has changed for %@",notification.object);
     
-	[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
+	//[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];->moved into the if(updated) loop
     NSLog(@"value of sameple ARR after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"]);
     
     NSNumber *prelimvalue = [[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"];
@@ -955,6 +970,13 @@ static NSDictionary *oldUserDefaults = nil;
     }
     NSLog(@"value of PREL RESULTS after change is :%@",prelimvalue);
     NSLog(@"value of FINAL RESULTS after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"]);
+    
+    
+    
+    NSLog(@"OLD VALUES AFTER THE CHANGE1 :%@",oldUserDefaults[@"sample_arr"]);
+    NSLog(@"OLD VALUES AFTER THE CHANGE2 :%@",oldUserDefaults[@"prelim_results"]);
+    NSLog(@"OLD VALUES AFTER THE CHANGE3 :%@",oldUserDefaults[@"final_result"]);
+    
    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^ {
@@ -962,36 +984,28 @@ static NSDictionary *oldUserDefaults = nil;
             
             if (updated)
             {
+                //[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
                 NSLog(@"IASK--Notifications updated successfully");
             }
             else
             {
                 NSLog(@"IASK--Update notifications Failed");
+                NSUserDefaults *reverttoolddefaults  = [NSUserDefaults standardUserDefaults];
+                [reverttoolddefaults setObject:oldUserDefaults[@"sample_arr"] forKey:@"sample_arr"];
+                [reverttoolddefaults setObject:oldUserDefaults[@"prelim_results"] forKey:@"prelim_results"];
+                [reverttoolddefaults setObject:oldUserDefaults[@"final_result"] forKey:@"final_result"];
+                //  [defaults registerDefaults:appDefaults];
+                [reverttoolddefaults synchronize];
+                [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.5];
             }
-                
+            
             
         }];
         
 
     });
+    
 }
-//
-//    if (![[AuthAPIClient sharedClient] isSignInRequired])
-//    {
-//        
-//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//        dispatch_async(queue, ^ {
-//           // [[HttpClient sharedHTTPClient] updateNotifications];
-//            [[HttpClient sharedHTTPClient] updateNotificationsWithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSLog(@"Notifications updated successfully");
-//            } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                NSLog(@"Failure while updating notifications");
-//                
-//            }];
-//
-//            
-//        });
-//    }
 
 
 - (void)reload {
