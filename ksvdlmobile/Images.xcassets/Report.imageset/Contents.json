@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x",
-      "filename" : "Report_Button_32x120.png"
+      "filename" : "Report_Button_32x120.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "Report_Button_64x240.png"
+      "filename" : "Report_Button_64x240.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -18,31 +18,17 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x",
-      "filename" : "Report_Button_96x360.png"
+      "filename" : "Report_Button_96x360.png",
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x",
-      "filename" : "Report_Button_64x240-2.png"
+      "filename" : "Report_Button_64x240-2.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x",
-      "filename" : "Report_Button_96x360-1.png"
-    },
-    {
-      "idiom" : "watch",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{130,145}",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{146,165}",
+      "filename" : "Report_Button_96x360-1.png",
       "scale" : "2x"
     }
   ],

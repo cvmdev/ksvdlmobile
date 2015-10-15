@@ -779,7 +779,14 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
 -(void) accessionReportFor:(NSIndexPath *)indexPath{
     NSLog(@"Button Clicked at Index %ld",(long)indexPath.row);
     //if ([([self accessionValidForReport:[self getCurrentAccessionForIndexPath:indexPath]]) isEqual:@"Success"])
-    [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+        [self performSegueWithIdentifier:@"viewreport" sender:indexPath];
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"Please verify your internet connection and try again"];
+    }
 }
 
 -(void) accessionaddtestFor:(NSIndexPath *)indexPath{

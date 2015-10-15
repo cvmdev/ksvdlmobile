@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x",
-      "filename" : "Home_TestFees_Link_161x100.png"
+      "filename" : "Home_TestFees_Link_161x100.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "Home_TestFees_Link_290x180.png"
+      "filename" : "Home_TestFees_Link_290x180.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -21,25 +21,11 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x",
-      "filename" : "Home_TestFees_Link_290x180-1.png"
+      "filename" : "Home_TestFees_Link_290x180-1.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{130,145}",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{146,165}",
       "scale" : "2x"
     }
   ],

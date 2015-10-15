@@ -1328,6 +1328,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="priceLabel" destination="Y8b-eL-TKq" id="EmM-oI-LWy"/>
                                     <outlet property="speciesLabel" destination="zcA-t5-fzf" id="6H1-E8-16k"/>

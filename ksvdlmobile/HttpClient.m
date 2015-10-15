@@ -613,10 +613,8 @@
     
     if(retryCount==0)
     {
-        NSLog(@"Already retried once with an updated credential");
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showErrorWithStatus:@"Problem while downloading the file, please try again"];
-        });
+        NSLog(@"Retry count is zero, so an error has occurred");
+        completionBlock(false);
         return;
     }
     
@@ -711,15 +709,10 @@
                 
                 else
                 {
-                    completionBlock(false);
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Problem while downloading the file" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     
-                    //[alertView show];
-                        [SVProgressHUD showErrorWithStatus:@"Problem while downloading the file, please try again"];
-                        
-                    });
-                   
+                    NSLog(@"Report download url error or intermittent error,lets try again with retry counter :%d",retryCount);
+                    [weakSelf downloadReportForAccession:AccessionNo WithRetryCounter:retryCount WithCompletionBlock:completionBlock];
+                    //completionBlock(false);
                 }
             }
         }];

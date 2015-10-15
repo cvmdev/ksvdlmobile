@@ -104,6 +104,10 @@
         {
             //There was some problem lets dismiss the loading status..
             [SVProgressHUD dismiss];
+            //[SVProgressHUD showErrorWithStatus:@"Problem while downloading the file, please try again"];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"There was a problem while viewing report. Please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            
         }
     }];
 }

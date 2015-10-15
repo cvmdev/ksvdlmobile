@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x",
-      "filename" : "Home_Accessions_Link_iPhone_145x90.png"
+      "filename" : "Home_Accessions_Link_iPhone_145x90.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "Home_Accessions_Link_iPhone_290x180.png"
+      "filename" : "Home_Accessions_Link_iPhone_290x180.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -18,37 +18,25 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x",
-      "filename" : "Home_Accessions_Link_iPhone_580x360.png"
+      "filename" : "Home_Accessions_Link_iPhone_580x360.png",
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x",
-      "filename" : "Home_Accessions_Link_iPad_324x200.png"
+      "filename" : "Home_Accessions_Link_iPad_324x200.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x",
-      "filename" : "Home_Accessions_Link_iPad_647x400.png"
-    },
-    {
-      "idiom" : "watch",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{130,145}",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{146,165}",
+      "filename" : "Home_Accessions_Link_iPad_647x400.png",
       "scale" : "2x"
     }
   ],
   "info" : {
     "version" : 1,
-    "author" : "xcode",
+    "author" : "xcode"
+  },
+  "properties" : {
     "template-rendering-intent" : "original"
   }
 }

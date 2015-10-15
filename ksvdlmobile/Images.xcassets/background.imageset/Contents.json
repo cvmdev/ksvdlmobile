@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x",
-      "filename" : "Background_Screen_iPhone_640x1136.png"
+      "filename" : "Background_Screen_iPhone_640x1136.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "Background_Screen_iPhone_750x1334.png"
+      "filename" : "Background_Screen_iPhone_750x1334.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -18,31 +18,17 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x",
-      "filename" : "Background_Screen_iPhone_1242x2208-1.png"
+      "filename" : "Background_Screen_iPhone_1242x2208-1.png",
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x",
-      "filename" : "Background_Screen_iPad_1536x2048.png"
+      "filename" : "Background_Screen_iPadMini_768x1024.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x",
-      "filename" : "Background_Screen_iPad_2048x1536.png"
-    },
-    {
-      "idiom" : "watch",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{130,145}",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "watch",
-      "screenWidth" : "{146,165}",
+      "filename" : "Background_Screen_iPad_1536x2048-1.png",
       "scale" : "2x"
     }
   ],
