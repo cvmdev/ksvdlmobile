@@ -9,6 +9,7 @@
 #import "WebViewController.h"
 #import "SWRevealViewController.h"
 #import "GlobalConstants.h"
+#import "AFNetworking.h"
 
 @interface WebViewController ()
 
@@ -34,8 +35,9 @@
     
     // Do any additional setup after loading the view.
     NSURL *helppageURL = [NSURL URLWithString:kVDLHelpPage];
-    NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
-    [myWebView loadRequest:helppagerequest];
+          NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
+        [myWebView loadRequest:helppagerequest];
+      
 }
 
 - (void)didReceiveMemoryWarning {

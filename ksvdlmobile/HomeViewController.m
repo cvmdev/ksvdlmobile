@@ -139,7 +139,7 @@
     else
     {
         NSLog(@"Network Unreachable..display an alert to the user");
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please verify your internet connection and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
@@ -156,9 +156,10 @@
     
     else
     {
-        [SVProgressHUD showErrorWithStatus:@"Please verify your internet connection and try again"];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please verify your internet connection and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
 
-        //[self.navigationController popToRootViewControllerAnimated:NO];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }
 }
 
@@ -185,7 +186,11 @@
         }
     }
     else
-        [SVProgressHUD showErrorWithStatus:@"Please verify your internet connection and try again"];
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please verify your internet connection and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
     
 }
 

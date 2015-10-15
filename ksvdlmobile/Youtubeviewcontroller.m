@@ -9,6 +9,7 @@
 #import "Youtubeviewcontroller.h"
 #import "SWRevealViewController.h"
 #import "GlobalConstants.h"
+#import "AFNetworking.h"
 
 @interface Youtubeviewcontroller ()
 
@@ -32,10 +33,23 @@
     [self.barButton setTarget: self.revealViewController];
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
+    NSLog(@"Youtube page called");
+
     // Do any additional setup after loading the view.
-    NSURL *helppageURL = [NSURL URLWithString:kVDLYoutubeURL];
-    NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
-    [WebView loadRequest:helppagerequest];
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+
+    NSURL *youtubeURL = [NSURL URLWithString:kVDLYoutubeURL];
+    NSURLRequest *youtuberequest = [NSURLRequest requestWithURL:youtubeURL];
+    [WebView loadRequest:youtuberequest];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Please verify your internet connection and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
