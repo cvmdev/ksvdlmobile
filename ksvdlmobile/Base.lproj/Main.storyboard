@@ -1777,9 +1777,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xEa-OO-ROn"/>
-        <segue reference="D4a-38-EOR"/>
         <segue reference="cDr-5r-ECg"/>
+        <segue reference="FX4-jb-Irm"/>
+        <segue reference="xEa-OO-ROn"/>
         <segue reference="Htf-al-Bab"/>
     </inferredMetricsTieBreakers>
 </document>
