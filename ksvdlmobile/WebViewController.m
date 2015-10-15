@@ -33,7 +33,7 @@
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
     // Do any additional setup after loading the view.
-    NSURL *helppageURL = [NSURL URLWithString:kVDLYoutubeURL];
+    NSURL *helppageURL = [NSURL URLWithString:kVDLHelpPage];
     NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
     [myWebView loadRequest:helppagerequest];
 }

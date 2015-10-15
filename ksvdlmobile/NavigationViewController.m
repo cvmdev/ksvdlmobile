@@ -12,7 +12,7 @@
 #import "GlobalConstants.h"
 #import "HttpClient.h"
 #import "SVWebViewController.h"
-
+#import "SVProgressHUD.h"
 
 
 @interface NavigationViewController ()
@@ -172,7 +172,7 @@
             case 4:
             {
                 //Logout Logic
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Logging out will prevent notifications from being sent.Continue?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Logging out will prevent notifications from being sent. Continue?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
                 [alertView show];
              
             }
@@ -186,22 +186,29 @@
             //stay in current view
             break;
         case 1:
-            NSLog(@"Deleting token...NVC");
+            
+             if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+             {
+                    NSLog(@"Deleting token...NVC");
 
-            [[AuthAPIClient sharedClient] logOutWithRetryCount:kRetryCount
-                                            AndCompletionBlock:^(BOOL finished){
-                        if (finished)
-                        {
-                            [self loadDynamicMenu];
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.tableView reloadData];
-                            });
-                        }
-                        else
-                        {
-                            NSLog(@"There was an issue logging out...lets handle it...");
-                        }
-            }];
+                    [[AuthAPIClient sharedClient] logOutWithRetryCount:kRetryCount
+                                                    AndCompletionBlock:^(BOOL finished){
+                                if (finished)
+                                {
+                                    [self loadDynamicMenu];
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.tableView reloadData];
+                                    });
+                                }
+                                else
+                                {
+                                    [SVProgressHUD showErrorWithStatus:@"Problem logging out, please try again"];
+                                }
+                    }];
+             }
+            else
+                [SVProgressHUD showErrorWithStatus:@"Please verify your internet connection and try again"];
+
           break;
     }
 }

@@ -156,10 +156,9 @@
     
     else
     {
-        NSLog(@"Network Unreachable..display an alert to the user");
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Not connected to the internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        [self.navigationController popToRootViewControllerAnimated:NO];
+        [SVProgressHUD showErrorWithStatus:@"Please verify your internet connection and try again"];
+
+        //[self.navigationController popToRootViewControllerAnimated:NO];
     }
 }
 
@@ -170,19 +169,23 @@
             
     //AFOAuthCredential  *credential = [[AuthAPIClient sharedClient] retrieveCredential];
     //if ((!credential) || (credential.isExpired))
-    
-    if ([[AuthAPIClient sharedClient] isSignInRequired])
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
     {
-        NSLog(@"User is not logged in , send to login screen");
-        [self performSegueWithIdentifier:@"LoginScreen" sender:sender];
-        
+        if ([[AuthAPIClient sharedClient] isSignInRequired])
+        {
+            NSLog(@"User is not logged in , send to login screen");
+            [self performSegueWithIdentifier:@"LoginScreen" sender:sender];
+            
+        }
+        else
+        {
+            NSLog(@"User is logged in and authentication token may or may not be current");
+            [self performSegueWithIdentifier:@"AccessionScreen" sender:sender];
+           
+        }
     }
     else
-    {
-        NSLog(@"User is logged in and authentication token may or may not be current");
-        [self performSegueWithIdentifier:@"AccessionScreen" sender:sender];
-       
-    }
+        [SVProgressHUD showErrorWithStatus:@"Please verify your internet connection and try again"];
     
 }
 

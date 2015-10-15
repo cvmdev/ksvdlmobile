@@ -47,20 +47,20 @@
     return self;
 }
 
-- (void)settingDidChange:(NSNotification*)notification {
-    NSLog(@"at settingsdidchange event...");
-//    if ([notification.object isEqual:@"sample_arr"]) {
-//        BOOL samplearrival1 = (BOOL)[[notification.userInfo objectForKey:@"sample_arr"] intValue];
-//    }
-//    if ([notification.object isEqual:@"prelim_results"]) {
-//        BOOL prelimresults1 = (BOOL)[[notification.userInfo objectForKey:@"prelim_results"] intValue];
-//    }
-//    if ([notification.object isEqual:@"final_result"]) {
-//        BOOL finalresults1 = (BOOL)[[notification.userInfo objectForKey:@"final_result"] intValue];
-    //}
-      //[[NSUserDefaults standardUserDefaults] synchronize];
-    [self updateNotifications];
-   }
+//- (void)settingDidChange:(NSNotification*)notification {
+//    NSLog(@"at settingsdidchange event...");
+////    if ([notification.object isEqual:@"sample_arr"]) {
+////        BOOL samplearrival1 = (BOOL)[[notification.userInfo objectForKey:@"sample_arr"] intValue];
+////    }
+////    if ([notification.object isEqual:@"prelim_results"]) {
+////        BOOL prelimresults1 = (BOOL)[[notification.userInfo objectForKey:@"prelim_results"] intValue];
+////    }
+////    if ([notification.object isEqual:@"final_result"]) {
+////        BOOL finalresults1 = (BOOL)[[notification.userInfo objectForKey:@"final_result"] intValue];
+//    //}
+//      //[[NSUserDefaults standardUserDefaults] synchronize];
+//    [self updateNotifications];
+//   }
 
 
 
@@ -517,9 +517,8 @@
 
 }
 
--(void) updateNotifications{
-    if (![[AuthAPIClient sharedClient] isSignInRequired])
-    {
+-(void) updateNotificationsWithCompletionBlock:(CustomCompletionBlock)completionBlock{
+   
         [self updateNotificationsWithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"Notifications updated successfully");
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -527,11 +526,13 @@
             });
         } andFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Failure while updating notifications");
+            
+            completionBlock(false);
             [SVProgressHUD showErrorWithStatus:@"Notification Settings Update Failed"];
 
             
         }];
-    }
+    
 }
 
 -(void) updateNotificationsWithSuccessBlock:(ApiClientSuccess)successBlock andFailureBlock:(ApiClientFailure)failureBlock {
@@ -587,11 +588,13 @@
                       
                       NSLog(@"Retry operation starting for updating notifs..with retry counter:%ld",(long)retryCounter);
                       
-                      [weakSelf POST:@"Notifications" parameters:notificationParams
+                      [weakSelf POST:@"NotificationStatus" parameters:notificationParams
                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
                              processSuccessBlock(operation, responseObject);
                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                              NSLog(@"Error While updating notifications 2n time....%@",error);
+                             failureBlock(operation,error);
+
                          }];
                    
                   }failure:^(NSError *error){

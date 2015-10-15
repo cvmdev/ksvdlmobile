@@ -943,6 +943,7 @@ static NSDictionary *oldUserDefaults = nil;
 
 - (void)didChangeSettingViaIASK:(NSNotification*)notification {
     NSLog(@"Settings has changed for %@",notification.object);
+    
 	[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
     NSLog(@"value of sameple ARR after change is :%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"]);
     
@@ -957,7 +958,19 @@ static NSDictionary *oldUserDefaults = nil;
    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^ {
-                   [[HttpClient sharedHTTPClient] updateNotifications];
+        [[HttpClient sharedHTTPClient] updateNotificationsWithCompletionBlock:^(BOOL updated) {
+            
+            if (updated)
+            {
+                NSLog(@"IASK--Notifications updated successfully");
+            }
+            else
+            {
+                NSLog(@"IASK--Update notifications Failed");
+            }
+                
+            
+        }];
         
 
     });
