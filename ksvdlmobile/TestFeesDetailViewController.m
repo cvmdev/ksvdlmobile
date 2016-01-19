@@ -42,7 +42,18 @@
     
     
     if (!([self.testFeesDetailDict objectForKey:@"Specimens"]==(id)[NSNull null]))
-        self.SpecimenLabel.text=[self.testFeesDetailDict objectForKey:@"Specimens"];
+    {
+        NSString *htmlSpecString=[self.testFeesDetailDict objectForKey:@"Specimens"];
+        
+        
+        NSMutableAttributedString * specText =[[NSMutableAttributedString alloc] initWithData:[htmlSpecString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+        
+        [specText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0,specText.length)];
+        
+        self.SpecimenLabel.attributedText=specText;
+
+        //self.SpecimenLabel.text=[self.testFeesDetailDict objectForKey:@"Specimens"];
+    }
     else
         self.SpecimenLabel.text=@"";
 
@@ -77,7 +88,20 @@
         self.EstimatedTurnaroundLabel.text=@"";
     
     if (!([self.testFeesDetailDict objectForKey:@"TestComments"]==(id)[NSNull null]))
-        self.TestCommentsLabel.text=[self.testFeesDetailDict objectForKey:@"TestComments"];
+        
+    {
+        NSString *htmlCommentsString=[self.testFeesDetailDict objectForKey:@"TestComments"];
+        
+        
+        NSMutableAttributedString * commentText =[[NSMutableAttributedString alloc] initWithData:[htmlCommentsString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+        
+        [commentText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0,commentText.length)];
+        
+        self.TestCommentsLabel.attributedText=commentText;
+        
+        //self.TestCommentsLabel.text=[self.testFeesDetailDict objectForKey:@"TestComments"];
+        
+    }
     else
         self.TestCommentsLabel.text=@"";
     

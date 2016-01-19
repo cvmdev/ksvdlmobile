@@ -72,7 +72,7 @@
 - (IBAction)createAcccount:(id)sender {
     if ([[AFNetworkReachabilityManager sharedManager] isReachable])
     {
-        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLPortalLogin];
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLPortalRegister];
         [self.navigationController pushViewController:webViewController animated:YES];
     }
     else
@@ -87,7 +87,7 @@
 - (IBAction)forgotPassword:(id)sender {
     if ([[AFNetworkReachabilityManager sharedManager] isReachable])
     {
-        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLPortalLogin];
+        SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:kVDLPortalResetPwd];
         [self.navigationController pushViewController:webViewController animated:YES];
     }
     else

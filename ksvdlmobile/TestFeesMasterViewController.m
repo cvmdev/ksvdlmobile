@@ -200,14 +200,29 @@ NSRange specimenRange,speciesRange,priceRange;
         
         if (!([testFeesDict objectForKey:@"Specimens"]==(id)[NSNull null]))
         {
-            testfeesCell.specimenLabel.text=[NSString stringWithFormat:@"Specimen: %@",[testFeesDict objectForKey:@"Specimens"]];
+           NSString *htmlSpecString=[NSString stringWithFormat:@"Specimen: %@",[testFeesDict objectForKey:@"Specimens"]];
+            
+            
+           NSMutableAttributedString * specText =[[NSMutableAttributedString alloc] initWithData:[htmlSpecString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+            
+            [specText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0,specText.length)];
+            
+
+        [   specText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13 weight:UIFontWeightBold] range:specimenRange];
+            
+           //testfeesCell.specimenLabel.text=[NSString stringWithFormat:@"Specimen: %@",[testFeesDict objectForKey:@"Specimens"]];
+            
+           testfeesCell.specimenLabel.attributedText=specText;
+           // testfeesCell.specimenLabel.attributedText=[self  forRange:specimenRange];
+            
          }
         else
         {
             testfeesCell.specimenLabel.text=@"Specimen:";
+            testfeesCell.specimenLabel.attributedText=[self boldLabelText:testfeesCell.specimenLabel.text forRange:specimenRange];
             
         }
-        testfeesCell.specimenLabel.attributedText=[self boldLabelText:testfeesCell.specimenLabel.text forRange:specimenRange];
+        //testfeesCell.specimenLabel.attributedText=[self boldLabelText:testfeesCell.specimenLabel.text forRange:specimenRange];
 
         if (!([testFeesDict objectForKey:@"Species"]==(id)[NSNull null]))
             testfeesCell.speciesLabel.text=[NSString stringWithFormat:@"Species: %@",[testFeesDict objectForKey:@"Species"]];

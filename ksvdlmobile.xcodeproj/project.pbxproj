@@ -762,7 +762,7 @@
 				TargetAttributes = {
 					59649EC41AEF1E0A00E5F1AD = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 4WC9HWQN3F;
+						DevelopmentTeam = 968F74UK4Q;
 					};
 					59649EDD1AEF1E0A00E5F1AD = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1040,8 +1040,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Praveen Ramanan (4WC9HWQN3F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Praveen Ramanan (4WC9HWQN3F)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1062,7 +1062,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "acb6b179-3e16-4448-bdc3-96590d478831";
+				PROVISIONING_PROFILE = "70a671a3-c3d9-4706-88ca-403afb586fc7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1084,8 +1084,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Praveen Ramanan (4WC9HWQN3F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Praveen Ramanan (4WC9HWQN3F)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1099,7 +1099,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "acb6b179-3e16-4448-bdc3-96590d478831";
+				PROVISIONING_PROFILE = "70a671a3-c3d9-4706-88ca-403afb586fc7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1112,8 +1112,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CVM Developer (4Q339MFGEX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1122,7 +1122,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "acb6b179-3e16-4448-bdc3-96590d478831";
+				PROVISIONING_PROFILE = "11159b9f-fbd7-4b2e-83ff-581638b71c81";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1134,8 +1134,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Praveen Ramanan (S8Q3SCB2BF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CVM Developer (4Q339MFGEX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1144,7 +1144,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "acb6b179-3e16-4448-bdc3-96590d478831";
+				PROVISIONING_PROFILE = "11159b9f-fbd7-4b2e-83ff-581638b71c81";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

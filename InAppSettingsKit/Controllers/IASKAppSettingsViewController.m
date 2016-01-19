@@ -241,7 +241,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         
 
 		[dc addObserver:self selector:@selector(didChangeSettingViaIASK:) name:kIASKAppSettingChanged object:nil];
-	//	[self userDefaultsDidChange]; // force update in case of changes while we were hidden
+	    [self userDefaultsDidChange]; // force update in case of changes while we were hidden
 	}
 	[super viewWillAppear:animated];
 }
@@ -922,12 +922,12 @@ CGRect IASKCGRectSwap(CGRect rect);
     [_settingsStore synchronize];
 }
 
-//static NSDictionary *oldUserDefaults = nil;
-NSDictionary *oldUserDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"Yes", @"sample_arr",
-                             @"No", @"prelim_results",
-                             @"Yes", @"final_result",
-                             nil];
+static NSDictionary *oldUserDefaults = nil;
+//NSDictionary *oldUserDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+//                             @"Yes", @"sample_arr",
+//                             @"No", @"prelim_results",
+//                             @"Yes", @"final_result",
+//                             nil];
 
 - (void)userDefaultsDidChange {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -984,7 +984,7 @@ NSDictionary *oldUserDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
             
             if (updated)
             {
-                //[oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
+                [oldUserDefaults setValue:[self.settingsStore objectForKey:notification.object] forKey:notification.object];
                 NSLog(@"IASK--Notifications updated successfully");
             }
             else
