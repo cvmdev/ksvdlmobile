@@ -101,7 +101,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2Jp-4k-Buf" kind="show" id="Htf-al-Bab"/>
+                                    <segue destination="2Jp-4k-Buf" kind="show" identifier="register" id="Htf-al-Bab"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UW-Cy-4rM">
@@ -112,7 +112,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2Jp-4k-Buf" kind="show" id="HcB-w7-liL"/>
+                                    <segue destination="2Jp-4k-Buf" kind="show" identifier="forgotpwd" id="HcB-w7-liL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1777,9 +1777,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="b5z-gQ-egg"/>
+        <segue reference="HcB-w7-liL"/>
         <segue reference="cDr-5r-ECg"/>
-        <segue reference="FX4-jb-Irm"/>
-        <segue reference="xEa-OO-ROn"/>
-        <segue reference="Htf-al-Bab"/>
+        <segue reference="LQw-T8-f9Z"/>
     </inferredMetricsTieBreakers>
 </document>

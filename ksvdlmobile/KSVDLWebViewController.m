@@ -32,9 +32,14 @@
     [self.barButton setAction: @selector( rightRevealToggle: )];
     
     // Do any additional setup after loading the view.
-    NSURL *helppageURL = [NSURL URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/"];
-    NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
-    [WebView loadRequest:helppagerequest];
+//    NSURL *helppageURL = [NSURL URLWithString:@"https://vetview2.vet.k-state.edu/LabPortal/"];
+//    NSURLRequest *helppagerequest = [NSURLRequest requestWithURL:helppageURL];
+//    [WebView loadRequest:helppagerequest];
+    NSURL *currentURL = [NSURL URLWithString:self.vdlPortalLink];
+    NSURLRequest *linkRequest = [NSURLRequest requestWithURL:currentURL];
+    [WebView loadRequest:linkRequest];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

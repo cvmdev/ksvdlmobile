@@ -449,9 +449,20 @@
     NSString *osVersion =[[UIDevice currentDevice] systemVersion];
     
     NSString * dInfo = [NSString stringWithFormat:@"%@-%@",deviceType,osVersion];
+    
+    //check if oldDeviceToken exist, otherwise pass nil
+    NSString *oldDeviceToken=nil;
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kVDLDeviceTokenString]!=nil) {
+        
+        //Device Token exist..so lets compare the new one with old one.
+        oldDeviceToken =[[NSUserDefaults standardUserDefaults] objectForKey:kVDLDeviceTokenString];
+    }
+
+    
 
     //NSString *validateAccession = [NSString stringWithFormat:@"ValidateAccession?accessionNumber=%@",accNum];
-    NSString *addDeviceToken = [NSString stringWithFormat:@"RegisterIOSDevice?deviceToken=%@&deviceInfo=%@",dToken,dInfo];
+    NSString *addDeviceToken = [NSString stringWithFormat:@"RegisterIOSDevice?newDeviceToken=%@&deviceInfo=%@&oldDeviceToken=%@",dToken,dInfo,oldDeviceToken];
     __weak typeof(self) weakSelf=self;
 
     
@@ -635,6 +646,8 @@
     else
     {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        configuration.requestCachePolicy=NSURLRequestReloadIgnoringCacheData;
+        
         AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
         
         NSURL *pdfURL = [NSURL URLWithString:pdfUrlString];

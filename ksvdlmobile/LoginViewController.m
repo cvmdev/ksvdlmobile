@@ -13,6 +13,7 @@
 #import "HttpClient.h"
 #import "AppDelegate.h"
 #import "SVWebViewController.h"
+#import "KSVDLWebViewController.h"
 #ifdef USES_IASK_STATIC_LIBRARY
 #import "InAppSettingsKit/IASKSettingsReader.h"
 #else
@@ -295,22 +296,23 @@
 
 /*On Allowing push notifications - output the device token*/
 - (void)tokenAvailableNotification:(NSNotification *)notification {
-    NSString *token = (NSString *)notification.object;
-    NSLog(@"new token available : %@", token);
     
     
-    //Lets go ahead and call the api to add the token
+    NSString *newToken = (NSString *)notification.object;
+    NSLog(@"new token available : %@", newToken);
+    
+    //Lets go ahead and call the api to add the token or update the last login date
     
     HttpClient *client = [HttpClient sharedHTTPClient];
     
-    [client addDeviceToken:token WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
+    [client addDeviceToken:newToken WithSuccessBlock:^(AFHTTPRequestOperation *operation,id responseObject) {
     
         if (operation.response.statusCode==200)
         {
             NSLog(@"Device Registration was a success....");
             //Store User DeviceToken in NSUSerDefaults
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:token forKey:kVDLDeviceTokenString];
+            [userDefaults setObject:newToken forKey:kVDLDeviceTokenString];
             [userDefaults synchronize];
             NSLog(@"Device Token Added to NSUserDefaults");
             //[self performSegueWithIdentifier:@"LoginToAccessionScreen" sender:sender];
@@ -323,6 +325,29 @@
     }];
 
     
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
+    NSString *webLink;
+    
+    if ([segue.identifier isEqualToString:@"register"])
+    {
+        webLink=kVDLPortalRegister;
+        
+        KSVDLWebViewController *destViewController = segue.destinationViewController;
+        destViewController.vdlPortalLink=webLink;
+        
+    }
+    
+    if ([segue.identifier isEqualToString:@"forgotpwd"])
+    {
+        webLink=kVDLPortalResetPwd;
+        
+        KSVDLWebViewController *destViewController = segue.destinationViewController;
+        destViewController.vdlPortalLink=webLink;
+    }
+
 }
 
 - (void)dealloc {

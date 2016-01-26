@@ -13,5 +13,5 @@
     IBOutlet UIWebView *WebView;
 }
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
-
+@property NSString *vdlPortalLink;
 @end

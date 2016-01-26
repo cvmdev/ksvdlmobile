@@ -12,12 +12,12 @@
 
 
 //Live Web Server
-NSString *const kBaseURL=@"https://www.vet.k-state.edu/services/KSVDLMobile/";
-NSString *const kTokenURLString = @"https://www.vet.k-state.edu/services/KSVDLMobile/oauth2/token";
+//NSString *const kBaseURL=@"https://www.vet.k-state.edu/services/KSVDLMobile/";
+//NSString *const kTokenURLString = @"https://www.vet.k-state.edu/services/KSVDLMobile/oauth2/token";
 
 //Local PC
-//NSString *const kBaseURL=@"http://129.130.128.31/TestProjects/VetViewAPI/";
-//NSString *const kTokenURLString = @"http://129.130.128.31/TestProjects/VetViewAPI/oauth2/token";
+NSString *const kBaseURL=@"http://129.130.128.31/TestProjects/VetViewAPI/";
+NSString *const kTokenURLString = @"http://129.130.128.31/TestProjects/VetViewAPI/oauth2/token";
 
 //Test Web Server
 //NSString *const kBaseURL=@"http://129.130.129.27/KSVDL/VetViewAPI/";
