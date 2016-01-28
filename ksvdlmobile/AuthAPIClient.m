@@ -82,6 +82,7 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sample_arr"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"prelim_results"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"final_result"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"notifsound"];
         
 
         completionBlock(true);

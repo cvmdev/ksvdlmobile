@@ -51,6 +51,36 @@
                 <key>Type</key>
                 <string>PSToggleSwitchSpecifier</string>
             </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSMultiValueSpecifier</string>
+                <key>Key</key>
+                <string>multi_preference</string>
+                <key>DefaultValue</key>
+                <integer>2</integer>
+                <key>Title</key>
+                <string>Notification Sound</string>
+                <key>Identifier</key>
+                <string>notifsound</string>
+                <key>Titles</key>
+                <array>
+                    <string>Cat</string>
+                    <string>Cow</string>
+                    <string>Dog</string>
+                    <string>Horse</string>
+                    <string>Rooster</string>
+                    <string>Sheep</string>
+                </array>
+                <key>Values</key>
+                <array>
+                    <integer>0</integer>
+                    <integer>1</integer>
+                    <integer>2</integer>
+                    <integer>3</integer>
+                    <integer>4</integer>
+                    <integer>5</integer>
+                </array>
+            </dict>
         </array>
         <key>StringsTable</key>
         <string>Root</string>

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ksvdlmobile/LoginViewController.m"
-            timestampString = "465767572.686355"
+            timestampString = "475698832.759721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-loginBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InAppSettingsKit/Controllers/IASKAppSettingsViewController.m"
-            timestampString = "466627715.248831"
+            timestampString = "475701464.173682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "927"
-            endingLineNumber = "927"
-            landmarkName = "-userDefaultsDidChange"
-            landmarkType = "5">
+            startingLineNumber = "928"
+            endingLineNumber = "928"
+            landmarkName = "@implementation IASKAppSettingsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -164,6 +164,7 @@
                                             [defaults setObject:@YES forKey:@"sample_arr"];
                                             [defaults setObject:@NO forKey:@"prelim_results"];
                                             [defaults setObject:@YES forKey:@"final_result"];
+                                            [defaults setObject:@2 forKey:@"notifsound"];
                                           //  [defaults registerDefaults:appDefaults];
                                             [defaults synchronize];
                                             
@@ -233,6 +234,8 @@
                                              NSLog(@"SampleArrival:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sample_arr"]);
                                              NSLog(@"Prelim:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"]);
                                              NSLog(@"Final:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"]);
+                                            NSLog(@"Notification Sound Choice:%@",[[NSUserDefaults standardUserDefaults]
+                                                                                   objectForKey:@"notifsound"]);
                                             
                                             /*Push Notifications changes begin--*/
                                         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])

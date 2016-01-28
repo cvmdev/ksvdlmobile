@@ -711,6 +711,7 @@ CGRect IASKCGRectSwap(CGRect rect);
     if ([[specifier type] isEqualToString:kIASKPSMultiValueSpecifier]) {
         IASKSpecifierValuesViewController *targetViewController = [[IASKSpecifierValuesViewController alloc] init];
         [targetViewController setCurrentSpecifier:specifier];
+      //  targetViewController.title = NSLocalizedString(@"", @"");
         targetViewController.settingsReader = self.settingsReader;
         targetViewController.settingsStore = self.settingsStore;
 		IASK_IF_IOS7_OR_GREATER(targetViewController.view.tintColor = self.view.tintColor;)
