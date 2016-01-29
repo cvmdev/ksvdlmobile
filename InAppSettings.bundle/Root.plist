@@ -70,6 +70,7 @@
                     <string>Horse</string>
                     <string>Rooster</string>
                     <string>Sheep</string>
+                    <string>Default(Beep)</string>
                 </array>
                 <key>Values</key>
                 <array>
@@ -79,6 +80,7 @@
                     <integer>3</integer>
                     <integer>4</integer>
                     <integer>5</integer>
+                    <integer>6</integer>
                 </array>
             </dict>
         </array>

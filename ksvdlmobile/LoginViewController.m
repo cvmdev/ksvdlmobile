@@ -164,7 +164,7 @@
                                             [defaults setObject:@YES forKey:@"sample_arr"];
                                             [defaults setObject:@NO forKey:@"prelim_results"];
                                             [defaults setObject:@YES forKey:@"final_result"];
-                                            [defaults setObject:@2 forKey:@"notifsound"];
+                                            [defaults setObject:@6 forKey:@"notifsound"];
                                           //  [defaults registerDefaults:appDefaults];
                                             [defaults synchronize];
                                             

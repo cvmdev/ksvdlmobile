@@ -77,7 +77,6 @@
 		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
 		CD60551C1C5A920C00094B6F /* KSVDL_HORSE.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055161C5A920C00094B6F /* KSVDL_HORSE.caf */; };
 		CD60551D1C5A920C00094B6F /* KSVDL_COW.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055171C5A920C00094B6F /* KSVDL_COW.caf */; };
-		CD60551E1C5A920C00094B6F /* KSVDL_GOAT.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055181C5A920C00094B6F /* KSVDL_GOAT.caf */; };
 		CD60551F1C5A920C00094B6F /* KSVDL_CAT.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055191C5A920C00094B6F /* KSVDL_CAT.caf */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
 		CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5E1BA81B55797A0068225F /* MessageUI.framework */; };
@@ -241,13 +240,13 @@
 		CD1965BC1BBB14B10018F75A /* KSU_CVM_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KSU_CVM_logo.png; sourceTree = "<group>"; };
 		CD31DD4B1B20D7D200451866 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		CD45803E1C5BD35000C6AD3B /* KSVDL_GOAT.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_GOAT.caf; sourceTree = "<group>"; };
 		CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = ../InAppSettings.bundle; sourceTree = "<group>"; };
 		CD5E1BA81B55797A0068225F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD6055141C5A920C00094B6F /* KSVDL_SHEEP.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_SHEEP.caf; sourceTree = "<group>"; };
 		CD6055151C5A920C00094B6F /* KSVDL_ROOSTER.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_ROOSTER.caf; sourceTree = "<group>"; };
 		CD6055161C5A920C00094B6F /* KSVDL_HORSE.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_HORSE.caf; sourceTree = "<group>"; };
 		CD6055171C5A920C00094B6F /* KSVDL_COW.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_COW.caf; sourceTree = "<group>"; };
-		CD6055181C5A920C00094B6F /* KSVDL_GOAT.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_GOAT.caf; sourceTree = "<group>"; };
 		CD6055191C5A920C00094B6F /* KSVDL_CAT.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_CAT.caf; sourceTree = "<group>"; };
 		CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTestViewController.h; sourceTree = "<group>"; };
 		CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTestViewController.m; sourceTree = "<group>"; };
@@ -401,12 +400,12 @@
 		5952F17A1B8B523D00F16744 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				CD45803E1C5BD35000C6AD3B /* KSVDL_GOAT.caf */,
 				5952F17B1B8B525700F16744 /* KSVDL_DOG.caf */,
 				CD6055141C5A920C00094B6F /* KSVDL_SHEEP.caf */,
 				CD6055151C5A920C00094B6F /* KSVDL_ROOSTER.caf */,
 				CD6055161C5A920C00094B6F /* KSVDL_HORSE.caf */,
 				CD6055171C5A920C00094B6F /* KSVDL_COW.caf */,
-				CD6055181C5A920C00094B6F /* KSVDL_GOAT.caf */,
 				CD6055191C5A920C00094B6F /* KSVDL_CAT.caf */,
 			);
 			name = Audio;
@@ -840,7 +839,6 @@
 				59649ED91AEF1E0A00E5F1AD /* LaunchScreen.xib in Resources */,
 				CD60551C1C5A920C00094B6F /* KSVDL_HORSE.caf in Resources */,
 				5952F17C1B8B525700F16744 /* KSVDL_DOG.caf in Resources */,
-				CD60551E1C5A920C00094B6F /* KSVDL_GOAT.caf in Resources */,
 				59ECE3A51B276D9900F38902 /* Bookmarked@2x.psd in Resources */,
 				CD60551D1C5A920C00094B6F /* KSVDL_COW.caf in Resources */,
 				CD60551F1C5A920C00094B6F /* KSVDL_CAT.caf in Resources */,
