@@ -247,7 +247,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 }
 
 - (IBAction)popToRoot:(UIBarButtonItem*)sender {
-    NSLog(@"Popped to root");
+    NSLog(@"Popping to root");
     // [self.navigationController popToRootViewControllerAnimated:YES];
     [self performSegueWithIdentifier:@"HomeScreen" sender:sender];
 }

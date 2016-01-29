@@ -11,7 +11,7 @@
 		5933A6BB1B14AD9300831D7D /* AccessionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BA1B14AD9300831D7D /* AccessionTableCell.m */; };
 		5933A6BE1B14AFAE00831D7D /* AccessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */; };
 		593EBCCE1B17B6D8002927B4 /* AccessionReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */; };
-		5952F17C1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5952F17B1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf */; };
+		5952F17C1B8B525700F16744 /* KSVDL_DOG.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5952F17B1B8B525700F16744 /* KSVDL_DOG.caf */; };
 		5952F17E1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5952F17D1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png */; };
 		5952F1811BC3256000F16744 /* TestFeesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5952F1801BC3256000F16744 /* TestFeesMasterViewController.m */; };
 		5952F1841BC3276200F16744 /* TestFeesTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5952F1831BC3276200F16744 /* TestFeesTableCell.m */; };
@@ -65,6 +65,8 @@
 		59ECE3AF1B276D9900F38902 /* Thumbs.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE3971B276D9900F38902 /* Thumbs.psd */; };
 		59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE3991B276D9900F38902 /* Thumbs@2x.psd */; };
 		59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */; };
+		59F600901C5BC2120034D0B9 /* KSVDL_ROOSTER.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055151C5A920C00094B6F /* KSVDL_ROOSTER.caf */; };
+		59F600911C5BC3550034D0B9 /* KSVDL_SHEEP.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055141C5A920C00094B6F /* KSVDL_SHEEP.caf */; };
 		CD042C531BA1F50800C28D53 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD042C521BA1F50800C28D53 /* WebViewController.m */; };
 		CD1965AF1BB0671A0018F75A /* TestFessWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965AE1BB0671A0018F75A /* TestFessWebViewController.m */; };
 		CD1965B21BB0752B0018F75A /* Youtubeviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */; };
@@ -73,12 +75,10 @@
 		CD1965BD1BBB14B10018F75A /* KSU_CVM_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1965BC1BBB14B10018F75A /* KSU_CVM_logo.png */; };
 		CD31DD4D1B20D7D200451866 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31DD4C1B20D7D200451866 /* NavigationViewController.m */; };
 		CD5A05F21B8EAF2D0022BA4E /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */; };
-		CD60551A1C5A920C00094B6F /* KSVDL_Sheep.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055141C5A920C00094B6F /* KSVDL_Sheep.caf */; };
-		CD60551B1C5A920C00094B6F /* KSVDL_Rooster.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055151C5A920C00094B6F /* KSVDL_Rooster.caf */; };
-		CD60551C1C5A920C00094B6F /* KSVDL_Horse.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055161C5A920C00094B6F /* KSVDL_Horse.caf */; };
-		CD60551D1C5A920C00094B6F /* KSVDL_Goat.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055171C5A920C00094B6F /* KSVDL_Goat.caf */; };
-		CD60551E1C5A920C00094B6F /* KSVDL_Cow.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055181C5A920C00094B6F /* KSVDL_Cow.caf */; };
-		CD60551F1C5A920C00094B6F /* KSVDL_Cat.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055191C5A920C00094B6F /* KSVDL_Cat.caf */; };
+		CD60551C1C5A920C00094B6F /* KSVDL_HORSE.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055161C5A920C00094B6F /* KSVDL_HORSE.caf */; };
+		CD60551D1C5A920C00094B6F /* KSVDL_COW.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055171C5A920C00094B6F /* KSVDL_COW.caf */; };
+		CD60551E1C5A920C00094B6F /* KSVDL_GOAT.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055181C5A920C00094B6F /* KSVDL_GOAT.caf */; };
+		CD60551F1C5A920C00094B6F /* KSVDL_CAT.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055191C5A920C00094B6F /* KSVDL_CAT.caf */; };
 		CD6694DC1B42D0B600FC6E70 /* AddTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */; };
 		CD717D671B55892700C28FAF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5E1BA81B55797A0068225F /* MessageUI.framework */; };
 		CD88209B1B6F0E5A00CECF56 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88206C1B6F0E5A00CECF56 /* IASKAppSettingsViewController.m */; };
@@ -130,7 +130,7 @@
 		5933A6BD1B14AFAE00831D7D /* AccessionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionTableViewController.m; sourceTree = "<group>"; };
 		593EBCCC1B17B6D8002927B4 /* AccessionReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessionReportViewController.h; sourceTree = "<group>"; };
 		593EBCCD1B17B6D8002927B4 /* AccessionReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessionReportViewController.m; sourceTree = "<group>"; };
-		5952F17B1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Dog_Barking_Notification.caf; sourceTree = "<group>"; };
+		5952F17B1B8B525700F16744 /* KSVDL_DOG.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_DOG.caf; sourceTree = "<group>"; };
 		5952F17D1BBCE5D100F16744 /* KSVDL_NavigationBar_Gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KSVDL_NavigationBar_Gradient.png; sourceTree = "<group>"; };
 		5952F17F1BC3256000F16744 /* TestFeesMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFeesMasterViewController.h; sourceTree = "<group>"; };
 		5952F1801BC3256000F16744 /* TestFeesMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFeesMasterViewController.m; sourceTree = "<group>"; };
@@ -243,12 +243,12 @@
 		CD31DD4C1B20D7D200451866 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		CD5A05F11B8EAF2D0022BA4E /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = ../InAppSettings.bundle; sourceTree = "<group>"; };
 		CD5E1BA81B55797A0068225F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		CD6055141C5A920C00094B6F /* KSVDL_Sheep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Sheep.caf; sourceTree = "<group>"; };
-		CD6055151C5A920C00094B6F /* KSVDL_Rooster.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Rooster.caf; sourceTree = "<group>"; };
-		CD6055161C5A920C00094B6F /* KSVDL_Horse.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Horse.caf; sourceTree = "<group>"; };
-		CD6055171C5A920C00094B6F /* KSVDL_Goat.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Goat.caf; sourceTree = "<group>"; };
-		CD6055181C5A920C00094B6F /* KSVDL_Cow.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Cow.caf; sourceTree = "<group>"; };
-		CD6055191C5A920C00094B6F /* KSVDL_Cat.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_Cat.caf; sourceTree = "<group>"; };
+		CD6055141C5A920C00094B6F /* KSVDL_SHEEP.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_SHEEP.caf; sourceTree = "<group>"; };
+		CD6055151C5A920C00094B6F /* KSVDL_ROOSTER.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_ROOSTER.caf; sourceTree = "<group>"; };
+		CD6055161C5A920C00094B6F /* KSVDL_HORSE.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_HORSE.caf; sourceTree = "<group>"; };
+		CD6055171C5A920C00094B6F /* KSVDL_COW.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_COW.caf; sourceTree = "<group>"; };
+		CD6055181C5A920C00094B6F /* KSVDL_GOAT.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_GOAT.caf; sourceTree = "<group>"; };
+		CD6055191C5A920C00094B6F /* KSVDL_CAT.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KSVDL_CAT.caf; sourceTree = "<group>"; };
 		CD6694DA1B42D0B600FC6E70 /* AddTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTestViewController.h; sourceTree = "<group>"; };
 		CD6694DB1B42D0B600FC6E70 /* AddTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTestViewController.m; sourceTree = "<group>"; };
 		CD88206B1B6F0E5A00CECF56 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
@@ -401,13 +401,13 @@
 		5952F17A1B8B523D00F16744 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				5952F17B1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf */,
-				CD6055141C5A920C00094B6F /* KSVDL_Sheep.caf */,
-				CD6055151C5A920C00094B6F /* KSVDL_Rooster.caf */,
-				CD6055161C5A920C00094B6F /* KSVDL_Horse.caf */,
-				CD6055171C5A920C00094B6F /* KSVDL_Goat.caf */,
-				CD6055181C5A920C00094B6F /* KSVDL_Cow.caf */,
-				CD6055191C5A920C00094B6F /* KSVDL_Cat.caf */,
+				5952F17B1B8B525700F16744 /* KSVDL_DOG.caf */,
+				CD6055141C5A920C00094B6F /* KSVDL_SHEEP.caf */,
+				CD6055151C5A920C00094B6F /* KSVDL_ROOSTER.caf */,
+				CD6055161C5A920C00094B6F /* KSVDL_HORSE.caf */,
+				CD6055171C5A920C00094B6F /* KSVDL_COW.caf */,
+				CD6055181C5A920C00094B6F /* KSVDL_GOAT.caf */,
+				CD6055191C5A920C00094B6F /* KSVDL_CAT.caf */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -830,19 +830,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD60551B1C5A920C00094B6F /* KSVDL_Rooster.caf in Resources */,
+				59F600901C5BC2120034D0B9 /* KSVDL_ROOSTER.caf in Resources */,
 				59ECE3A91B276D9900F38902 /* PageList.psd in Resources */,
 				CD1965BD1BBB14B10018F75A /* KSU_CVM_logo.png in Resources */,
 				59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */,
 				59649ED41AEF1E0A00E5F1AD /* Main.storyboard in Resources */,
 				59ECE3AF1B276D9900F38902 /* Thumbs.psd in Resources */,
+				59F600911C5BC3550034D0B9 /* KSVDL_SHEEP.caf in Resources */,
 				59649ED91AEF1E0A00E5F1AD /* LaunchScreen.xib in Resources */,
-				CD60551C1C5A920C00094B6F /* KSVDL_Horse.caf in Resources */,
-				5952F17C1B8B525700F16744 /* KSVDL_Dog_Barking_Notification.caf in Resources */,
-				CD60551E1C5A920C00094B6F /* KSVDL_Cow.caf in Resources */,
+				CD60551C1C5A920C00094B6F /* KSVDL_HORSE.caf in Resources */,
+				5952F17C1B8B525700F16744 /* KSVDL_DOG.caf in Resources */,
+				CD60551E1C5A920C00094B6F /* KSVDL_GOAT.caf in Resources */,
 				59ECE3A51B276D9900F38902 /* Bookmarked@2x.psd in Resources */,
-				CD60551D1C5A920C00094B6F /* KSVDL_Goat.caf in Resources */,
-				CD60551F1C5A920C00094B6F /* KSVDL_Cat.caf in Resources */,
+				CD60551D1C5A920C00094B6F /* KSVDL_COW.caf in Resources */,
+				CD60551F1C5A920C00094B6F /* KSVDL_CAT.caf in Resources */,
 				59ECE3A31B276D9900F38902 /* Bookmarked.psd in Resources */,
 				59ECE3AD1B276D9900F38902 /* PageList@3x.psd in Resources */,
 				59ECE3A71B276D9900F38902 /* Bookmarked@3x.psd in Resources */,
@@ -850,7 +851,6 @@
 				CD8820A41B6F0E5A00CECF56 /* IASKLocalizable.strings in Resources */,
 				59ECE3A11B276D9900F38902 /* Bookmark@3x.psd in Resources */,
 				59A024C01B4D88DF00B3A0F7 /* SVWebViewController.strings in Resources */,
-				CD60551A1C5A920C00094B6F /* KSVDL_Sheep.caf in Resources */,
 				59ECE39D1B276D9900F38902 /* Bookmark.psd in Resources */,
 				59ECE3B11B276D9900F38902 /* Thumbs@2x.psd in Resources */,
 				59ECE39F1B276D9900F38902 /* Bookmark@2x.psd in Resources */,

@@ -11,6 +11,8 @@
 #import "AuthAPIClient.h"
 #import <sys/utsname.h>
 #import "SVProgressHUD.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @implementation HttpClient
 
@@ -563,6 +565,70 @@
     int prelimStatus= [[[NSUserDefaults standardUserDefaults] objectForKey:@"prelim_results"] intValue];
     int finalStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"] intValue];
     
+    int soundValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"multi_preference"] intValue];
+    NSString * notificationSound=@"DEFAULT";
+    
+    switch (soundValue) {
+        case 0:
+            notificationSound=@"KSVDL_CAT";
+            break;
+        case 1:
+            notificationSound=@"KSVDL_COW";
+            break;
+        case 2:
+            notificationSound=@"KSVDL_DOG";
+            break;
+        case 3:
+            notificationSound=@"KSVDL_HORSE";
+            break;
+        case 4:
+            notificationSound=@"KSVDL_ROOSTER";
+            break;
+        case 5:
+            notificationSound=@"KSVDL_SHEEP";
+            break;
+        case 6:
+            notificationSound=@"DEFAULT";
+            break;
+        default:
+            break;
+    }
+    
+   // NSString *soundFilePath = [NSString stringWithFormat:@"%@/test.m4a",[[NSBundle mainBundle] resourcePath]];
+    
+   
+
+    
+    NSString *soundFilePath = [[NSBundle mainBundle]
+                            pathForResource:notificationSound ofType:@"caf"];
+    
+     NSLog(@"\n\nSound file Path is ................... %@",soundFilePath);
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath : soundFilePath ])
+    {
+        SystemSoundID audioEffect;
+        
+        NSLog((@"File exist...."));
+        if ([notificationSound isEqualToString:@"DEFAULT"])
+        {
+            AudioServicesPlaySystemSound(1103);
+            
+        }
+        else
+        {
+            NSURL *pathURL = [NSURL fileURLWithPath : soundFilePath];
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+            AudioServicesPlaySystemSound(audioEffect);
+        }
+        //sleep for couple of secs
+        [NSThread sleepForTimeInterval:2.0f];
+
+    }
+
+    
+    
+    
+    
    NSLog(@"The new notification values to be updated to the db are :%d-%d-%d",newStatus,prelimStatus,finalStatus);
     
     NSString *dToken= [[NSUserDefaults standardUserDefaults] objectForKey:kVDLDeviceTokenString];
@@ -570,7 +636,8 @@
     NSDictionary *notificationParams= @{@"deviceToken":dToken ? dToken :@"",
                                         @"newStatus":[NSNumber numberWithInt:newStatus],
                                         @"prelimStatus":[NSNumber numberWithInt:prelimStatus],
-                                        @"finalStatus":[NSNumber numberWithInt:finalStatus]};
+                                        @"finalStatus":[NSNumber numberWithInt:finalStatus],
+                                        @"notificationSound":notificationSound};
     
     //NSString *updateNotifications = [NSString stringWithFormat:@"Notifications?deviceToken=%@&newStatus=%ld&prelimStatus=%ld&finalStatus=%ld",dToken,newStatus,prelimStatus,finalStatus];
     
