@@ -566,6 +566,8 @@
     int finalStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:@"final_result"] intValue];
     
     int soundValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"multi_preference"] intValue];
+    NSLog(@"The notification sound selected is : @%d",soundValue);
+    
     NSString * notificationSound=@"DEFAULT";
     
     switch (soundValue) {
@@ -597,33 +599,37 @@
    // NSString *soundFilePath = [NSString stringWithFormat:@"%@/test.m4a",[[NSBundle mainBundle] resourcePath]];
     
    
-
-    
-    NSString *soundFilePath = [[NSBundle mainBundle]
-                            pathForResource:notificationSound ofType:@"caf"];
-    
-     NSLog(@"\n\nSound file Path is ................... %@",soundFilePath);
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath : soundFilePath ])
+    if ([notificationSound isEqualToString:@"DEFAULT"])
     {
-        SystemSoundID audioEffect;
+        AudioServicesPlaySystemSound(1103);
         
-        NSLog((@"File exist...."));
-        if ([notificationSound isEqualToString:@"DEFAULT"])
+        AudioServicesPlaySystemSound(1103);
+
+    }
+    else
+    {
+        
+         NSString *soundFilePath = [[NSBundle mainBundle]
+                                pathForResource:notificationSound ofType:@"caf"];
+        
+         NSLog(@"\n\nSound file Path is ................... %@",soundFilePath);
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath : soundFilePath ])
         {
-            AudioServicesPlaySystemSound(1103);
+            SystemSoundID audioEffect;
             
-        }
-        else
-        {
+            NSLog((@"File exist...."));
             NSURL *pathURL = [NSURL fileURLWithPath : soundFilePath];
             AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
             AudioServicesPlaySystemSound(audioEffect);
-        }
-        //sleep for couple of secs
-        [NSThread sleepForTimeInterval:2.0f];
+            
+            //sleep for couple of secs
 
+        }
+        
     }
+        //sleep so that user can hear the sound
+        [NSThread sleepForTimeInterval:2.0f];
 
     
     

@@ -56,7 +56,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     if (_currentSpecifier) {
-        [self setTitle:[_currentSpecifier title]];
+        
+        //commented by Praveen Ramanan to prevent the title from overwriting the ksvdl images
+        //[self setTitle:[_currentSpecifier title]];
+        
         _selection.specifier = _currentSpecifier;
     }
     

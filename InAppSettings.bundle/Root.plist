@@ -1,90 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>PreferenceSpecifiers</key>
-        <array>
-            <dict>
-                <key>Title</key>
-                <string>KSVDL Settings</string>
-                <key>Type</key>
-                <string>PSGroupSpecifier</string>
-            </dict>
-            <dict>
-                <key>DefaultValue</key>
-                <string>USERNAME</string>
-                <key>Key</key>
-                <string>loginname</string>
-                <key>Title</key>
-                <string>Logged in as:</string>
-                <key>Type</key>
-                <string>PSTitleValueSpecifier</string>
-            </dict>
-            
-            <dict>
-                <key>DefaultValue</key>
-                <true/>
-                <key>Key</key>
-                <string>sample_arr</string>
-                <key>Title</key>
-                <string>Sample Arrivals</string>
-                <key>Type</key>
-                <string>PSToggleSwitchSpecifier</string>
-            </dict>
-            <dict>
-                <key>DefaultValue</key>
-                <false/>
-                <key>Key</key>
-                <string>prelim_results</string>
-                <key>Title</key>
-                <string>Individual Test Results</string>
-                <key>Type</key>
-                <string>PSToggleSwitchSpecifier</string>
-            </dict>
-            <dict>
-                <key>DefaultValue</key>
-                <true/>
-                <key>Key</key>
-                <string>final_result</string>
-                <key>Title</key>
-                <string>Final Results</string>
-                <key>Type</key>
-                <string>PSToggleSwitchSpecifier</string>
-            </dict>
-            <dict>
-                <key>Type</key>
-                <string>PSMultiValueSpecifier</string>
-                <key>Key</key>
-                <string>multi_preference</string>
-                <key>DefaultValue</key>
-                <integer>2</integer>
-                <key>Title</key>
-                <string>Notification Sound</string>
-                <key>Identifier</key>
-                <string>notifsound</string>
-                <key>Titles</key>
-                <array>
-                    <string>Cat</string>
-                    <string>Cow</string>
-                    <string>Dog</string>
-                    <string>Horse</string>
-                    <string>Rooster</string>
-                    <string>Sheep</string>
-                    <string>Default(Beep)</string>
-                </array>
-                <key>Values</key>
-                <array>
-                    <integer>0</integer>
-                    <integer>1</integer>
-                    <integer>2</integer>
-                    <integer>3</integer>
-                    <integer>4</integer>
-                    <integer>5</integer>
-                    <integer>6</integer>
-                </array>
-            </dict>
-        </array>
-        <key>StringsTable</key>
-        <string>Root</string>
-    </dict>
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>KSVDL Settings</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>USERNAME</string>
+			<key>Key</key>
+			<string>loginname</string>
+			<key>Title</key>
+			<string>Logged in as:</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>sample_arr</string>
+			<key>Title</key>
+			<string>Sample Arrivals</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Key</key>
+			<string>prelim_results</string>
+			<key>Title</key>
+			<string>Individual Test Results</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>final_result</string>
+			<key>Title</key>
+			<string>Final Results</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Key</key>
+			<string>multi_preference</string>
+			<key>DefaultValue</key>
+			<integer>2</integer>
+			<key>Title</key>
+			<string>Notification Sound</string>
+			<key>Identifier</key>
+			<string>notifsound</string>
+			<key>Titles</key>
+			<array>
+				<string>Cat</string>
+				<string>Cow</string>
+				<string>Dog</string>
+				<string>Horse</string>
+				<string>Rooster</string>
+				<string>Sheep</string>
+				<string>Default(Beep)</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
 </plist>
