@@ -67,6 +67,7 @@
 		59ECE3B31B276D9900F38902 /* Thumbs@3x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */; };
 		59F600901C5BC2120034D0B9 /* KSVDL_ROOSTER.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055151C5A920C00094B6F /* KSVDL_ROOSTER.caf */; };
 		59F600911C5BC3550034D0B9 /* KSVDL_SHEEP.caf in Resources */ = {isa = PBXBuildFile; fileRef = CD6055141C5A920C00094B6F /* KSVDL_SHEEP.caf */; };
+		59F600941C6CD5270034D0B9 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F600931C6CD5270034D0B9 /* TTTAttributedLabel.m */; };
 		CD042C531BA1F50800C28D53 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD042C521BA1F50800C28D53 /* WebViewController.m */; };
 		CD1965AF1BB0671A0018F75A /* TestFessWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965AE1BB0671A0018F75A /* TestFessWebViewController.m */; };
 		CD1965B21BB0752B0018F75A /* Youtubeviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1965B11BB0752B0018F75A /* Youtubeviewcontroller.m */; };
@@ -228,6 +229,8 @@
 		59ECE3971B276D9900F38902 /* Thumbs.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.psd; sourceTree = "<group>"; };
 		59ECE3991B276D9900F38902 /* Thumbs@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@2x.psd"; sourceTree = "<group>"; };
 		59ECE39B1B276D9900F38902 /* Thumbs@3x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Thumbs@3x.psd"; sourceTree = "<group>"; };
+		59F600921C6CD51D0034D0B9 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		59F600931C6CD5270034D0B9 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		CD042C511BA1F50800C28D53 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		CD042C521BA1F50800C28D53 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		CD1965AD1BB0671A0018F75A /* TestFessWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFessWebViewController.h; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 		59649EF51AF125F100E5F1AD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				59F600921C6CD51D0034D0B9 /* TTTAttributedLabel.h */,
+				59F600931C6CD5270034D0B9 /* TTTAttributedLabel.m */,
 				59649EFE1B0B82DC00E5F1AD /* AFOAuth2Client.h */,
 				59649EFF1B0B82DC00E5F1AD /* AFOAuth2Client.m */,
 				59649F011B0CC48400E5F1AD /* AuthAPIClient.h */,
@@ -955,6 +960,7 @@
 				5952F1841BC3276200F16744 /* TestFeesTableCell.m in Sources */,
 				59ECE35D1B27658900F38902 /* PDFKBasicPDFViewer.m in Sources */,
 				59ECE3631B27658900F38902 /* PDFKPageScrubber.m in Sources */,
+				59F600941C6CD5270034D0B9 /* TTTAttributedLabel.m in Sources */,
 				59ECE3751B276BD400F38902 /* PDFKThumbView.m in Sources */,
 				59A024CC1B4D88DF00B3A0F7 /* SVWebViewControllerActivity.m in Sources */,
 				59ECE3611B27658900F38902 /* PDFKPageContentLayer.m in Sources */,
@@ -1134,8 +1140,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: K-State Diagnostic And Analytical Services, Inc. (968F74UK4Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CVM Developer (4Q339MFGEX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CVM Developer (4Q339MFGEX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1144,7 +1150,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "52d38365-d02c-449a-80ab-32639fb30cd8";
+				PROVISIONING_PROFILE = "11159b9f-fbd7-4b2e-83ff-581638b71c81";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1156,8 +1162,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: K-State Diagnostic And Analytical Services, Inc. (968F74UK4Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CVM Developer (4Q339MFGEX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CVM Developer (4Q339MFGEX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1166,7 +1172,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "KSVDL Mobile";
-				PROVISIONING_PROFILE = "52d38365-d02c-449a-80ab-32639fb30cd8";
+				PROVISIONING_PROFILE = "11159b9f-fbd7-4b2e-83ff-581638b71c81";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

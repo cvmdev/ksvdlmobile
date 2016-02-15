@@ -27,5 +27,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *imageview;
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UIView *TextcontentView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *txtContainerHeightConstraint;
 
 @end

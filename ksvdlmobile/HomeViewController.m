@@ -15,6 +15,10 @@
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
+const int HeightForTextContainerIPHONE=450;
+const int HeightForTextContainerIPAD=650;
+
+
 
 @implementation HomeViewController
 
@@ -34,6 +38,9 @@
 
 - (void) viewDidLoad
 {
+    
+    self.txtContainerHeightConstraint.constant=HeightForTextContainerIPHONE; //FOR all iphone devices
+    
     [super viewDidLoad];
     
     /*The following couple of lines of code are remove the BACK botton text from the help video and test and fees page*/
@@ -102,6 +109,8 @@
     if ( IDIOM == IPAD ) {
         /* do something specifically for iPad. */
          _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/asp/app/Free_BQA_700px.png"]]];
+        self.txtContainerHeightConstraint.constant=HeightForTextContainerIPAD;
+
     } else {
         /* do something specifically for iPhone or iPod touch. */
             _imageview.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.vet.k-state.edu/asp/app/Free_BQA_250px.png"]]];

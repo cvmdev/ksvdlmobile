@@ -5,7 +5,6 @@ target 'ksvdlmobile' do
 pod "AFNetworking", "~> 2.0"
 pod 'SVProgressHUD'
 end
-
 target 'ksvdlmobileTests' do
 
 end

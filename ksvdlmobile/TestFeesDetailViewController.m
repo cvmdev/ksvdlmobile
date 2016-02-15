@@ -13,6 +13,7 @@
 
 #import "TestFeesDetailViewController.h"
 #import "SWRevealViewController.h"
+#import "TTTAttributedLabel.h"
 
 @implementation TestFeesDetailViewController
 
@@ -21,6 +22,11 @@
     [self.menubarButton setTarget: self.revealViewController];
     [self.menubarButton setAction: @selector( rightRevealToggle:)];
     
+
+    self.TestCommentsLabel.delegate=self;
+    self.TestCommentsLabel.enabledTextCheckingTypes=NSTextCheckingTypeLink;
+
+
 //    self.TestNameLabel.text=StringOrEmpty([self.testFeesDetailDict objectForKey:@"TestName"]);
 //    
 //    self.SectionLabel.text=StringOrEmpty([self.testFeesDetailDict objectForKey:@"Section"]);
@@ -89,15 +95,22 @@
     
     if (!([self.testFeesDetailDict objectForKey:@"TestComments"]==(id)[NSNull null]))
         
+        
     {
+        
         NSString *htmlCommentsString=[self.testFeesDetailDict objectForKey:@"TestComments"];
         
         
-        NSMutableAttributedString * commentText =[[NSMutableAttributedString alloc] initWithData:[htmlCommentsString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+//        NSMutableAttributedString * commentText =[[NSMutableAttributedString alloc] initWithData:[htmlCommentsString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+        
+        NSMutableAttributedString * commentText =[[NSMutableAttributedString alloc] initWithData:[htmlCommentsString
+                                                  dataUsingEncoding:NSUnicodeStringEncoding]
+                                                                                         options:@{NSDocumentTypeDocumentAttribute :NSHTMLTextDocumentType} documentAttributes:nil error:nil];
         
         [commentText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0,commentText.length)];
         
-        self.TestCommentsLabel.attributedText=commentText;
+        //self.TestCommentsLabel.attributedText=commentText;
+        [self.TestCommentsLabel setText:commentText];
         
         //self.TestCommentsLabel.text=[self.testFeesDetailDict objectForKey:@"TestComments"];
         
@@ -122,6 +135,15 @@
     
     
     
+}
+
+- (void) attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    NSString *urlString=[[NSString alloc]initWithFormat:@"%@",url];
+    NSLog(@"Delegate method called with URL %@",urlString);
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{

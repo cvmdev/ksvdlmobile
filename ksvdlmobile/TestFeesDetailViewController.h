@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTTAttributedLabel.h"
 
-@interface TestFeesDetailViewController : UIViewController
+@interface TestFeesDetailViewController : UIViewController<TTTAttributedLabelDelegate>
 
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *menubarButton;
 @property NSDictionary *testFeesDetailDict;
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ShippingPreserveLabel;
 @property (weak, nonatomic) IBOutlet UILabel *DaysTestedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *EstimatedTurnaroundLabel;
-@property (weak, nonatomic) IBOutlet UILabel *TestCommentsLabel;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *TestCommentsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *DeliveryMethodLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ProcedureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SectionGroupLabel;

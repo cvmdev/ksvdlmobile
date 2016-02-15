@@ -954,7 +954,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Notification Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D0s-CP-8xa">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D0s-CP-8xa">
                                             <rect key="frame" x="46" y="0.0" width="539" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1087,7 +1087,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="450"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSt-oR-G3D" userLabel="TextContainer">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUp-lx-SA5" userLabel="VideosButton">
                                                 <rect key="frame" x="251" y="166" width="117" height="94"/>
@@ -1145,7 +1145,6 @@
                                             <constraint firstItem="2OZ-Ov-ZyD" firstAttribute="top" secondItem="LSt-oR-G3D" secondAttribute="top" constant="20" id="8pv-RG-E0l"/>
                                             <constraint firstItem="2OZ-Ov-ZyD" firstAttribute="centerX" secondItem="LSt-oR-G3D" secondAttribute="centerX" id="AKb-q4-e03"/>
                                             <constraint firstItem="DUp-lx-SA5" firstAttribute="width" secondItem="gnY-28-SI3" secondAttribute="width" id="BnA-3W-ss4"/>
-                                            <constraint firstAttribute="height" constant="500" id="FqE-VG-Dbd"/>
                                             <constraint firstItem="gnY-28-SI3" firstAttribute="height" secondItem="DUp-lx-SA5" secondAttribute="height" id="Kco-If-baf"/>
                                             <constraint firstItem="gnY-28-SI3" firstAttribute="height" secondItem="2OZ-Ov-ZyD" secondAttribute="height" id="KjQ-1a-zNW"/>
                                             <constraint firstAttribute="trailing" secondItem="DUp-lx-SA5" secondAttribute="trailing" constant="10" id="LkX-y4-RTn"/>
@@ -1162,6 +1161,7 @@
                                             <constraint firstItem="dhr-ES-MQ0" firstAttribute="top" secondItem="gnY-28-SI3" secondAttribute="bottom" constant="20" id="h6Y-Da-djf"/>
                                             <constraint firstItem="gnY-28-SI3" firstAttribute="top" secondItem="2OZ-Ov-ZyD" secondAttribute="bottom" constant="20" id="ih5-6d-JBz"/>
                                             <constraint firstItem="dhr-ES-MQ0" firstAttribute="top" secondItem="DUp-lx-SA5" secondAttribute="bottom" constant="20" id="itk-8g-ijf"/>
+                                            <constraint firstAttribute="height" constant="650" id="kKo-U4-Uxs"/>
                                             <constraint firstItem="DUp-lx-SA5" firstAttribute="top" secondItem="2OZ-Ov-ZyD" secondAttribute="bottom" constant="20" id="ugM-RA-94m"/>
                                             <constraint firstAttribute="bottom" secondItem="dhr-ES-MQ0" secondAttribute="bottom" constant="10" id="whe-k1-qc4"/>
                                             <constraint firstItem="dhr-ES-MQ0" firstAttribute="height" secondItem="DUp-lx-SA5" secondAttribute="height" id="yMO-fb-I6g"/>
@@ -1242,6 +1242,7 @@
                         <outlet property="imageview" destination="dhr-ES-MQ0" id="FgC-V5-iJu"/>
                         <outlet property="scrollView" destination="BNv-LJ-cS3" id="Mtd-4t-uda"/>
                         <outlet property="testfeesbutton" destination="gnY-28-SI3" id="GM3-Lx-Lr9"/>
+                        <outlet property="txtContainerHeightConstraint" destination="kKo-U4-Uxs" id="WqV-DP-5Zc"/>
                         <segue destination="WuK-KV-8Kz" kind="show" identifier="AccessionScreen" id="xEa-OO-ROn"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="LoginScreen" id="cDr-5r-ECg"/>
                         <segue destination="wWe-XE-pYC" kind="show" identifier="TestFeesScreen" id="w8J-T2-Fxn"/>
@@ -1499,7 +1500,7 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestCommentsLabel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF8-VH-llu">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestCommentsLabel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF8-VH-llu" customClass="TTTAttributedLabel">
                                                 <rect key="frame" x="10" y="458" width="500" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1777,9 +1778,9 @@
         <image name="settings_menu" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b5z-gQ-egg"/>
-        <segue reference="HcB-w7-liL"/>
+        <segue reference="a5L-nw-JJJ"/>
         <segue reference="cDr-5r-ECg"/>
-        <segue reference="LQw-T8-f9Z"/>
+        <segue reference="xEa-OO-ROn"/>
+        <segue reference="HcB-w7-liL"/>
     </inferredMetricsTieBreakers>
 </document>
