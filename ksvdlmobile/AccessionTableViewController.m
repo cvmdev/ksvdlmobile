@@ -283,11 +283,18 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     NSString *accStatus =[currentAccessionDict objectForKey:@"AccessionStatus"];
     NSInteger labId = [[currentAccessionDict objectForKey:@"LabId"] integerValue];
     
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM/dd/yyyy"];
+    
+    
+    
     if ([accStatus isEqualToString:@"Finalized"] || [accStatus isEqualToString:@"Addended"])
     {
         //cell.backgroundColor= [[UIColor alloc] initWithRed:209.0/255.0 green:211/255.0 blue:212/255.0 alpha:0.5];
         //cell.backgroundColor= [[UIColor alloc] initWithRed:145.0/255.0 green:145.0/255.0 blue:149.0/255.0 alpha:0.5];
         
+        NSDate *finalizedDate = [dateFormat dateFromString:[currentAccessionDict objectForKey:@"FinalizedDate"]];
+
         [cell setBackgroundColor:[UIColor clearColor]];
         
         CAGradientLayer *grad = [CAGradientLayer layer];
@@ -299,7 +306,10 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
         
         cell.finalizedDateLabel.hidden=false;
         cell.viewreportButton.hidden=false;
-        cell.addtestButton.hidden = true;
+        if (([self daysBetween:finalizedDate and:[NSDate date]])>60)
+            cell.addtestButton.hidden = true;
+        else
+            cell.addtestButton.hidden=false;
         
         cell.statusLabel.hidden=TRUE;
         
@@ -510,6 +520,13 @@ NSString * const simpleTableIdentifier = @"AccessionCell";
     
 }
 
+
+- (int)daysBetween:(NSDate *)dt1 and:(NSDate *)dt2 {
+    NSUInteger unitFlags = NSDayCalendarUnit;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
+    return [components day]+1;
+}
 
 # pragma Mark tableview delegate methods
 
